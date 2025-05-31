@@ -1,0 +1,4 @@
+[core]
+    remote = gdrive_remote
+['remote "gdrive_remote"']
+    url = gdrive://https://drive.google.com/drive/folders/1CppyxOqj95_mdGQWcgfnIjBanV7NaeZN?usp=share_link

@@ -1,0 +1,22 @@
+{
+  "name": "TLA+ LLM Research",
+  "build": {
+    "context": "..",
+    "dockerfile": "Dockerfile"
+  },
+  "postCreateCommand": "conda run -n tla-llm conda clean -afy",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/conda/envs/tla-llm/bin/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "remoteUser": "root"
+}
+
