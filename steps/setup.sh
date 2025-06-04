@@ -4,6 +4,7 @@ set -e  # Exit on error
 
 echo "Activating conda environment 'tla-llm'"
 eval "$(conda shell.bash hook)"
+conda env update -n base -f environment.yml
 conda activate tla-llm
 
 echo "Installing ZenML integrations"
