@@ -1,0 +1,50 @@
+An encoding of a parameterized model of the asynchronous non-blocking atomic commitment
+algorithm with failure detectors in TLA+. The algorithm is described in the following paper:
+[1] Guerraoui, Rachid. "On the hardness of failure-sensitive agreement problems." Information
+Processing Letters 79.2 (2001): 99-104.
+Thanh Hai Tran, Igor Konnov, Josef Widder, 2016
+This file is a subject to the license that is bundled together with this package and can
+be found in the file LICENSE.
+the number of YES messages sent by correct processes *)
+the number of NO messages sent by correct processes *)
+the upper bound of the number of NO messages sent by faulty processes *)
+the upper bound of the number of NO messages sent by faulty processes *)
+the number of Yes messages which have been received *)
+the number of NO messages which have been received *)
+a failure detector satisfies:
+- every faulty processes is permanently suspected
+- no process is suspected unless it crashes *)
+process counters *)
+no message has been sent or received *)
+a process can vote YES or NO *)
+initialization of failure detector *)
+no message has been sent or received *)
+all processes vote YES *)
+initialization of failure detector *)
+no message has been sent or received *)
+all processes vote NO *)
+initialization of failure detector *)
+Some process will crash in the next state. If the process has not proposed its initial
+value, the upper bound of the number of messages with the same value will be increased.
+A process starts receiving messages after sending its vote. If a process crashed or decides,
+it stops receiving messages.
+receives a YES message *)
+receives a NO message *)
+all messages are received *)
+this conditions is added to avoid deadlocks *)
+A correct process sends YES messages to all processes. *)
+A correct process sends NO messages to all processes. *)
+A suspicious process aborts. *)
+A correct process aborts after it received a NO message *)
+A correct process commits since it knows that all processes propose YES *)
+Avoid deadlocks.
+After deciding, a correct process does nothing. *)
+In this specification, a process can vote YES or NO. Weak fairness condition is added
+since we want to check liveness properties.
+All processes vote YES. *)
+All processes vote NO. *)
+Type invariant *)
+No two correct processes decide differently. *)
+If some process votes NO, no process commits. *)
+If every processes votes YES and no process is suspected, then no process crashes or aborts. *)
+If no process crashes or is suspicious, then every process eventually commits. *)

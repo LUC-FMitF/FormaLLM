@@ -1,0 +1,16 @@
+activation status of nodes
+has termination been detected?
+node i terminates
+node i activates node j
+Modification History
+Last modified Thu Jan 21 16:08:09 CET 2021 by merz
+Created Sun Jan 10 15:19:20 CET 2021 by merz
+**************************************************************************)
+An abstract specification of the termination detection problem in a     *)
+ring with synchronous communication.                                    *)
+**************************************************************************)
+**************************************************************************)
+Initial condition: the nodes can be active or inactive, termination     *)
+may (but need not) be detected immediately if all nodes are inactive.   *)
+**************************************************************************)
+possibly (but not necessarily) detect termination if all nodes are inactive *)

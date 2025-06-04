@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0056",
+            "model": "Einstein",
+            "tla_original": "Einstein.tla",
+            "tla_clean": "Einstein_clean.tla",
+            "comments": "Einstein_comments.txt",
+            "comments_clean": "Einstein_comments_clean.txt",
+            "cfg": "Einstein.cfg"
+        }
+    ]
+}

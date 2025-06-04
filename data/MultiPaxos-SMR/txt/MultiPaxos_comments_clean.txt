@@ -1,0 +1,326 @@
+symmetric set of server nodes
+symmetric set of write commands (each w/ unique value)
+symmetric set of read commands
+maximum ballot pickable for leader preemption
+a write command model value serves as both the
+ID of the command and the value to be written
+Client observable events.
+val is the old value for a write command
+W.L.O.G., choose any sequence contatenating writes
+commands and read commands as the sequence of reqs;
+all other cases are either symmetric or less useful
+than this one
+Server-side constants & states.
+Service-internal messages.
+messages in the network
+replica node state
+sequence of pending reqs
+client observed events
+Send a set of messages helper.
+Observe a client event helper.
+Resolve a pending command helper.
+Someone steps up as leader and sends Prepare message to followers.
+if I'm not a leader
+pick a greater ballot number
+W.L.O.G., using this clause to model that ballot
+numbers from different proposers be unique
+update states and restart Prepare phase for in-progress instances
+broadcast Prepare and reply to myself instantly
+Replica replies to a Prepare message.
+if receiving a Prepare message with larger ballot than ever seen
+update states and reset statuses
+send back PrepareReply with my voted list
+Leader gathers PrepareReply messages until condition met, then marks
+the corresponding ballot as prepared and saves highest voted commands.
+if I'm waiting for PrepareReplies
+when there are enough number of PrepareReplies of desired ballot
+marks this ballot as prepared and saves highest voted command
+in each slot if any
+send Accept messages for in-progress instances
+A prepared leader takes a new request to fill the next empty slot.
+if I'm a prepared leader and there's pending request
+find the next empty slot and pick a pending request
+W.L.O.G., only pick a command not seen in current
+prepared log to have smaller state space; in practice,
+duplicated client requests should be treated by some
+idempotency mechanism such as using request IDs
+update slot status and voted
+broadcast Accept and reply to myself instantly
+append to observed events sequence if haven't yet
+Replica replies to an Accept message.
+if receiving an unreplied Accept message with valid ballot
+update node states and corresponding instance's states
+send back AcceptReply
+Leader gathers AcceptReply messages for a slot until condition met, then
+marks the slot as committed and acknowledges the client.
+if I think I'm a current leader
+W.L.O.G., only enabling the next slot after commitUpTo
+here to make the body of this macro simpler
+for this slot, when there are enough number of AcceptReplies
+marks this slot as committed and apply command
+append to observed events sequence if haven't yet, and remove
+the command from pending
+broadcast CommitNotice to followers
+Replica receives new commit notification.
+if I'm a follower waiting on CommitNotice
+W.L.O.G., only enabling the next slot after commitUpTo
+here to make the body of this macro simpler
+for this slot, when there's a CommitNotice message
+marks this slot as committed and apply command
+Replica server node main loop.
+BEGIN TRANSLATION (chksum(pcal) = "2be53042" /\ chksum(tla) = "bfbfd945")
+END TRANSLATION
+*********************************************************************************)
+MultiPaxos in state machine replication (SMR) style with write/read commands   *)
+on a single key. Please refer to the detailed comments in PlusCal code to see  *)
+how this spec closely models a practical SMR log replication system.           *)
+*)
+Network is modeled as a monotonic set of sent messages. This is a particularly *)
+efficient model for a practical non-Byzantine asynchronous network: messages   *)
+may be arbitrarily delayed, may be duplicatedly received, and may be lost (but *)
+in this case the sender would repeatedly retry and thus the message should     *)
+eventually gets received).                                                     *)
+*)
+Linearizability is checked from global client's point of view on the sequence  *)
+of client observed request/acknowledgement events after termination.           *)
+*)
+Liveness is checked by not having deadlocks till observation of all requests.  *)
+*)
+Possible further extensions include node failure injection, leader lease and   *)
+local read mechanism, etc.                                                     *)
+*********************************************************************************)
+******************************)
+Model inputs & assumptions. *)
+******************************)
+*******************************)
+Useful constants & typedefs. *)
+*******************************)
+*****************************)
+Main algorithm in PlusCal. *)
+*****************************)
+--algorithm MultiPaxos
+variable msgs = {},                             \* messages in the network
+node = [r \in Replicas |-> NullNode],  \* replica node state
+pending = InitPending,                 \* sequence of pending reqs
+observed = <<>>;                       \* client observed events
+define
+UnseenPending(insts) ==
+LET filter(c) == c \notin {insts[s].cmd: s \in Slots}
+IN  SelectSeq(pending, filter)
+RemovePending(cmd) ==
+LET filter(c) == c # cmd
+IN  SelectSeq(pending, filter)
+reqsMade == {e.cmd: e \in {e \in Range(observed): e.type = "Req"}}
+acksRecv == {e.cmd: e \in {e \in Range(observed): e.type = "Ack"}}
+terminated == /\ Len(pending) = 0
+/\ Cardinality(reqsMade) = NumCommands
+/\ Cardinality(acksRecv) = NumCommands
+end define;
+Send a set of messages helper.
+macro Send(set) begin
+msgs := msgs \cup set;
+end macro;
+Observe a client event helper.
+macro Observe(e) begin
+if e \notin Range(observed) then
+observed := Append(observed, e);
+end if;
+end macro;
+Resolve a pending command helper.
+macro Resolve(c) begin
+pending := RemovePending(c);
+end macro;
+Someone steps up as leader and sends Prepare message to followers.
+macro BecomeLeader(r) begin
+if I'm not a leader
+await node[r].leader # r;
+pick a greater ballot number
+with b \in Ballots do
+await /\ b > node[r].balMaxKnown
+/\ ~\E m \in msgs: (m.type = "Prepare") /\ (m.bal = b);
+W.L.O.G., using this clause to model that ballot
+numbers from different proposers be unique
+update states and restart Prepare phase for in-progress instances
+node[r].leader := r ||
+node[r].balPrepared := 0 ||
+node[r].balMaxKnown := b ||
+node[r].insts :=
+[s \in Slots |->
+[node[r].insts[s]
+EXCEPT !.status = IF @ = "Accepting"
+THEN "Preparing"
+ELSE @]];
+broadcast Prepare and reply to myself instantly
+Send({PrepareMsg(r, b),
+PrepareReplyMsg(r, b, VotesByNode(node[r]))});
+end with;
+end macro;
+Replica replies to a Prepare message.
+macro HandlePrepare(r) begin
+if receiving a Prepare message with larger ballot than ever seen
+with m \in msgs do
+await /\ m.type = "Prepare"
+/\ m.bal > node[r].balMaxKnown;
+update states and reset statuses
+node[r].leader := m.src ||
+node[r].balMaxKnown := m.bal ||
+node[r].insts :=
+[s \in Slots |->
+[node[r].insts[s]
+EXCEPT !.status = IF @ = "Accepting"
+THEN "Preparing"
+ELSE @]];
+send back PrepareReply with my voted list
+Send({PrepareReplyMsg(r, m.bal, VotesByNode(node[r]))});
+end with;
+end macro;
+Leader gathers PrepareReply messages until condition met, then marks
+the corresponding ballot as prepared and saves highest voted commands.
+macro HandlePrepareReplies(r) begin
+if I'm waiting for PrepareReplies
+await /\ node[r].leader = r
+/\ node[r].balPrepared = 0;
+when there are enough number of PrepareReplies of desired ballot
+with prs = {m \in msgs: /\ m.type = "PrepareReply"
+/\ m.bal = node[r].balMaxKnown}
+do
+await Cardinality(prs) >= MajorityNum;
+marks this ballot as prepared and saves highest voted command
+in each slot if any
+node[r].balPrepared := node[r].balMaxKnown ||
+node[r].insts :=
+[s \in Slots |->
+[node[r].insts[s]
+EXCEPT !.status = IF \/ @ = "Preparing"
+\/ /\ @ = "Empty"
+/\ PeakVotedCmd(prs, s) # "nil"
+THEN "Accepting"
+ELSE @,
+!.cmd = PeakVotedCmd(prs, s)]];
+send Accept messages for in-progress instances
+Send({AcceptMsg(r, node[r].balPrepared, s, node[r].insts[s].cmd):
+s \in {s \in Slots: node[r].insts[s].status = "Accepting"}});
+end with;
+end macro;
+A prepared leader takes a new request to fill the next empty slot.
+macro TakeNewRequest(r) begin
+if I'm a prepared leader and there's pending request
+await /\ node[r].leader = r
+/\ node[r].balPrepared = node[r].balMaxKnown
+/\ \E s \in Slots: node[r].insts[s].status = "Empty"
+/\ Len(UnseenPending(node[r].insts)) > 0;
+find the next empty slot and pick a pending request
+with s = FirstEmptySlot(node[r].insts),
+c = Head(UnseenPending(node[r].insts))
+W.L.O.G., only pick a command not seen in current
+prepared log to have smaller state space; in practice,
+duplicated client requests should be treated by some
+idempotency mechanism such as using request IDs
+do
+update slot status and voted
+node[r].insts[s].status := "Accepting" ||
+node[r].insts[s].cmd := c ||
+node[r].insts[s].voted.bal := node[r].balPrepared ||
+node[r].insts[s].voted.cmd := c;
+broadcast Accept and reply to myself instantly
+Send({AcceptMsg(r, node[r].balPrepared, s, c),
+AcceptReplyMsg(r, node[r].balPrepared, s)});
+append to observed events sequence if haven't yet
+Observe(ReqEvent(c));
+end with;
+end macro;
+Replica replies to an Accept message.
+macro HandleAccept(r) begin
+if receiving an unreplied Accept message with valid ballot
+with m \in msgs do
+await /\ m.type = "Accept"
+/\ m.bal >= node[r].balMaxKnown
+/\ m.bal > node[r].insts[m.slot].voted.bal;
+update node states and corresponding instance's states
+node[r].leader := m.src ||
+node[r].balMaxKnown := m.bal ||
+node[r].insts[m.slot].status := "Accepting" ||
+node[r].insts[m.slot].cmd := m.cmd ||
+node[r].insts[m.slot].voted.bal := m.bal ||
+node[r].insts[m.slot].voted.cmd := m.cmd;
+send back AcceptReply
+Send({AcceptReplyMsg(r, m.bal, m.slot)});
+end with;
+end macro;
+Leader gathers AcceptReply messages for a slot until condition met, then
+marks the slot as committed and acknowledges the client.
+macro HandleAcceptReplies(r) begin
+if I think I'm a current leader
+await /\ node[r].leader = r
+/\ node[r].balPrepared = node[r].balMaxKnown
+/\ node[r].commitUpTo < NumCommands
+/\ node[r].insts[node[r].commitUpTo+1].status = "Accepting";
+W.L.O.G., only enabling the next slot after commitUpTo
+here to make the body of this macro simpler
+for this slot, when there are enough number of AcceptReplies
+with s = node[r].commitUpTo + 1,
+c = node[r].insts[s].cmd,
+v = node[r].kvalue,
+ars = {m \in msgs: /\ m.type = "AcceptReply"
+/\ m.slot = s
+/\ m.bal = node[r].balPrepared}
+do
+await Cardinality(ars) >= MajorityNum;
+marks this slot as committed and apply command
+node[r].insts[s].status := "Committed" ||
+node[r].commitUpTo := s ||
+node[r].kvalue := IF c \in Writes THEN c ELSE @;
+append to observed events sequence if haven't yet, and remove
+the command from pending
+Observe(AckEvent(c, v));
+Resolve(c);
+broadcast CommitNotice to followers
+Send({CommitNoticeMsg(s)});
+end with;
+end macro;
+Replica receives new commit notification.
+macro HandleCommitNotice(r) begin
+if I'm a follower waiting on CommitNotice
+await /\ node[r].leader # r
+/\ node[r].commitUpTo < NumCommands
+/\ node[r].insts[node[r].commitUpTo+1].status = "Accepting";
+W.L.O.G., only enabling the next slot after commitUpTo
+here to make the body of this macro simpler
+for this slot, when there's a CommitNotice message
+with s = node[r].commitUpTo + 1,
+c = node[r].insts[s].cmd,
+m \in msgs
+do
+await /\ m.type = "CommitNotice"
+/\ m.upto = s;
+marks this slot as committed and apply command
+node[r].insts[s].status := "Committed" ||
+node[r].commitUpTo := s ||
+node[r].kvalue := IF c \in Writes THEN c ELSE @;
+end with;
+end macro;
+Replica server node main loop.
+process Replica \in Replicas
+begin
+rloop: while ~terminated do
+either
+BecomeLeader(self);
+or
+HandlePrepare(self);
+or
+HandlePrepareReplies(self);
+or
+TakeNewRequest(self);
+or
+HandleAccept(self);
+or
+HandleAcceptReplies(self);
+or
+HandleCommitNotice(self);
+end either;
+end while;
+end process;
+end algorithm; *)
+define statement *)
+Global variables *)
+Allow infinite stuttering to prevent deadlock on termination. *)

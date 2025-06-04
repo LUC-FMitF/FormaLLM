@@ -1,0 +1,45 @@
+@type: Int;
+@type: Int -> Bool;
+activation status of nodes
+@type: Int -> Int;
+number of messages pending at a node
+@type: Bool;
+has termination been detected?
+node i terminates
+node i sends a message to node j
+node i receives a pending message
+reasonable but not necessary for detecting termination
+/\ \A i \in Node : WF_vars(Wakeup(i))
+a temporary solution for Apalache, until it translates [][Next]_vars
+By proving QuiescenceAsActionInv, we show that Quiescence holds true
+@typeAlias: STATE =
+[ active: Int -> Bool, pending: Int -> Int, terminationDetected: Bool ];
+@type: Seq(STATE) => Bool;
+Modification History
+Last modified Tue Apr 12 15:04:08 CEST 2022 by merz
+Last modified Wed Jun 02 14:21:31 PDT 2021 by markus
+Created Sun Jan 10 15:19:20 CET 2021 by merz
+**************************************************************************)
+An abstract specification of the termination detection problem in a     *)
+ring with asynchronous communication.                                   *)
+**************************************************************************)
+**************************************************************************)
+Initial condition: the nodes can be active or inactive, no pending      *)
+messages. Termination may (but need not) be detected immediately if all *)
+nodes are inactive.                                                     *)
+**************************************************************************)
+possibly (but not necessarily) detect termination if all nodes are inactive *)
+**************************************************************************)
+Restrict TLC model checking to a finite fragment of the state space.    *)
+**************************************************************************)
+**************************************************************************)
+Correctness properties.                                                 *)
+**************************************************************************)
+**************************************************************************)
+An inductive invariant to be checked with Apalache.                     *)
+**************************************************************************)
+**************************************************************************)
+Use Apalache to verify Quiescence by checking the action formula        *)
+StableActionInvariant for a model with initial-state predicate TypeOK   *)
+and next-state relation Next.                                           *)
+**************************************************************************)

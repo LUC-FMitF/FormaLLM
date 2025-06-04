@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "0184",
+            "model": "Simple",
+            "tla_original": "Simple.tla",
+            "tla_clean": "Simple_clean.tla",
+            "comments": "Simple_comments.txt",
+            "comments_clean": "Simple_comments_clean.txt",
+            "cfg": "Simple.cfg"
+        },
+        {
+            "id": "0185",
+            "model": "SimpleRegular",
+            "tla_original": "SimpleRegular.tla",
+            "tla_clean": "SimpleRegular_clean.tla",
+            "comments": "SimpleRegular_comments.txt",
+            "comments_clean": "SimpleRegular_comments_clean.txt",
+            "cfg": "SimpleRegular.cfg"
+        }
+    ]
+}

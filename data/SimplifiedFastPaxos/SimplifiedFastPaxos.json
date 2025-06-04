@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "0167",
+            "model": "FastPaxos",
+            "tla_original": "FastPaxos.tla",
+            "tla_clean": "FastPaxos_clean.tla",
+            "comments": "FastPaxos_comments.txt",
+            "comments_clean": "FastPaxos_comments_clean.txt",
+            "cfg": "FastPaxos.cfg"
+        },
+        {
+            "id": "0168",
+            "model": "Paxos",
+            "tla_original": "Paxos.tla",
+            "tla_clean": "Paxos_clean.tla",
+            "comments": "Paxos_comments.txt",
+            "comments_clean": "Paxos_comments_clean.txt",
+            "cfg": "Paxos.cfg"
+        }
+    ]
+}

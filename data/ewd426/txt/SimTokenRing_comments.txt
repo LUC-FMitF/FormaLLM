@@ -1,0 +1,6 @@
+\* TCLGet("stats").traces is only defined when TLC runs in simulation or generation mode.
+\* For this spec, users have to run TLC in generate mode to collect meaningful statistics.
+\* Initialize the CSV file with a header.
+\* State constraint at cfg
+\* to make TLC simulate the next behavior one the system stabilizes.
+(* Statistics collection *)

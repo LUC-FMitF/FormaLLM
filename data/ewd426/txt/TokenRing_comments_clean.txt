@@ -1,0 +1,13 @@
+At least one node
+Value domain of c
+counter at each node, token is defined as function of c's in nbring nodes
+unique token at i (or i=N => token is at 0)
+before i all c equals c[0]
+after i all c following c[0]
+**********************************************************************************)
+Dijkstra's classical stabilizing token ring algorithm: EWD426                   *)
+https://muratbuffalo.blogspot.com/2015/01/dijkstras-stabilizing-token-ring.html *)
+**********************************************************************************)
+Node 0 executes this action to inject new value into system *)
+Other nodes just copy value of the predecessor *)
+Stabilization property *)

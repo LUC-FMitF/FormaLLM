@@ -1,0 +1,31 @@
+{
+    "data": [
+        {
+            "id": "0128",
+            "model": "MCMajority",
+            "tla_original": "MCMajority.tla",
+            "tla_clean": "MCMajority_clean.tla",
+            "comments": "MCMajority_comments.txt",
+            "comments_clean": "MCMajority_comments_clean.txt",
+            "cfg": "MCMajority.cfg"
+        },
+        {
+            "id": "0129",
+            "model": "Majority",
+            "tla_original": "Majority.tla",
+            "tla_clean": "Majority_clean.tla",
+            "comments": "Majority_comments.txt",
+            "comments_clean": "Majority_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0130",
+            "model": "MajorityProof",
+            "tla_original": "MajorityProof.tla",
+            "tla_clean": "MajorityProof_clean.tla",
+            "comments": "MajorityProof_comments.txt",
+            "comments_clean": "MajorityProof_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

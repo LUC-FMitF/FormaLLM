@@ -1,0 +1,25 @@
+\* Modification History
+\* Last modified Mon Jun 11 13:30:42 CEST 2018 by tthai
+\* Created Thu Jun 07 09:30:18 CEST 2018 by tthai
+(* All messages sent by correct processes. *)
+(* Every message is put into a box which has information
+                          about how long this message have been in transit. *)
+(* All messages are in transit. *)
+(* inDelivery contains messages which are delivered
+                          to a process p_i in this transition. *)
+(* Pack a message into a box with its age which shows how long a message
+    have been in transit. *)
+(*  - Unpack boxes to get messages. Ages is not delivered. 
+    - Those messages are delivered to a process in this transition. *)
+(* Initialization *)
+(* No boxes are in transit. *)
+(* No messages are delivered. *)
+(* Pack a set msgs of messages with ages and put them in transit *)
+(*  - Non-deterministically choose some boxes and deliver associated messages to rcver. 
+    - Messages which are delivered are removed from inTransit. *)
+(*  - Every message in transit attains a new age at every tick of the environmental clock. 
+    - Recall that we don't directly specify the environmental clock  in this encoding way.
+      At every tick of the global clock, we only increase ages of boxes in transit.  
+    - We can keep inDelivery unchanged. However, I set inDelivery' an empty set because it 
+      makes an execution path more (human) readable, at least for me.  *)
+(* Type invariant for inTransit and inDelivery. *)

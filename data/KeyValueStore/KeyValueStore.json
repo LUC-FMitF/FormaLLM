@@ -1,0 +1,58 @@
+{
+    "data": [
+        {
+            "id": "0099",
+            "model": "ClientCentric",
+            "tla_original": "ClientCentric.tla",
+            "tla_clean": "ClientCentric_clean.tla",
+            "comments": "ClientCentric_comments.txt",
+            "comments_clean": "ClientCentric_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0100",
+            "model": "KVsnap",
+            "tla_original": "KVsnap.tla",
+            "tla_clean": "KVsnap_clean.tla",
+            "comments": "KVsnap_comments.txt",
+            "comments_clean": "KVsnap_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0101",
+            "model": "KeyValueStore",
+            "tla_original": "KeyValueStore.tla",
+            "tla_clean": "KeyValueStore_clean.tla",
+            "comments": "KeyValueStore_comments.txt",
+            "comments_clean": "KeyValueStore_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0102",
+            "model": "MCKVS",
+            "tla_original": "MCKVS.tla",
+            "tla_clean": "MCKVS_clean.tla",
+            "comments": null,
+            "comments_clean": null,
+            "cfg": null
+        },
+        {
+            "id": "0103",
+            "model": "MCKVsnap",
+            "tla_original": "MCKVsnap.tla",
+            "tla_clean": "MCKVsnap_clean.tla",
+            "comments": "MCKVsnap_comments.txt",
+            "comments_clean": "MCKVsnap_comments_clean.txt",
+            "cfg": "MCKVsnap.cfg"
+        },
+        {
+            "id": "0104",
+            "model": "Util",
+            "tla_original": "Util.tla",
+            "tla_clean": "Util_clean.tla",
+            "comments": "Util_comments.txt",
+            "comments_clean": "Util_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

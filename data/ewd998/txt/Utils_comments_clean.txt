@@ -1,0 +1,6 @@
+No support for RECURSIVE in PlusPy.
+SimpleCycle is a recursive variant of the predicate IsSimpleCycle above. It
+does not work with PlusPy, but is orders of magnitude faster when evaluated
+by TLC.
+View r as a graph s.t. S is the graph's set of vertices and there
+exists an edge from s to t iff f[s] = t. IsFiniteSet(DOMAIN r). *)

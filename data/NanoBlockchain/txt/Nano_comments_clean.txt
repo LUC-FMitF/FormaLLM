@@ -1,0 +1,62 @@
+The set of all 256-bit Blake2b block hashes
+An action calculating the hash of a block
+The set of all Ed25519 private keys
+The set of all Ed25519 public keys
+The public key paired with each private key
+The set of all nodes in the network
+The total number of coins in the network
+The private key owned by each node
+The last calculated block hash
+The distributed ledger of confirmed blocks
+The blocks received but not yet validated
+**************************************************************************)
+An outdated and not-ultimately-useful specification of the original     *)
+protocol used by the Nano blockchain. Primarily interesting as an       *)
+example of how to model hash functions and cryptographic signatures,    *)
+and the difficulties in using finite modelchecking to analyze           *)
+blockchain-like data structures or anything else that records action    *)
+history in an ordered way.                                              *)
+**************************************************************************)
+**************************************************************************)
+Functions to sign hashes with private key and validate signatures       *)
+against public key.                                                     *)
+**************************************************************************)
+**************************************************************************)
+Defines the set of protocol-conforming blocks.                          *)
+**************************************************************************)
+**************************************************************************)
+Utility functions to calculate block lattice properties.                *)
+**************************************************************************)
+**************************************************************************)
+The type & safety invariants.                                           *)
+**************************************************************************)
+**************************************************************************)
+Creates the genesis block.                                              *)
+**************************************************************************)
+**************************************************************************)
+Creation, validation, and confirmation of open blocks. Checks include:  *)
+- The block is signed by the private key of the account being opened   *)
+- The node's ledger contains the referenced source block               *)
+- The source block is a send block to the account being opened         *)
+**************************************************************************)
+**************************************************************************)
+Creation, validation, and confirmation of send blocks. Checks include:  *)
+- The node's ledger contains the referenced previous block             *)
+- The block is signed by the account sourcing the funds                *)
+- The value sent is non-negative                                       *)
+**************************************************************************)
+**************************************************************************)
+Creation, validation, & confirmation of receive blocks. Checks include: *)
+- The node's ledger contains the referenced previous & source blocks   *)
+- The block is signed by the account sourcing the funds                *)
+- The source block is a send block to the receive block's account      *)
+- The source block does not already have a corresponding receive/open  *)
+**************************************************************************)
+**************************************************************************)
+Creation, validation, & confirmation of change blocks. Checks include:  *)
+- The node's ledger contains the referenced previous block             *)
+- The block is signed by the correct account                           *)
+**************************************************************************)
+**************************************************************************)
+Top-level actions.                                                      *)
+**************************************************************************)

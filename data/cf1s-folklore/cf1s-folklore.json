@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0030",
+            "model": "cf1s_folklore",
+            "tla_original": "cf1s_folklore.tla",
+            "tla_clean": "cf1s_folklore_clean.tla",
+            "comments": "cf1s_folklore_comments.txt",
+            "comments_clean": "cf1s_folklore_comments_clean.txt",
+            "cfg": "cf1s_folklore.cfg"
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+The set of all keys.
+The set of all values.
+The set of all transaction IDs.
+A data store mapping keys to values.
+The set of open snapshot transactions.
+Snapshots of the store for each transaction.
+A log of writes performed within each transaction.
+The set of writes invisible to each transaction.
+Choose something to represent the absence of a value.
+The set of all key-value stores.
+The initial predicate.
+All store values are initially NoVal.
+The set of open transactions is initially empty.
+All snapshotStore values are initially NoVal.
+All write logs are initially empty.
+All missed writes are initially empty.
+The type invariant.
+If store != snapshot & we haven't written it, we must have missed a write.
+Checks transactions are cleaned up after disposal.
+Open a new transaction.
+Using transaction t, add value v to the store under key k.
+Using transaction t, update the value associated with key k to v.
+Using transaction t, remove key k from the store.
+Close the transaction without merging writes into store.
+Close transaction t, merging writes into store.
+Detection of write-write conflicts.
+Merge snapshotStore writes into store.
+Update the missed writes for other open transactions.
+The next-state relation.
+Initialize state with Init and transition with Next.
+*************************************************************************)
+A simple key-value store exhibiting snapshot isolation. If two         *)
+concurrent transactions write to the same key, the one merging later   *)
+will be rejected. If they write different keys both will succeed. For  *)
+a more-detailed specification of snapshot isolation, look at the       *)
+specifications/SnapshotIsolation specs in the tlaplus/examples repo.   *)
+*************************************************************************)

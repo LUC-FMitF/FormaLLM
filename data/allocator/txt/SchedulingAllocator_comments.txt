@@ -1,0 +1,58 @@
+\* set of all clients
+\* set of all resources
+\* set of all outstanding requests per process
+\* set of resources allocated to given process
+\* schedule represented as a sequence of clients
+\** resources are allocated exclusively
+\** clients that do not appear in the schedule
+\** resources that will be available when client i has to be satisfied
+\** a lower-level invariant
+\** all clients in the schedule have outstanding requests
+\** all clients that need to be scheduled have outstanding requests
+\** clients never hold a resource requested by a process earlier
+\** in the schedule
+\** the allocator can satisfy the requests of any scheduled client
+\** assuming that the clients scheduled earlier release their resources
+(***********************************************************************)
+(* Specification of an allocator managing a set of resources:          *)
+(* - Clients can request sets of resources whenever all their previous *)
+(*   requests have been satisfied.                                     *)
+(* - Requests can be partly fulfilled, and resources can be returned   *)
+(*   even before the full request has been satisfied. However, clients *)
+(*   only have an obligation to return resources after they have       *)
+(*   obtained all resources they requested.                            *)
+(* This allocator operates by repeatedly choosing a schedule according *)
+(* to which requests are satisfied. Resources can be allocated out of  *)
+(* order as long as no client earlier in the schedule asks for them.   *)
+(***********************************************************************)
+(* The set of permutations of a finite set, represented as sequences.  *)
+(* Remove element at index i from a sequence.                          *)
+(* Assumes that i \in 1..Len(seq)                                      *)
+(* Resources are available iff they have not been allocated. *)
+(* Range of a function, e.g. elements of a sequence *)
+(* Clients with pending requests that have not yet been scheduled *)
+(* Initially, no resources have been requested or allocated. *)
+(* A client c may request a set of resources provided that all of its  *)
+(* previous requests have been satisfied and that it doesn't hold any  *)
+(* resources. The client is added to the pool of clients with          *)
+(* outstanding requests.                                               *)
+(* Allocation of a set of available resources to a client that has     *)
+(* requested them (the entire request does not have to be filled).     *)
+(* The process must appear in the schedule, and no process earlier in  *)
+(* the schedule may have requested one of the resources.               *)
+(* Client c returns a set of resources that it holds. It may do so     *)
+(* even before its full request has been honored.                      *)
+(* The allocator extends its schedule by adding the processes from     *)
+(* the set of clients to be scheduled, in some unspecified order.      *)
+(* The next-state relation per client and set of resources.            *)
+(***********************************************************************)
+(* Liveness assumptions:                                               *)
+(* - Clients must return resources if their request has been satisfied.*)
+(* - The allocator must eventually allocate resources when possible.   *)
+(* - The allocator must schedule the processes in the pool.            *)
+(***********************************************************************)
+(* The specification of the scheduling allocator. *)
+(* Used for symmetry reduction with TLC.
+   Note: because of the schedule sequence, the specification is no
+   longer symmetric with respect to the processes!
+*)

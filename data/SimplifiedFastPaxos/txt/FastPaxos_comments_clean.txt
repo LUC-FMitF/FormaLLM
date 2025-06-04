@@ -1,0 +1,35 @@
+Value chosen by coordinator.
+The set of ballots of classic rounds.
+There was a fast round before this classic round.
+Collision occurred.
+Choose majority in quorum.
+Choose any.
+Non-triviality safety property: Only proposed values can be learnt.
+This is a simplified specification of Leslie Lamport's Fast Paxos protocol.
+The following papers, Fast Paxos by Leslie Lamport and Fast Paxos Made Easy: Theory and Implementation by Zhao Wenbing
+was referenced in writing this specification.
+This simplified specification was written by Lim Ngian Xin Terry & Gaurav Gandhi.
+The following assumptions are made in this simplified specification.
+1. There is a unique coordinator in the system. Therefore, Phase 1a and 1b can be omitted.
+2. All agents in the system can communicate with one another.
+3. Agents must have some stable storage that survives failure and restarts.
+An agent restores its state from stable storage when it restarts, so the failure of an agent
+is indistinguishable from its simply pausing. There is thus no need to model failures explicitly.
+Phase 2a (Fast):
+The coordinator starts a fast round by sending a P2a "Any" message, if no other values has been proposed before.
+Phase 2b (Fast):
+Acceptors can reply to a P2a "Any" message with a P2b message containing their proposed value.
+A value is chosen if a fast quorum of acceptors proposed that value in a fast round.
+Because the quorum size of a fast round and classic round is different, we assume that the acceptor distinguishes
+a fast round and classic round based on the P2a message it receives. If the P2a message contains the special value
+"any", it is a fast round. Else it is a classic round.
+Phase 2a (Classic)
+If more than one value has been proposed, the collision is resolved using the following rules:
+1. If the proposals contain different values, a value must be selected if the majority of
+acceptors in the fast quorum have casted a vote for that value.
+2. Otherwise, the coordinator is free to select any value.
+Phase 2b (Classic)
+Same as in Paxos.
+Consensus is achieved when a majority of acceptors accept the same ballot number.
+Functionally similar to PaxosDecide in Paxos.tla, but we also have to
+ensure that it can only occur in classic rounds and not fast rounds.

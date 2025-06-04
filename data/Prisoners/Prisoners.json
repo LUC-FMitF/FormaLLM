@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "0163",
+            "model": "MCPrisoners",
+            "tla_original": "MCPrisoners.tla",
+            "tla_clean": "MCPrisoners_clean.tla",
+            "comments": "MCPrisoners_comments.txt",
+            "comments_clean": "MCPrisoners_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0164",
+            "model": "Prisoners",
+            "tla_original": "Prisoners.tla",
+            "tla_clean": "Prisoners_clean.tla",
+            "comments": "Prisoners_comments.txt",
+            "comments_clean": "Prisoners_comments_clean.txt",
+            "cfg": "Prisoners.cfg"
+        }
+    ]
+}

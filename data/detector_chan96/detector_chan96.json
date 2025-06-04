@@ -1,0 +1,31 @@
+{
+    "data": [
+        {
+            "id": "0038",
+            "model": "Age_Channel",
+            "tla_original": "Age_Channel.tla",
+            "tla_clean": "Age_Channel_clean.tla",
+            "comments": "Age_Channel_comments.txt",
+            "comments_clean": "Age_Channel_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0039",
+            "model": "EPFailureDetector",
+            "tla_original": "EPFailureDetector.tla",
+            "tla_clean": "EPFailureDetector_clean.tla",
+            "comments": "EPFailureDetector_comments.txt",
+            "comments_clean": "EPFailureDetector_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0040",
+            "model": "EnvironmentController",
+            "tla_original": "EnvironmentController.tla",
+            "tla_clean": "EnvironmentController_clean.tla",
+            "comments": "EnvironmentController_comments.txt",
+            "comments_clean": "EnvironmentController_comments_clean.txt",
+            "cfg": "EnvironmentController.cfg"
+        }
+    ]
+}

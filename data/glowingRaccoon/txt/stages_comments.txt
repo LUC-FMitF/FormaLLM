@@ -1,0 +1,50 @@
+\* The basic spec allowed senseless thermal changes.
+\* You can think of "stage" as a history variable.
+\* The previous action now dictates the next.
+\* (and we can now show that primers get depleted, eventually)
+\* This further enables us to count (legitimate) cycles of PCR.
+\* (hence the new "cycle" variable)
+\* an import
+\* starting stock of key things
+\* temperature
+\* count of primers remaining
+\* count of double strands present
+\* count of single strands present
+\* count of template-primer hybrids
+\* new arrival - a history of sorts
+\* now we can count...!
+\* min of two nats
+\* current temperature is "Hot"
+\* heat up to "TooHot"
+\* we'll take those back, thanks
+\* the dna denatures
+\* has to go somewhere
+\* these denature too
+\* when you just denatured
+\* cool off to "Hot"
+\* too hot to anneal primers
+\* "Warm" is just right
+\* dna can reanneal; we neglect that
+\* k consumed
+\* k consumed
+\* k more hybrids
+\* too cool for extension
+\* "Hot" is just right
+\* assuming it just happens
+\* all turned to dna
+\* only place this changes
+\* not really all that hot
+\* we have consumed no primers
+\* we start with some nice 'frozen' dna
+\* everything is bound up
+\* no annealing has happened yet
+\* no cycles completed
+(* list of state variables, for convenience *)
+(* helper function *)
+(* steps *)
+(* this is the neat part *)
+(* initial state *)
+(* gathering up actions *)
+(* system spec *)
+(* type invariant *)
+(* instance of clean *)

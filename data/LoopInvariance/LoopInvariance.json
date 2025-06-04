@@ -1,0 +1,49 @@
+{
+    "data": [
+        {
+            "id": "0123",
+            "model": "BinarySearch",
+            "tla_original": "BinarySearch.tla",
+            "tla_clean": "BinarySearch_clean.tla",
+            "comments": "BinarySearch_comments.txt",
+            "comments_clean": "BinarySearch_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0124",
+            "model": "MCBinarySearch",
+            "tla_original": "MCBinarySearch.tla",
+            "tla_clean": "MCBinarySearch_clean.tla",
+            "comments": null,
+            "comments_clean": null,
+            "cfg": "MCBinarySearch.cfg"
+        },
+        {
+            "id": "0125",
+            "model": "MCQuicksort",
+            "tla_original": "MCQuicksort.tla",
+            "tla_clean": "MCQuicksort_clean.tla",
+            "comments": null,
+            "comments_clean": null,
+            "cfg": "MCQuicksort.cfg"
+        },
+        {
+            "id": "0126",
+            "model": "Quicksort",
+            "tla_original": "Quicksort.tla",
+            "tla_clean": "Quicksort_clean.tla",
+            "comments": "Quicksort_comments.txt",
+            "comments_clean": "Quicksort_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0127",
+            "model": "SumSequence",
+            "tla_original": "SumSequence.tla",
+            "tla_clean": "SumSequence_clean.tla",
+            "comments": "SumSequence_comments.txt",
+            "comments_clean": "SumSequence_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

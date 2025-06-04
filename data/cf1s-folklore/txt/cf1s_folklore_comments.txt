@@ -1,0 +1,29 @@
+\* Modification History
+\* Last modified Mon Jul 09 13:26:59 CEST 2018 by tthai
+\* Created Mon Jun 04 13:20:35 CEST 2018 by tthai
+(* An encoding of the consensus algorithm with Byzantine faults in one communication step [1]. Here 
+   we consider only the algorithm itself (Algorithm 2, lines 1--4), without looking at the underlying 
+   consensus algorithm. 
+   
+   [1] Dobre, Dan, and Neeraj Suri. "One-step consensus with zero-degradation." Dependable Systems and 
+   Networks, 2006. DSN 2006. International Conference on. IEEE, 2006.
+                                                               
+   Igor Konnov, Thanh Hai Tran, Josef Widder, 2016
+  
+   This file is a subject to the license that is bundled together with this package and can be found 
+   in the file LICENSE.
+ *)
+(* nSnt0, nSnt1 - the messages sent by correct processes *)
+(* nsnt0F, nsnt1F - the messages sent by faulty processes *)
+(* the number of faulty processes *)
+(* process locations *)
+(* the number of received messages *)
+(* nStep - only for checking IndInv0 with TLC *)
+(* Add weak fairness condition since we want to check liveness properties.  *)
+(* We require that if UponV1 (UponNonFaulty, UponAcceptNotSent, UponAccept) *)
+(* ever becomes forever enabled, then this step must eventually occur.      *)
+(* All processes propose 0. *)
+(* /\ nStep = 0 *)
+(* All processes propose 1. *)
+(* If all processes propose 0, then every process crashes or decides 0. *)
+(* If all processes propose 1, then every process crashes or decides 1. *)

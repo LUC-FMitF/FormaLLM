@@ -1,0 +1,31 @@
+{
+    "data": [
+        {
+            "id": "0179",
+            "model": "MC_sums_even",
+            "tla_original": "MC_sums_even.tla",
+            "tla_clean": "MC_sums_even_clean.tla",
+            "comments": null,
+            "comments_clean": null,
+            "cfg": "MC_sums_even.cfg"
+        },
+        {
+            "id": "0180",
+            "model": "TLAPS",
+            "tla_original": "TLAPS.tla",
+            "tla_clean": "TLAPS_clean.tla",
+            "comments": "TLAPS_comments.txt",
+            "comments_clean": "TLAPS_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0181",
+            "model": "sums_even",
+            "tla_original": "sums_even.tla",
+            "tla_clean": "sums_even_clean.tla",
+            "comments": "sums_even_comments.txt",
+            "comments_clean": "sums_even_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

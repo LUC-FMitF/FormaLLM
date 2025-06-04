@@ -1,0 +1,27 @@
+At least one node.
+Any node can be the initiator; 0 has just been conveniently choosen to simplify the definition of token initiation.
+send some payload message to some other node.
+receive a payload message. Reactivates the node.
+terminate the current node.
+pass the token to the next node.
+Initiate token.
+BEGIN TRANSLATION (chksum(pcal) = "4d658e04" /\ chksum(tla) = "530581e3")
+END TRANSLATION
+Not checking liveness because we cannot easily define fairness for what ewd998 calls system actions.
+**************************************************************************)
+TLA+ specification of an algorithm for distributed termination          *)
+detection on a ring, due to Shmuel Safra, published as EWD 998:         *)
+Shmuel Safra's version of termination detection.                        *)
+https://www.cs.utexas.edu/users/EWD/ewd09xx/EWD998.PDF                  *)
+**************************************************************************)
+--algorithm ewd998 {
+variables
+Although we know the relationship between the counter and network, modeling network as a set of messages would be too cumbersome.
+We have two alternatives for modeling the network: as a bag of messages or as a sequence of messages. Although modeling it as a
+sequence may seem more intuitive, we do not require its ordering properties for our purposes. Therefore, we have decided to use a
+bag to represent the network. It's worth noting that Distributed Plucal refers to this concept as a "channel".
+The passMsg operator is not implementable -at least not without using extra synchronization- because it atomically reads a message
+from the nic's in-buffer and writes to its out-buffer!
+define statement *)
+Global variables *)
+Process node *)

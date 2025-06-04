@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "0173",
+            "model": "MC_spanning",
+            "tla_original": "MC_spanning.tla",
+            "tla_clean": "MC_spanning_clean.tla",
+            "comments": null,
+            "comments_clean": null,
+            "cfg": "MC_spanning.cfg"
+        },
+        {
+            "id": "0174",
+            "model": "spanning",
+            "tla_original": "spanning.tla",
+            "tla_clean": "spanning_clean.tla",
+            "comments": "spanning_comments.txt",
+            "comments_clean": "spanning_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

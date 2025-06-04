@@ -1,0 +1,15 @@
+Why does WriteTx also increment executed?
+It increments executed[n] for one of the nodes n.
+ExecuteTx catches up the other nodes.
+With a single node, ExecuteTx is a no-op because
+t is never enabled.
+The following conjunct causes the spec to not be machine
+closed. This is orthogonal to the Finite Monotonic
+approach.
+The following conjunct causes the spec to not be machine
+closed. This is orthogonal to the Finite Monotonic
+approach.
+ExecFairSpec and WriteFairSpec both work because every suffix with
+infinitely many WriteTx implies Convergence to WriteTx's enablement
+condition.  Likewise, every suffix with infinitely many ExecuteTx
+implies Convergence.

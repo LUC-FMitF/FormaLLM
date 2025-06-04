@@ -1,0 +1,49 @@
+{
+    "data": [
+        {
+            "id": "0001",
+            "model": "ACP_NB",
+            "tla_original": "ACP_NB.tla",
+            "tla_clean": "ACP_NB_clean.tla",
+            "comments": "ACP_NB_comments.txt",
+            "comments_clean": "ACP_NB_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0002",
+            "model": "ACP_NB_TLC",
+            "tla_original": "ACP_NB_TLC.tla",
+            "tla_clean": "ACP_NB_TLC_clean.tla",
+            "comments": "ACP_NB_TLC_comments.txt",
+            "comments_clean": "ACP_NB_TLC_comments_clean.txt",
+            "cfg": "ACP_NB_TLC.cfg"
+        },
+        {
+            "id": "0003",
+            "model": "ACP_NB_WRONG_TLC",
+            "tla_original": "ACP_NB_WRONG_TLC.tla",
+            "tla_clean": "ACP_NB_WRONG_TLC_clean.tla",
+            "comments": "ACP_NB_WRONG_TLC_comments.txt",
+            "comments_clean": "ACP_NB_WRONG_TLC_comments_clean.txt",
+            "cfg": "ACP_NB_WRONG_TLC.cfg"
+        },
+        {
+            "id": "0004",
+            "model": "ACP_SB",
+            "tla_original": "ACP_SB.tla",
+            "tla_clean": "ACP_SB_clean.tla",
+            "comments": "ACP_SB_comments.txt",
+            "comments_clean": "ACP_SB_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0005",
+            "model": "ACP_SB_TLC",
+            "tla_original": "ACP_SB_TLC.tla",
+            "tla_clean": "ACP_SB_TLC_clean.tla",
+            "comments": "ACP_SB_TLC_comments.txt",
+            "comments_clean": "ACP_SB_TLC_comments_clean.txt",
+            "cfg": "ACP_SB_TLC.cfg"
+        }
+    ]
+}

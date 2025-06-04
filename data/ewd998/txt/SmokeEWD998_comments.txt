@@ -1,0 +1,14 @@
+\* In theory, TLC can check this spec exhaustively, but it is not feasible.
+\* SmokeInit is configured to re-define the initial predicate. We use  SmokeInit
+\* to randomly select a subset of the defined initial states in cases when the
+\* set of all initial states is too expensive to generate during smoke testing.
+\* First disjunct guarantees that there is always at least one initial state
+\* (Inv!P0 conjunct in second disjunct might exclude all initial states "defined"
+\* with RandomSubset).  Randomly choosing initial states from a large set of
+\* states could be provide by TLC's simulator.
+\* Reject states with invalid ratio between counter, pending, ...
+\* StopAfter  has to be configured as a state constraint. It stops TLC after ~1
+\* second or after generating 100 traces, whatever comes first, unless TLC
+\* encountered an error.  In this case,  StopAfter  has no relevance.
+(* The smoke test has a time budget of 1 second. *)
+(* Generating 100 traces should provide reasonable coverage. *)

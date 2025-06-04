@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "0057",
+            "model": "SimTokenRing",
+            "tla_original": "SimTokenRing.tla",
+            "tla_clean": "SimTokenRing_clean.tla",
+            "comments": "SimTokenRing_comments.txt",
+            "comments_clean": "SimTokenRing_comments_clean.txt",
+            "cfg": "SimTokenRing.cfg"
+        },
+        {
+            "id": "0058",
+            "model": "TokenRing",
+            "tla_original": "TokenRing.tla",
+            "tla_clean": "TokenRing_clean.tla",
+            "comments": "TokenRing_comments.txt",
+            "comments_clean": "TokenRing_comments_clean.txt",
+            "cfg": "TokenRing.cfg"
+        }
+    ]
+}

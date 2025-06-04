@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0036",
+            "model": "CigaretteSmokers",
+            "tla_original": "CigaretteSmokers.tla",
+            "tla_clean": "CigaretteSmokers_clean.tla",
+            "comments": "CigaretteSmokers_comments.txt",
+            "comments_clean": "CigaretteSmokers_comments_clean.txt",
+            "cfg": "CigaretteSmokers.cfg"
+        }
+    ]
+}

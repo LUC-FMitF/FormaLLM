@@ -1,0 +1,88 @@
+Trace validation has been designed for TLC running in default model-checking
+mode, i.e., breadth-first search.
+Deserialize the System log as a sequence of records from the log file.
+Run TLC with (assuming a suitable "tlc" shell alias):
+$ JSON=impl/EWD998ChanTrace-01.ndjson tlc -note EWD998ChanTrace
+Fall back to trace.ndjson if the JSON environment variable is not set.
+The first line of the log statement has the number of nodes.
+SubSeq starting at 2 to skip the N value.
+The JsonLog/Trace has been compiled out of several logs, collected from the
+nodes of the distributed system, and, thus, are unordered.
+ToString is a hack to work around the fact that the Json
+module deserializes {"0": 42, "1": 23} into the record
+[ 0 |-> 42, 1 |-> 23 ] with domain {"0","1"} and not into
+a function with domain {0, 1}.  This is a known issue of
+the Json module. Consider switching to, e.g., EDN
+(https://github.com/edn-format/edn).
+We happen to know that in the implementation all nodes are initially empty and white.
+Because of  [A]_v <=> A \/ v=v'  , the following formula is logically
+equivalent to the (canonical) Spec formual  Init /\ [][Next]_vars  .
+However, TLC's breadth-first algorithm does not explore successor
+states of a *seen* state.  Since one or more states may appear one or
+more times in the the trace, the  UNCHANGED vars  combined with the
+TraceView  that includes  TLCGet("level")  is our workaround.
+Beware to only prime e.g. inbox in inbox'[rcv] and *not* also rcv, i.e.,
+inbox[rcv]'.  rcv is defined in terms of TLCGet("level") that correctly
+handles priming, which causes for rcv' to equal rcv of the next log line.
+Log statement was printed by the sender (initiator).
+Log statement is about a token message.
+Log statement show N-1 to be receiver and 0 to be the sender.
+Log statement was printed by the sender.
+Log statement is about a token message.
+The high-level spec precludes the initiator from passing the token in the
+the  System  formula by remove the initiator from the set of all nodes.  Here,
+we model this by requiring that the sender is not the initiator.
+Note that there is no corresponding sub-action in the high-level spec!  This constraint
+is true of any sub-action that appends a tok message to the receiver's inbox.
+Log statement was printed by the receiver.
+Log statement is about a token message.
+The number of payload messages in the node's inbox do not change.
+The receivers's inbox contains a tok message in the next state.
+Log statement was printed by the sender.
+Log statement is about a payload message.
+The sender's inbox remains unchanged, but the receivers's inbox contains one more
+pl message.  In the implementation, the message is obviously in flight, i.e. it
+is send via the wire to the receiver.  However, the  SendMsg  action models it
+such that the message is atomically appended to the receiver's inbox.
+Log statement was printed by the receiver.
+Log statement was printed by the receiver.
+"trm" messages are not part of EWD998, and, thus, not modeled in EWD998Chan.  We map
+"trm" messages to (finite) stuttering, essentially, skipping the "trm" messages in
+the log.  One could have also preprocessed/filtered the trace log, but the extra
+step is not necessary.
+The (mere) existance of a "trm" message implies that *all* nodes have terminated.
+Careful! Without UNCHANGED vars, isTrm is true of all states of the high-level spec
+if the current line is a trm message.  In general, it is good practice to constrain
+all spec variables!
+We could have used an auxiliary spec variable for i  , but TLCGet("level") has the
+advantage that TLC continues to show the high-level action names instead of just  Next.
+However, it is imparative to run TLC with the TraceView above configured as a VIEW in
+TLC's config file.  Otherwise, TLC will stop model checking when a high-level state
+appears a second time in the trace.
+Equals FALSE if we get past the end of the log, causing model checking to stop.
+If the postcondition  TraceAccepted  is violated, adding a TLA+ debugger
+breakpoint with a hit count copied from TLC's error message on the
+BP:: line below is the first step towards diagnosing a divergence. Once
+hit, advance evaluation with step over (F10) and step into (F11).
+Fail trace validation if the log contains a failure message. As an alternative,
+we could have used  TraceInv below, which would cause TLC to print the current
+trace upon its violation.  For the sake of consistency, we use the
+TraceAccepted  approach for all trace validation.
+A high-level state  s  can appear multiple times in a system trace.  Including the
+current level in TLC's view ensures that TLC will not stop model checking when  s
+appears the second time in the trace.  Put differently,  TraceView  causes TLC to
+consider  s_i  and s_j  , where  i  and  j  are the positions of  s  in the trace,
+to be different states.
+If the prefix of the TLA+ behavior is shorter than the trace, TLC will
+report a violation of this postcondition.  But why do we need a postcondition
+at all?  Couldn't we use an ordinary property such as
+<>[](TLCGet("level") >= Len(TraceLog))  ?  The answer is that an ordinary
+property is true of a single behavior, whereas  TraceAccepted  is true of a
+set of behaviors; it is essentially a poor man's hyperproperty.
+The  TraceAlias  is nothing but a debugging aid.  Especially the enabled
+helped me figure out why a trace was not accepted.  In the TLA+ debugger,
+this  TraceAlias  can be entered as a "WATCH" expression.
+TODO: Funny TLCGet("level")-1 could be removed if the spec has an
+TODO: auxiliary counter variable  i  .  Would also take care of
+TODO: the bug that TLCGet("level")-1 is not defined for the initial
+TODO: state.

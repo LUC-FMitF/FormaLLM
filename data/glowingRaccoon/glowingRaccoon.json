@@ -1,0 +1,31 @@
+{
+    "data": [
+        {
+            "id": "0095",
+            "model": "clean",
+            "tla_original": "clean.tla",
+            "tla_clean": "clean_clean.tla",
+            "comments": "clean_comments.txt",
+            "comments_clean": "clean_comments_clean.txt",
+            "cfg": "clean.cfg"
+        },
+        {
+            "id": "0096",
+            "model": "product",
+            "tla_original": "product.tla",
+            "tla_clean": "product_clean.tla",
+            "comments": "product_comments.txt",
+            "comments_clean": "product_comments_clean.txt",
+            "cfg": "product.cfg"
+        },
+        {
+            "id": "0097",
+            "model": "stages",
+            "tla_original": "stages.tla",
+            "tla_clean": "stages_clean.tla",
+            "comments": "stages_comments.txt",
+            "comments_clean": "stages_comments_clean.txt",
+            "cfg": "stages.cfg"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "id": "0046",
+            "model": "DiskSynod",
+            "tla_original": "DiskSynod.tla",
+            "tla_clean": "DiskSynod_clean.tla",
+            "comments": "DiskSynod_comments.txt",
+            "comments_clean": "DiskSynod_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0047",
+            "model": "HDiskSynod",
+            "tla_original": "HDiskSynod.tla",
+            "tla_clean": "HDiskSynod_clean.tla",
+            "comments": "HDiskSynod_comments.txt",
+            "comments_clean": "HDiskSynod_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0048",
+            "model": "MC_HDiskSynod",
+            "tla_original": "MC_HDiskSynod.tla",
+            "tla_clean": "MC_HDiskSynod_clean.tla",
+            "comments": null,
+            "comments_clean": null,
+            "cfg": "MC_HDiskSynod.cfg"
+        },
+        {
+            "id": "0049",
+            "model": "Synod",
+            "tla_original": "Synod.tla",
+            "tla_clean": "Synod_clean.tla",
+            "comments": "Synod_comments.txt",
+            "comments_clean": "Synod_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

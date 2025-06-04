@@ -1,0 +1,64 @@
+\* At least one node.
+\* There is always exactly one token (singleton-type).
+\* c properly initialized
+\*   /\ inbox = [i \in Node |-> IF i = 0
+\*                              THEN << [type |-> "tok", q |-> 0, color |-> "black" ] >>
+\*                              ELSE <<>>] \* with empty channels.
+\* The token may be at any node of the ring initially.
+\* Token is at node 0.
+\* Previous round inconsistent, if:
+\* Implicit stated in EWD998 as c0 + q > 0 means that termination has not
+\* been achieved: Initiate a probe if the token's color is white but the
+\* number of in-flight messages is not zero.
+\* consume token message from inbox[0].
+\* The state of the nodes remains unchanged by token-related actions.
+\* If machine i is active, keep the token.
+\* the machine nr.i+1 transmits the token to machine nr.i under q := q + c[i+1]
+\* pass on the token.
+\* The state of the nodes remains unchanged by token-related actions.
+\* Only allowed to send msgs if node i is active.
+\* Non-deterministically choose a receiver node.
+\* Send a message (not the token) to j.
+\* Note that we don't blacken node i as in EWD840 if node i
+\* sends a message to node j with j > i
+\* Receipt of a message activates i.
+\* Consume a message (not the token!).
+\*  /\ \A i \in DOMAIN inbox : Len(inbox[i]) < 3
+\* Even with the number of in-flight messages restricted, we need a bound
+\* on the number of messages ever sent to exclude behaviors where two or
+\* more nodes forever alternate between send, receive, send, ...
+\* Count the in-flight "pl" messages. The
+\* inbox variable represents a node's network
+\* interface that receives arbitrary messages.
+\* However, EWD998 only "tracks" payload (pl)
+\* messages.
+\* TLC config doesn't accept the expression EWD998!Spec for PROPERTY.
+\* Model-checked for N=3 and StateConstraint above on a laptop in ~15min.
+(***************************************************************************)
+(* TLA+ specification of an algorithm for distributed termination          *)
+(* detection on a ring, due to Shmuel Safra, published as EWD 998:         *)
+(* Shmuel Safra's version of termination detection.                        *)
+(* Contrary to EWD998, this variant models message channels as sequences.  *)
+(***************************************************************************)
+(* Rule 0 *)
+(* EWD840 *)
+(* Rule 1 *)
+(* Rule 6 *)
+(* Rule 6 *)
+(* Rule 2 *)
+(* Rule 7 *)
+(* Rule 0 *)
+(* Rule 0 *)
+(* Rule 3 *)
+(***************************************************************************)
+(* The number of incoming messages of a node's given inbox.                *)
+(***************************************************************************)
+(***************************************************************************)
+(* Bound the otherwise infinite state space that TLC has to check.         *)
+(***************************************************************************)
+(***************************************************************************)
+(* tpos \in Node s.t. the node's inbox contains the token.                *)
+(***************************************************************************)
+(***************************************************************************)
+(* EWD998 with channels refines EWD998 that models channels as sets.       *)
+(***************************************************************************)

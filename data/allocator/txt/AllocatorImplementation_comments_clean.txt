@@ -1,0 +1,61 @@
+set of all clients
+set of all resources
+set of all outstanding requests per process
+set of resources allocated to given process
+schedule represented as a sequence of clients
+pending requests per client
+resources currently held by the client
+set of messages in transit
+* don't handle request messages prematurely(!)
+* requests sent by c but not yet received
+* allocations sent to c but not yet received
+* return messages sent by c but not yet received
+* a lower-level invariant
+**********************************************************************)
+Specification of an allocator managing a set of resources:          *)
+- Clients can request sets of resources whenever all their previous *)
+requests have been satisfied.                                     *)
+- Requests can be partly fulfilled, and resources can be returned   *)
+even before the full request has been satisfied. However, clients *)
+only have an obligation to return resources after they have       *)
+obtained all resources they requested.                            *)
+This allocator operates by repeatedly choosing a schedule according *)
+to which requests are satisfied. Resources can be allocated out of  *)
+order as long as no client earlier in the schedule asks for them.   *)
+This module adds communication between the allocator and the client *)
+processes, which now hold some local state.                         *)
+**********************************************************************)
+* variables held by the allocator **)
+* variables of the clients **)
+* communication network between clients and allocator **)
+Initially, no resources have been requested or allocated. *)
+A client c may request a set of resources provided that it has      *)
+neither pending requests nor holds any resources. The request is    *)
+put into the network for delivery to the allocator.                 *)
+Reception of a request message from a client by the allocator.      *)
+The allocator updates its data structures and inserts the client    *)
+into the pool of clients with pending requests.                     *)
+Allocation of a set of available resources to a client that has     *)
+requested them (the entire request does not have to be filled).     *)
+The process must appear in the schedule, and no process earlier in  *)
+the schedule may have requested one of the resources.               *)
+Reception of an allocation message by a client.                     *)
+Client c returns a set of resources that it holds. It may do so     *)
+even before its full request has been honored.                      *)
+Reception of a return message by the allocator.                     *)
+The allocator extends its schedule by adding the processes from     *)
+the pool (that have outstanding requests but that have not yet been *)
+scheduled, in some unspecified order.                               *)
+The next-state relation per client and set of resources.            *)
+**********************************************************************)
+Liveness assumptions:                                               *)
+- Clients must return resources if their request has been satisfied.*)
+- The allocator must eventually allocate resources when possible.   *)
+- The allocator must schedule the processes in the pool.            *)
+- Messages must eventually be received.                             *)
+**********************************************************************)
+The specification of the entire system *)
+* invariants for the allocator's data structures as before **)
+* interplay between allocator and client variables **)
+correctness properties in terms of clients' variables *)
+This implementation is a refinement of the scheduling allocator.    *)

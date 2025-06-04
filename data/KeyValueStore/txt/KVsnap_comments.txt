@@ -1,0 +1,98 @@
+\* The set of all keys.
+\* The set of all transaction IDs.
+\* NoVal, which all keys are initialized with.
+\* Instantiating ClientCentric enables us to check transaction isolation guarantees this model satisfies
+\* https://muratbuffalo.blogspot.com/2022/07/automated-validation-of-state-based.html
+\* for instantiating the ClientCentric module
+\* A data store mapping keys to values
+\* The set of open snapshot transactions
+\* The set of writes invisible to each transaction
+\* See end of file for invariants
+\* Transaction processing
+\* local snapshot of the store
+\* read keys  for the transaction
+\* write keys for the transaction
+\* a log of reads & writes this transaction executes; used for interfacing to CC
+\* Start the transaction
+\* take my snapshot of store
+\* select a random read-key-set  from possible read-keys
+\* select a random write-key-set from possible write-keys
+\* Process reads on my snapshot
+\* log reads for CC isolation check
+\* Process writes on my snapshot, write 'self' as value
+\* Commit the transaction to the database if there is no conflict
+\* take self off of active txn set
+\* Update the missed writes for other open transactions (nonlocal update!)
+\* update store
+\* log reads for CC isolation check
+\* BEGIN TRANSLATION (chksum(pcal) = "1adfcb46" /\ chksum(tla) = "5b28617f")
+\* END TRANSLATION
+\* Snapshot isolation invariant
+\* type invariant
+\* Serializability would not be satisfied due to write-skew
+(**************************************************************************)
+(* Pluscal algorithm for a simple key-value store with snapshot isolation  *)
+(* This version has atomic updates of store and missed sets of txns       *)
+(**************************************************************************)
+(* --algorithm KVsnap {
+
+variables 
+    \* A data store mapping keys to values
+    store = [k \in Key |-> NoVal],
+
+    \* The set of open snapshot transactions
+    tx = {},
+
+    \* The set of writes invisible to each transaction
+    missed = [t \in TxId |-> {}];
+
+\* See end of file for invariants
+
+
+\* Transaction processing
+fair process (t \in TxId)
+variables
+    snapshotStore = [k \in Key |-> NoVal], \* local snapshot of the store
+    read_keys  = {},    \* read keys  for the transaction
+    write_keys = {},    \* write keys for the transaction
+    ops = <<>>;   \* a log of reads & writes this transaction executes; used for interfacing to CC
+{
+START: \* Start the transaction
+    tx := tx \union {self};
+    snapshotStore := store; \* take my snapshot of store
+
+    with (rk \in SUBSET Key \ { {} }; wk \in SUBSET Key \ { {} }) {
+        read_keys := rk;     \* select a random read-key-set  from possible read-keys
+        write_keys := wk;    \* select a random write-key-set from possible write-keys  
+    };
+
+
+READ: \* Process reads on my snapshot          
+    \* log reads for CC isolation check 
+    ops := ops \o SetToSeq({rOp(k, snapshotStore[k]): k \in read_keys}); 
+    
+UPDATE: \* Process writes on my snapshot, write 'self' as value
+    snapshotStore := [k \in Key |-> IF k \in write_keys THEN self ELSE snapshotStore[k] ];    
+
+COMMIT: \* Commit the transaction to the database if there is no conflict   
+    if (missed[self] \intersect write_keys = {}) { 
+        \* take self off of active txn set
+        tx := tx \ {self}; 
+
+        \* Update the missed writes for other open transactions (nonlocal update!)
+        missed := [o \in TxId |-> IF o \in tx THEN missed[o] \union write_keys ELSE missed[o]];
+        
+        \* update store
+        store := [k \in Key |-> IF k \in write_keys THEN snapshotStore[k] ELSE store[k] ];  
+        
+        \* log reads for CC isolation check 
+        ops := ops \o SetToSeq({wOp(k, self): k \in write_keys}); 
+    }
+}
+
+
+}
+*)
+(* Global variables *)
+(* Process t *)
+(* Allow infinite stuttering to prevent deadlock on termination. *)

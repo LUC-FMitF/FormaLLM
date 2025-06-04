@@ -1,0 +1,79 @@
+@type: Int;
+At least one node.
+@type: Int -> Bool;
+activation status of nodes
+@type: Int -> Str;
+color of nodes
+@type: Int -> Int;
+nb of sent messages - nb of rcvd messages per node
+@type: Int -> Int;
+nb of messages in transit to node
+@type: [ pos: Int, q: Int, color: Str ];
+token structure
+c properly initialized
+previous round not conclusive if:
+The state of the nodes remains unchanged by token-related actions.
+If machine i is active, keep the token.
+color |-> color[i] ]
+The state of the nodes remains unchanged by token-related actions.
+Only allowed to send msgs if node i is active.
+Non-deterministically choose a receiver node.
+Note that we don't blacken node i as in EWD840 if node i
+sends a message to node j with j > i
+Receipt of a message activates i.
+The number of counted messages at each node and the number of messages in transit is consistent.
+machine nr.i is passive
+**************************************************************************)
+TLA+ specification of an algorithm for distributed termination          *)
+detection on a ring, due to Shmuel Safra, published as EWD 998:         *)
+Shmuel Safra's version of termination detection.                        *)
+https://www.cs.utexas.edu/users/EWD/ewd09xx/EWD998.PDF                  *)
+**************************************************************************)
+EWD840 but nodes *)
+Rule 0 *)
+Rules 1 + 5 + 6 *)
+Rules 2 + 4 + 7 *)
+Rule 0 *)
+Rule 0 *)
+Rule 3 *)
+**************************************************************************)
+Bound the otherwise infinite state space that TLC has to check.         *)
+**************************************************************************)
+**************************************************************************)
+Main safety property: if there is a white token at node 0 and there are *)
+no in-flight messages then every node is inactive.                      *)
+**************************************************************************)
+**************************************************************************)
+Sum of the values f[x], for x \in S \subseteq DOMAIN f.                 *)
+**************************************************************************)
+**************************************************************************)
+The number of messages on their way. "in-flight"                        *)
+**************************************************************************)
+**************************************************************************)
+The system has terminated if no node is active and there are no         *)
+in-flight messages.                                                     *)
+**************************************************************************)
+**************************************************************************)
+Interval of nodes between a and b: this is just a..b, but the following *)
+definition helps Apalache to construct a bounded set.                   *)
+**************************************************************************)
+**************************************************************************)
+Safra's inductive invariant                                             *)
+**************************************************************************)
+(Ai: t < i < N: machine nr.i is passive) /\ *)
+(Si: t < i < N: ci.i) = q *)
+(Si: 0 <= i <= t: c.i) + q > 0. *)
+Ei: 0 <= i <= t : machine nr.i is black. *)
+The token is black. *)
+**************************************************************************)
+The inductive invariant combined with the type invariant                *)
+**************************************************************************)
+**************************************************************************)
+Liveness property: termination is eventually detected.                  *)
+**************************************************************************)
+**************************************************************************)
+The algorithm implements the specification of termination detection     *)
+in a ring with asynchronous communication.                              *)
+The parameters of module AsyncTerminationDetection are instantiated     *)
+by the symbols of the same name of the present module.                  *)
+**************************************************************************)

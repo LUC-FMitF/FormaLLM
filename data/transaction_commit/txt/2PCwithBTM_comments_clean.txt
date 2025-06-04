@@ -1,0 +1,69 @@
+The set of participating resource managers RM=1..3
+Whether TM may fail MAYFAIL=TRUE or FALSE
+for when BTM takes over
+inconsistent if commented
+BEGIN TRANSLATION
+END TRANSLATION
+Modification History
+Last modified Wed Dec 13 14:34:34 EST 2017 by mad
+Last modified Fri Nov 17 12:18:24 EST 2017 by murat
+Last modified Tue Oct 11 08:14:15 PDT 2011 by lamport
+Created Mon Oct 10 05:31:02 PDT 2011 by lamport
+A modified version of P2TCommit at http://lamport.azurewebsites.net/tla/two-phase.html
+Transaction manager (TM) is added.
+`.
+--algorithm TransactionCommit {
+variable rmState = [rm \in RM |-> "working"],
+tmState = "init";
+define {
+canCommit ==    \A rmc \in RM: rmState[rmc] \in {"prepared"}
+\/ \E rm \in RM : rmState[rm] \in {"committed"} \* for when BTM takes over
+canAbort ==     \E rm \in RM : rmState[rm] \in {"aborted","failed"}
+/\ ~\E rmc \in RM : rmState[rmc]= "committed"  \* inconsistent if commented
+}
+macro Prepare(p) {
+await rmState[p] = "working";
+rmState[p] := "prepared" ; }
+macro Decide(p) {
+either { await tmState="commit";
+rmState[p] := "committed";}
+or     { await rmState[p]="working" \/ tmState="abort";
+rmState[p] := "aborted";}
+}
+macro Fail(p) {
+if (RMMAYFAIL /\ ~\E rm \in RM:rmState[rm]="failed") rmState[p] := "failed";
+}
+fair process (RManager \in RM) {
+RS: while (rmState[self] \in {"working", "prepared"}) {
+either Prepare(self) or Decide(self) or Fail(self)}
+}
+fair process (TManager=0) {
+TS:either{ await canCommit;
+TC: tmState := "commit";
+F1: if (TMMAYFAIL) tmState := "hidden";}
+or { await canAbort;
+TA: tmState := "abort";
+F2: if (TMMAYFAIL) tmState := "hidden";}
+}
+fair process (BTManager=10) {
+BTS:either{await canCommit /\ tmState="hidden";
+BTC: tmState := "commit";}
+or {  await canAbort /\ tmState="hidden";
+BTA: tmState := "abort";}
+}
+}
+.'
+***************************************************************************)
+define statement *)
+Global variables *)
+Allow infinite stuttering to prevent deadlock on termination. *)
+**************************************************************************)
+The invariants:                                                         *)
+**************************************************************************)
+************************************************************************)
+The type-correctness invariant                                        *)
+************************************************************************)
+************************************************************************)
+A state predicate asserting that two RMs have not arrived at          *)
+conflicting decisions.                                                *)
+************************************************************************)

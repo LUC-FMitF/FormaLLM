@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "id": "0023",
+            "model": "BPConProof",
+            "tla_original": "BPConProof.tla",
+            "tla_clean": "BPConProof_clean.tla",
+            "comments": "BPConProof_comments.txt",
+            "comments_clean": "BPConProof_comments_clean.txt",
+            "cfg": "BPConProof.cfg"
+        },
+        {
+            "id": "0024",
+            "model": "Consensus",
+            "tla_original": "Consensus.tla",
+            "tla_clean": "Consensus_clean.tla",
+            "comments": "Consensus_comments.txt",
+            "comments_clean": "Consensus_comments_clean.txt",
+            "cfg": "Consensus.cfg"
+        },
+        {
+            "id": "0025",
+            "model": "PConProof",
+            "tla_original": "PConProof.tla",
+            "tla_clean": "PConProof_clean.tla",
+            "comments": "PConProof_comments.txt",
+            "comments_clean": "PConProof_comments_clean.txt",
+            "cfg": "PConProof.cfg"
+        },
+        {
+            "id": "0026",
+            "model": "VoteProof",
+            "tla_original": "VoteProof.tla",
+            "tla_clean": "VoteProof_clean.tla",
+            "comments": "VoteProof_comments.txt",
+            "comments_clean": "VoteProof_comments_clean.txt",
+            "cfg": "VoteProof.cfg"
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+\* PCR amplifies a desired snippet of DNA.
+\* This is the basic picture of PCR:
+\* High heat denatures DNA, producing single-stranded templates.
+\* Lower heat allows annealing of primers to sites on templates.
+\* (Primers are carefully chosen for this purpose.)
+\* Hybrids are produced by annealing at this lower temperature.
+\* Polymerase attaches to hybrids and extends them to new DNA.
+\* Extension occurs at medium heat, between annealing and denaturing.
+\* The whole cycle repeats, yield S-curve growth of the product.
+\* The goal is to produce more DNA, but just any DNA? No!
+\* See refinements in "stages.tla" and "product.tla".
+\* Many factors contribute to successful PCR.
+\* Most of them are neglected here.
+\* In particular, nucleotides are just assumed to be there.
+\* Two different types of primer are required.
+\* (our spec allows for this; further refinement could distinguish)
+\* Extension is assumed to happen to available hybrids.
+\* Temporal Logic of Actions is not the perfect tool for this!
+\* Hopefully, the exercise is worthwhile.
+\* an import - copies module in there
+\* starting stock of key things
+\* temperature, a string
+\* count of primers remaining
+\* count of double strands present
+\* count of single strands present
+\* count of template-primer hybrids
+\* min of two nats
+\* current temperature is "Hot"
+\* heat up to "TooHot"
+\* we'll take those back, thanks
+\* the dna denatures
+\* has to go somewhere
+\* these denature too
+\* when you just denatured
+\* cool off to "Hot"
+\* too hot to anneal primers
+\* "Warm" is just right
+\* dna can reanneal; we neglect that
+\* k consumed
+\* k consumed
+\* k more hybrids
+\* too cool for extension
+\* "Hot" is just right
+\* assuming it just happens
+\* all turned to dna
+\* not really all that hot
+\* we have consumed no primers
+\* we start with some nice 'frozen' dna
+\* everything is bound up
+\* no annealing has happened yet
+\* a redundant invariant
+\* as property
+\* does not hold!
+(* list of state variables, for convenience *)
+(* helper function *)
+(* actions *)
+(* this is the neat part *)
+(* initial state *)
+(* state transition *)
+(* specification of system *)
+(* type invariant *)
+(* safety *)
+(* preservation as an invariant *)
+(* preservation as a property *)
+(* liveness *)

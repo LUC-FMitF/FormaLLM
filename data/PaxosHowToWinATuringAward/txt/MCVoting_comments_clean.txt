@@ -1,0 +1,9 @@
+MV CONSTANT declarations@modelParameterConstants
+MV CONSTANT declarations@modelParameterConstants
+MV CONSTANT definitions Acceptor
+MV CONSTANT definitions Value
+CONSTANT definitions @modelParameterConstants:2Quorum
+CONSTANT definition @modelParameterDefinitions:0
+PROPERTY definition @modelCorrectnessProperties:0
+Modification History
+Created Sat Jun 29 02:28:33 PDT 2019 by lamport

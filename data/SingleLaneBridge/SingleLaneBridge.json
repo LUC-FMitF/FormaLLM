@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "0169",
+            "model": "MC",
+            "tla_original": "MC.tla",
+            "tla_clean": "MC_clean.tla",
+            "comments": "MC_comments.txt",
+            "comments_clean": "MC_comments_clean.txt",
+            "cfg": "MC.cfg"
+        },
+        {
+            "id": "0170",
+            "model": "SingleLaneBridge",
+            "tla_original": "SingleLaneBridge.tla",
+            "tla_clean": "SingleLaneBridge_clean.tla",
+            "comments": "SingleLaneBridge_comments.txt",
+            "comments_clean": "SingleLaneBridge_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

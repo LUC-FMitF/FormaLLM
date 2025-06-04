@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "id": "0196",
+            "model": "Alternate",
+            "tla_original": "Alternate.tla",
+            "tla_clean": "Alternate_clean.tla",
+            "comments": "Alternate_comments.txt",
+            "comments_clean": "Alternate_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0197",
+            "model": "MCTwoPhase",
+            "tla_original": "MCTwoPhase.tla",
+            "tla_clean": "MCTwoPhase_clean.tla",
+            "comments": null,
+            "comments_clean": null,
+            "cfg": "MCTwoPhase.cfg"
+        },
+        {
+            "id": "0198",
+            "model": "TLAPS",
+            "tla_original": "TLAPS.tla",
+            "tla_clean": "TLAPS_clean.tla",
+            "comments": "TLAPS_comments.txt",
+            "comments_clean": "TLAPS_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0199",
+            "model": "TwoPhase",
+            "tla_original": "TwoPhase.tla",
+            "tla_clean": "TwoPhase_clean.tla",
+            "comments": "TwoPhase_comments.txt",
+            "comments_clean": "TwoPhase_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

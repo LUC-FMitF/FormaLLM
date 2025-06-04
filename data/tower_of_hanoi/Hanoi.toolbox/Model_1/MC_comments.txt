@@ -1,0 +1,5 @@
+\* CONSTANT definitions @modelParameterConstants:0D
+\* CONSTANT definitions @modelParameterConstants:1N
+\* SPECIFICATION definition @modelBehaviorSpec:0
+\* Modification History
+\* Created Thu May 26 16:22:20 CEST 2016 by markus

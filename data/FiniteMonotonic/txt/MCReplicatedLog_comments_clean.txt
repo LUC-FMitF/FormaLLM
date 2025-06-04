@@ -1,0 +1,6 @@
+Check that the (experimental) support for action composition
+is enabled (see https://github.com/tlaplus/tlaplus/pull/805).
+Compare the DistributedReplicatedLog example for an alternative
+that does not require action composition but comes with its
+own set of trade-offs.
+The bounds are educated guesses.

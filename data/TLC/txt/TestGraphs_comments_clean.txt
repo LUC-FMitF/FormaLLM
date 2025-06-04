@@ -1,0 +1,20 @@
+Graph 1.
+Graph 1a.
+Graph-wise it's impossible to reach state 1 from state 3
+Graph 2. This graph is actually a forest of two graphs
+{1,2} /\ {3,4,5}. {1,2} are an SCC.
+Graph 3.
+Graph 4.
+Graph 5.
+Graph 6.
+Graph Medium (node 22 is a sink)
+Graph 8.
+Graph 9.
+Graph 10.
+Graph 11.
+Graph 12.
+Graph 13 (simple sequence.
+**************************************************************************)
+The definitions of some graphs, paths, etc.  used for testing the       *)
+definitions and the algorithm with the TLC model checker.               *)
+**************************************************************************)

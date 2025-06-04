@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0044",
+            "model": "DijkstraMutex",
+            "tla_original": "DijkstraMutex.tla",
+            "tla_clean": "DijkstraMutex_clean.tla",
+            "comments": "DijkstraMutex_comments.txt",
+            "comments_clean": "DijkstraMutex_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

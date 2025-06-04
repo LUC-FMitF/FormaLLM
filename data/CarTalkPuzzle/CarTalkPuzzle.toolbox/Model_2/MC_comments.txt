@@ -1,0 +1,6 @@
+\* CONSTANT definitions @modelParameterConstants:0N
+\* CONSTANT definitions @modelParameterConstants:1P
+\* Constant expression definition @modelExpressionEval
+\* Constant expression ASSUME statement @modelExpressionEval
+\* Modification History
+\* Created Wed Oct 26 11:01:15 PDT 2011 by lamport

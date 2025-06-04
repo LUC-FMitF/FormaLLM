@@ -1,0 +1,55 @@
+Modification History
+Last modified Mon Sep 03 17:01:26 CEST 2018 by tthai
+An encoding of a parameterized model of the reliable broadcast by message diffusion [1]
+with crashed failures in TLA+. This broadcast algorithm is described in Fig. 4 of [1].
+[1] Chandra, Tushar Deepak, and Sam Toueg. "Unreliable failure detectors for reliable
+distributed systems." Journal of the ACM (JACM) 43.2 (1996): 225-267.
+A short description of the parameterized model is described in:
+[2] Gmeiner, Annu, et al. "Tutorial on parameterized model checking of fault-tolerant
+distributed algorithms." International School on Formal Methods for the Design of
+Computer, Communication and Software Systems. Springer International Publishing, 2014.
+Igor Konnov, Thanh Hai Tran, Josef Widder, 2016
+This file is a subject to the license that is bundled together with this package and
+can be found in the file LICENSE.
+, FiniteSets *)
+a set of correct processes *)
+a number of crashed processes *)
+program counters *)
+the messages received by each process *)
+the messages sent by all correct processes *)
+all processes, including the faulty ones    *)
+only ECHO messages are sent in this encoding *)
+a new variable Corr  *)
+Initially, there is no crashed process
+or all processes are correct. *)
+No messages are sent. *)
+If process p received an INIT message,
+process p is initialized with V1. Otherwise,
+it is initialized with V0. *)
+No messages are received. *)
+Initially, there is no crashed process
+or all processes are correct. *)
+No messages are sent. *)
+Nothing is broadcasted and
+no process receives an INIT message. *)
+No messages are received. *)
+a correct process self receives new messages *)
+msgs is a set of messages which has been received  *)
+If a correct process received an INIT message or was initialized with V1,
+it accepts this message and then broadcasts ECHO to all.
+If a correct process received an ECHO messageaccepts, it accepts and then
+broadcasts ECHO to all.  *)
+If a number of crashed processes is less than F, some correct process may crash. *)
+A process can receive messages, broadcast ECHO to all, accept or become a crashed one *)
+the transition step *)
+Add the weak fairness condition since we want to check the liveness condition. *)
+V0 - a process did not received an INIT message
+V1 - a process received an INIT message
+AC - a process accepted and sent the message to everybody
+CR - a process is crashed
+If no correct process does not broadcast then no correct processes accepts. *)
+Unforg is correct iff the initial state is InitNoBcast. *)
+If a correct process broadcasts, then every correct process eventually accepts. *)
+If a correct process accepts, then every correct process eventually accepts.  *)
+If a message is sent by a correct process, then every correct processes eventually
+receives this message. *)

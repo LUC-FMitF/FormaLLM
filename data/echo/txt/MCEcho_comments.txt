@@ -1,0 +1,18 @@
+\* A tiny graph with three nodes.
+\* We don't care which node gets
+\* picked as the initiator.
+\* The tiny graph is fully meshed:
+\*      <<"a", "a">> :> FALSE @@
+\*      <<"a", "b">> :> TRUE  @@
+\*      <<"b", "a">> :> TRUE  @@
+\*      <<"b", "b">> :> FALSE @@
+\*      <<"a", "c">> :> TRUE @@
+\*      <<"c", "a">> :> TRUE @@
+\*      <<"b", "c">> :> TRUE  @@
+\*      <<"c", "b">> :> TRUE  @@
+\*      <<"c", "c">> :> FALSE
+\* More concisely defined as:
+\* To get a graph that satisfies the
+\* assumptions in Echo, we simply
+\* define R to be:
+\* Print R to stdout at startup.

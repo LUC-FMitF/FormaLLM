@@ -1,0 +1,91 @@
+\* Modification History
+\* Last modified Mon Jul 09 13:28:27 CEST 2018 by tthai
+\* Created Tue Jun 23 17:13:29 CEST 2015 by igor
+(* TLA+ encoding of the algorithm BOSCO considered in: 
+
+   [1] Song, Yee Jiun, and Robbert van Renesse. "Bosco: One-step byzantine asynchronous 
+   consensus." International Symposium on Distributed Computing. Springer, Berlin, 
+   Heidelberg, 2008.
+  
+   Igor Konnov, Thanh Hai Tran, Josef Widder, 2016
+  
+   This file is a subject to the license that is bundled together with this package 
+   and can be found in the file LICENSE.
+ *)
+(* auxiliary parameter
+   "more than (N + 3 * T) / 2 VOTE messages"        
+   1st case: if (N + 3 * T) is odd, 2nd case: even
+ *)
+(* auxiliary parameter
+   "more than (N - T) / 2 VOTE messages"            
+   1st case: if (N - T) is odd, 2nd case: even     
+ *)
+(* all processes, including the faulty ones    *)
+(* correct processes                            *)
+(* the faulty processes                         *)
+(* the last F processes are faulty              *)
+(* Since a byzantine process can send two msgs ECHO0 and ECHO1, we need to count the 
+   number of processes from which process self received a message.                                          
+ *)
+(* All messages in sent are by correct processes.         
+   A faulty process can send (two) arbitrary ECHO0 and ECHO1 messages.          
+   Line 66: r is a subset of messages which were sent by correct and faulty processes.                      
+   Line 68: r is a set of messages which process self has received until this step,
+            and therefore, rcvd[self] should be a subset of r.   
+   Line 69: update rcvd[self]                                               
+ *)
+(* If process self proposed 0, it broadcasts ECHO0 and moves to location S0. *)
+(* If process self proposed 1, it broadcasts ECHO1 and moves to location S1. *)
+(* If process self has
+    - send its message (line 90), 
+    - received messages from at least N - T processes (line 91), and 
+    - received at least (N + 3 * T) / 2 messages with V0 (line 92), 
+   then process self decides D0.
+ *)
+(* If process self has 
+    - send its message (line 103), 
+    - received messages from at least N - T processes (line 104), and 
+    - received at least (N + 3 * T) / 2 messages with V1 (line 105), 
+   then process self decides D1.
+ *)
+(* If process self has 
+    - send its message (line 120), 
+    - received messages from at least (N - T) / 2 processes (line 121),  
+    - received at least (N - T) / 2 messages with V0 (line 122), and
+    - received less than (N - T) / 2 messages with V1 (line 123),    
+   then process self moves to U0.
+   Both UponOneStep0 and UponUnderlying0 can be true, these conditions (lines 126
+   and 127) ensure that UponOneStep0 has a higher priority.                                        
+ *)
+(* If process self has 
+    - send its message (line 139), 
+    - received messages from at least (N - T) / 2 processes (line 140),  
+    - received at least (N - T) / 2 messages with V0 (line 141), and
+    - received less than (N - T) / 2 messages with V1 (line 142),    
+   then process self moves to U0.
+   Both UponOneStep0 and UponUnderlying0 can be true, these conditions (lines 145
+   and 146) ensure that UponOneStep0 has a higher priority.                                        
+ *)
+(* Process self has send its message (line 153) and received messages from 
+   at least N - T processes (line 154). However, neither V0 nor V1 are 
+   proposed by a majority of processes (lines 154 and 156). Process self makes
+   a nondeterministic choice between moving to U0 and U1 (lines 158 and 159).
+   Conditions on lines  164 and 164 ensure that UponUnderlyingUndecided has the
+   least priority.                                
+ *)
+(* A transition , the last OR condition is for only receiving messages.   *)
+(* Initial step *)
+(* Processes can propose V0 and V1. *)
+(* No message has sent. *)
+(* No message has received. *)
+(* V0 - the initial state with value 0  
+   V1 - the initial state with value 1  
+   S0 - sent vote 0 
+   S1 - sent vote 1  
+   D0 - decided on 0  
+   D1 - decided on 1  
+   U0 - called underlying consensus with value 0  
+   U1 - called underlying consensus with value 1            
+ *)
+(* If there are at most 7 * T processes, these properties OneStep0 and  *)
+(* OneStep1 do not hold.                                                *)

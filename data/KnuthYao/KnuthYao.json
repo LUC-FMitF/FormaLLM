@@ -1,0 +1,31 @@
+{
+    "data": [
+        {
+            "id": "0105",
+            "model": "KnuthYao",
+            "tla_original": "KnuthYao.tla",
+            "tla_clean": "KnuthYao_clean.tla",
+            "comments": "KnuthYao_comments.txt",
+            "comments_clean": "KnuthYao_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0106",
+            "model": "Prob",
+            "tla_original": "Prob.tla",
+            "tla_clean": "Prob_clean.tla",
+            "comments": null,
+            "comments_clean": null,
+            "cfg": null
+        },
+        {
+            "id": "0107",
+            "model": "SimKnuthYao",
+            "tla_original": "SimKnuthYao.tla",
+            "tla_clean": "SimKnuthYao_clean.tla",
+            "comments": "SimKnuthYao_comments.txt",
+            "comments_clean": "SimKnuthYao_comments_clean.txt",
+            "cfg": "SimKnuthYao.cfg"
+        }
+    ]
+}

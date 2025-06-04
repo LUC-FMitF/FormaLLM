@@ -1,0 +1,35 @@
+Modification History
+Last modified Mon Jul 09 16:15:38 CEST 2018 by tthai
+Last modified Mon Jul 09 13:27:23 CEST 2018 by tran
+Created Tue Nov 22 10:32:35 CET 2016 by tran
+An encoding of the conditional consensus protocol based on the maximal value
+which is proposed by processes. This protocol is described in Fig. 1 with
+condition C1 in [1].
+Mostéfaoui, Achour, et al. "Evaluating the condition-based approach to solve
+consensus." Dependable Systems and Networks, 2003. Proceedings. 2003 International
+Conference on. IEEE, 2003.
+Igor Konnov, Thanh Hai Tran, Josef Widder, 2016
+This file is a subject to the license that is bundled together with this package
+and can be found in the file LICENSE.
+Create a new message *)
+Sets of messages which are broadcasted by processes *)
+Find the maximum value in arr *)
+Line 1 *)
+If there are less than F faulty processes, process i becomes faulty. *)
+Receives a new message *)
+Broadcasts PHASE1(v_i, i) *)
+If a process received PHASE1(_, _) from at least N - F processes, it is ready
+to update its view and to make an estimation.
+A process broadcasts its estimated value. *)
+If a process receives a new PHASE2, it updates its local view. If the expected
+value w in the message is also one from the majority, it decides w. If the input
+vector does not belong to the condition and no process crashes, V_i eventually
+becomes the "full" input vector and process i deterministically decide. If all
+PHASE2 messages has received, process i moves to step Choose.
+Process i has received all PHASE2 messages and therefore, it can deterministically
+choose a value appearing in V[i].
+If a process decides v, then v was proposed by some process. *)
+No two processes decide differently. *)
+Every correct process eventually decides on some values. *)
+At least F + 1 processes initialize with the greatest value MAX(v). *)
+If the input vector satisfies the Condition1, the algorithm terminates. *)

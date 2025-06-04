@@ -1,0 +1,60 @@
+\* Copyright (c) 2018, Backyard Innovations Pte. Ltd., Singapore.
+\*
+\* Released under the terms of the Apache License 2.0
+\* See: file LICENSE that came with this software for details.
+\*
+\* This file contains Intellectual Property that belongs to
+\* Backyard Innovations Pte Ltd., Singapore.
+\*
+\* Authors: Santhosh Raju <santhosh@byisystems.com>
+\*          Cherry G. Mathew <cherry@byisystems.com>
+\*          Fransisca Andriani <sisca@byisystems.com>
+\*
+\* The set of vouchers.
+\* vState[v] is the state of a voucher v.
+\* The state of the voucher life cycle machine.
+\* vvlcState[v] is the state of the life cycle machine
+\* for the voucher v.
+\* Modification History
+\* Last modified Tue Jun 12 13:25:29 IST 2018 by Fox
+\* Created Fri Mar 16 11:56:25 SGT 2018 by Fox
+(***************************************************************************)
+(* This specification is of a Voucher and it's life cycle. This is based   *)
+(* on the definiton of Vouchers in RFC 3506 with the tuple part decoupled. *)
+(*                                                                         *)
+(* Note: A new state called "phantom" was introduced to indicate the state *)
+(* of a voucher that is yet to be issued, once a voucher is issued it      *)
+(* becomes a "valid" voucher. This is a one way transition and it cannot   *)
+(* reversed.                                                               *)
+(***************************************************************************)
+(*************************************************************************)
+(* The type-correctness invariant                                        *)
+(*************************************************************************)
+(*************************************************************************)
+(* The initial predicate.                                                *)
+(*************************************************************************)
+(***************************************************************************)
+(* We now define the actions that may be performed on the Vs, and then     *)
+(* define the complete next-state action of the specification to be the    *)
+(* disjunction of the possible V actions.                                  *)
+(***************************************************************************)
+(*************************************************************************)
+(* The next-state action.                                                *)
+(*************************************************************************)
+(*************************************************************************)
+(* A state predicate asserting that a V started at a valid start state   *)
+(* and has reached a valid final state at the end of the life cycle.     *)
+(* V can be "valid" only when the state of the machine is "working".     *)
+(* It is an invariant of the specification.                              *)
+(*************************************************************************)
+(*************************************************************************)
+(* The complete specification of the protocol written as a temporal      *)
+(* formula.                                                              *)
+(*************************************************************************)
+(*************************************************************************)
+(* This theorem asserts the truth of the temporal formula whose meaning  *)
+(* is that the state predicate VTypeOK /\ VConsistent is an invariant    *)
+(* of the specification VSpec.  Invariance of this conjunction is        *)
+(* equivalent to invariance of both of the formulas VTypeOK and          *)
+(* VConsistent.                                                          *)
+(*************************************************************************)

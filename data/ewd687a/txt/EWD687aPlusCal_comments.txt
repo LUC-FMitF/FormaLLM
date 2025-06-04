@@ -1,0 +1,46 @@
+\* the set of active nodes
+\* initiator node
+\* maximum number of pending messages for bounding the state space
+\* send a (base) message to some other node
+\* terminate
+\* receive a base message
+\* accept sender as parent if there is none, else send ack
+\* receive an ack
+\* detach or declare termination
+\* BEGIN TRANSLATION (chksum(pcal) = "d18d3150" /\ chksum(tla) = "7d13cf45")
+\* END TRANSLATION
+\* Modification History
+\* Last modified Tue Feb 09 17:33:02 CET 2021 by merz
+\* Created Tue Feb 09 11:32:36 CET 2021 by merz
+(***************************************************************************)
+(* PlusCal representation of the algorithm by Dijkstra and Scholten for    *)
+(* detecting the termination of a distributed computation initiated by a   *)
+(* designated root node. The algorithm maintains a spanning tree that      *)
+(* contains all active nodes. Inactive leaf nodes detach themselves from   *)
+(* the tree, but note that a node may later be reactivated by receiving    *)
+(* a message and may reattach itself to the tree. When the root node has   *)
+(* no more children and becomes inactive, it declares termination.         *)
+(*                                                                         *)
+(* E.W. Dijkstra, C.S. Scholten: Termination detection for diffusing       *)
+(* computations. Information Processing Letters, 11 (1):1–4, 1980.         *)
+(***************************************************************************)
+(* 
+--algorithm DS {
+  variable
+    (* has termination been detected? *)
+(* For every node we keep the following counters:
+       - number of base messages received, per sending node
+       - number of ack messages received *)
+(* operators for sending and receiving messages:
+       the result is the network resulting from the operation *)
+(* define statement *)
+(* Global variables *)
+(* Process node *)
+(***************************************************************************)
+(* The main safety property requires that termination is detected only     *)
+(* when the system is indeed quiescent.                                    *)
+(***************************************************************************)
+(***************************************************************************)
+(* Conversely, liveness requires that if the system becomes quiescent      *)
+(* (which is not guaranteed) then termination is eventually detected.      *)
+(***************************************************************************)

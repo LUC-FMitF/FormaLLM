@@ -1,0 +1,188 @@
+\* BEGIN TRANSLATION
+\* END TRANSLATION
+(**************************************************************************)
+(* A specification of the Slush protocol, a very simple probabilistic     *)
+(* consensus algorithm in the Avalanche family. Given that TLA⁺ has no    *)
+(* probabilistic modeling capabilities this spec is of limited utility,   *)
+(* beyond serving as executable pseudocode. For example, we would want to *)
+(* ask questions like "what is the maximum probability of not converging  *)
+(* with N iterations, K sample size, and T flip threshold" but we cannot. *)
+(* These questions can be answered in probabilistic modeling languages    *)
+(* like PRISM, but it is difficult to get PRISM working on this problem.  *)
+(* See https://github.com/ahelwer/avalanche-analysis/                     *)
+(**************************************************************************)
+(*--algorithm Slush
+variables
+    pick = [node \in Node |-> NoColor];
+    
+    message = {};
+
+define
+  Red == "Red"
+
+  Blue == "Blue"
+
+  Color == {Red, Blue}
+
+  NoColor == CHOOSE c : c \notin Color
+
+  QueryMessageType == "QueryMessageType"
+
+  QueryReplyMessageType == "QueryReplyMessageType"
+
+  TerminationMessageType == "TerminationMessageType"
+
+  QueryMessage == [
+    type  : {QueryMessageType},
+    src   : SlushLoopProcess,
+    dst   : SlushQueryProcess,
+    color : Color
+  ]
+
+  QueryReplyMessage == [
+    type  : {QueryReplyMessageType},
+    src   : SlushQueryProcess,
+    dst   : SlushLoopProcess,
+    color : Color
+  ]
+
+  TerminationMessage == [
+    type  : {TerminationMessageType},
+    pid   : SlushLoopProcess
+  ]
+
+  Message ==
+    QueryMessage
+    \cup QueryReplyMessage
+    \cup TerminationMessage
+
+  NoMessage == CHOOSE m : m \notin Message
+
+  TypeInvariant ==
+    /\ pick \in [Node -> Color \cup {NoColor}]
+    /\ message \subseteq Message    
+
+  PendingQueryMessage(pid) == {
+    m \in message :
+      /\ m.type = QueryMessageType 
+      /\ m.dst = pid
+  }
+
+  PendingQueryReplyMessage(pid) == {
+    m \in message :
+      /\ m.type = QueryReplyMessageType 
+      /\ m.dst = pid
+  }
+
+  Terminate ==
+    message = TerminationMessage
+
+  Pick(pid) == pick[HostOf[pid]]
+
+end define
+
+process SlushQuery \in SlushQueryProcess
+begin
+  QueryReplyLoop: while ~Terminate do
+
+    WaitForQueryMessageOrTermination:
+      await PendingQueryMessage(self) /= {} \/ Terminate;
+      if Terminate then
+        goto QueryReplyLoop;
+      end if;
+
+    RespondToQueryMessage:
+      with msg \in PendingQueryMessage(self), color = IF Pick(self) = NoColor THEN msg.color ELSE Pick(self) do
+        pick[HostOf[self]] := color;
+        message := (message \ {msg}) \cup
+          {[type  |-> QueryReplyMessageType,
+          src     |-> self,
+          dst     |-> msg.src,
+          color   |-> color]};
+      end with;
+
+  end while;
+  
+end process;
+
+process SlushLoop \in SlushLoopProcess
+variables
+  sampleSet = {},
+  loopVariant = 0
+begin
+  RequireColorAssignment: 
+    await Pick(self) /= NoColor;
+
+  ExecuteSlushLoop: while loopVariant < SlushIterationCount do
+
+    QuerySampleSet:
+      with
+        possibleSampleSet \in 
+          LET
+            otherNodes == Node \ {HostOf[self]}
+            otherQueryProcesses == {pid \in SlushQueryProcess : HostOf[pid] \in otherNodes}
+          IN {pidSet \in SUBSET otherQueryProcesses : Cardinality(pidSet) = SampleSetSize}
+      do
+        sampleSet := possibleSampleSet;
+        message := message \cup
+          {[type  |-> QueryMessageType,
+          src     |-> self,
+          dst     |-> pid,
+          color   |-> Pick(self)] :
+            pid \in sampleSet};
+      end with;
+
+    TallyQueryReplies:
+      await
+        /\ \A pid \in sampleSet :
+          /\ \E msg \in PendingQueryReplyMessage(self) :
+            /\ msg.src = pid;
+      with
+        redTally = Cardinality(
+          {msg \in PendingQueryReplyMessage(self) :
+            /\ msg.src \in sampleSet
+            /\ msg.color = Red}),
+        blueTally = Cardinality(
+          {msg \in PendingQueryReplyMessage(self) :
+            /\ msg.src \in sampleSet
+            /\ msg.color = Blue})
+      do
+        if redTally >= PickFlipThreshold then
+          pick[HostOf[self]] := Red;
+        elsif blueTally >= PickFlipThreshold then
+          pick[HostOf[self]] := Blue;
+        end if;
+      end with;
+      message := message \
+        {msg \in message :
+          /\ msg.type = QueryReplyMessageType
+          /\ msg.src \in sampleSet
+          /\ msg.dst = self};
+      sampleSet := {};
+      loopVariant := loopVariant + 1;
+
+  end while;
+
+  SlushLoopTermination: message := message \cup {[
+    type |-> TerminationMessageType, pid |-> self
+  ]}
+
+end process;
+
+process ClientRequest = "ClientRequest"
+begin
+  ClientRequestLoop: while \E n \in Node : pick[n] = NoColor do
+    AssignColorToNode:
+      with node \in Node, color \in Color do
+        if pick[node] = NoColor then
+          pick[node] := color;
+        end if;
+      end with;
+  end while;
+end process;
+
+end algorithm;*)
+(* define statement *)
+(* Global variables *)
+(* Process SlushLoop *)
+(* Allow infinite stuttering to prevent deadlock on termination. *)

@@ -1,0 +1,23 @@
+\* Modification History
+\* Last modified Wed Jun 29 09:28:02 CEST 2022 by merz
+\* Last modified Wed Jun 02 14:19:14 PDT 2021 by markus
+\* Created Sun Jan 10 15:19:20 CET 2021 by merz
+(*********************************************************************************)
+(* Proofs about the high-level specification of termination detection.           *)
+(*                                                                               *)
+(* Please note that the liveness proof below requires building tlapm from source *)
+(* using the branch available at                                                 *)
+(* https://github.com/tlaplus/tlapm/tree/updated_enabled_cdot.                   *)
+(* Running the standard distribution of TLAPS on this module will result in an   *)
+(* error message about an unknown proof directive.                               *)
+(*********************************************************************************)
+(***************************************************************************)
+(* Proofs of safety and stability.                                         *)
+(***************************************************************************)
+(***************************************************************************)
+(* Proofs of liveness.                                                     *)
+(***************************************************************************)
+(***************************************************************************)
+(* We first reduce the enabledness condition that appears in the fairness  *)
+(* hypothesis to a standard state predicate.                               *)
+(***************************************************************************)

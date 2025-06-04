@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0094",
+            "model": "GameOfLife",
+            "tla_original": "GameOfLife.tla",
+            "tla_clean": "GameOfLife_clean.tla",
+            "comments": null,
+            "comments_clean": null,
+            "cfg": "GameOfLife.cfg"
+        }
+    ]
+}

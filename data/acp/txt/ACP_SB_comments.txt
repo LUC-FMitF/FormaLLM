@@ -1,0 +1,142 @@
+\* Time-stamp: <10 Jun 2002 at 12:39:50 by charpov on berlioz.cs.unh.edu>
+\* `^Atomic Committment Protocol^' with Simple Broadcast primitive (ACP-SB)
+\* From:
+\* `^Sape Mullender^', editor.  Distributed Systems.
+\* Chapter 6: Non-Blocking Atomic Commitment, by `^\"O. Babao\u{g}lu and S. Toueg.^'
+\* 1993.
+\*******************************************************************************
+\* Synchronous communication has been replaced with (implicit) asynchronous communication.
+\* Failures are detected "magically" instead or relying on timeouts.
+\*
+\* This version of the protocol uses a "simple broadcast" where a broadcast is simply a
+\* series of messages sent, possibly interrupted by a failure.  Consequently, this algorithm
+\* is "non terminating" and property AC5 does not hold.
+\*******************************************************************************
+\* set of participants
+\* vote
+\* decision
+\* coordinator state wrt a participant
+\* broadcast state wrt a participant
+\* participants (N)
+\* coordinator  (1)
+\* Initially:
+\* All the participants:
+\*  have a yes/no vote
+\*  are alive and not faulty
+\*  have not sent in their votes yet
+\*  are undecided about final decision
+\* The coordinator:
+\*  has not sent vote requests yet
+\*  has not recieved votes from any participant
+\*  is alive and not faulty
+\*  has not sent broadcast messages to any participant
+\*  is undecided about final decision
+\* COORDINATOR STATEMENTS
+\* request(i):
+\* IF
+\*   coordinator is alive
+\*   request for vote has not been sent to participant i
+\* THEN `~ why isn't THEN left-justified? ~'
+\*   request for vote is sent to participant i
+\* getVote(i):
+\* IF
+\*   coordinator is alive
+\*   coordinator is still undecided
+\*   coordinator has sent request for votes to all participants
+\*   coordinator is waiting to receive a vote from participant i
+\*   participant i has sent the vote message
+\* THEN
+\*   the coordinator can record the vote of participant i
+\* detectFault(i):
+\* IF
+\*   coordinator is alive
+\*   coordinator is still undecided
+\*   coordinator has sent request for votes to all participants
+\*   coordinator is waiting for vote from participant i
+\*   participant i has died without sending its vote
+\* THEN
+\*   coordinator times out on participant i and decides to abort
+\* makeDecision:
+\* IF
+\*   coordinator is alive
+\*   coordinator is undecided
+\*   coordinator has received votes from all participants
+\* THEN
+\*   IF
+\*     all votes are yes
+\*   THEN
+\*     coordinator decides commit
+\*   ELSE
+\*     coordinator decides abort
+\* coordBroadcast(i) (simple broadcast):
+\* IF
+\*   coordinator is alive
+\*   coordinator has made a decision
+\*   coordinator has not sent the decision to participant i
+\* THEN
+\*   coordinator sends its decision to participant i
+\* coordDie:
+\* IF
+\*   coordinator is alive
+\* THEN
+\*   coordinator dies
+\*   coordinator is now faulty
+\* PARTICIPANT STATEMENTS
+\* sendVote(i):
+\* IF
+\*   participant is alive
+\*   participant has received a request for vote
+\* THEN
+\*   participant sends vote
+\* abortOnVote(i):
+\* IF
+\*   participant is alive
+\*   participant is undecided
+\*   participant has sent its vote to the coordinator
+\*   participant's vote is no
+\* THEN
+\*   participant decides (unilaterally) to abort
+\* abortOnTimeoutRequest(i):
+\* IF
+\*   participant is alive
+\*   participant is still undecided
+\*   coordinator has died without sending request for vote
+\* THEN
+\*   participant decides (unilaterally) to abort
+\* decide(i):
+\* IF
+\*   participant is alive
+\*   participant is undecided
+\*   participant has recieved decision from the coordinator
+\* THEN
+\*   participant decides according to decision from coordinator
+\*
+\* parDie(i):
+\* IF
+\*   participant is alive
+\* THEN
+\*   participant dies and is now faulty
+\* FOR N PARTICIPANTS
+\* Death transitions are left outside of fairness
+\* CORRECTNESS SPECIFICATION
+\*******************************************************************************
+\* This specification follows the original paper, except that AC3 is stronger:
+\* It forces participants to abort if one vote at least is NO (in the absence
+\* of failure).
+\*
+\* The specification is split between safety and liveness.
+\*******************************************************************************
+\* SAFETY
+\* All participants that decide reach the same decision
+\* If any participant decides commit, then all participants must have votes YES
+\* If any participant decides abort, then:
+\*   at least one participant voted NO, or
+\*   at least one participant is faulty, or
+\*   coordinator is faulty
+\* Each participant decides at most once
+\* LIVENESS
+\* (stronger for AC3 than in the original paper)
+\* (SOME) INTERMEDIATE PROPERTIES USED IN PROOFS
+\* (AC1 follows from StrongerAC2 /\ StrongerAC3_1)
+\* (SOME) INVALID PROPERTIES
+\* The following is the termination property that this SB algorithm doesn't have

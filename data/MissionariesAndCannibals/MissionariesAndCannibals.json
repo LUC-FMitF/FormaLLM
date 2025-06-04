@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0141",
+            "model": "MissionariesAndCannibals",
+            "tla_original": "MissionariesAndCannibals.tla",
+            "tla_clean": "MissionariesAndCannibals_clean.tla",
+            "comments": "MissionariesAndCannibals_comments.txt",
+            "comments_clean": "MissionariesAndCannibals_comments_clean.txt",
+            "cfg": "MissionariesAndCannibals.cfg"
+        }
+    ]
+}

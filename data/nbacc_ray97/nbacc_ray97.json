@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0149",
+            "model": "nbacc_ray97",
+            "tla_original": "nbacc_ray97.tla",
+            "tla_clean": "nbacc_ray97_clean.tla",
+            "comments": "nbacc_ray97_comments.txt",
+            "comments_clean": "nbacc_ray97_comments_clean.txt",
+            "cfg": "nbacc_ray97.cfg"
+        }
+    ]
+}

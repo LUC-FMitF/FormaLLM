@@ -1,0 +1,42 @@
+\* Modification History
+\* Last modified Mon Jul 09 13:26:03 CEST 2018 by tthai
+\* Created Thu Mar 12 00:46:19 CET 2015 by igor
+(* TLA+ encoding of the algorithm NBAC with crashes in: 
+
+   [1] Raynal, Michel. "A case study of agreement problems in distributed 
+   systems: non-blocking atomic commitment." High-Assurance Systems Engineering 
+   Workshop, 1997., Proceedings. IEEE, 1997.
+ 
+   Igor Konnov, Thanh Hai Tran, Josef Widder, 2016
+  
+   This file is a subject to the license that is bundled together with this 
+   package and can be found in the file LICENSE.
+ *)
+(* program counters            *)
+(* messages which are received *)
+(* messages which are sent by  *)
+(* a failure detector reporting to every process 
+                     whether some process has crashed              *)
+(* all processes, including the crashed ones   *)
+(* Receive new messages *)
+(* The failure detectore sends a nondeterministically new prediction to process self. *)
+(* Process self becomes crash. *)
+(* Sends a YES message *)
+(* Sends a NO message *)
+(* - If process self voted and received a NO messages, it aborts.
+   - If process self voted and thinks that some process has crashed,
+     it aborts. 
+   - If process self voted, received only YES messages from all processes, and 
+     thinks that all processes are still correct, it commits.
+ *)
+(* Do nothing but we need this to avoid deadlock *)
+(* Some processes vote YES. Others vote NO. *)
+(* All processes vote YES. *)
+(* Add the weak fainress condition *)
+(*
+NonTriv ==   
+    ( /\ \A i \in Proc : pc[i] = "YES"
+      /\ [](\A i \in Proc : pc[i] # "CRASH"
+      /\ (<>[](\A self \in Proc : (fd[self] = FALSE)))
+  => <>(\A self \in Proc : (pc[self] = "COMMIT"))
+  *)

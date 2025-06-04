@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0098",
+            "model": "Huang",
+            "tla_original": "Huang.tla",
+            "tla_clean": "Huang_clean.tla",
+            "comments": "Huang_comments.txt",
+            "comments_clean": "Huang_comments_clean.txt",
+            "cfg": "Huang.cfg"
+        }
+    ]
+}

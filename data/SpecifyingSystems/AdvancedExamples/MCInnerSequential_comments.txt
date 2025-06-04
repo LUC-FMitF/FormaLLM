@@ -1,0 +1,4 @@
+(*************************************************************************)
+(* A simple liveness property, implied by the fact that every request    *)
+(* eventually generates a response.                                      *)
+(*************************************************************************)

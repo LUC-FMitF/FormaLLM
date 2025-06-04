@@ -1,0 +1,61 @@
+Now that we can cycle properly and also count...
+let's look at the actual "product" of the process.
+This requires more variables, for a hi-res view.
+imports
+starting stock of key things
+a tinyTiny double, if you prefer
+temperature
+a history, if you think about it
+we can count
+min of two nats
+sum of a list
+current temperature is "Hot"
+heat up to "TooHot"
+recover primers from hybrids
+only place they come from
+when you just denatured
+cool off to "Hot"
+too hot to anneal primers
+"Warm" is just right
+k consumed
+dna can reanneal; we neglect that
+too cool for extension
+"Hot" is just right
+the only place you get hybrid from
+only place this changes
+not really all that hot
+we have consumed no primers
+subtle but important change
+no cycles completed
+and single-stranded templates *)
+and the hybrids *)
+and double strands *)
+and the product *)
+list of state variables *)
+and single-stranded templates *)
+and the hybrids *)
+and doubles *)
+and the product *)
+more variable lists, for convenience *)
+helper functions *)
+actions *)
+double strands denature *)
+hybrids denature *)
+templates absorb all this*)
+stage and cycle*)
+template/primer annealing *)
+choose templates to anneal with primer *)
+any not annealed remained *)
+update doubles *)
+hybrids consumed *)
+stage and cycle *)
+initial state *)
+and single-stranded templates *)
+and the hybrids *)
+other doubles *)
+stage & cycle *)
+gathering up actions *)
+system spec *)
+type invariant *)
+safety *)
+refinement *)

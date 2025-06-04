@@ -1,0 +1,54 @@
+\* The set of all people using the elevator system
+\* The set of all elevators
+\* The number of floors serviced by the elevator system
+\* The state of each person
+\* The set of all active elevator calls
+\* The state of each elevator
+\* Tuple of all specification variables
+\* The set of all floors
+\* Directions available to this elevator system
+\* The set of all elevator calls
+\* Elevator movement state; it is either moving in a direction or stationary
+\* The distance between two floors
+\* Direction of travel required to move between current and destination floors
+\* Whether elevator is in position to immediately service call
+\* The set of all people waiting on an elevator call
+\* Statements about the variables which we expect to hold in every system state
+\* Some more comprehensive checks beyond the type invariant
+\* An elevator has a floor button pressed only if a person in that elevator is going to that floor
+\* A person is in an elevator only if the elevator is moving toward their destination floor
+\* No ghost calls
+\* Expectations about elevator system capabilities
+\* Every call is eventually serviced by an elevator
+\* If a person waits for their elevator, they'll eventually arrive at their floor
+\* Person decides they need to go to a different floor
+\* Person calls the elevator to go in a certain direction from their floor
+\* Open the elevator doors if there is a call on this floor or the button for this floor was pressed.
+\* All people on this floor who are waiting for the elevator and travelling the same direction enter the elevator.
+\* All people whose destination is this floor exit the elevator.
+\* Close the elevator doors once all people have entered and exited the elevator on this floor.
+\* Move the elevator to the next floor unless we have to open the doors here.
+\* Can move only if other elevator servicing call
+\* Stops the elevator if it's moved as far as it can in one direction
+\* Initializes people and elevators to arbitrary floors
+\* The next-state relation
+\* Assumptions about how elevators and people will behave
+\* Initialize state with Init and transition with Next, subject to TemporalAssumptions
+(***************************************************************************)
+(* This spec describes a simple multi-car elevator system. The actions in  *)
+(* this spec are unsurprising and common to all such systems except for    *)
+(* DispatchElevator, which contains the logic to determine which elevator  *)
+(* ought to service which call. The algorithm used is very simple and does *)
+(* not optimize for global throughput or average wait time. The            *)
+(* TemporalInvariant definition ensures this specification provides        *)
+(* capabilities expected of any elevator system, such as people eventually *)
+(* reaching their destination floor.                                       *)
+(***************************************************************************)
+(***************************************************************************)
+(* This action chooses an elevator to service the call. The simple         *)
+(* algorithm picks the closest elevator which is either stationary or      *)
+(* already moving toward the call floor in the same direction as the call. *)
+(* The system keeps no record of assigning an elevator to service a call.  *)
+(* It is possible no elevator is able to service a call, but we are        *)
+(* guaranteed an elevator will eventually become available.                *)
+(***************************************************************************)

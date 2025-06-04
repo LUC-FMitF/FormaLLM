@@ -1,0 +1,8 @@
+\* LongestCommonPrefix in View for a single server would always shorten the
+\* log to <<>>, reducing the state-space to a single state.
+\* Combining the following conditions makes the state space finite:
+\* 1) The divergence of any two logs is bounded (See Extend action)
+\*
+\* 2) Terms is a *finite* set.
+\*
+\* 3) The longest common prefix of all logs is discarded.

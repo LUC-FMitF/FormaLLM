@@ -1,0 +1,67 @@
+{
+    "data": [
+        {
+            "id": "0087",
+            "model": "CRDT",
+            "tla_original": "CRDT.tla",
+            "tla_clean": "CRDT_clean.tla",
+            "comments": "CRDT_comments.txt",
+            "comments_clean": "CRDT_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0088",
+            "model": "CRDT_proof",
+            "tla_original": "CRDT_proof.tla",
+            "tla_clean": "CRDT_proof_clean.tla",
+            "comments": "CRDT_proof_comments.txt",
+            "comments_clean": "CRDT_proof_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0089",
+            "model": "DistributedReplicatedLog",
+            "tla_original": "DistributedReplicatedLog.tla",
+            "tla_clean": "DistributedReplicatedLog_clean.tla",
+            "comments": "DistributedReplicatedLog_comments.txt",
+            "comments_clean": "DistributedReplicatedLog_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0090",
+            "model": "MCCRDT",
+            "tla_original": "MCCRDT.tla",
+            "tla_clean": "MCCRDT_clean.tla",
+            "comments": "MCCRDT_comments.txt",
+            "comments_clean": "MCCRDT_comments_clean.txt",
+            "cfg": "MCCRDT.cfg"
+        },
+        {
+            "id": "0091",
+            "model": "MCDistributedReplicatedLog",
+            "tla_original": "MCDistributedReplicatedLog.tla",
+            "tla_clean": "MCDistributedReplicatedLog_clean.tla",
+            "comments": "MCDistributedReplicatedLog_comments.txt",
+            "comments_clean": "MCDistributedReplicatedLog_comments_clean.txt",
+            "cfg": "MCDistributedReplicatedLog.cfg"
+        },
+        {
+            "id": "0092",
+            "model": "MCReplicatedLog",
+            "tla_original": "MCReplicatedLog.tla",
+            "tla_clean": "MCReplicatedLog_clean.tla",
+            "comments": "MCReplicatedLog_comments.txt",
+            "comments_clean": "MCReplicatedLog_comments_clean.txt",
+            "cfg": "MCReplicatedLog.cfg"
+        },
+        {
+            "id": "0093",
+            "model": "ReplicatedLog",
+            "tla_original": "ReplicatedLog.tla",
+            "tla_clean": "ReplicatedLog_clean.tla",
+            "comments": "ReplicatedLog_comments.txt",
+            "comments_clean": "ReplicatedLog_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

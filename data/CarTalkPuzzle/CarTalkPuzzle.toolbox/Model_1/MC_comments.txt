@@ -1,0 +1,8 @@
+\* CONSTANT definitions @modelParameterConstants:0N
+\* CONSTANT definitions @modelParameterConstants:1P
+\* Constant expression definition @modelExpressionEval
+\* ExpandSolutions
+\* CHOOSE B \in Break : IsSolution(B)
+\* Constant expression ASSUME statement @modelExpressionEval
+\* Modification History
+\* Created Fri Oct 28 22:52:01 PDT 2011 by lamport

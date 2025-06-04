@@ -1,0 +1,46 @@
+\* First prove when <<Gossip(n,o)>>_vars is enabled.
+\* We need a copy of the above theorem where all variables are primed.
+\* One could derive this from MeasureType using PTL, but we just copy
+\* and paste the proof.
+\* The termination measure is zero iff all nodes agree on the
+\* counter values of all nodes.
+\* A Gossip action will never increase the measure.
+\* A non-stuttering Gossip action decreases the measure.
+\* The following is the main liveness theorem. Its proof is quite tedious
+\* because of a delicate interplay of predicate and temporal logic reasoning.
+\* must explicitly "box" the following assumption,
+\* otherwise PTL reasoning fails below.
+\* The following step just commutes [] and \A in the assumption of <1>1
+\* so that we can apply the induction theorem in the following step.
+\* Now turn the outermost universal quantifier into an existential quantifier
+\* on the left-hand side of the consequent.
+\* Clearly P(m) must hold for some natural number initially.
+\* The final theorem is a simple corollary.
+\* Tedious proof of an "obvious" fact, due to interplay of first-order
+\* and temporal reasoning. Could this be proved automatically?
+(***************************************************************************)
+(* Proofs of safety properties.                                            *)
+(***************************************************************************)
+(***************************************************************************)
+(* Auxiliary definitions in preparation for the liveness proof.            *)
+(* Sum the values of a vector of natural numbers indexed by Node.          *)
+(* This operator could be defined using a Fold, but since there is no      *)
+(* library of theorems about Fold, we define it directly from scratch.     *)
+(* We then state a few facts about Sum, without proof.                     *)
+(***************************************************************************)
+(***************************************************************************)
+(* Proof of the convergence property for the specification with fairness.  *)
+(***************************************************************************)
+(***************************************************************************)
+(* Definition of the termination measure.                                  *)
+(* Distance(o) sums the differences between node o's knowledge of the      *)
+(* counters of other nodes and their true values.                          *)
+(* Measure sums Distance(o), for all nodes o.                              *)
+(* We prove elementary facts about the termination measure and in          *)
+(* particular show how the Gossip action interacts with it.                *)
+(***************************************************************************)
+(***************************************************************************)
+(* We now prove convergence for the tail of the behavior in which only     *)
+(* Gossip actions may occur. For convenience, we define a TLA+             *)
+(* specification characterizing this eventual behavior.                    *)
+(***************************************************************************)

@@ -1,0 +1,4 @@
+(**********************************************************************)
+(* Plus and Times are functions and Leq is a set, but it's more       *)
+(* convenient to turn them into the infix operators +, *, and \leq    *)
+(**********************************************************************)

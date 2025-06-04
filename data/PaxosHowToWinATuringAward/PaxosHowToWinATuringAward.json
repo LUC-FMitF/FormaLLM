@@ -1,0 +1,58 @@
+{
+    "data": [
+        {
+            "id": "0157",
+            "model": "Consensus",
+            "tla_original": "Consensus.tla",
+            "tla_clean": "Consensus_clean.tla",
+            "comments": "Consensus_comments.txt",
+            "comments_clean": "Consensus_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0158",
+            "model": "MCConsensus",
+            "tla_original": "MCConsensus.tla",
+            "tla_clean": "MCConsensus_clean.tla",
+            "comments": "MCConsensus_comments.txt",
+            "comments_clean": "MCConsensus_comments_clean.txt",
+            "cfg": "MCConsensus.cfg"
+        },
+        {
+            "id": "0159",
+            "model": "MCPaxos",
+            "tla_original": "MCPaxos.tla",
+            "tla_clean": "MCPaxos_clean.tla",
+            "comments": "MCPaxos_comments.txt",
+            "comments_clean": "MCPaxos_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0160",
+            "model": "MCVoting",
+            "tla_original": "MCVoting.tla",
+            "tla_clean": "MCVoting_clean.tla",
+            "comments": "MCVoting_comments.txt",
+            "comments_clean": "MCVoting_comments_clean.txt",
+            "cfg": "MCVoting.cfg"
+        },
+        {
+            "id": "0161",
+            "model": "Paxos",
+            "tla_original": "Paxos.tla",
+            "tla_clean": "Paxos_clean.tla",
+            "comments": "Paxos_comments.txt",
+            "comments_clean": "Paxos_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0162",
+            "model": "Voting",
+            "tla_original": "Voting.tla",
+            "tla_clean": "Voting_clean.tla",
+            "comments": "Voting_comments.txt",
+            "comments_clean": "Voting_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

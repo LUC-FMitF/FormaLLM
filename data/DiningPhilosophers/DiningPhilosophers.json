@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0045",
+            "model": "DiningPhilosophers",
+            "tla_original": "DiningPhilosophers.tla",
+            "tla_clean": "DiningPhilosophers_clean.tla",
+            "comments": "DiningPhilosophers_comments.txt",
+            "comments_clean": "DiningPhilosophers_comments_clean.txt",
+            "cfg": "DiningPhilosophers.cfg"
+        }
+    ]
+}

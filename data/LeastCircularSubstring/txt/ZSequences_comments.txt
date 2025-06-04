@@ -1,0 +1,15 @@
+\* The empty zero-indexed sequence
+\* The set of valid indices for zero-indexed sequence s
+\* The set of all zero-indexed sequences of elements in S with length n
+\* The set of all zero-indexed sequences of elements in S
+\* The length of zero-indexed sequence s
+\* Converts from a one-indexed sequence to a zero-indexed sequence
+\* Converts from a zero-indexed sequence to a one-indexed sequence
+\* Lexicographic order on zero-indexed sequences a and b
+\* Rotate the string s to the left by r indices
+\* The set of all rotations of zero-indexed sequence s
+(***************************************************************************)
+(* Defines operators on finite zero-indexed sequences, where a sequence of *)
+(* length n is represented as a function whose domain is the set 0..(n-1)  *)
+(* (the set {0, 1, ... , n-1}).                                            *)
+(***************************************************************************)

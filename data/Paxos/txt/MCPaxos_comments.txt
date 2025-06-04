@@ -1,0 +1,37 @@
+\* acceptors
+\* Values
+\* {a1, a2, a3}
+\* {v1, v2}
+\* {{a1, a2}, {a1, a3}, {a2, a3}}
+\* Inv!2 is the second conjunct of the definition of Inv.
+(***************************************************************************)
+(* For checking liveness.                                                  *)
+(***************************************************************************)
+(***************************************************************************)
+(* For checking the inductive invariant.                                   *)
+(***************************************************************************)
+(***************************************************************************)
+(* In an initial predicate, a variable x must appear for the first time in *)
+(* a conjunct of the form `x = exp' or `x \in exp'.  We must therefore     *)
+(* rewrite the inductive invariant Inv for use as an initial predicate to  *)
+(* replace the conjunct `msgs \subseteq Message' with the equivalent       *)
+(* formula `msgs \in SUBSET Message'.                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* Inv is an inductive invariant of Spec iff it is an invariant of the     *)
+(* following specification.                                                *)
+(***************************************************************************)
+(***************************************************************************)
+(* TLC only tells you if an invariant is violated, not what part is        *)
+(* violated.  To help locate an error, it's useful to give TLC the         *)
+(* conjuncts of an invariant as separate invariants to check.              *)
+(***************************************************************************)
+(***************************************************************************)
+(* To prove that Spec implements the specification Spec of module Voting   *)
+(* under the refinement mapping we have defined, we must prove             *)
+(*                                                                         *)
+(*    Inv /\ [Next]_vars => [V!Next]_<<votes, maxBal>>                     *)
+(*                                                                         *)
+(* For an inductive invariant Inv, this is true iff the following          *)
+(* property is implied by specification MCISpec.                           *)
+(***************************************************************************)

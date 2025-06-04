@@ -1,0 +1,58 @@
+{
+    "data": [
+        {
+            "id": "0063",
+            "model": "EWD840",
+            "tla_original": "EWD840.tla",
+            "tla_clean": "EWD840_clean.tla",
+            "comments": "EWD840_comments.txt",
+            "comments_clean": "EWD840_comments_clean.txt",
+            "cfg": "EWD840.cfg"
+        },
+        {
+            "id": "0064",
+            "model": "EWD840_anim",
+            "tla_original": "EWD840_anim.tla",
+            "tla_clean": "EWD840_anim_clean.tla",
+            "comments": "EWD840_anim_comments.txt",
+            "comments_clean": "EWD840_anim_comments_clean.txt",
+            "cfg": "EWD840_anim.cfg"
+        },
+        {
+            "id": "0065",
+            "model": "EWD840_json",
+            "tla_original": "EWD840_json.tla",
+            "tla_clean": "EWD840_json_clean.tla",
+            "comments": "EWD840_json_comments.txt",
+            "comments_clean": "EWD840_json_comments_clean.txt",
+            "cfg": "EWD840_json.cfg"
+        },
+        {
+            "id": "0066",
+            "model": "EWD840_proof",
+            "tla_original": "EWD840_proof.tla",
+            "tla_clean": "EWD840_proof_clean.tla",
+            "comments": "EWD840_proof_comments.txt",
+            "comments_clean": "EWD840_proof_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0067",
+            "model": "SyncTerminationDetection",
+            "tla_original": "SyncTerminationDetection.tla",
+            "tla_clean": "SyncTerminationDetection_clean.tla",
+            "comments": "SyncTerminationDetection_comments.txt",
+            "comments_clean": "SyncTerminationDetection_comments_clean.txt",
+            "cfg": "SyncTerminationDetection.cfg"
+        },
+        {
+            "id": "0068",
+            "model": "TLAPS",
+            "tla_original": "TLAPS.tla",
+            "tla_clean": "TLAPS_clean.tla",
+            "comments": "TLAPS_comments.txt",
+            "comments_clean": "TLAPS_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

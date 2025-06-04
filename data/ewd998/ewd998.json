@@ -1,0 +1,166 @@
+{
+    "data": [
+        {
+            "id": "0069",
+            "model": "AsyncTerminationDetection",
+            "tla_original": "AsyncTerminationDetection.tla",
+            "tla_clean": "AsyncTerminationDetection_clean.tla",
+            "comments": "AsyncTerminationDetection_comments.txt",
+            "comments_clean": "AsyncTerminationDetection_comments_clean.txt",
+            "cfg": "AsyncTerminationDetection.cfg"
+        },
+        {
+            "id": "0070",
+            "model": "AsyncTerminationDetection_proof",
+            "tla_original": "AsyncTerminationDetection_proof.tla",
+            "tla_clean": "AsyncTerminationDetection_proof_clean.tla",
+            "comments": "AsyncTerminationDetection_proof_comments.txt",
+            "comments_clean": "AsyncTerminationDetection_proof_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0071",
+            "model": "EWD998",
+            "tla_original": "EWD998.tla",
+            "tla_clean": "EWD998_clean.tla",
+            "comments": "EWD998_comments.txt",
+            "comments_clean": "EWD998_comments_clean.txt",
+            "cfg": "EWD998.cfg"
+        },
+        {
+            "id": "0072",
+            "model": "EWD998Chan",
+            "tla_original": "EWD998Chan.tla",
+            "tla_clean": "EWD998Chan_clean.tla",
+            "comments": "EWD998Chan_comments.txt",
+            "comments_clean": "EWD998Chan_comments_clean.txt",
+            "cfg": "EWD998Chan.cfg"
+        },
+        {
+            "id": "0073",
+            "model": "EWD998ChanID",
+            "tla_original": "EWD998ChanID.tla",
+            "tla_clean": "EWD998ChanID_clean.tla",
+            "comments": "EWD998ChanID_comments.txt",
+            "comments_clean": "EWD998ChanID_comments_clean.txt",
+            "cfg": "EWD998ChanID.cfg"
+        },
+        {
+            "id": "0074",
+            "model": "EWD998ChanID_export",
+            "tla_original": "EWD998ChanID_export.tla",
+            "tla_clean": "EWD998ChanID_export_clean.tla",
+            "comments": "EWD998ChanID_export_comments.txt",
+            "comments_clean": "EWD998ChanID_export_comments_clean.txt",
+            "cfg": "EWD998ChanID_export.cfg"
+        },
+        {
+            "id": "0075",
+            "model": "EWD998ChanID_shiviz",
+            "tla_original": "EWD998ChanID_shiviz.tla",
+            "tla_clean": "EWD998ChanID_shiviz_clean.tla",
+            "comments": "EWD998ChanID_shiviz_comments.txt",
+            "comments_clean": "EWD998ChanID_shiviz_comments_clean.txt",
+            "cfg": "EWD998ChanID_shiviz.cfg"
+        },
+        {
+            "id": "0076",
+            "model": "EWD998ChanTrace",
+            "tla_original": "EWD998ChanTrace.tla",
+            "tla_clean": "EWD998ChanTrace_clean.tla",
+            "comments": "EWD998ChanTrace_comments.txt",
+            "comments_clean": "EWD998ChanTrace_comments_clean.txt",
+            "cfg": "EWD998ChanTrace.cfg"
+        },
+        {
+            "id": "0077",
+            "model": "EWD998Chan_opts",
+            "tla_original": "EWD998Chan_opts.tla",
+            "tla_clean": "EWD998Chan_opts_clean.tla",
+            "comments": "EWD998Chan_opts_comments.txt",
+            "comments_clean": "EWD998Chan_opts_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0078",
+            "model": "EWD998PCal",
+            "tla_original": "EWD998PCal.tla",
+            "tla_clean": "EWD998PCal_clean.tla",
+            "comments": "EWD998PCal_comments.txt",
+            "comments_clean": "EWD998PCal_comments_clean.txt",
+            "cfg": "EWD998PCal.cfg"
+        },
+        {
+            "id": "0079",
+            "model": "EWD998_anim",
+            "tla_original": "EWD998_anim.tla",
+            "tla_clean": "EWD998_anim_clean.tla",
+            "comments": "EWD998_anim_comments.txt",
+            "comments_clean": "EWD998_anim_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0080",
+            "model": "EWD998_opts",
+            "tla_original": "EWD998_opts.tla",
+            "tla_clean": "EWD998_opts_clean.tla",
+            "comments": "EWD998_opts_comments.txt",
+            "comments_clean": "EWD998_opts_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0081",
+            "model": "EWD998_optsSC",
+            "tla_original": "EWD998_optsSC.tla",
+            "tla_clean": "EWD998_optsSC_clean.tla",
+            "comments": "EWD998_optsSC_comments.txt",
+            "comments_clean": "EWD998_optsSC_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0082",
+            "model": "EWD998_proof",
+            "tla_original": "EWD998_proof.tla",
+            "tla_clean": "EWD998_proof_clean.tla",
+            "comments": "EWD998_proof_comments.txt",
+            "comments_clean": "EWD998_proof_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0083",
+            "model": "SmokeEWD998",
+            "tla_original": "SmokeEWD998.tla",
+            "tla_clean": "SmokeEWD998_clean.tla",
+            "comments": "SmokeEWD998_comments.txt",
+            "comments_clean": "SmokeEWD998_comments_clean.txt",
+            "cfg": "SmokeEWD998.cfg"
+        },
+        {
+            "id": "0084",
+            "model": "SmokeEWD998_SC",
+            "tla_original": "SmokeEWD998_SC.tla",
+            "tla_clean": "SmokeEWD998_SC_clean.tla",
+            "comments": "SmokeEWD998_SC_comments.txt",
+            "comments_clean": "SmokeEWD998_SC_comments_clean.txt",
+            "cfg": "SmokeEWD998_SC.cfg"
+        },
+        {
+            "id": "0085",
+            "model": "TLAPS",
+            "tla_original": "TLAPS.tla",
+            "tla_clean": "TLAPS_clean.tla",
+            "comments": "TLAPS_comments.txt",
+            "comments_clean": "TLAPS_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0086",
+            "model": "Utils",
+            "tla_original": "Utils.tla",
+            "tla_clean": "Utils_clean.tla",
+            "comments": "Utils_comments.txt",
+            "comments_clean": "Utils_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

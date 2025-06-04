@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "id": "0191",
+            "model": "2PCwithBTM",
+            "tla_original": "2PCwithBTM.tla",
+            "tla_clean": "2PCwithBTM_clean.tla",
+            "comments": "2PCwithBTM_comments.txt",
+            "comments_clean": "2PCwithBTM_comments_clean.txt",
+            "cfg": "2PCwithBTM.cfg"
+        },
+        {
+            "id": "0192",
+            "model": "PaxosCommit",
+            "tla_original": "PaxosCommit.tla",
+            "tla_clean": "PaxosCommit_clean.tla",
+            "comments": "PaxosCommit_comments.txt",
+            "comments_clean": "PaxosCommit_comments_clean.txt",
+            "cfg": "PaxosCommit.cfg"
+        },
+        {
+            "id": "0193",
+            "model": "TCommit",
+            "tla_original": "TCommit.tla",
+            "tla_clean": "TCommit_clean.tla",
+            "comments": "TCommit_comments.txt",
+            "comments_clean": "TCommit_comments_clean.txt",
+            "cfg": "TCommit.cfg"
+        },
+        {
+            "id": "0194",
+            "model": "TwoPhase",
+            "tla_original": "TwoPhase.tla",
+            "tla_clean": "TwoPhase_clean.tla",
+            "comments": "TwoPhase_comments.txt",
+            "comments_clean": "TwoPhase_comments_clean.txt",
+            "cfg": "TwoPhase.cfg"
+        }
+    ]
+}

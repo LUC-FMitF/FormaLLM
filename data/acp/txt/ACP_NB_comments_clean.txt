@@ -1,0 +1,48 @@
+Time-stamp: <10 Jun 2002 at 14:06:57 by charpov on berlioz.cs.unh.edu>
+Non blocking Atomic Committment Protocol (ACP-NB)
+The non blocking property AC5 is obtained by using a reliable broadcast
+implemented as follows:
+- upon reception of a broadcast message, this message is forwarded to all
+participants before it's delivered to the local site;
+- since participant i does not forward to itself, forward[i] is used to
+store the decision before it's delivered (and becomes "decision")
+Participants type is extended with a "forward" variable.
+Coordinator type is unchanged.
+Initially, participants have not forwarded anything yet
+Participant statements that realize a better broadcast
+forward(i,j): forwarding of the predecision from participant i to participant j
+IF
+particpant i is alive
+participant i has received a decision (stored in forward[i])
+participant i has not yet forwarded this decision to participant j
+THEN
+participant i forwards the decision to participant j
+preDecideOnForward(i,j): participant i receives decision from participant j
+IF
+participant i is alive
+participant i has yet to receive a decision
+participant j has forwarded its decision to participant i
+THEN
+participant i (pre)decides in accordance with participant j's decision
+preDecide(i): participant i receives decision from coordinator
+IF
+participant i is alive
+participant i has yet to receive a decision
+coordinator has sent its decision to participant i
+THEN
+participant i (pre)decides in accordance with coordinator's decision
+decideNB(i): Actual decision, after predecision has been forwarded
+IF
+participant i is alive
+participant i has forwarded its (pre)decision to all other participants
+THEN
+participant i decides in accordance with it's predecision
+abortOnTimeout(i): conditions for a timeout are simulated
+IF
+participant is alive and undecided and coordinator is not alive
+coordinator died before sending decision to all participants who are alive
+all dead participants died before forwarding decision to a participant who is alive
+THEN
+decide abort
+FOR N PARTICIPANTS
+(SOME) INVALID PROPERTIES

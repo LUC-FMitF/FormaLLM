@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "0165",
+            "model": "MC",
+            "tla_original": "MC.tla",
+            "tla_clean": "MC_clean.tla",
+            "comments": "MC_comments.txt",
+            "comments_clean": "MC_comments_clean.txt",
+            "cfg": "MC.cfg"
+        },
+        {
+            "id": "0166",
+            "model": "ReadersWriters",
+            "tla_original": "ReadersWriters.tla",
+            "tla_clean": "ReadersWriters_clean.tla",
+            "comments": "ReadersWriters_comments.txt",
+            "comments_clean": "ReadersWriters_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

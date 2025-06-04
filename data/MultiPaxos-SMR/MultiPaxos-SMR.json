@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "0143",
+            "model": "MultiPaxos",
+            "tla_original": "MultiPaxos.tla",
+            "tla_clean": "MultiPaxos_clean.tla",
+            "comments": "MultiPaxos_comments.txt",
+            "comments_clean": "MultiPaxos_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0144",
+            "model": "MultiPaxos_MC",
+            "tla_original": "MultiPaxos_MC.tla",
+            "tla_clean": "MultiPaxos_MC_clean.tla",
+            "comments": "MultiPaxos_MC_comments.txt",
+            "comments_clean": "MultiPaxos_MC_comments_clean.txt",
+            "cfg": "MultiPaxos_MC.cfg"
+        }
+    ]
+}

@@ -1,0 +1,145 @@
+\* the critical section;
+\* BEGIN TRANSLATION  (this begins the translation of the PlusCal code)
+\* END TRANSLATION   (this ends the translation of the PlusCal code)
+\*             /\ (pc[i] \in {"ncs", "e1", "e2"}) => (num[i] = 0)
+\*        /\ (pc[i] \in {"ncs", "e1", "e2"}) => (num[i] = 0)             \* not found Test 1 (21993 states)
+\* found Test 1
+\* found Test 1
+\* not found Test 1 (12115 states) or with N=2
+\* found Test 1
+\* found Test 1
+\* found Test 1
+\* found Test 1
+\* Modification History
+\* Last modified Mon Mar 06 13:47:10 CET 2023 by merz
+\* Last modified Tue Aug 27 12:23:10 PDT 2019 by loki
+\* Last modified Sat May 19 16:40:23 CEST 2018 by merz
+\* Last modified Thu May 17 07:02:45 PDT 2018 by lamport
+\* Created Thu Nov 21 15:54:32 PST 2013 by lamport
+\* Nat]
+(***************************************************************************)
+(* The bakery algorithm originally appeared in:                            *)
+(*                                                                         *)
+(*   Leslie Lamport                                                        *)
+(*   A New Solution of Dijkstra's Concurrent Programming Problem           *)
+(*   Communications of the ACM 17, 8   (August 1974), 453-455              *)
+(*                                                                         *)
+(* The code for the algorithm given in that paper is :                     *)
+(*                                                                      `. *)
+(*   begin integer j;                                                      *)
+(*   L1: choosing [i] := 1 ;                                               *)
+(*       number[i] := 1 + maximum (number[1],..., number[N]);              *)
+(*       choosing[i] := 0;                                                 *)
+(*       for j = 1 step l until N do                                       *)
+(*          begin                                                          *)
+(*            L2: if choosing[j] /= 0 then goto L2;                        *)
+(*            L3: if number[j] /= 0 and (number [j], j) < (number[i],i)    *)
+(*                  then goto L3;                                          *)
+(*          end;                                                           *)
+(*       critical section;                                                 *)
+(*       number[i] := O;                                                   *)
+(*       noncritical section;                                              *)
+(*       goto L1 ;                                                         *)
+(*   end                                                               .'  *)
+(*                                                                         *)
+(* This PlusCal version of the Atomic Bakery algorithm is one in which     *)
+(* variables whose initial values are not used are initialized to          *)
+(* particular type-correct values.  If the variables were left             *)
+(* uninitialized, the PlusCal translation would initialize them to a       *)
+(* particular unspecified value.  This would complicate the proof because  *)
+(* it would make the type-correctness invariant more complicated, but it   *)
+(* would be efficient to model check.  We could write a version that is    *)
+(* more elegant and easy to prove, but less efficient to model check, by   *)
+(* initializing the variables to arbitrarily chosen type-correct values.   *)
+(***************************************************************************)
+(***************************************************************************)
+(* We first declare N to be the number of processes, and we assume that N  *)
+(* is a natural number.                                                    *)
+(***************************************************************************)
+(***************************************************************************)
+(* We define Procs to be the set {1, 2, ...  , N} of processes.            *)
+(***************************************************************************)
+(***************************************************************************)
+(* \prec is defined to be the lexicographical less-than relation on pairs  *)
+(* of numbers.                                                             *)
+(***************************************************************************)
+(***       this is a comment containing the PlusCal code *
+
+--algorithm Bakery 
+{ variables num = [i \in Procs |-> 0], flag = [i \in Procs |-> FALSE];
+  fair process (p \in Procs)
+    variables unchecked = {}, max = 0, nxt = 1 ;
+    { ncs:- while (TRUE) 
+            { e1:   either { flag[self] := ~ flag[self] ;
+                             goto e1 }
+                    or     { flag[self] := TRUE;
+                             unchecked := Procs \ {self} ;
+                             max := 0
+                           } ;     
+              e2:   while (unchecked # {}) 
+                      { with (i \in unchecked) 
+                          { unchecked := unchecked \ {i};
+                            if (num[i] > max) { max := num[i] }
+                          }
+                      };
+              e3:   either { with (k \in Nat) { num[self] := k } ;
+                             goto e3 }
+                    or     { with (i \in {j \in Nat : j > max}) 
+                               { num[self] := i }
+                           } ;
+              e4:   either { flag[self] := ~ flag[self] ;
+                             goto e4 }
+                    or     { flag[self] := FALSE;
+                             unchecked := Procs \ {self} 
+                           } ;
+              w1:   while (unchecked # {}) 
+                      {     with (i \in unchecked) { nxt := i };
+                            await ~ flag[nxt];
+                        w2: await \/ num[nxt] = 0
+                                  \/ <<num[self], self>> \prec <<num[nxt], nxt>> ;
+                            unchecked := unchecked \ {nxt};
+                      } ;
+              cs:   skip ;  \* the critical section;
+              exit: either { with (k \in Nat) { num[self] := k } ;
+                             goto exit }
+                    or     { num[self] := 0 } 
+            }
+    }
+}
+
+    this ends the comment containing the PlusCal code
+*************)
+(* Global variables *)
+(* Process p *)
+(***************************************************************************)
+(* MutualExclusion asserts that no two distinct processes are in their     *)
+(* critical sections.                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* The Inductive Invariant                                                 *)
+(*                                                                         *)
+(* TypeOK is the type-correctness invariant.                               *)
+(***************************************************************************)
+(***************************************************************************)
+(* Before(i, j) is a condition that implies that num[i] > 0 and, if j is   *)
+(* trying to enter its critical section and i does not change num[i], then *)
+(* j either has or will choose a value of num[j] for which                 *)
+(*                                                                         *)
+(*     <<num[i],i>> \prec <<num[j],j>>                                     *)
+(*                                                                         *)
+(* is true.                                                                *)
+(***************************************************************************)
+(***************************************************************************)
+(* Inv is the complete inductive invariant.                                *)
+(***************************************************************************)
+(*"e2",*)
+(***************************************************************************)
+(* Proof of Mutual Exclusion                                               *)
+(*                                                                         *)
+(* This is a standard invariance proof, where <1>2 asserts that any step   *)
+(* of the algorithm (including a stuttering step) starting in a state in   *)
+(* which Inv is true leaves Inv true.  Step <1>4 follows easily from       *)
+(* <1>1-<1>3 by simple temporal reasoning.                                 *)
+(***************************************************************************)
+(*"e2",*)
+(*<4>0,*)

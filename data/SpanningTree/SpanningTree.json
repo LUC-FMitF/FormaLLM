@@ -1,0 +1,31 @@
+{
+    "data": [
+        {
+            "id": "0175",
+            "model": "SpanTree",
+            "tla_original": "SpanTree.tla",
+            "tla_clean": "SpanTree_clean.tla",
+            "comments": "SpanTree_comments.txt",
+            "comments_clean": "SpanTree_comments_clean.txt",
+            "cfg": "SpanTree.cfg"
+        },
+        {
+            "id": "0176",
+            "model": "SpanTreeRandom",
+            "tla_original": "SpanTreeRandom.tla",
+            "tla_clean": "SpanTreeRandom_clean.tla",
+            "comments": "SpanTreeRandom_comments.txt",
+            "comments_clean": "SpanTreeRandom_comments_clean.txt",
+            "cfg": "SpanTreeRandom.cfg"
+        },
+        {
+            "id": "0177",
+            "model": "SpanTreeTest",
+            "tla_original": "SpanTreeTest.tla",
+            "tla_clean": "SpanTreeTest_clean.tla",
+            "comments": "SpanTreeTest_comments.txt",
+            "comments_clean": "SpanTreeTest_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

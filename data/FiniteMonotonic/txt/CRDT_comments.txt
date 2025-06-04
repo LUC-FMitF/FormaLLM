@@ -1,0 +1,9 @@
+\* Repeatedly, the counters at all nodes are in sync.
+(***************************************************************************)
+(* Fairness and liveness assumptions.                                      *)
+(* We assume that Gossip actions will eventually occur when enabled, and   *)
+(* that from some point onwards, only Gossip actions will be performed.    *)
+(* In other words, incrementation of counters happens only finitely often. *)
+(* Note that the second conjunct is not a standard fairness condition,     *)
+(* yet the overall specification is machine closed.                        *)
+(***************************************************************************)

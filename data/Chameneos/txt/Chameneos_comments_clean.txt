@@ -1,0 +1,18 @@
+N - number of total meeting after which chameneoses fade
+M - number of chameneoses
+For each chameneoses, remember its current color and how many meetings it has been in.
+A meetingPlace (called Mall in the original paper) keeps track of the chameneoses
+creature that is currently waiting to meet another creature.
+chameneos enters empty meeting place
+chameneos takes on faded color
+meeting place is not empty - two chameneoses mutate
+Repeatedly try to enter meeting place for chameneoses that are not faded yet.
+The system terminates once the color of all chameneoses is faded.
+Upon termination, the sum of the (individual) meetings that all creates have
+been in, is equal to 2*N.  It is *not* guaranteed that all chameneoses have
+been in a meeting with another chameneoses.  See section A. Game termination
+on page 5 of the original papaer).
+**************************************************************************)
+A specification of a 'concurrency game' requiring concurrent            *)
+and symmetrical cooperation - https://cedric.cnam.fr/fichiers/RC474.pdf *)
+**************************************************************************)

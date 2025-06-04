@@ -1,0 +1,49 @@
+{
+    "data": [
+        {
+            "id": "0200",
+            "model": "MCYoYoNoPruning",
+            "tla_original": "MCYoYoNoPruning.tla",
+            "tla_clean": "MCYoYoNoPruning_clean.tla",
+            "comments": "MCYoYoNoPruning_comments.txt",
+            "comments_clean": "MCYoYoNoPruning_comments_clean.txt",
+            "cfg": "MCYoYoNoPruning.cfg"
+        },
+        {
+            "id": "0201",
+            "model": "MCYoYoPruning",
+            "tla_original": "MCYoYoPruning.tla",
+            "tla_clean": "MCYoYoPruning_clean.tla",
+            "comments": "MCYoYoPruning_comments.txt",
+            "comments_clean": "MCYoYoPruning_comments_clean.txt",
+            "cfg": "MCYoYoPruning.cfg"
+        },
+        {
+            "id": "0202",
+            "model": "YoYoAllGraphs",
+            "tla_original": "YoYoAllGraphs.tla",
+            "tla_clean": "YoYoAllGraphs_clean.tla",
+            "comments": "YoYoAllGraphs_comments.txt",
+            "comments_clean": "YoYoAllGraphs_comments_clean.txt",
+            "cfg": "YoYoAllGraphs.cfg"
+        },
+        {
+            "id": "0203",
+            "model": "YoYoNoPruning",
+            "tla_original": "YoYoNoPruning.tla",
+            "tla_clean": "YoYoNoPruning_clean.tla",
+            "comments": "YoYoNoPruning_comments.txt",
+            "comments_clean": "YoYoNoPruning_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0204",
+            "model": "YoYoPruning",
+            "tla_original": "YoYoPruning.tla",
+            "tla_clean": "YoYoPruning_clean.tla",
+            "comments": "YoYoPruning_comments.txt",
+            "comments_clean": "YoYoPruning_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

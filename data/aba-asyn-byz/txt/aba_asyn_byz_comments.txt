@@ -1,0 +1,38 @@
+\* Modification History
+\* Last modified Fri Jul 06 15:04:01 CEST 2018 by tthai
+(* An encoding of the asynchronous Byzantine consensus protocol in Fig.3 [1]: 
+
+   [1] Bracha, Gabriel, and Sam Toueg. "Asynchronous consensus and broadcast protocols." 
+   Journal of the ACM (JACM) 32.4 (1985): 824-840.
+    
+   Thanh Hai Tran, Igor Konnov, Josef Widder, 2016
+ 
+   This file is a subject to the license that is bundled together with this package and can 
+   be found in the file LICENSE.
+ *)
+(*, FiniteSets *)
+(* the number of ECHO, READY messages which are sent      *)
+(* the number of ECHO, READY messages which are received  *)
+(* the number of Byzantine processes                      *)
+(* program counters *)
+(* Some processes propose 0 and others propose 1.*)
+(* Neither ECHO nor READY messages are sent.      *)
+(* Neither ECHO nor READY messages are received.  *)
+(* No processes are faulty.                       *)
+(* All processes propose 0. *)
+(* All processes propose 1. *)
+(* If there are less than F Byzantine processes, process i becomes faulty. *)
+(* We requite i to be in an initial state (V0 or V1) to not break the      *)
+(* message counting abstraction.                                           *)
+(* Process i receives a new message. If includeByz is TRUE, then messages from both   *)
+(* correct and Byzantine processes are considered. Otherwise, only messages from      *)
+(* correct processes are considered.                                                  *)
+(* Process i will send an ECHO message if it proposed 1 and did not send an ECHO message. 
+   If process i proposed 0, did not send an ECHO message but has received greater than 
+   (N + F) / 2 ECHO messages or (F + 1) READY messages, it will also send an ECHO messages. 
+ *)
+(* If process i sent an ECHO message and has received enough ECHO or READY messages,
+   it will send a READY messages.
+ *)
+(* If process has received READY messages from a majority of processes, it will accept. *)
+(* Add weak fairness condition since we want to check liveness properties.  *)

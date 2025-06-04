@@ -1,0 +1,7 @@
+\* Send msg on channel `in'.
+\* Receive message from channel `in'.
+\*   and append it to tail of q.
+\* Enabled only if q is nonempty.
+\* Send Head(q) on channel `out'
+\*   and remove it from q.
+\* Receive message from channel `out'.

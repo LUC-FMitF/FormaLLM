@@ -1,0 +1,31 @@
+{
+    "data": [
+        {
+            "id": "0050",
+            "model": "Disruptor_MPMC",
+            "tla_original": "Disruptor_MPMC.tla",
+            "tla_clean": "Disruptor_MPMC_clean.tla",
+            "comments": "Disruptor_MPMC_comments.txt",
+            "comments_clean": "Disruptor_MPMC_comments_clean.txt",
+            "cfg": "Disruptor_MPMC.cfg"
+        },
+        {
+            "id": "0051",
+            "model": "Disruptor_SPMC",
+            "tla_original": "Disruptor_SPMC.tla",
+            "tla_clean": "Disruptor_SPMC_clean.tla",
+            "comments": "Disruptor_SPMC_comments.txt",
+            "comments_clean": "Disruptor_SPMC_comments_clean.txt",
+            "cfg": "Disruptor_SPMC.cfg"
+        },
+        {
+            "id": "0052",
+            "model": "RingBuffer",
+            "tla_original": "RingBuffer.tla",
+            "tla_clean": "RingBuffer_clean.tla",
+            "comments": "RingBuffer_comments.txt",
+            "comments_clean": "RingBuffer_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

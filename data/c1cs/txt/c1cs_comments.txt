@@ -1,0 +1,65 @@
+\* Modification History
+\* Last modified Mon Jul 09 13:28:37 CEST 2018 by tthai
+(* An encoding of the consensus algorithm with crash faults in one communication 
+   step [1]. Here we consider only the algorithm itself (Fig. 1), without looking  
+   at the underlying consensus. 
+   
+   [1] Brasileiro, Francisco, et al. "Consensus in one communication step." 
+   Parallel Computing Technologies (2001): 42-50.
+                                                               
+   Igor Konnov, Thanh Hai Tran, Josef Widder, 2016
+  
+   This file is a subject to the license that is bundled together with this package 
+   and can be found in the file LICENSE.
+ *)
+(* all processes, including the faulty ones *)
+(* for program counters *)
+(* User-defined operators to create messages *)
+(* Set of messages *)
+(* Initial step *)
+(* Every process proposes randomly a value. *)
+(* Every process will vote for its value.   *)
+(* No process decides.                      *)
+(* No messages were sent.                   *)
+(* No messages were received.               *)
+(* If there are less than F faulty process, process i crashes. *)
+(* Receives a new message. *)
+(* Broadcasts PROPOSED(v_i) *)
+(* If a process received PHASE1(_, _) from at least N - F processes, 
+ * it updates its local view and then estimates the expected value. 
+ *)
+(* If process i received a DECISION message, it decides. *)
+(* Just to avoid deadlock checking. *)
+(* If a process decides v, then v was proposed by some process. *)
+(* First line: No two processes decide differently. *)
+(* Second line: If some process decided v, all process calling the underlying consensus algorithm propose v. *)
+(* Only talk about decided processes*)
+(* Every correct process eventually decides on some values. *)
+(* Inductive strengthens usually are constraints on:
+    - TypeOK,
+    - PROPOSED messages and prefer values,            
+    - values in messages which have sent,          
+    - DECISION values and DECISION messages,    
+    - the number of PROPOSED messages and DECISION messages,       
+    - program counters and which messages have sent, 
+    - DECISION values and processes' decisions,    
+    - program counters and DECISION values,          
+    - DECISION values and DECISION messages, 
+    - DECISION values, and
+    - which messages are sent and received.
+   However, until now we don't what inductive strengthens are necessary to construct an
+   inductive invariant with WeakAgreement. 
+ *)
+(* Every correct process proposes only its prefer value. *)
+(* A correct process can send at most one message for each kind of messages.  *)
+(* All DECISION messages have the same value. *)
+(* How to detect it automatically?
+     Every DECISION message has the same value with at least N - T PROPOSED messages. *)
+(* A process has not broadcasted any message before entering the location PROPOSE. *)
+(* How to detect it automatically?
+     DECISION messages are always consistent with processes' decisions.  *)
+(* A DECISION value must be different from Bottom *)
+(* After deciding, every correct process needs to broadcast its decision immediately. *)
+(* A process decides only after entering the locations PROPOSE and DECIDE. *)
+(* A process has not decided before entering the locations PROPOSE and DECIDE. *)
+(* Every received message were broadcasted by some process. *)

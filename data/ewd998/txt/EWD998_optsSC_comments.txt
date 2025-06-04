@@ -1,0 +1,15 @@
+\* Features is redundantly defined in EWD998_opts.tla.  Could be extracted
+\* into common EWD998_opts_frob.ta, though.
+\* {7, 19, 29, 37, 43}
+\* Filename for the CSV file that appears also in the R script and is passed
+\* to the nested TLC instances that are forked below.
+\* Write column headers to CSV file at startup of TLC instance that "runs"
+\* this script and forks the nested instances of TLC that simulate the spec
+\* and collect the statistics.
+\* Command to fork nested TLC instances that simulate the spec and collect the
+\* statistics. TLCGet("config").install gives the path to the TLC jar also
+\* running this script.
+\* For all other error codes, print TLC's error message.
+\* TLC always expects a configuration file, but an empty one will do in this case.
+\* If this approach proves useful, TLC should be extended to launch without a config
+\* file.

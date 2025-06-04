@@ -1,0 +1,7 @@
+\* Sync some prefix up to prefix = suffix of the unsynced suffix.
+\* Force to proportionally to the lag L copy more.
+\* Lag: 1 -> 0..L, 2 -> 1..L, 3 -> 2..L
+\* Invariants
+\* Liveness
+\* TLC correctly verifies that InSync is not a property of the system because
+\* followers are permitted to copy only a prefix of the missing suffix.

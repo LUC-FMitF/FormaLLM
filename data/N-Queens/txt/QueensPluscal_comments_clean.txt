@@ -1,0 +1,61 @@
+* number of queens and size of the board
+* same column
+* first diagonal
+* second diagonal
+* BEGIN TRANSLATION
+* END TRANSLATION
+Modification History
+Last modified Sat Dec 18 18:57:03 CET 2010 by merz
+Created Sat Dec 11 08:50:24 CET 2010 by merz
+**************************************************************************)
+Formulation of the N-queens problem and an iterative algorithm to solve *)
+the problem in TLA+. Since there must be exactly one queen in every row *)
+we represent placements of queens as functions of the form              *)
+queens \in [ 1..N -> 1..N ]                                          *)
+where queens[i] gives the column of the queen in row i. Note that such  *)
+a function is just a sequence of length N.                              *)
+We will also consider partial solutions, also represented as sequences  *)
+of length \leq N.                                                       *)
+**************************************************************************)
+The following predicate determines if queens i and j attack each other
+in a placement of queens (represented by a sequence as above). *)
+A placement represents a (partial) solution if no two different queens
+attack each other in it. *)
+Compute the set of solutions of the N-queens problem. *)
+**************************************************************************)
+We now describe an algorithm that iteratively computes the set of       *)
+solutions of the N-queens problem by successively placing queens.       *)
+The current state of the algorithm is given by two variables:           *)
+- todo contains a set of partial solutions,                             *)
+- sols contains the set of full solutions found so far.                 *)
+At every step, the algorithm picks some partial solution and computes   *)
+all possible extensions by the next queen. If N queens have been placed *)
+these extensions are in fact full solutions, otherwise they are added   *)
+to the set todo.                                                        *)
+**************************************************************************)
+--algorithm Queens
+variables
+todo = { << >> };
+sols = {};
+begin
+nxtQ:  while todo # {}
+do
+with queens \in todo,
+nxtQ = Len(queens) + 1,
+cols = { c \in 1..N : ~ \E i \in 1 .. Len(queens) :
+Attacks( Append(queens, c), i, nxtQ ) },
+exts = { Append(queens,c) : c \in cols }
+do
+if (nxtQ = N)
+then todo := todo \ {queens}; sols := sols \union exts;
+else todo := (todo \ {queens}) \union exts;
+end if;
+end with;
+end while;
+end algorithm
+Global variables *)
+Allow infinite stuttering to prevent deadlock on termination. *)
+The set of sols contains only solutions, and contains all solutions
+when todo is empty. *)
+Assert that no solutions are ever computed so that TLC displays one *)
+Add a fairness condition to ensure progress as long as todo is nonempty *)

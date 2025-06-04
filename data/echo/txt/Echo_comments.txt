@@ -1,0 +1,99 @@
+\* set of nodes
+\* single initiator, will be the root of the tree
+\* neighborhood relation, represented as a Boolean function over nodes
+\* No edge from a node to itself (self-loops).
+\* Undirected graph (there exists an edge from b
+\* to a if there exists an edge from a to b).
+\* There exists a spanning tree consisting of *all* nodes.
+\* (no forest of spanning trees).
+\* model communication between nodes
+\* sending and receiving messages
+\* network obtained from net when p sends message of kind knd to q
+\* network obtained from net when p receives a message
+\* network obtained from net when p send message of kind knd to all nodes in dest
+\* initiator sends first message to all its neighbors
+\* receive some message from a neighbor
+\* the first received message is always of type "m"
+\* note the sender as the node's parent and send an "m" message to all remaining neighbors
+\* subsequent messages are counted but don't give rise to another message
+\* end with
+\* end while
+\* when non-initiator has received messages from all neighbors, acknowledge
+\* child relationship to the parent
+\* end process
+\* BEGIN TRANSLATION
+\* END TRANSLATION
+\* Modification History
+\* Last modified Wed Jun 17 09:23:17 PDT 2020 by markus
+\* Last modified Sun Jun 14 17:11:39 CEST 2020 by merz
+\* Created Tue Apr 26 09:42:23 CEST 2016 by merz
+(***************************************************************************)
+(* The Echo algorithm for constructing a spanning tree in an undirected    *)
+(* graph starting from a single initiator, as a PlusCal algorithm.         *)
+(***************************************************************************)
+(**
+--algorithm Echo {
+    variable inbox = [n \in Node |-> {}];  \* model communication between nodes
+    define { \* sending and receiving messages
+      \* network obtained from net when p sends message of kind knd to q
+      send(net, p, q, knd) == [net EXCEPT ![q] = @ \cup {[kind |-> knd, sndr |-> p]}]
+      \* network obtained from net when p receives a message
+      receive(net, p, msg) == [net EXCEPT ![p] = @ \ {msg}]
+      \* network obtained from net when p send message of kind knd to all nodes in dest
+      multicast(net, p, dest, knd) ==
+        [m \in Node |-> IF m \in dest THEN net[m] \cup {[kind |-> knd, sndr |-> p]}
+                        ELSE net[m]]
+    }
+
+  process (node \in Node) 
+    variables parent = NoNode,
+              children = {},
+              rcvd = 0,
+              nbrs = neighbors(self);        {
+  n0: if (self = initiator) {
+         \* initiator sends first message to all its neighbors
+         inbox := multicast(inbox, self, nbrs, "m")
+      };
+  n1: while (rcvd < Cardinality(nbrs)) {
+         \* receive some message from a neighbor
+         with (msg \in inbox[self],
+               net = receive(inbox, self, msg)) {
+            rcvd := rcvd+1;
+            if (self # initiator /\ rcvd = 1) {
+               assert(msg.kind = "m");  \* the first received message is always of type "m"
+               \* note the sender as the node's parent and send an "m" message to all remaining neighbors
+               parent := msg.sndr;
+               inbox := multicast(net, self, nbrs \ {msg.sndr}, "m")
+            }
+            else {
+               \* subsequent messages are counted but don't give rise to another message
+               inbox := net
+            };
+            if (msg.kind = "c") { children := children \cup {msg.sndr} }
+         }  \* end with
+      }; \* end while
+  n2: if (self # initiator) {
+         \* when non-initiator has received messages from all neighbors, acknowledge
+         \* child relationship to the parent
+         assert(parent \in nbrs);
+         inbox := send(inbox, self, parent, "c")
+      }
+  } \* end process
+}
+**)
+(* define statement *)
+(* Global variables *)
+(* Process node *)
+(* Allow infinite stuttering to prevent deadlock on termination. *)
+(***************************************************************************)
+(* Correctness properties.                                                 *)
+(***************************************************************************)
+(* The initiator never has a parent *)
+(* If a node has a parent, it is a neighbor node *)
+(* A node n is a child of node m only if m is the parent of n.
+   At the end of the computation, this is "if and only if". *)
+(* Compute the ancestor relation *)
+(* At the end of the computation, the initiator is an ancestor of every other node
+   and the ancestor relation is acyclic.
+   Beware: evaluating this property over any but tiny graphs is costly.
+*)

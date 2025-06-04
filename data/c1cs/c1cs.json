@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0027",
+            "model": "c1cs",
+            "tla_original": "c1cs.tla",
+            "tla_clean": "c1cs_clean.tla",
+            "comments": "c1cs_comments.txt",
+            "comments_clean": "c1cs_comments_clean.txt",
+            "cfg": "c1cs.cfg"
+        }
+    ]
+}

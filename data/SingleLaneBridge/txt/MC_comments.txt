@@ -1,0 +1,6 @@
+\* CONSTANT definitions @modelParameterConstants:0CarsRight
+\* CONSTANT definitions @modelParameterConstants:1CarsLeft
+\* CONSTANT definitions @modelParameterConstants:2Bridge
+\* CONSTANT definitions @modelParameterConstants:3Positions
+\* Modification History
+\* Last modified Sun Oct 10 22:023:42 CEST 2021 by youne

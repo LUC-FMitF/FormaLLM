@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0016",
+            "model": "bosco",
+            "tla_original": "bosco.tla",
+            "tla_clean": "bosco_clean.tla",
+            "comments": "bosco_comments.txt",
+            "comments_clean": "bosco_comments_clean.txt",
+            "cfg": "bosco.cfg"
+        }
+    ]
+}

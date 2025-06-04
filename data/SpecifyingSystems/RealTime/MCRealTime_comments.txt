@@ -1,0 +1,3 @@
+\* [ ]_<<now, v, t>> removed
+\* MaxTime constraint
+\* MinTime constraint ([ ]_v removed)

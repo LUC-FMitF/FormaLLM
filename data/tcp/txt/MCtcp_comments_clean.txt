@@ -1,0 +1,7 @@
+One node starts in the SYN-SENT state, i.e., one node has already received the active open command. The other node
+is in the listen state, i.e., it has received the passive open command.
+A real system will allow infinitely many active opens of TCP connections. An
+explicit state model checker like TLC cannot enumerate infinitely many states.
+Thus, do not allow multiple active opens (the first active open is implicit in Init).
+Modification History
+Created Tue Apr 02 10:38:50 PDT 2024 by markus

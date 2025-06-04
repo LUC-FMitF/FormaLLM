@@ -1,0 +1,626 @@
+\* The end point user's (SDP client) configuration, includes local IP and account Info.
+\* The SDP controller's exposure service info, includes listening IP and  port.
+\* The target server's exposure service info, includes server IP and listening port.
+\* The attacker's configuration, includes local IP.
+\* The match any type value for a ACL Rule.
+\*For an user's socket link , the start of random local port range.
+\*For an attacker's socket link , the start of random local port range.
+\*If the attacker and user are in the same LAN with a shared public IP for NAT.
+\*According to SDP protocol,each Single Packet Authorization (SPA) session has a unique Auth_ID field,
+\*and each SPA session on control plane is served for a related data access request on data plane.
+\*So, for a data access link originated from the legistimate user, there must exists a corresponding SPA session in history.
+\*Therefore, for each data access link info, we use AuthID field to specify which SPA session it relates.
+\*But there always be exceptions, if a fake data access link is originated from the attacker, its homing SPA session may not certain.
+\*So,we specifically define a invalid Auth_ID value.If a data access link with an invalid authentication session ID,
+\*it means we don't directly know the data access is resulted from which Auth session.
+\*If the legistimate user and attacker are in the same LAN with shared public IP, then the local port range after SNAT must not conflict with each other.
+\* The legistimate user's status indicates which process it is undergoing now.
+\* The legistimate user's IP address get from input configuration data.
+\* The legistimate user's ID for authentication get from input configuration data.
+\* The legistimate user's Secret Key for authentication get from input configuration data.
+\* The legistimate user's Sync counter value (Time Stamp) for SDP authentication, the counter increases randomly each auth session to prevent from Replay attack.
+\* The legistimate user's knowledge for SDP controller's info get from input configuration data.
+\* The legistimate user's knowledge for target server's info get from input configuration data.
+\* The legistimate user's TCP links connected with target server for data plane access.
+\* The legistimate user's authenticaiton sessions in history recorded in Log.Each session identified by a SPA message.
+\*The SDP Controller's IP and port for SPA protocol
+\*increased each session to anti Replay
+\* Target Server's exposure service Info, need to kept secret
+\*HMAC of payload
+\* Flag to indicate this message is built by legistimate user or attacker
+\* this flag not invloved in inter-operation between SDP protocol entities,only for statistic
+\* The legistimate user equipment's packets channel for receiving data plane packets, corresponds to its physical NIC.
+\*TCP packets for data access,for this model,we
+\*simulate the data plane access stream only by TCP connection proceudre
+\*IE. if user establish a TCP connection with target server, that
+\*means a successful data access session.
+\* TCP handshake packets type.
+\* Flag to indicate this access is initiated by legistimate user or attacker
+\* this flag not invloved in inter-operation between SDP protocol entities,only for statistic
+\* The legistimate User's private variables ( uChannel is public variable of user, for other entity can operate and modify uChannel variable directly )
+\* The SDP controller's status indicates this entity's service is available or not.
+\* The SDP controller successfully processed Auth sessions in history recorded in Log.
+\* The legistimate user's accounts info recorded in SDP controller's IAM system.
+\* The SDP controller's SPA service info that exposed to SDP clients .
+\* The number of replay attack messages inspected by SDP controller
+\* The number of spoof attack messages inspected by SDP controller
+\* The replay attack Auth sessions inspected by SDP controller in history recorded in Log.
+\* The spoof attack Auth sessions inspected by SDP controller in history recorded in Log.
+\* SDP controller's packets channel for receiving control plane Auth messages, corresponds to its physical NIC.
+\*The SDP Controller's IP and port for SPA protocol
+\*increased each session to anti Replay
+\* Target Server's exposure service Info, need to kept secret
+\*HMAC of payload
+\* Flag to indicate this message is built by legistimate user or attacker
+\* this flag not invloved in inter-operation between SDP protocol entities,only for statistic;
+\* The SDP controller's private variables ( AuthChannel is public variable of SDP controller, for other entity can operate and modify AuthChannel variable directly )
+\* The FireWall's status indicates this entity's service is available or not.
+\* The FireWall works in deny mode by default.
+\* Current Acl Rule Set maintained by the FireWall for data plane traffic access.
+\* the value can be MATCH_ANY,
+\* The aged Acl Rules in history recorded in FireWall's log.
+\* the value can be MATCH_ANY,
+\* The dropped packets by FireWall in history recorded in log.
+\* Only data plane TCP packets are processed by FireWall
+\* TCP handshake packets type.
+\* FireWall's control plane channel for receiving Openflow instruction from SDP controller to configure data access Acl Rule, corresponds to one of its physical NIC.
+\* FireWall's ingress data plane channel for receiving packets from end point entities , corresponds to one of its physical NIC.
+\* Only data plane TCP packets are processed by FireWall
+\* TCP handshake packets type.
+\* The FireWall's private variables ( FwDataChannel and FwCtlChannel are public variable of FW, for other entity can operate and modify them directly )
+\* The Attacker's status indicates this entity is spying or not.
+\* The Attacker's current knowledge about legistimate user's auth action learned by sniffing legistimate user's auth message.
+\* The Attacker initiated SPA attack sessions in history recorded in log. Each session is identified by a fake SPA message.
+\* The Attacker initiated TCP connections towards the target server. Each link corresponds to an service probe attack to the target server.
+\* The AuthID is used for relating to a captured auth message
+\* For this model, once the attacker spy a SPA message, it will undertake a data attack to the target server.
+\* The value UNKNOWN_AUTH_ID indicates the attack is not originate from a captured auth message, but a captured data message
+\* The number of successfully sniffed SPA messages by attacker.
+\* All the successfully sniffed SPA messages by attacker in history recorded in log.
+\* Attacker maintained increasing sequence number to build local port field for TCP links of different service probe attack.
+\* Attacker's IP address, which is got by configuration.
+\* If NAT_FLAG = TRUE, then attacker and legistimate user located in the same LAN and share same public IP (aIP = uIP).
+\* The Attacker's current knowledge about legistimate user's data access learned by sniffing legistimate user's TCP handshake packets with target server.
+\* Only data plane TCP packets are processed by FireWall
+\* TCP handshake packets type.
+\* All the successfully sniffed user data packets by attacker in history recorded in log
+\* The attacker's packets channel for receiving data plane packets, corresponds to its physical NIC.
+\* The attacker's private variables ( aChannel is public variable of attacker, for other entity can operate and modify aChannel variable directly )
+\* The target server's status indicates this entity's service is available or not.
+\* The TCP socket maintained in server side initiated from end points equipment.
+\* Only data plane TCP packets are processed by FireWall
+\* TCP handshake packets type.
+\* The target server's exposed service info got from configuration.
+\* The server's packets channel for receiving data plane packets from endpoint equipment, corresponds to its physical NIC.
+\* The target server's private variables ( sChannel is public variable of server, for other entity can operate and modify sChannel variable directly )
+\*  uChannel :Intf1 , aChannel: Intf2,  AuthChannel: Intf3,  FwCtlChannel: Intf4, FwDataChannel: Intf5, sChannel: Intf6
+\* Sequence S to Set
+\*Select local port when client create socket connection,
+\*the parameter count is related to  new session's timestamp, and will increase for each new link session.
+\*Simulate Symmetric-key based cryptographic algorithm AES-256:
+\*For encrypt function, the operator is simplified by a single XOR operation,
+\*only to ensure that Decrypt(Encrypt(d,k), k) = d while Decrypt(Encrypt(d,k), k') gives a meaningless result when k' # k.
+\*For the attack mode in this Spec is based on Delov-Yao Intruder Model, so we just focus on the vulnerabilities of
+\*SDP framework design and never challenge the cryptographic algorithm like AES and HMAC that it relies on.
+\*simulate Symmetric-key algorithm AES-256: Decrypt function
+\*simulate Hash-based message authentication code (HMAC) algorithm used for SPA message authorization.
+\* User Init: Load input configuration data and ready to launch an access to target server
+\* the init state is ready to start a auth session.
+\* Action 1: UsrCommitSpaAuth
+\* legistimate user perform SPA (Single Packet Authentication) session by sending a SPA packet to SDP controller.
+\* Variables changed: <uState,uAuthSession,uTstamp,AuthChannel>
+\* uTstamp increases each session for anti-replay.
+\* Auth session is recorded in Log
+\*/\ UNCHANGED <<vars \ (uState,uTstamp,AuthChannel,uAuthSession) >>
+\* Action 2: UsrConnectSvr
+\* legistimate user try to access target server after perform SPA (Single Packet Authentication) session.
+\* the first action to connect the server is sending TCP SYN packets.
+\* Variables changed: <uState, uTCPLinkSet, FwDataChannel>
+\* the new data link local port field changes.
+\* the user now waiting for TCP handshakes over.
+\*We assume the user only launch one data access session.
+\* Create new TCP socket corresponds to the latest Auth session, TCP link state is "SYN_SENT"
+\* Send TCP SYN packet to FireWall.
+\* Action 3: UsrRcvSynAck
+\* legistimate user receive TCP SYN Ack packet from target server which
+\* indicates data TCP link established. This represents the user has
+\* successfully fulfilled a data access.
+\* Variables changed: <uState, uTCPLinkSet, uChannel,FwDataChannel>
+\*get match TCB (TCP control Block) for a received TCP packet
+\* End point equipment might be a legistimate user or attacker
+\* Receive TCP_SYN_ACK from target server that match the connecting TCP socket
+\* Updata TCP link status to established
+\* The user successfully access the target server
+\*Send TCP ACK packet (the last step of hand shake)  to target server
+\* SDP Controller Init: Load configuration and ready to provide SPA auth service.
+\*Load user account config into IAM
+\* Service IP and port for SPA protocol
+\* Action 4: SDPSvrProcSpaAuth
+\* SDP Controller process received SPA message.
+\* Scenario 3: Request from legistimate user, controller then instruct firewall to admit data access after a successful authenticaiton.
+\* Scenario 1 2: Controller recognize spoof and replay attack.
+\* Variables changed: <AuthChannel,SDPSucSession,ReplaySession,SpoofSession,ReplayCount, SpoofCount,FwCtlChannel>
+\* if a coming SPA message SN match the history message recorded in anti-replay window
+\* then it must be recognized as a replay attack packet.
+\*For a recognized replay attack message, SDP controller drop it and recorded in the log.
+\*Drop packet
+\* Increase statistics
+\*Update log
+\*For a recognized spoof attack message, SDP controller drop it and recorded in the log.
+\*Drop packet
+\* Increase statistics
+\*Update log
+\* SDP controller implement authenticaiton triggered by a received SPA message
+\* The authentication is implemented by recaculate the HMAC according the user account Info
+\* user ID must match
+\*Recaclulate the HMAC value by using local stored user Key and then compare the value of corresponding field in SPA packet.
+\* Get the correspond key by user ID from IAM stored accounts
+\* SDP controller instruct FireWall to config Acl Rule by sending instruction message to FireWall's control plane channel
+\*check the packet is SPA message or not
+\* case 1: the packet is a replay message
+\*drop packets and record exception into log
+\* case 2: it is a spoof message or from unknown user
+\*drop packets and record exception into log
+\*case 3: Authenticated successfully, then send instruction to FW to allow data access towards target server.
+\* this Acl Rule is 3 tuple, for data access source port is undetermined now.
+\* The instruction code is to Add a new rule.
+\*record in log
+\* Fire wall init: power on and enter work state, by default, it works in deny mode and will drop
+\* any ingress data packets.
+\* Action 5: FwProcAclCfg
+\* FireWall receive Acl Rule config instruction from control plane channel, and hence create a 3 Tuple rule for data access
+\* Variables changed: <FwCtlChannel, AclRuleSet>
+\*Check instruction message format
+\* Update local maintained rule table
+\* Action 6: FwProcEndPointAccess
+\* FireWall receive a ingress data packet from end point side and implement filtering function according to local ACL Rules.
+\* Variables changed: <sChannel, AclRuleSet,FwDataChannel,DropPackets >
+\*Whether the TCP packet match a given 3 tuple rule.
+\* don't care source port value.
+\*Whether the TCP packet match a given 4 tuple rule.
+\* (sIP,sPort,dIP,dPort) must match exactly.
+\* The firewall automatically create an exactly matched 4 tuple rule according to a received new TCP link packets
+\* The 3 tuple rule configured by SDP controller by default with RELATED attribute, which means a new TCP link packet
+\* can trigger creating of a exactly matched 4 tuple rule.
+\* to simplify the model, we only consider TCP connection proceudre for data access
+\* the end point euipments as TCP client, only send TCP_SYN and TCP_ACK packet to target server.
+\*CASE1 : the incoming packets exactly match a 4 tuple rule
+\* route the packets to target server
+\*CASE2 : the incoming packets only match a 3 tuple rule
+\* route the packets to target server
+\* This is a new TCP link, so create a exactly matched 4 tuple rule and add it to rule table
+\*CASE3 : the incoming packets not match any rule
+\*just drop the packets
+\* record it into exception log
+\* Action 7: FwProcAclTimeOut
+\* A 3 Tuple ACL Rule configured by SDP controller automatically deleted due to aging mechanism.
+\* Variables changed: <AclRuleSet,AgedRuleSet >
+\*aging and deleted randomly,remove from current rule table
+\*only 3 tuple rule with aging mechanism
+\* record aged rule into log.
+\* Target TCP server init and begin listening on its service IP and Port.
+\*Load configuration
+\* Action 8: ServerRcvTCPSyn
+\* Target server recieve a TCP SYN packet from client side and try to allocate a new TCB.
+\* Because the Firewall dose not filter server to endpoint direction packets, so to simplify the model, the server direcly sent TCP ACK packets to
+\* uChannel.
+\* Variables changed: <sTCPLinkSet,sChannel,uChannel,aChannel >
+\*Whether the coming packet indicates a new connection
+\*without matching TCB (TCP Control Block)
+\* check incoming packets format
+\*CASE1 : New TCP SYN packets
+\*create a TCB and update local link set.
+\* the TCB 's state is SYN_RCVD
+\*If the client is legistimate user, then send TCP_SYN_ACK packet to legistimate user.
+\*If the client is attacker, then send TCP_SYN_ACK packet to attacker.
+\*CASE2 : duplicated TCP SYN packet,just neglect it for we don't focus on TCP SYN Flood attack.
+\* Action 9: ServerRcvTCPSyn
+\* Target server recieve a TCP ACK packet that acknowledge the last SYN_ACK, then establish the TCP link with the client.
+\* Variables changed: <sTCPLinkSet,sChannel>
+\* check incoming packets format
+\* the matched TCB state must be SYN_RCVD
+\*Update TCP link state to ESTABLISHED.
+\*This indicates the client has successfully accessed target server.
+\* Attacker init and capable of sniffing the packets on the local network.
+\* Action 10: AttackerSniffAuthChannel
+\* Attacker eavesdropping SPA message from legistimate user to SDP controller by sniffing the Auth channel.
+\* Once a new SPA message is captured,attacker will duplicate it into its current Auth-knowledge set.
+\* We don't guarantee every new SPA message can be captured by attacker, it only has the opportuity to get each message.
+\* Variables changed: <AuthKnowledge,CapAuthMsg,sniffCount>
+\*Select a new (which means unknown to attacker till now) SPA message from the Auth channel
+\* to simulate a successful sniff.
+\*for a dedicate user, the difference among SPA messages is the value of SN (Tstamp) field.
+\*For the attacker can also insert fake messages into the same network channel, but
+\*for both data and auth channel, attacker only wants to capture messages from legistimate user.
+\*so the PureChannel() function is to select the set of legitimate user's messages.
+\*pre-condition: there exists attacker unknown legistimate user originated SPA messages on the wire.
+\*post-condition: attacker learned new intelligence by a successful sniffing.
+\* All the captured message in history recorded in Log.
+\* increase statistics
+\* Action 11: AttackerSniffDataChannel
+\* Attacker eavesdropping data access from legistimate user to target server by sniffing the data channel.
+\* Once a new data packet is captured,it will duplicate it into its current data-knowledge set.
+\* We don't guarantee every new data packets can be captured by attacker, it only has the opportuity to get each packets.
+\* Variables changed: <DataKnowledge,CapDataMsg>
+\*Select a new (which means unknown to attacker till now) data packets being sent from user to FireWall
+\* to simulate a successful sniff.
+\* The aim of capturing  user data access packets is to get the exposed service info about the target server
+\* so (dIP,dPort) is the key info.
+\*pre-condition: there exists attacker unknown target server service info.
+\* A new TCP SYN packets represents a new starting data access session.
+\*post-condition: attacker learned new intelligence by a successful sniffing.
+\* All the captured packets in history recorded in Log.
+\* Increase statistics
+\* Action 12: AttackerSpoofAuth
+\* Attacker build and send fake SPA messages to SDP controller by spoofing legistimate user.
+\* The making of each fake message is based on the corresponding element in the Auth-Knowledge set, one element in the knowledge set
+\* can only be used to produce one spoof message.
+\* The spoof message re-use the legistimate user's ID and all other fields except SN (Tstamp) field increasing to avoid anti-replay check.
+\* Variables changed: <aSession,AuthChannel,AuthKnowledge>
+\*make a spoof message according a captured auth knowledge
+\*SN number increase
+\* pre-condition: there exists intellicence about user's auth message learned by sniffing.
+\* Send new built spoof auth message to SDP controller
+\* New Attack session is recorded in log
+\* One knowledge item can be only be consumed to build one attack session
+\* Action 13: AttackerReplayAuth
+\* Attacker build and send fake SPA messages to SDP controller by replay legistimate user's message.
+\* The making of each fake message is based on one corresponding element in the Auth-Knowledge set, one element in the knowledge set
+\* can only be used to produce one replay message.
+\* Variables changed: <aSession,AuthChannel,AuthKnowledge>
+\* make replay message by duplication.
+\* pre-condition: there exists intellicence about user's auth message learned by sniffing.
+\* Send new built replay auth message to SDP controller
+\* New Attack session is recorded in log
+\* One knowledge item can be only be consumed to build one attack session
+\* Action 14: AttackerBrutalAttck
+\* Attacker try to brutally connect the target server only by the intelligence got from user's Auth message.
+\* The making of each tcp connection is based on one auth atttack session, one element in the history auth attack session set
+\* can only be used to produce one brutal attack message.
+\* Variables changed: <aSession,AuthChannel,AuthKnowledge,FwDataChannel>
+\* Attacker try to connect target service server as a TCP client, send SYN packet in the first step
+\* Local port increased each attack session.
+\* Target server info directly get from auth message m ,which is encrypted.
+\* choose an historic auth attack session to make a brutal data access attack
+\* acounter is used to build the local port value of the TCP connection, increase each time to avoid conflict among different TCP links
+\* Transport TCP SYN packet to FireWall
+\* maintain local TCP socket
+\* the tcp link's state now is SYN_SENT
+\* this field is used to relate to the corresponding auth attack session.
+\* Action 15: AttackerProbeSvr
+\* Attacker try to connect target server according to intelligence of previously captured data plane traffic info from legistimate user's TCP SYN packet.
+\* The making of each tcp connection is based on one element in the Data Knowledge set which is learned by sniffing legistimate user's data access packets
+\* sent to target server.
+\* one knowledge can only be used to produce one service probe attack attempt.
+\* Variables changed: <aCounter,FwDataChannel,aTCPLinkSet,DataKnowledge>
+\*pre-condition: there exists learned data knowledge that still not used to launch a service probe attack.
+\* acounter is used to build the local port value of the TCP connection, increase each time to avoid conflict among different TCP links
+\* Transport TCP SYN packet to FireWall
+\* maintain local TCP socket
+\* the tcp link's state now is SYN_SENT
+\* This tcp connection is built accroding to captured data plane traffic from user, attacker don't know which Auth session it relates to
+\* one knowledge item can be only be consumed to build one attack session
+\* Action 16: AttackerRcvSynAck
+\* Attacker's TCP connection estalished by receiving TCP SYN_ACK pakcet from target server.
+\* This indicates the attacker fulfilled a service probe attack to the target server.
+\* Because the Firewall dose not filter server to endpoint direction packets, so to simplify the model, the server directly sent TCP packets to
+\* uChannel or aChannel.
+\* Variables changed: <aTCPLinkSet,aChannel,FwDataChannel>
+\*pre-condition: local TCP client in the middle of handshake procedure
+\* Post-condition: The matched TCP link established.
+\* Post-condition: Client send back the final ACK packet to server.
+\* The next state actions of the whole system is the disjunction of each entity's next state action.
+\*User's next state actions
+\* SDP controller's next state actions
+\* Fire Wall's next state actions
+\* Attacker's next state actions
+\* Target service server's next state actions
+\*WF means weak fairness, guarantee once the action is enabled, it will be triggered sooner or later.
+\* Use the fairness attribute to eliminate unnecessary stuttering states.
+\* attacker can not find target server service at anytime
+\* attacker can not launch a successful SPA auth at anytime
+\* Temporal Property 1: SPA_AvailableProperty
+\* This formula asserts the availability of SPA service provided by the SDP controller
+\* Both m and n are auth Sessions
+\* m is an auth Session, r is a ACL Rule
+\* This formula asserts that the system's behavior eventually always meets the underlying propositions
+\* 1. All authentication sessions launched by legistimate users have been successfully processed by SDP controller.
+\* 2. All successfully processed Auth sessions recorded by SDP controller are sessions launched by legistimate users.
+\*3. For all successfully authenticated sessions, the Fire wall has been configured corresponding ACL Rule.
+\* user -> controller consistence
+\* controller -> user consistence
+\* Auth session-> Acl rule consistence
+\* Temporal Property 2: SPA_AntiDosProperty
+\* This formula asserts the Anti-Dos property of SDP controller,which means the controller
+\* can always inspect and defeat spoof and replay attack.
+\* The following formula asserts that every SPA replay attack inspected by the SDP controller is originated from the attacker
+\* The following formula asserts that every SPA spoof attack inspected by the SDP controller is originated from the attacker
+\* The following formula asserts that the system's behavior eventually always meets the underlying propositions
+\* IF attacker ever captured legistimate SPA packets by sniffing,then:
+\* 1. For every captured legistimate SPA messages, the attacker will launch a SPA attack according to the message info.
+\* 2. Every SPA attack message launched by the attacker will be inspected and blocked by the SDP controller.
+\*
+\* IF attacker never captured legistimate SPA packets, then no SPA attack is lanched.
+\* Temporal Property 3: UserAccessAvailProperty
+\* This formula asserts the availability of the data plane service ,which means
+\* Legistimate user can eventually managed to access the target server except the case that 3 tuple Acl Rule is aged before th TCP connection established.
+\* scenario1: TCP link established, and exactly matched Acl Rule available in FW.
+\* scenario2: TCP link half-established due to 3 tuple Acl Rule aged in FW.
+\* Temporal Property 4: SvrHidenProperty
+\* This formula asserts the service hidden property of the SDP arhitecture. which means
+\*  finally attacker can not establish any link with the target server.
+\*All the established link in server side are not belongs to attacker.
+\* Attacker as a TCP client, never established TCP link with traget server.
+\* Temporal Property 5: FwRuleConsistentProperty
+\* This formula asserts that for each successful auth session in history there exists
+\*  a corresponding 3 Tuple Acl Rule on FW, available or aged, vice versa.
+\* the consistency between user's SPA session and ever configured L3 tuple Acl Rule on Fire Wall
+\* Temporal Property 6: FwCorrectProperty
+\* This formula asserts that the Fire Wall's Packets filitering function works well, which means
+\* that for any unestablished TCP links there must exists packets dropped by FireWall.
+\*to simplify the model, we don't consider TCP packets re-transport mechanism, so established TCP links without packet dropping.
+\* Modification History
+\* Last modified Mon Jan 16 20:56:20 CST 2023 by 10227694
+\* Created Tue Dec 28 09:34:21 CST 2021 by 10227694
+(***************************************************************************)
+(* `^                                                                      *)
+(*                                                                         *)
+(* This is a specification of the SDP architecture and algorithm.          *)
+(* The specification is based on the following materials:                  *)
+(*                                                                         *)
+(* https://cloudsecurityalliance.org/artifacts/software-defined-           *)
+(*           perimeter-zero-trust-specification-v2/                        *)
+(* http://www.cipherdyne.org/fwknop/                                       *)
+(*                                                                         *)
+(* ^'  Author: Dong.luming@zte.com.cn                                      *)
+(***************************************************************************)
+(*@type: [LoginID |-> String, Key |-> Integer, SrcIp |-> Integer ];*)
+(*@type: [IP |-> Integer, Port |-> Integer];*)
+(*@type: [IP |-> Integer, Port |-> Integer];*)
+(*@type: [SrcIp |-> Integer ];*)
+(*@type: Integer;*)
+(*@type: Integer;*)
+(*@type: Integer;*)
+(*@type: BOOL;*)
+(*@type: Integer;*)
+(***************************************************************************)
+(* `^ \centering                                                           *)
+(* The variables related to legistimate user's state machine                             *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(*@type: {"Start_Auth","Auth_End","Connecting","Connected"};*)
+(*@type: Integer;*)
+(*@type: String;*)
+(*@type: Integer;*)
+(*@type: Integer;*)
+(*@type: [IP |-> Integer, Port |-> Integer];*)
+(*@type: [IP |-> Integer, Port |-> Integer];*)
+(*@type: Set( [sIP      |-> Integer,
+                                    sPort    |-> Integer,
+                                    dIP      |-> Integer,
+                                    dPort    |-> Integer,
+                                    State    |-> {"SYN_SENT","ESTABLISHED"}]);
+                      *)
+(*@type: Set(  [MsgID   |-> "SPA_AUTH", 
+                                      sIP     |-> uIP, 
+                                      sPort   |-> SelLocalPort(uTstamp,USER_BASEPORT),  
+                                      dIP     |-> uSDPSvrInfo.IP,    \*The SDP Controller's IP and port for SPA protocol 
+                                      dPort   |-> uSDPSvrInfo.Port, 
+                                      ClientID|-> uID, 
+                                      Tstamp |-> uTstamp,    \*increased each session to anti Replay
+                                      SvrIP   |-> Encrypt(uSvrInfo.IP,Key),  \* Target Server's exposure service Info, need to kept secret
+                                      SvrPort |-> Encrypt(uSvrInfo.Port,Key),  
+                                      HMAC    |-> CalcHMAC(uIP,uID,uTstamp,Encrypt(uSvrInfo.IP,Key),Encrypt(uSvrInfo.Port,Key),Key) , \*HMAC of payload
+                                      Type    |-> Set("User","Attacker")]);  \* Flag to indicate this message is built by legistimate user or attacker                                                                                                                                         
+                                           \* this flag not invloved in inter-operation between SDP protocol entities,only for statistic
+                      *)
+(*@type: Sequence of TCP Packets Seq([sIP      |-> p.dIP,   \*TCP packets for data access,for this model,we 
+                                                        sPort    |-> p.dPort, \*simulate the data plane access stream only by TCP connection proceudre
+                                                        dIP      |-> p.sIP,   \*IE. if user establish a TCP connection with target server, that     
+                                                        dPort    |-> p.sPort, \*means a successful data access session.
+                                                        Flg      |-> Set("TCP_SYN","TCP_SYN_ACK","TCP_ACK"), \* TCP handshake packets type. 
+                                                        Type     |-> Set("User","Attacker")]; \* Flag to indicate this access is initiated by legistimate user or attacker
+                                                                       \* this flag not invloved in inter-operation between SDP protocol entities,only for statistic
+                   *)
+(***************************************************************************)
+(* `^ \centering                                                           *)
+(* The variables related to SDP Server's (SDP Controller) state machine    *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(*@type: Set("Work")*)
+(*@type: uAuthSession*)
+(*@type:  Set([ClientID |->ClientCfg.LoginID, 
+                                Key      |->ClientCfg.Key])*)
+(*@type: [IP |-> SDPSvrCfg.IP, Port |-> SDPSvrCfg.Port]*)
+(*@type: Integer;*)
+(*@type: Integer;*)
+(*@type: uAuthSession;*)
+(*@type: uAuthSession;*)
+(*@type: Sequence of SPA Auth Packets Seq( [MsgID   |-> "SPA_AUTH", 
+                                      sIP     |-> uIP, 
+                                      sPort   |-> SelLocalPort(uTstamp,USER_BASEPORT),  
+                                      dIP     |-> uSDPSvrInfo.IP,    \*The SDP Controller's IP and port for SPA protocol 
+                                      dPort   |-> uSDPSvrInfo.Port, 
+                                      ClientID|-> uID, 
+                                      Tstamp |-> uTstamp,    \*increased each session to anti Replay
+                                      SvrIP   |-> Encrypt(uSvrInfo.IP,Key),  \* Target Server's exposure service Info, need to kept secret
+                                      SvrPort |-> Encrypt(uSvrInfo.Port,Key),  
+                                      HMAC    |-> CalcHMAC(uIP,uID,uTstamp,Encrypt(uSvrInfo.IP,Key),Encrypt(uSvrInfo.Port,Key),Key) , \*HMAC of payload
+                                      Type    |-> Set("User","Attacker")]);  \* Flag to indicate this message is built by legistimate user or attacker                                                                                                                                         
+                                                      \* this flag not invloved in inter-operation between SDP protocol entities,only for statistic;                                                                      
+                     *)
+(***************************************************************************)
+(* `^ \centering                                                           *)
+(* The variables related to FireWall's state machine                       *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(*@type: Set("Work")*)
+(*@type: Set([sIP      |->Integer,
+                                 sPort    |->Integer, \* the value can be MATCH_ANY, 
+                                 dIP      |->Integer,
+                                 dPort    |->Integer, 
+                                 protocol |-> "TCP", 
+                                 action   |-> "Accept"])*)
+(*@type: Set([sIP      |->Integer,
+                                 sPort    |->Integer, \* the value can be MATCH_ANY, 
+                                 dIP      |->Integer,
+                                 dPort    |->Integer, 
+                                 protocol |-> "TCP", 
+                                 action   |-> "Accept"])*)
+(*@type: Set([sIP      |-> p.dIP,   \* Only data plane TCP packets are processed by FireWall 
+                                  sPort    |-> p.dPort, 
+                                  dIP      |-> p.sIP,       
+                                  dPort    |-> p.sPort, 
+                                  Flg      |-> Set("TCP_SYN","TCP_SYN_ACK","TCP_ACK"), \* TCP handshake packets type. 
+                                  Type     |-> Set("User","Attacker")];)*)
+(*@type: Sequence of Acl config instructions Seq([Rule |-> AclRule, op |-> Set("Add","Del")])
+                      *)
+(*@type: Sequence of Data Packets Seq([sIP      |-> p.dIP,   \* Only data plane TCP packets are processed by FireWall 
+                                     sPort    |-> p.dPort, 
+                                     dIP      |-> p.sIP,       
+                                     dPort    |-> p.sPort, 
+                                     Flg      |-> Set("TCP_SYN","TCP_SYN_ACK","TCP_ACK"), \* TCP handshake packets type. 
+                                     Type     |-> Set("User","Attacker")];)*)
+(***************************************************************************)
+(* `^ \centering                                                           *)
+(* The variables related to Attacker's state machine                       *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(*@type: Set("Listen")*)
+(*@type: uAuthSession*)
+(*@type: uAuthSession*)
+(*@type:Set( [sIP      |-> Integer,
+                                  sPort    |-> Integer,
+                                  dIP      |-> Integer,
+                                  dPort    |-> Integer,
+                                  State    |-> {"SYN_SENT","ESTABLISHED"}
+                                  AuthID   |-> Integer] \* The AuthID is used for relating to a captured auth message
+                                )  \* For this model, once the attacker spy a SPA message, it will undertake a data attack to the target server.
+                              \* The value UNKNOWN_AUTH_ID indicates the attack is not originate from a captured auth message, but a captured data message   
+                    *)
+(*@type: Integer;*)
+(*@type: uAuthSession;*)
+(*@type: Integer;*)
+(*@type: Integer;*)
+(*@type: Set( [sIP      |-> p.dIP,   \* Only data plane TCP packets are processed by FireWall 
+                                     sPort    |-> p.dPort, 
+                                     dIP      |-> p.sIP,       
+                                     dPort    |-> p.sPort, 
+                                     Flg      |-> Set("TCP_SYN","TCP_SYN_ACK","TCP_ACK"), \* TCP handshake packets type. 
+                                     Type     |-> Set("User","Attacker")])
+                       *)
+(*@type: DataKnowledge*)
+(*@type: uChannel*)
+(***************************************************************************)
+(* `^ \centering                                                           *)
+(* The variables related to target service server's state machine          *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(*@type: Set("Listen")*)
+(*@type: Set( [sIP      |-> p.dIP,   \* Only data plane TCP packets are processed by FireWall 
+                                   sPort    |-> p.dPort, 
+                                   dIP      |-> p.sIP,       
+                                   dPort    |-> p.sPort, 
+                                   Flg      |-> Set("TCP_SYN","TCP_SYN_ACK","TCP_ACK"), \* TCP handshake packets type. 
+                                   Type     |-> Set("User","Attacker")])
+                       *)
+(*@type: [IP |-> SvrCfg.IP, Port |-> SvrCfg.Port]*)
+(*@type: uChannel*)
+(***************************************************************************)
+(* `^ \centering                                                           *)
+(* All the public variables of the model                                   *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^ \centering                                                           *)
+(* All the variables that consititute the global state machine             *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Common functions and operators                                         *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Init state description of legistimate user                                   *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Next state actions of legistimate user                                       *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Init state description of SDP Controller                               *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Next state actions of SDP Controller                                   *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Init state description of FireWall                                     *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Next state actions of FireWall                                         *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Init state description of target service server                        *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Next state actions of target service server                            *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Init state description of Attacker                                     *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Next state actions of attacker                                         *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  The init description of the whole system                               *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Next state transition of the whole system                               *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  The specification of the whole system                                  *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  The  Fair specification of the whole system                            *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  Invariants to be verified                                              *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(***************************************************************************)
+(* `^                                                                      *)
+(*  The temporal properties of the system to be verified                   *)
+(* ^'                                                                      *)
+(***************************************************************************)
+(*************************************************************************)
+(* get all the 3 Tpule Acl rule in history.                          *)
+(*************************************************************************)

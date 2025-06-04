@@ -1,0 +1,32 @@
+HowTo Graphical Debugging (https://youtu.be/IO9ik850i0M):
+- Uncomment ACTION_CONSTRAINT  ToSVG  and comment INVARIANT  AnimInv  instead
+- Remove prime from  plsN  in  Messages (no double-priming allowed in TLA+)
+- Remove ", Solid: Arrival in next" from  Labels (makes no sense in this mode)
+- Run TLC with "-config EWD998_anim.tla EWD998_anim -simulate -note -debugger"
+- Attach the VSCode debugger to the running TLC process
+ACTION_CONSTRAINT
+ToSVG
+12pts (x/y) offset to be concentric with RingNetwork.
+Labels
+Centers the line/circle at the center of a node instead of
+a node's left upper corner (which are its 0:0 coordinates).
+Ring Network
+round (rx=15) if node is active.
+Token ring (with larger radius than ring above and only visible at the node that currently holds the token).
+Group always expects a sequence!
+Messages send from one node to another.  A proper arrow would be more intuitive with regards to the direction
+of message flow but SVG doesn't natively has arrows.  This is why we use a lollipop instead where the ball
+replaces the arrowhead.
+See Defs below for the definition of arrow.
+This is just the arrow head that's used by the Message definition above as an attribute.
+Note the prime here!
+%%03d to escape %03d in Java format strings.
+AnimSpec constraints the set of initial states to a set of states,
+s.t. all nodes are inactive but have sent or received a message.
+The sum of all counters is zero.  The token is at the Initiator.
+The next-state relation does not permit environment (sub-) actions.
+Replacing Spec with AnimSpec above, TLC can generate traces for large
+numbers of nodes.
+RingOfNodes[Initiator]
+with empty channels.
+Property that leads to interesting traces when animated.

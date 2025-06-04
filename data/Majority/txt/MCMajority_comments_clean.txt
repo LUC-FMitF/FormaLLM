@@ -1,0 +1,4 @@
+***************************************************************************)
+TLA+ module for model checking the majority vote algorithm for all       *)
+sequences over three elements of bounded length.                         *)
+***************************************************************************)

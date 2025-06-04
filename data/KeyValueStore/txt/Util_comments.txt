@@ -1,0 +1,9 @@
+\* Simple utility functions
+\* Remove all occurrences of `elem` from `seq`
+\* Dual to UNION on intersect
+\* Borrowed from Stephan Merz. TLA+ Case Study: A Resource Allocator. [Intern report] A04-R-101 || merz04a, 2004, 20 p. ffinria-00107809f
+\* Helper to write "unit test" ASSUMES which print when false
+\* Modification History
+\* Last modified Sun Aug 05 16:44:44 ET 2023 by murat
+\* Created Tue Apr 28 16:43:24 CEST 2020 by tim
+(* The set of permutations of a finite set, represented as sequences.  *)

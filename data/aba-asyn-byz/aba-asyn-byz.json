@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0000",
+            "model": "aba_asyn_byz",
+            "tla_original": "aba_asyn_byz.tla",
+            "tla_clean": "aba_asyn_byz_clean.tla",
+            "comments": "aba_asyn_byz_comments.txt",
+            "comments_clean": "aba_asyn_byz_comments_clean.txt",
+            "cfg": "aba_asyn_byz.cfg"
+        }
+    ]
+}

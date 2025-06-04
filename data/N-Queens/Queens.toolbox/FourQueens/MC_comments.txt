@@ -1,0 +1,6 @@
+\* CONSTANT definitions @modelParameterConstants:0N
+\* SPECIFICATION definition @modelBehaviorSpec:0
+\* INVARIANT definition @modelCorrectnessInvariants:0
+\* INVARIANT definition @modelCorrectnessInvariants:1
+\* Modification History
+\* Created Sat Dec 18 18:54:07 CET 2010 by merz

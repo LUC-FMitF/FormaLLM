@@ -1,0 +1,21 @@
+Grab SVG from https://github.com/tlaplus/CommunityModules/
+In order to show messages, we need a (auxiliary) history variable to remember
+the occurrence of a SendMsg step including the sender and receiver of a message.
+The spec below is equivalent to EWD840 except for the history variable, and
+AnimInit more constraint to reduce the number of initial states.
+The token is initially always at N - 1.
+12pts (x/y) offset to be concentric with RingNetwork.
+Labels
+Ring Network
+round (rx=15) if node is active.
+Token ring (with larger radius than ring above and only for the node that currently holds the token).
+Group always expects a sequence!
+Messages send from one node to another.  A proper arrow would be more intuitive with regards to the direction
+of message flow but SVG doesn't natively has arrows.  This is why we use a lollipop instead where the ball
+replaces the arrowhead.
+Centers the line/circle at the center of a node instead of
+a node's left upper corner (which are its 0:0 coordinates).
+This is just the arrow head that's used by the Message definition above as an attribute.
+toolbox |-> Animation,
+foob |-> [i \in 1..20 |-> i]
+Property that leads to interesting traces when animated.

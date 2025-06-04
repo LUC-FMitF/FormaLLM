@@ -1,0 +1,83 @@
+Choose a node to be the initiator of a fresh token. We don't care which one it
+is as long as it is always the same.
+Organize Nodes in a ring.
+Count the in-flight "pl" messages. The
+inbox variable represents a node's network
+interface that receives arbitrary messages.
+However, EWD998 only "tracks" payload (pl)
+messages.
+c properly initialized
+/\ inbox = [n \in Node |-> IF n = Initiator
+THEN << [type |-> "tok", q |-> 0, color |-> "black", vc |-> clock[n] ] >>
+ELSE <<>>] \* with empty channels.
+The token may be at any node of the ring initially.
+/\ inbox \in { f \in
+[ Node -> {<<>>, <<[type |-> "tok", q |-> 0, color |-> "black", vc |-> clock[Initiator] ]>> } ] :
+Cardinality({ i \in DOMAIN f: f[i] # <<>> }) = 1 }
+Worst-case WRT Max3TokenRounds, token is at node N-2.
+with empty channels.
+Token is at node the Initiator.
+Previous round inconsistent, if:
+Implicit stated in EWD998 as c0 + q > 0 means that termination has not
+been achieved: Initiate a probe if the token's color is white but the
+number of in-flight messages is not zero.
+consume token message from inbox[0].
+The state of the nodes remains unchanged by token-related actions.
+If machine i is active, keep the token.
+the machine nr.i+1 transmits the token to machine nr.i under q := q + c[i+1]
+pass on the token.
+The state of the nodes remains unchanged by token-related actions.
+Only allowed to send msgs if node i is active.
+Non-deterministically choose a receiver node.
+Send a message (not the token) to j.
+Note that we don't blacken node i as in EWD840 if node i
+sends a message to node j with j > i
+RecvMsg could write the incoming message to a (Java) buffer from which the (Java) implementation consumes it.
+Receipt of a message activates node n.
+Consume a message (not the token!).
+Idiomatic/canonical TLA+ has existential quantification down in System and Next.
+Termination is detected within a maximum of three token rounds after the
+system is terminated.
+The definitions of the refinement mapping below this line will be
+ignored by PlusPy.  It can thus make use of RECURSIVE.
+++:Spec
+True iff node a is a predecessor of node b in the ring.
+The set of nodes between node a and node b (inclusive) in the ring.
+Drop the src and the vc from the payload message.
+The (vector) clock is not relevant for the correctness of the algorithm.
+**************************************************************************)
+This spec differs from EWD998Chan in that:                              *)
+- Where EWD998Chan (and EWD998) use naturals to model nodes, this spec *)
+uses a kind of identifier such as strings.  The identifiers are      *)
+organized into a ring.                                               *)
+*)
+- The initiator of tokens no longer is node 0 but an arbitrarily       *)
+chosen one.                                                         *)
+*)
+- The payload message "pl" contains the message sender "src".          *)
+*)
+Minor differences:                                                      *)
+- In the interest of conciseness, the spec drops a few definitions     *)
+that are found in the high-level spec EWD998Chan.                    *)
+*)
+- Pull \E n \in Nodes up to the Spec level in preparation of PlusPy    *)
+implementation.                                                      *)
+**************************************************************************)
+Each node maintains a (local) vector clock *)
+https://en.wikipedia.org/wiki/Vector_clock *)
+Rule 0 *)
+EWD840 *)
+Rule 1 *)
+Rule 6 *)
+Rule 6 *)
+Rule 2 *)
+Rule 7 *)
+Rule 0 *)
+Rule 0 *)
+Rule 3 *)
+**************************************************************************)
+EWD998ChanID (identifier) refines EWD998Chan where nodes are modelled   *)
+with naturals \in 0..N-1. To check that EWD998ChanID is a correct       *)
+refinement _and_ to save us the troubles of rewriting the (inductive)   *)
+Inv for identifiers, we have TLC check the two theorems below.          *)
+**************************************************************************)

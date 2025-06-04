@@ -1,0 +1,76 @@
+{
+    "data": [
+        {
+            "id": "0108",
+            "model": "Functions",
+            "tla_original": "Functions.tla",
+            "tla_clean": "Functions_clean.tla",
+            "comments": "Functions_comments.txt",
+            "comments_clean": "Functions_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0109",
+            "model": "LamportMutex",
+            "tla_original": "LamportMutex.tla",
+            "tla_clean": "LamportMutex_clean.tla",
+            "comments": "LamportMutex_comments.txt",
+            "comments_clean": "LamportMutex_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0110",
+            "model": "LamportMutex_proofs",
+            "tla_original": "LamportMutex_proofs.tla",
+            "tla_clean": "LamportMutex_proofs_clean.tla",
+            "comments": "LamportMutex_proofs_comments.txt",
+            "comments_clean": "LamportMutex_proofs_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0111",
+            "model": "MCLamportMutex",
+            "tla_original": "MCLamportMutex.tla",
+            "tla_clean": "MCLamportMutex_clean.tla",
+            "comments": null,
+            "comments_clean": null,
+            "cfg": "MCLamportMutex.cfg"
+        },
+        {
+            "id": "0112",
+            "model": "NaturalsInduction",
+            "tla_original": "NaturalsInduction.tla",
+            "tla_clean": "NaturalsInduction_clean.tla",
+            "comments": "NaturalsInduction_comments.txt",
+            "comments_clean": "NaturalsInduction_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0113",
+            "model": "SequenceTheorems",
+            "tla_original": "SequenceTheorems.tla",
+            "tla_clean": "SequenceTheorems_clean.tla",
+            "comments": "SequenceTheorems_comments.txt",
+            "comments_clean": "SequenceTheorems_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0114",
+            "model": "TLAPS",
+            "tla_original": "TLAPS.tla",
+            "tla_clean": "TLAPS_clean.tla",
+            "comments": "TLAPS_comments.txt",
+            "comments_clean": "TLAPS_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0115",
+            "model": "WellFoundedInduction",
+            "tla_original": "WellFoundedInduction.tla",
+            "tla_clean": "WellFoundedInduction_clean.tla",
+            "comments": "WellFoundedInduction_comments.txt",
+            "comments_clean": "WellFoundedInduction_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

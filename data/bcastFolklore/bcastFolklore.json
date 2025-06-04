@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0015",
+            "model": "bcastFolklore",
+            "tla_original": "bcastFolklore.tla",
+            "tla_clean": "bcastFolklore_clean.tla",
+            "comments": "bcastFolklore_comments.txt",
+            "comments_clean": "bcastFolklore_comments_clean.txt",
+            "cfg": "bcastFolklore.cfg"
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+{
+    "data": [
+        {
+            "id": "0041",
+            "model": "DieHard",
+            "tla_original": "DieHard.tla",
+            "tla_clean": "DieHard_clean.tla",
+            "comments": "DieHard_comments.txt",
+            "comments_clean": "DieHard_comments_clean.txt",
+            "cfg": "DieHard.cfg"
+        },
+        {
+            "id": "0042",
+            "model": "DieHarder",
+            "tla_original": "DieHarder.tla",
+            "tla_clean": "DieHarder_clean.tla",
+            "comments": "DieHarder_comments.txt",
+            "comments_clean": "DieHarder_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0043",
+            "model": "MCDieHarder",
+            "tla_original": "MCDieHarder.tla",
+            "tla_clean": "MCDieHarder_clean.tla",
+            "comments": "MCDieHarder_comments.txt",
+            "comments_clean": "MCDieHarder_comments_clean.txt",
+            "cfg": "MCDieHarder.cfg"
+        }
+    ]
+}

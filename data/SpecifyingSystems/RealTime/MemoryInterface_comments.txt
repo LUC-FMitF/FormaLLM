@@ -1,0 +1,7 @@
+\* ASSUME \A p, d, miOld, miNew :
+\*         /\ Send(p,d,miOld,miNew)  \in BOOLEAN
+\*         /\ Reply(p,d,miOld,miNew) \in BOOLEAN
+(***************************************************************************)
+(* We comment out the assumption because TLC cannot handle unbounded       *)
+(* quantifiers.                                                            *)
+(***************************************************************************)

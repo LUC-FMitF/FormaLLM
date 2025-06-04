@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": "0034",
+            "model": "CheckpointCoordination",
+            "tla_original": "CheckpointCoordination.tla",
+            "tla_clean": "CheckpointCoordination_clean.tla",
+            "comments": "CheckpointCoordination_comments.txt",
+            "comments_clean": "CheckpointCoordination_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0035",
+            "model": "MCCheckpointCoordination",
+            "tla_original": "MCCheckpointCoordination.tla",
+            "tla_clean": "MCCheckpointCoordination_clean.tla",
+            "comments": "MCCheckpointCoordination_comments.txt",
+            "comments_clean": "MCCheckpointCoordination_comments_clean.txt",
+            "cfg": "MCCheckpointCoordination.cfg"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "id": "0178",
+            "model": "Stones",
+            "tla_original": "Stones.tla",
+            "tla_clean": "Stones_clean.tla",
+            "comments": "Stones_comments.txt",
+            "comments_clean": "Stones_comments_clean.txt",
+            "cfg": "Stones.cfg"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "id": "0059",
+            "model": "EWD687a",
+            "tla_original": "EWD687a.tla",
+            "tla_clean": "EWD687a_clean.tla",
+            "comments": "EWD687a_comments.txt",
+            "comments_clean": "EWD687a_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0060",
+            "model": "EWD687aPlusCal",
+            "tla_original": "EWD687aPlusCal.tla",
+            "tla_clean": "EWD687aPlusCal_clean.tla",
+            "comments": "EWD687aPlusCal_comments.txt",
+            "comments_clean": "EWD687aPlusCal_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0061",
+            "model": "EWD687a_anim",
+            "tla_original": "EWD687a_anim.tla",
+            "tla_clean": "EWD687a_anim_clean.tla",
+            "comments": "EWD687a_anim_comments.txt",
+            "comments_clean": "EWD687a_anim_comments_clean.txt",
+            "cfg": "EWD687a_anim.cfg"
+        },
+        {
+            "id": "0062",
+            "model": "MCEWD687a",
+            "tla_original": "MCEWD687a.tla",
+            "tla_clean": "MCEWD687a_clean.tla",
+            "comments": "MCEWD687a_comments.txt",
+            "comments_clean": "MCEWD687a_comments_clean.txt",
+            "cfg": "MCEWD687a.cfg"
+        }
+    ]
+}

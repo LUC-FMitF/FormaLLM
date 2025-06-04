@@ -1,0 +1,6 @@
+A proof that the sum x+x of the natural number x is always even.
+Z3 can solve it in a single step
+alternatively we prove this step-wise by making a case distinction on x being even or odd
+Modification History
+Last modified Tue Mar 08 11:49:27 CET 2016 by marty
+Created Mon Oct 26 15:01:26 CET 2015 by marty

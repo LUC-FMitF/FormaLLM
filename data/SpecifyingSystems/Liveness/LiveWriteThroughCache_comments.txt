@@ -1,0 +1,7 @@
+(***************************************************************************)
+(* This module adds the liveness condition described in the section "The   *)
+(* Write-Through Cache" to the specification Spec of module                *)
+(* WriteThroughCache.  To allow us to check it with TLC, we actually use   *)
+(* the equivalent definition of Spec from module                           *)
+(* WriteThroughCacheInstanced.                                             *)
+(***************************************************************************)

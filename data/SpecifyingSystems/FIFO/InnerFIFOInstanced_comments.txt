@@ -1,0 +1,40 @@
+\* Send msg on channel `in'.
+\* Receive message from channel `in'.
+\*   and append it to tail of q.
+\* Enabled only if q is nonempty.
+\* Send Head(q) on channel `out'
+\*   and remove it from q.
+\* Receive message from channel `out'.
+(***************************************************************************)
+(* The current version of TLC does not handle the INSTANCE statement.      *)
+(* (This omission will be rectified with TLC Version 2.)  This module is a *)
+(* version of module InnerFIFO for use with TLC. The INSTANCE statements   *)
+(* of module InnerFIFO have been removed and replaced by explicit          *)
+(* definitions of the operators originally defined through instantiation.  *)
+(***************************************************************************)
+(***************************************************************************)
+(* At this point, module InnerFIFO contains the two statements:            *)
+(*                                                                         *)
+(*    InChan  == INSTANCE Channel WITH Data <- Message, chan <- in         *)
+(*    OutChan == INSTANCE Channel WITH Data <- Message, chan <- out        *)
+(*                                                                         *)
+(* We perform the instantiations below "by hand".  However, since "!"      *)
+(* can't appear in an identifier name, we use "_" in its place.  For       *)
+(* example, instead of adding the definition of `InChan!Init' to the       *)
+(* current module, as does the first INSTANCE statement, we instead add    *)
+(* the definition of `InChan_Init'.                                        *)
+(***************************************************************************)
+(***************************************************************************)
+(* Below are all the definitions from Channel, except with `in'            *)
+(* substituted for `chan', with `Message' substituted for `Data', and with *)
+(* "InChan_" prepended to the names of all defined symbols.                *)
+(***************************************************************************)
+(***************************************************************************)
+(* Below are all the definitions from Channel, except with `out'            *)
+(* substituted for `chan', with `Message' substituted for `Data', and with *)
+(* "OutChan_" prepended to the names of all defined symbols.               *)
+(***************************************************************************)
+(***************************************************************************)
+(* The rest of the module is the same as module InnerFIFO, except that     *)
+(* each "!" is replaced by "_".                                            *)
+(***************************************************************************)

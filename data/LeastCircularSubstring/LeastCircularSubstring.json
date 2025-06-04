@@ -1,0 +1,31 @@
+{
+    "data": [
+        {
+            "id": "0119",
+            "model": "LeastCircularSubstring",
+            "tla_original": "LeastCircularSubstring.tla",
+            "tla_clean": "LeastCircularSubstring_clean.tla",
+            "comments": "LeastCircularSubstring_comments.txt",
+            "comments_clean": "LeastCircularSubstring_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0120",
+            "model": "MCLeastCircularSubstring",
+            "tla_original": "MCLeastCircularSubstring.tla",
+            "tla_clean": "MCLeastCircularSubstring_clean.tla",
+            "comments": null,
+            "comments_clean": null,
+            "cfg": null
+        },
+        {
+            "id": "0121",
+            "model": "ZSequences",
+            "tla_original": "ZSequences.tla",
+            "tla_clean": "ZSequences_clean.tla",
+            "comments": "ZSequences_comments.txt",
+            "comments_clean": "ZSequences_comments_clean.txt",
+            "cfg": null
+        }
+    ]
+}

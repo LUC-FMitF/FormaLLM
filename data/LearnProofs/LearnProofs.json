@@ -1,0 +1,31 @@
+{
+    "data": [
+        {
+            "id": "0116",
+            "model": "AddTwo",
+            "tla_original": "AddTwo.tla",
+            "tla_clean": "AddTwo_clean.tla",
+            "comments": "AddTwo_comments.txt",
+            "comments_clean": "AddTwo_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0117",
+            "model": "FindHighest",
+            "tla_original": "FindHighest.tla",
+            "tla_clean": "FindHighest_clean.tla",
+            "comments": "FindHighest_comments.txt",
+            "comments_clean": "FindHighest_comments_clean.txt",
+            "cfg": null
+        },
+        {
+            "id": "0118",
+            "model": "MCFindHighest",
+            "tla_original": "MCFindHighest.tla",
+            "tla_clean": "MCFindHighest_clean.tla",
+            "comments": null,
+            "comments_clean": null,
+            "cfg": "MCFindHighest.cfg"
+        }
+    ]
+}

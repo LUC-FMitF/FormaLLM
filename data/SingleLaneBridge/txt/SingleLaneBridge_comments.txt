@@ -1,0 +1,13 @@
+\* A bridge over a river is only wide enough to permit a single lane of traffic.
+\* Consequently, cars can only move concurrently if they are moving in the same
+\* direction. A safety violation occurs if two cars moving in different directions
+\* enter the bridge at the same time.
+\* To visualize the problem, refer to https://flylib.com/books/en/2.752.1.48/1/
+\* Actions
+\* Two cars or more cannot be in the same location in the Bridge at the same time
+\* The bridge capacity should be respected
+\* Two cars of different directions can never be in the bridge
+\* All cars eventually exit the Bridge
+\* All cars eventually enter the bridge
+\* Modification History
+\* Last modified Tue Oct 12 00:20:28 CEST 2021 by youne

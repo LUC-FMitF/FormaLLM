@@ -1,0 +1,13 @@
+c properly initialized
+with empty channels.
+Reduce the number of initial states.
+Some read-world invariant (here terminationDetected occurs within N steps
+where N has been chosen arbitrarily).
+Make TLC stop and print the usual error trace.
+Make TLC stop and print the usual error trace.
+Rule 0 *)
+EWD840 *)
+Each node maintains a (local) vector clock *)
+https://en.wikipedia.org/wiki/Vector_clock *)
+Format the error-trace as JSON and write to a file. *)
+Format the error-trace as JSON and ping some web endpoint. *)

@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "id": "0006",
+            "model": "AllocatorImplementation",
+            "tla_original": "AllocatorImplementation.tla",
+            "tla_clean": "AllocatorImplementation_clean.tla",
+            "comments": "AllocatorImplementation_comments.txt",
+            "comments_clean": "AllocatorImplementation_comments_clean.txt",
+            "cfg": "AllocatorImplementation.cfg"
+        },
+        {
+            "id": "0007",
+            "model": "AllocatorRefinement",
+            "tla_original": "AllocatorRefinement.tla",
+            "tla_clean": "AllocatorRefinement_clean.tla",
+            "comments": "AllocatorRefinement_comments.txt",
+            "comments_clean": "AllocatorRefinement_comments_clean.txt",
+            "cfg": "AllocatorRefinement.cfg"
+        },
+        {
+            "id": "0008",
+            "model": "SchedulingAllocator",
+            "tla_original": "SchedulingAllocator.tla",
+            "tla_clean": "SchedulingAllocator_clean.tla",
+            "comments": "SchedulingAllocator_comments.txt",
+            "comments_clean": "SchedulingAllocator_comments_clean.txt",
+            "cfg": "SchedulingAllocator.cfg"
+        },
+        {
+            "id": "0009",
+            "model": "SimpleAllocator",
+            "tla_original": "SimpleAllocator.tla",
+            "tla_clean": "SimpleAllocator_clean.tla",
+            "comments": "SimpleAllocator_comments.txt",
+            "comments_clean": "SimpleAllocator_comments_clean.txt",
+            "cfg": "SimpleAllocator.cfg"
+        }
+    ]
+}

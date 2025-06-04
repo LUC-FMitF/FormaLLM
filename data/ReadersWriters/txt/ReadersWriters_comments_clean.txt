@@ -1,0 +1,20 @@
+set of processes currently reading
+set of processes currently writing
+queue of processes waiting to access the resource
+**************************************************************************)
+This solution to the readers-writers problem, cf.                       *)
+https://en.wikipedia.org/wiki/Readers–writers_problem,                  *)
+uses a queue in order to fairly serve all requests.                     *)
+**************************************************************************)
+**********)
+Actions *)
+**********)
+****************)
+Specification *)
+****************)
+*************)
+Invariants *)
+*************)
+*************)
+Properties *)
+*************)
