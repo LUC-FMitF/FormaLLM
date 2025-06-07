@@ -1,0 +1,274 @@
+{
+  "data": [
+    {
+      "id": "0043",
+      "model": "MCDieHarder",
+      "tla_original": "MCDieHarder.tla",
+      "tla_clean": "MCDieHarder_clean.tla",
+      "comments": "MCDieHarder_comments.txt",
+      "comments_clean": "MCDieHarder_comments_clean.txt",
+      "cfg": "MCDieHarder.cfg"
+    },
+    {
+      "id": "0099",
+      "model": "ClientCentric",
+      "tla_original": "ClientCentric.tla",
+      "tla_clean": "ClientCentric_clean.tla",
+      "comments": "ClientCentric_comments.txt",
+      "comments_clean": "ClientCentric_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0047",
+      "model": "HDiskSynod",
+      "tla_original": "HDiskSynod.tla",
+      "tla_clean": "HDiskSynod_clean.tla",
+      "comments": "HDiskSynod_comments.txt",
+      "comments_clean": "HDiskSynod_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0196",
+      "model": "Alternate",
+      "tla_original": "Alternate.tla",
+      "tla_clean": "Alternate_clean.tla",
+      "comments": "Alternate_comments.txt",
+      "comments_clean": "Alternate_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0189",
+      "model": "Hanoi",
+      "tla_original": "Hanoi.tla",
+      "tla_clean": "Hanoi_clean.tla",
+      "comments": "Hanoi_comments.txt",
+      "comments_clean": "Hanoi_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0055",
+      "model": "Relation",
+      "tla_original": "Relation.tla",
+      "tla_clean": "Relation_clean.tla",
+      "comments": "Relation_comments.txt",
+      "comments_clean": "Relation_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0062",
+      "model": "MCEWD687a",
+      "tla_original": "MCEWD687a.tla",
+      "tla_clean": "MCEWD687a_clean.tla",
+      "comments": "MCEWD687a_comments.txt",
+      "comments_clean": "MCEWD687a_comments_clean.txt",
+      "cfg": "MCEWD687a.cfg"
+    },
+    {
+      "id": "0074",
+      "model": "EWD998ChanID_export",
+      "tla_original": "EWD998ChanID_export.tla",
+      "tla_clean": "EWD998ChanID_export_clean.tla",
+      "comments": "EWD998ChanID_export_comments.txt",
+      "comments_clean": "EWD998ChanID_export_comments_clean.txt",
+      "cfg": "EWD998ChanID_export.cfg"
+    },
+    {
+      "id": "0061",
+      "model": "EWD687a_anim",
+      "tla_original": "EWD687a_anim.tla",
+      "tla_clean": "EWD687a_anim_clean.tla",
+      "comments": "EWD687a_anim_comments.txt",
+      "comments_clean": "EWD687a_anim_comments_clean.txt",
+      "cfg": "EWD687a_anim.cfg"
+    },
+    {
+      "id": "0033",
+      "model": "MCChangRoberts",
+      "tla_original": "MCChangRoberts.tla",
+      "tla_clean": "MCChangRoberts_clean.tla",
+      "comments": null,
+      "comments_clean": null,
+      "cfg": "MCChangRoberts.cfg"
+    },
+    {
+      "id": "0194",
+      "model": "TwoPhase",
+      "tla_original": "TwoPhase.tla",
+      "tla_clean": "TwoPhase_clean.tla",
+      "comments": "TwoPhase_comments.txt",
+      "comments_clean": "TwoPhase_comments_clean.txt",
+      "cfg": "TwoPhase.cfg"
+    },
+    {
+      "id": "0158",
+      "model": "MCConsensus",
+      "tla_original": "MCConsensus.tla",
+      "tla_clean": "MCConsensus_clean.tla",
+      "comments": "MCConsensus_comments.txt",
+      "comments_clean": "MCConsensus_comments_clean.txt",
+      "cfg": "MCConsensus.cfg"
+    },
+    {
+      "id": "0120",
+      "model": "MCLeastCircularSubstring",
+      "tla_original": "MCLeastCircularSubstring.tla",
+      "tla_clean": "MCLeastCircularSubstring_clean.tla",
+      "comments": null,
+      "comments_clean": null,
+      "cfg": null
+    },
+    {
+      "id": "0129",
+      "model": "Majority",
+      "tla_original": "Majority.tla",
+      "tla_clean": "Majority_clean.tla",
+      "comments": "Majority_comments.txt",
+      "comments_clean": "Majority_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0125",
+      "model": "MCQuicksort",
+      "tla_original": "MCQuicksort.tla",
+      "tla_clean": "MCQuicksort_clean.tla",
+      "comments": null,
+      "comments_clean": null,
+      "cfg": "MCQuicksort.cfg"
+    },
+    {
+      "id": "0022",
+      "model": "VoucherTransfer",
+      "tla_original": "VoucherTransfer.tla",
+      "tla_clean": "VoucherTransfer_clean.tla",
+      "comments": "VoucherTransfer_comments.txt",
+      "comments_clean": "VoucherTransfer_comments_clean.txt",
+      "cfg": "VoucherTransfer.cfg"
+    },
+    {
+      "id": "0040",
+      "model": "EnvironmentController",
+      "tla_original": "EnvironmentController.tla",
+      "tla_clean": "EnvironmentController_clean.tla",
+      "comments": "EnvironmentController_comments.txt",
+      "comments_clean": "EnvironmentController_comments_clean.txt",
+      "cfg": "EnvironmentController.cfg"
+    },
+    {
+      "id": "0144",
+      "model": "MultiPaxos_MC",
+      "tla_original": "MultiPaxos_MC.tla",
+      "tla_clean": "MultiPaxos_MC_clean.tla",
+      "comments": "MultiPaxos_MC_comments.txt",
+      "comments_clean": "MultiPaxos_MC_comments_clean.txt",
+      "cfg": "MultiPaxos_MC.cfg"
+    },
+    {
+      "id": "0018",
+      "model": "VoucherCancel",
+      "tla_original": "VoucherCancel.tla",
+      "tla_clean": "VoucherCancel_clean.tla",
+      "comments": "VoucherCancel_comments.txt",
+      "comments_clean": "VoucherCancel_comments_clean.txt",
+      "cfg": "VoucherCancel.cfg"
+    },
+    {
+      "id": "0024",
+      "model": "Consensus",
+      "tla_original": "Consensus.tla",
+      "tla_clean": "Consensus_clean.tla",
+      "comments": "Consensus_comments.txt",
+      "comments_clean": "Consensus_comments_clean.txt",
+      "cfg": "Consensus.cfg"
+    },
+    {
+      "id": "0143",
+      "model": "MultiPaxos",
+      "tla_original": "MultiPaxos.tla",
+      "tla_clean": "MultiPaxos_clean.tla",
+      "comments": "MultiPaxos_comments.txt",
+      "comments_clean": "MultiPaxos_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0123",
+      "model": "BinarySearch",
+      "tla_original": "BinarySearch.tla",
+      "tla_clean": "BinarySearch_clean.tla",
+      "comments": "BinarySearch_comments.txt",
+      "comments_clean": "BinarySearch_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0185",
+      "model": "SimpleRegular",
+      "tla_original": "SimpleRegular.tla",
+      "tla_clean": "SimpleRegular_clean.tla",
+      "comments": "SimpleRegular_comments.txt",
+      "comments_clean": "SimpleRegular_comments_clean.txt",
+      "cfg": "SimpleRegular.cfg"
+    },
+    {
+      "id": "0017",
+      "model": "BufferedRandomAccessFile",
+      "tla_original": "BufferedRandomAccessFile.tla",
+      "tla_clean": "BufferedRandomAccessFile_clean.tla",
+      "comments": "BufferedRandomAccessFile_comments.txt",
+      "comments_clean": "BufferedRandomAccessFile_comments_clean.txt",
+      "cfg": "BufferedRandomAccessFile.cfg"
+    },
+    {
+      "id": "0100",
+      "model": "KVsnap",
+      "tla_original": "KVsnap.tla",
+      "tla_clean": "KVsnap_clean.tla",
+      "comments": "KVsnap_comments.txt",
+      "comments_clean": "KVsnap_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0106",
+      "model": "Prob",
+      "tla_original": "Prob.tla",
+      "tla_clean": "Prob_clean.tla",
+      "comments": null,
+      "comments_clean": null,
+      "cfg": null
+    },
+    {
+      "id": "0130",
+      "model": "MajorityProof",
+      "tla_original": "MajorityProof.tla",
+      "tla_clean": "MajorityProof_clean.tla",
+      "comments": "MajorityProof_comments.txt",
+      "comments_clean": "MajorityProof_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0203",
+      "model": "YoYoNoPruning",
+      "tla_original": "YoYoNoPruning.tla",
+      "tla_clean": "YoYoNoPruning_clean.tla",
+      "comments": "YoYoNoPruning_comments.txt",
+      "comments_clean": "YoYoNoPruning_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0149",
+      "model": "nbacc_ray97",
+      "tla_original": "nbacc_ray97.tla",
+      "tla_clean": "nbacc_ray97_clean.tla",
+      "comments": "nbacc_ray97_comments.txt",
+      "comments_clean": "nbacc_ray97_comments_clean.txt",
+      "cfg": "nbacc_ray97.cfg"
+    },
+    {
+      "id": "0085",
+      "model": "TLAPS",
+      "tla_original": "TLAPS.tla",
+      "tla_clean": "TLAPS_clean.tla",
+      "comments": "TLAPS_comments.txt",
+      "comments_clean": "TLAPS_comments_clean.txt",
+      "cfg": null
+    }
+  ]
+}

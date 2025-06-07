@@ -1,0 +1,292 @@
+{
+  "data": [
+    {
+      "id": "0131",
+      "model": "MCParReach",
+      "tla_original": "MCParReach.tla",
+      "tla_clean": "MCParReach_clean.tla",
+      "comments": null,
+      "comments_clean": null,
+      "cfg": "MCParReach.cfg"
+    },
+    {
+      "id": "0008",
+      "model": "SchedulingAllocator",
+      "tla_original": "SchedulingAllocator.tla",
+      "tla_clean": "SchedulingAllocator_clean.tla",
+      "comments": "SchedulingAllocator_comments.txt",
+      "comments_clean": "SchedulingAllocator_comments_clean.txt",
+      "cfg": "SchedulingAllocator.cfg"
+    },
+    {
+      "id": "0141",
+      "model": "MissionariesAndCannibals",
+      "tla_original": "MissionariesAndCannibals.tla",
+      "tla_clean": "MissionariesAndCannibals_clean.tla",
+      "comments": "MissionariesAndCannibals_comments.txt",
+      "comments_clean": "MissionariesAndCannibals_comments_clean.txt",
+      "cfg": "MissionariesAndCannibals.cfg"
+    },
+    {
+      "id": "0167",
+      "model": "FastPaxos",
+      "tla_original": "FastPaxos.tla",
+      "tla_clean": "FastPaxos_clean.tla",
+      "comments": "FastPaxos_comments.txt",
+      "comments_clean": "FastPaxos_comments_clean.txt",
+      "cfg": "FastPaxos.cfg"
+    },
+    {
+      "id": "0077",
+      "model": "EWD998Chan_opts",
+      "tla_original": "EWD998Chan_opts.tla",
+      "tla_clean": "EWD998Chan_opts_clean.tla",
+      "comments": "EWD998Chan_opts_comments.txt",
+      "comments_clean": "EWD998Chan_opts_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0078",
+      "model": "EWD998PCal",
+      "tla_original": "EWD998PCal.tla",
+      "tla_clean": "EWD998PCal_clean.tla",
+      "comments": "EWD998PCal_comments.txt",
+      "comments_clean": "EWD998PCal_comments_clean.txt",
+      "cfg": "EWD998PCal.cfg"
+    },
+    {
+      "id": "0137",
+      "model": "ReachabilityProofs",
+      "tla_original": "ReachabilityProofs.tla",
+      "tla_clean": "ReachabilityProofs_clean.tla",
+      "comments": "ReachabilityProofs_comments.txt",
+      "comments_clean": "ReachabilityProofs_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0124",
+      "model": "MCBinarySearch",
+      "tla_original": "MCBinarySearch.tla",
+      "tla_clean": "MCBinarySearch_clean.tla",
+      "comments": null,
+      "comments_clean": null,
+      "cfg": "MCBinarySearch.cfg"
+    },
+    {
+      "id": "0162",
+      "model": "Voting",
+      "tla_original": "Voting.tla",
+      "tla_clean": "Voting_clean.tla",
+      "comments": "Voting_comments.txt",
+      "comments_clean": "Voting_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0157",
+      "model": "Consensus",
+      "tla_original": "Consensus.tla",
+      "tla_clean": "Consensus_clean.tla",
+      "comments": "Consensus_comments.txt",
+      "comments_clean": "Consensus_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0159",
+      "model": "MCPaxos",
+      "tla_original": "MCPaxos.tla",
+      "tla_clean": "MCPaxos_clean.tla",
+      "comments": "MCPaxos_comments.txt",
+      "comments_clean": "MCPaxos_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0195",
+      "model": "TransitiveClosure",
+      "tla_original": "TransitiveClosure.tla",
+      "tla_clean": "TransitiveClosure_clean.tla",
+      "comments": "TransitiveClosure_comments.txt",
+      "comments_clean": "TransitiveClosure_comments_clean.txt",
+      "cfg": "TransitiveClosure.cfg"
+    },
+    {
+      "id": "0081",
+      "model": "EWD998_optsSC",
+      "tla_original": "EWD998_optsSC.tla",
+      "tla_clean": "EWD998_optsSC_clean.tla",
+      "comments": "EWD998_optsSC_comments.txt",
+      "comments_clean": "EWD998_optsSC_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0058",
+      "model": "TokenRing",
+      "tla_original": "TokenRing.tla",
+      "tla_clean": "TokenRing_clean.tla",
+      "comments": "TokenRing_comments.txt",
+      "comments_clean": "TokenRing_comments_clean.txt",
+      "cfg": "TokenRing.cfg"
+    },
+    {
+      "id": "0087",
+      "model": "CRDT",
+      "tla_original": "CRDT.tla",
+      "tla_clean": "CRDT_clean.tla",
+      "comments": "CRDT_comments.txt",
+      "comments_clean": "CRDT_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0164",
+      "model": "Prisoners",
+      "tla_original": "Prisoners.tla",
+      "tla_clean": "Prisoners_clean.tla",
+      "comments": "Prisoners_comments.txt",
+      "comments_clean": "Prisoners_comments_clean.txt",
+      "cfg": "Prisoners.cfg"
+    },
+    {
+      "id": "0154",
+      "model": "MCVoting",
+      "tla_original": "MCVoting.tla",
+      "tla_clean": "MCVoting_clean.tla",
+      "comments": "MCVoting_comments.txt",
+      "comments_clean": "MCVoting_comments_clean.txt",
+      "cfg": "MCVoting.cfg"
+    },
+    {
+      "id": "0019",
+      "model": "VoucherIssue",
+      "tla_original": "VoucherIssue.tla",
+      "tla_clean": "VoucherIssue_clean.tla",
+      "comments": "VoucherIssue_comments.txt",
+      "comments_clean": "VoucherIssue_comments_clean.txt",
+      "cfg": "VoucherIssue.cfg"
+    },
+    {
+      "id": "0182",
+      "model": "MCtcp",
+      "tla_original": "MCtcp.tla",
+      "tla_clean": "MCtcp_clean.tla",
+      "comments": "MCtcp_comments.txt",
+      "comments_clean": "MCtcp_comments_clean.txt",
+      "cfg": "MCtcp.cfg"
+    },
+    {
+      "id": "0122",
+      "model": "LevelSpec",
+      "tla_original": "LevelSpec.tla",
+      "tla_clean": "LevelSpec_clean.tla",
+      "comments": "LevelSpec_comments.txt",
+      "comments_clean": "LevelSpec_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0142",
+      "model": "Elevator",
+      "tla_original": "Elevator.tla",
+      "tla_clean": "Elevator_clean.tla",
+      "comments": "Elevator_comments.txt",
+      "comments_clean": "Elevator_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0192",
+      "model": "PaxosCommit",
+      "tla_original": "PaxosCommit.tla",
+      "tla_clean": "PaxosCommit_clean.tla",
+      "comments": "PaxosCommit_comments.txt",
+      "comments_clean": "PaxosCommit_comments_clean.txt",
+      "cfg": "PaxosCommit.cfg"
+    },
+    {
+      "id": "0190",
+      "model": "HanoiSeq",
+      "tla_original": "HanoiSeq.tla",
+      "tla_clean": "HanoiSeq_clean.tla",
+      "comments": "HanoiSeq_comments.txt",
+      "comments_clean": "HanoiSeq_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0006",
+      "model": "AllocatorImplementation",
+      "tla_original": "AllocatorImplementation.tla",
+      "tla_clean": "AllocatorImplementation_clean.tla",
+      "comments": "AllocatorImplementation_comments.txt",
+      "comments_clean": "AllocatorImplementation_comments_clean.txt",
+      "cfg": "AllocatorImplementation.cfg"
+    },
+    {
+      "id": "0197",
+      "model": "MCTwoPhase",
+      "tla_original": "MCTwoPhase.tla",
+      "tla_clean": "MCTwoPhase_clean.tla",
+      "comments": null,
+      "comments_clean": null,
+      "cfg": "MCTwoPhase.cfg"
+    },
+    {
+      "id": "0138",
+      "model": "ReachabilityTest",
+      "tla_original": "ReachabilityTest.tla",
+      "tla_clean": "ReachabilityTest_clean.tla",
+      "comments": "ReachabilityTest_comments.txt",
+      "comments_clean": "ReachabilityTest_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0176",
+      "model": "SpanTreeRandom",
+      "tla_original": "SpanTreeRandom.tla",
+      "tla_clean": "SpanTreeRandom_clean.tla",
+      "comments": "SpanTreeRandom_comments.txt",
+      "comments_clean": "SpanTreeRandom_comments_clean.txt",
+      "cfg": "SpanTreeRandom.cfg"
+    },
+    {
+      "id": "0174",
+      "model": "spanning",
+      "tla_original": "spanning.tla",
+      "tla_clean": "spanning_clean.tla",
+      "comments": "spanning_comments.txt",
+      "comments_clean": "spanning_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0039",
+      "model": "EPFailureDetector",
+      "tla_original": "EPFailureDetector.tla",
+      "tla_clean": "EPFailureDetector_clean.tla",
+      "comments": "EPFailureDetector_comments.txt",
+      "comments_clean": "EPFailureDetector_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0094",
+      "model": "GameOfLife",
+      "tla_original": "GameOfLife.tla",
+      "tla_clean": "GameOfLife_clean.tla",
+      "comments": null,
+      "comments_clean": null,
+      "cfg": "GameOfLife.cfg"
+    },
+    {
+      "id": "0204",
+      "model": "YoYoPruning",
+      "tla_original": "YoYoPruning.tla",
+      "tla_clean": "YoYoPruning_clean.tla",
+      "comments": "YoYoPruning_comments.txt",
+      "comments_clean": "YoYoPruning_comments_clean.txt",
+      "cfg": null
+    },
+    {
+      "id": "0016",
+      "model": "bosco",
+      "tla_original": "bosco.tla",
+      "tla_clean": "bosco_clean.tla",
+      "comments": "bosco_comments.txt",
+      "comments_clean": "bosco_comments_clean.txt",
+      "cfg": "bosco.cfg"
+    }
+  ]
+}

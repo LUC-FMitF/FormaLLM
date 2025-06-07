@@ -4,6 +4,10 @@
     "context": "..",
     "dockerfile": "Dockerfile"
   },
+  "runArgs": [
+    "--gpus",
+    "all"
+  ],
   "postCreateCommand": "conda run -n tla-llm conda clean -afy",
   "customizations": {
     "vscode": {
@@ -19,4 +23,5 @@
   },
   "remoteUser": "root"
 }
+
 

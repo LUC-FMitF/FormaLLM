@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.4.1-devel-ubuntu22.04
+FROM nvidia/cuda:12.8.1-base-ubuntu24.04
 
 # Install Miniconda
 ENV CONDA_DIR /opt/conda
