@@ -31,7 +31,11 @@ dependencies:
       - zenml[server]
       - dvc[gdrive]
       - mlflow
-      - langchain
+      - langchain-core
+      - langchain-community
+      - langchain-openai
+      - langchain-ollama
+      - langchain-anthropic
       - openai
       - transformers==4.48.3
       - bitsandbytes==0.45.1

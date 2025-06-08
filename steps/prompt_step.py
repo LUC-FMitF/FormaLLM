@@ -16,10 +16,20 @@ License: MIT
 """
 
 import json
+import os
+import warnings
 from pathlib import Path
 from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
-from langchain.chat_models import ChatOpenAI
+from langchain.chains.llm import LLMChain
+from langchain_openai import ChatOpenAI
+
+
+# --- OpenAI API ---
+llm = ChatOpenAI(
+    temperature=0,
+    model="gpt-4",
+    openai_api_key=os.environ.get("OPENAI_API_KEY") 
+)
 
 # --- Path setup ---
 project_root = Path(__file__).resolve().parent.parent
@@ -45,10 +55,38 @@ few_shot_examples = train_data[:NUM_FEW_SHOTS]
 
 # --- Helpers ---
 def load_text(model_meta: dict, field: str) -> str:
-    """Load a text file given a metadata field like 'comments_clean' or 'tla_clean'."""
+    """
+    Load a text file given a field in the model metadata, using subfolder heuristics
+    and fallback searching if needed.
+    """
     model_dir = data_dir / model_meta["model"]
-    file_path = model_dir / "txt" / model_meta[field]
-    return file_path.read_text().strip()
+    filename = model_meta.get(field)
+
+    if not filename:
+        warnings.warn(f"[{model_meta['model']}] Field '{field}' missing.")
+        return ""
+
+    # Determine subfolder by extension
+    ext = Path(filename).suffix
+    subfolder = {
+        ".txt": "txt",
+        ".tla": "tla",
+        ".cfg": "cfg"
+    }.get(ext, "")
+
+    expected_path = model_dir / subfolder / filename if subfolder else model_dir / filename
+
+    if expected_path.exists():
+        return expected_path.read_text().strip()
+
+    # Fallback: search recursively in model folder
+    fallback_matches = list(model_dir.rglob(filename))
+    if fallback_matches:
+        return fallback_matches[0].read_text().strip()
+
+    # Log warning and continue
+    warnings.warn(f"[{model_meta['model']}] File '{filename}' not found in expected or fallback locations.")
+    return ""
 
 def build_few_shot_prompt(examples: list[dict]) -> str:
     """Construct a few-shot prompt with example comments and specs."""
