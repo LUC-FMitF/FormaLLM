@@ -2,12 +2,14 @@
 
 set -e  # Exit on error
 
+echo "Initializing ZenML"
+zenml init
 
 echo "Installing ZenML integrations"
 zenml integration install mlflow -y
 
 echo "Registering MLflow experiment tracker"
-zenml experiment-tracker register mlflow_tracker --flavor=mlflow || echo "Tracker already exists"
+zenml experiment-tracker register mlflow_tracker --flavor=mlflow  --tracking_uri="file:///workspaces/FormaLLM/mlruns" || echo "Tracker already exists"
 
 echo "Creating new stack with MLflow tracker"
 zenml stack register mlflow_stack \

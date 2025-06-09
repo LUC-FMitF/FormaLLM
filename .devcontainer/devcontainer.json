@@ -4,9 +4,12 @@
     "context": "..",
     "dockerfile": "Dockerfile"
   },
+  "containerEnv": {
+  "DOTENV_CONFIG_PATH": "/workspaces/FormaLLM/.env"
+  },
   "runArgs": [
-    "--gpus",
-    "all"
+    "--gpus=all",
+     "--env-file", ".env"
   ],
   "postCreateCommand": "conda run -n tla-llm conda clean -afy",
   "customizations": {

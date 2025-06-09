@@ -22,105 +22,70 @@ from pathlib import Path
 from langchain.prompts import PromptTemplate
 from langchain.chains.llm import LLMChain
 from langchain_openai import ChatOpenAI
+from zenml import step
 
 
-# --- OpenAI API ---
-llm = ChatOpenAI(
-    temperature=0,
-    model="gpt-4",
-    openai_api_key=os.environ.get("OPENAI_API_KEY") 
-)
+@step
+def prompt_llm() -> dict:
+    project_root = Path(__file__).resolve().parent.parent
+    data_dir = project_root / "data"
+    split_dir = project_root / "outputs"
 
-# --- Path setup ---
-project_root = Path(__file__).resolve().parent.parent
-data_dir = project_root / "data"
-split_dir = project_root / "outputs"
+    train_path = split_dir / "train.json"
+    val_path = split_dir / "val.json"
 
-train_path = split_dir / "train.json"
-val_path = split_dir / "val.json"
+    NUM_FEW_SHOTS = 3
+    TARGET_MODEL_INDEX = 0
 
-# --- Parameters ---
-NUM_FEW_SHOTS = 3         # Number of examples to include in prompt
-TARGET_MODEL_INDEX = 0    # Index of validation set model to use for inference
+    def load_json_data(path):
+        with open(path) as f:
+            return json.load(f)["data"]
 
-# --- Load data ---
-def load_json_data(path):
-    with open(path) as f:
-        return json.load(f)["data"]
+    train_data = load_json_data(train_path)
+    val_data = load_json_data(val_path)
+    target_model = val_data[TARGET_MODEL_INDEX]
+    few_shot_examples = train_data[:NUM_FEW_SHOTS]
 
-train_data = load_json_data(train_path)
-val_data = load_json_data(val_path)
-target_model = val_data[TARGET_MODEL_INDEX]
-few_shot_examples = train_data[:NUM_FEW_SHOTS]
-
-# --- Helpers ---
-def load_text(model_meta: dict, field: str) -> str:
-    """
-    Load a text file given a field in the model metadata, using subfolder heuristics
-    and fallback searching if needed.
-    """
-    model_dir = data_dir / model_meta["model"]
-    filename = model_meta.get(field)
-
-    if not filename:
-        warnings.warn(f"[{model_meta['model']}] Field '{field}' missing.")
+    def load_text(model_meta: dict, field: str) -> str:
+        model_name = model_meta["model"]
+        filename = model_meta.get(field)
+        if not filename:
+            warnings.warn(f"[{model_name}] Field '{field}' missing.")
+            return ""
+        ext = Path(filename).suffix
+        subfolder = {".txt": "txt", ".tla": "tla", ".cfg": "cfg"}.get(ext, "")
+        model_dir = data_dir / model_name
+        expected_path = model_dir / subfolder / filename if subfolder else model_dir / filename
+        if expected_path.exists():
+            return expected_path.read_text().strip()
+        for search_dir in [model_dir, data_dir]:
+            fallback = list(search_dir.rglob(filename))
+            if fallback:
+                warnings.warn(f"[{model_name}] Using fallback: {fallback[0]}")
+                return fallback[0].read_text().strip()
+        warnings.warn(f"[{model_name}] File '{filename}' not found.")
         return ""
 
-    # Determine subfolder by extension
-    ext = Path(filename).suffix
-    subfolder = {
-        ".txt": "txt",
-        ".tla": "tla",
-        ".cfg": "cfg"
-    }.get(ext, "")
+    def build_few_shot_prompt(examples: list[dict]) -> str:
+        parts = []
+        for ex in examples:
+            comments = load_text(ex, "comments_clean")
+            tla = load_text(ex, "tla_clean").replace("----", "--")
+            parts.append(f"# Comments:\n{comments}\n\n# TLA+ Specification:\n{tla}")
+        return "\n".join(parts)
 
-    expected_path = model_dir / subfolder / filename if subfolder else model_dir / filename
+    few_shot_prompt = build_few_shot_prompt(few_shot_examples)
+    target_comments = load_text(target_model, "comments_clean")
 
-    if expected_path.exists():
-        return expected_path.read_text().strip()
+    final_prompt = f"{few_shot_prompt}\n# Comments:\n{target_comments}\n\n# TLA+ Specification:\n"
 
-    # Fallback: search recursively in model folder
-    fallback_matches = list(model_dir.rglob(filename))
-    if fallback_matches:
-        return fallback_matches[0].read_text().strip()
+    llm = ChatOpenAI(temperature=0, model="gpt-4")
+    chain = LLMChain(llm=llm, prompt=PromptTemplate.from_template("{input}"))
+    response = chain.run(input=final_prompt)
 
-    # Log warning and continue
-    warnings.warn(f"[{model_meta['model']}] File '{filename}' not found in expected or fallback locations.")
-    return ""
+    generated_dir = project_root / "outputs" / "generated"
+    generated_dir.mkdir(parents=True, exist_ok=True)
+    output_path = generated_dir / f"{target_model['model']}.generated.tla"
+    output_path.write_text(response.strip())
 
-def build_few_shot_prompt(examples: list[dict]) -> str:
-    """Construct a few-shot prompt with example comments and specs."""
-    prompt_parts = []
-    for ex in examples:
-        comments = load_text(ex, "comments_clean")
-        tla = load_text(ex, "tla_clean").replace("----", "--")
-        prompt_parts.append(f"""# Comments:
-{comments}
-
-# TLA+ Specification:
-{tla}
-""")
-    return "\n".join(prompt_parts)
-
-# --- Build final prompt ---
-few_shot_prompt = build_few_shot_prompt(few_shot_examples)
-target_comments = load_text(target_model, "comments_clean")
-
-final_prompt = f"""{few_shot_prompt}
-# Comments:
-{target_comments}
-
-# TLA+ Specification:
-"""
-
-# --- Run LangChain LLM ---
-llm = ChatOpenAI(temperature=0, model="gpt-4")  # Change model as needed
-prompt = PromptTemplate.from_template("{input}")
-chain = LLMChain(llm=llm, prompt=prompt)
-
-# --- Inference ---
-response = chain.run(input=final_prompt)
-
-# --- Output ---
-print("=== Synthesized TLA+ Specification ===\n")
-print(response)
+    return {target_model['model']: response.strip()}
