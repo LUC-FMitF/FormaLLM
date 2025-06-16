@@ -39,19 +39,14 @@ def evaluate_tla(specs: dict) -> dict:
     results = {}
 
     for model_name, spec in specs.items():
-        print(f"\n--- {model_name} ---")
+        print(f"\n--- Evaluating  {model_name} ---")
 
+        # Write the LLM Generated Spec to disk
         tla_path = generated_dir / f"{model_name}.generated.tla"
         tla_path.write_text(spec.strip())
 
-        cfg_path = resolve_file(model_name, f"{model_name}.cfg", "cfg")
-        if not cfg_path:
-            print(f"Skipping {model_name} due to missing .cfg")
-            results[model_name] = "SKIPPED"
-            continue
-
         result = subprocess.run(
-            ["tlc", "-nowarning", "-config", str(cfg_path), str(tla_path)],
+            ["tlc", "-nowarning", "-config", str(tla_path)],
             capture_output=True, text=True
         )
 
@@ -60,6 +55,8 @@ def evaluate_tla(specs: dict) -> dict:
 
         if "The specification is correct" in result.stdout:
             results[model_name] = "PASS"
+        elif "TLC threw an error" in result.stdout:
+            results[model_name] = "ERROR"
         else:
             results[model_name] = "FAIL"
 
