@@ -15,8 +15,9 @@ from pathlib import Path
 from typing import Optional
 from zenml import step
 import csv
+import mlflow
 
-@step
+@step(enable_cache=False)
 def evaluate_tla(specs: dict) -> dict:
     project_root = Path(__file__).resolve().parent.parent
     data_dir = project_root / "data"
@@ -38,6 +39,7 @@ def evaluate_tla(specs: dict) -> dict:
         return None
 
     results = {}
+    mlflow.set_experiment("tla_eval")
 
     for model_name, spec in specs.items():
         print(f"\n--- {model_name} ---")
@@ -64,12 +66,18 @@ def evaluate_tla(specs: dict) -> dict:
         log_path = eval_output_dir / f"{model_name}.tlc.log"
         log_path.write_text(result.stdout + "\n=== STDERR ===\n" + result.stderr)
 
-        if "The specification is correct" in result.stdout:
-            results[model_name] = "PASS"
-        elif "TLC encountered an unexpected exception" in result.stdout:
-            results[model_name] = "ERROR"
-        else:
-            results[model_name] = "FAIL"
+        with mlflow.start_run(run_name=model_name, nested=True):
+                    mlflow.log_param("model_name", model_name)
+                    mlflow.log_artifact(str(log_path))
+                    if "The specification is correct" in result.stdout:
+                        mlflow.log_metric("tlc_result", 1)
+                        results[model_name] = "PASS"
+                    elif "TLC threw an error" in result.stdout:
+                        mlflow.log_metric("tlc_result", -1)
+                        results[model_name] = "ERROR"
+                    else:
+                        mlflow.log_metric("tlc_result", 0)
+                        results[model_name] = "FAIL"
 
         
         results_path = eval_output_dir / "evaluation_results.csv"

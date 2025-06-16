@@ -19,12 +19,15 @@ import json
 import os
 import warnings
 from pathlib import Path
+import mlflow
 from langchain.prompts import PromptTemplate
 from langchain.chains.llm import LLMChain
 from langchain_openai import ChatOpenAI
 #from langchain_ollama.llms import OllamaLLM
 from zenml import step
 
+# Enable automatic trace logging for LangChain
+mlflow.langchain.autolog()
 
 @step
 def prompt_llm() -> dict:
