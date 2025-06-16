@@ -36,7 +36,6 @@ def prompt_llm() -> dict:
     val_path = split_dir / "val.json"
 
     NUM_FEW_SHOTS = 3
-    TARGET_MODEL_INDEX = 4
 
     def load_json_data(path):
         with open(path) as f:
@@ -44,8 +43,6 @@ def prompt_llm() -> dict:
 
     train_data = load_json_data(train_path)
     val_data = load_json_data(val_path)
-    target_model = val_data[TARGET_MODEL_INDEX]
-    few_shot_examples = train_data[:NUM_FEW_SHOTS]
 
     def load_text(model_meta: dict, field: str) -> str:
         model_name = model_meta["model"]
@@ -73,7 +70,8 @@ def prompt_llm() -> dict:
             # comments = load_text(ex, "comments_clean")
             # tla = load_text(ex, "tla_clean").replace("----", "--")
             full_tla = load_text(ex, "tla_original")
-            parts.append(f"# Full TLA+ Specification:\n{full_tla}")
+            if full_tla:
+                parts.append(f"# Full TLA+ Specification:\n{full_tla}")
         return "\n".join(parts)
     
     # Instruction header to give context to the LLM
@@ -86,38 +84,53 @@ def prompt_llm() -> dict:
         "AND its corresponding TLC configuration if none is provided .\n"
         "Use the examples as inspiration for structure and style.\n"
         "Format your answer as a valid TLA+ module, and .cfg if one is not provided like this:\n"
-        "---- MODULE MySpec ----\n... your spec ...\n====\n\n# TLC Configuration:\n... config lines ...\n"
+        "---- MODULE MySpec ----\n... your spec ...\n====\n\n# TLC Configuration:\n... config lines ...\n-----END CFG-----\n"
     )
-
-    few_shot_prompt = build_few_shot_prompt(few_shot_examples)
-    target_comments = load_text(target_model, "comments_clean")
-    target_cfg = load_text(target_model, "cfg") or "None provided"
-    cfg_prompt = f"\n\n# TLC Configuration:\n{target_cfg}"
-    final_prompt = (
-        instruction_header
-        + few_shot_prompt
-        + f"\n\n# Comments:\n{target_comments}\n\n# TLA+ Specification:\n"
-        + cfg_prompt
-    )
-
+    
     llm = ChatOpenAI(temperature=0, model="gpt-4")
     #llm = OllamaLLM(model="llama3", temperature=0)
     chain = LLMChain(llm=llm, prompt=PromptTemplate.from_template("{input}"))
-    response = chain.run(input=final_prompt)
-
-    # Split TLA and CFG from response
-    if "# TLC Configuration:" in response:
-        tla_part, cfg_part = response.split("# TLC Configuration:", 1)
-    else:
-        tla_part = response
-        cfg_part = ""
 
     generated_dir = project_root / "outputs" / "generated"
     generated_dir.mkdir(parents=True, exist_ok=True)
-    output_tla_path = generated_dir / f"{target_model['model']}.generated.tla"
-    output_cfg_path = generated_dir / f"{target_model['model']}.generated.cfg"
-    output_tla_path.write_text(tla_part.strip())
-    output_cfg_path.write_text(cfg_part.strip())
+
+    results = {}
+
+    for i, target_model in enumerate(val_data):
+        few_shot_examples = train_data[:NUM_FEW_SHOTS]
+        few_shot_prompt = build_few_shot_prompt(few_shot_examples)
+        target_comments = load_text(target_model, "comments_clean")
+        target_cfg = load_text(target_model,"cfg")
+        cfg_prompt = f"\n\n# TLC Configuration:\n{target_cfg}" if target_cfg else "\n\n# No configuration file provided."
+
+        if not target_comments:
+            warnings.warn(f"Skipping model {target_model ['model']} because comments are missing")
+            continue
+
+        final_prompt = (
+            instruction_header
+            + "\n\n"
+            + few_shot_prompt
+            + cfg_prompt
+            + f"\n\n Comments:\n{target_comments}\n\n TLA+ Specification:\n"
+        )
+        print(f"\n--- Generating spec for model: {target_model['model']} ---")
+        response = chain.run(input=final_prompt).strip()
+
+        # Split TLA and CFG from response
+        if "# TLC Configuration:" in response:
+            tla_part, cfg_part = response.split("# TLC Configuration:", 1)
+            cfg_part = cfg_part.replace ("-----END CFG-----","").strip()
+        else:
+            tla_part = response
+            cfg_part = ""
 
 
-    return {target_model['model']: tla_part.strip()}
+        output_tla_path = generated_dir / f"{target_model['model']}.generated.tla"
+        output_cfg_path = generated_dir / f"{target_model['model']}.cfg"
+        output_tla_path.write_text(tla_part.strip())
+        output_cfg_path.write_text(cfg_part.strip())
+
+        results[target_model["model"]] = tla_part.strip()
+
+    return results

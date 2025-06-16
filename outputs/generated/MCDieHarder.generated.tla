@@ -1,36 +1,12 @@
----------------- MODULE DieHarderMC ----------------
-
+---- MODULE DieHarderMC ----
 EXTENDS DieHarder
 
-MCJug == {1, 2}
+CONSTANT MCJug, MCCapacity
 
-MCCapacity ==
-[1 |-> 3,
-2 |-> 5]
-
-=============================================================================
-# Comments:
-The following definitions duplicate the original Die Hard problem.
-**************************************************************************)
-To have TLC find a solution, we must tell it what values to use for the *)
-constant parameters Jug, Capacity, and Goal.  However, TLC does not     *)
-allow one to write function-valued expressions in a configuration       *)
-file.  So, we use this module, which extends module DieHarder, to       *)
-define a function MCCapacity and have the configuration file TLC to     *)
-substitute MCCapacity for Capacity.  Since we need to know the value of *)
-Jug to define Capacity (which is a function having Jug as its domain),  *)
-we also define MCJug and tell TLC to substitute it for Jug.             *)
-**************************************************************************)
-
-# TLA+ Specification:
----------------- MODULE DieHarderMC ----------------
-
-EXTENDS DieHarder
-
-MCJug == {1, 2}
-
-MCCapacity ==
-[1 |-> 3,
-2 |-> 5]
+ASSUME /\ MCJug \in Nat \ {0}
+       /\ MCCapacity \in [MCJug -> Nat \ {0}]
+       /\ Goal \in Nat \ {0}
+       /\ Goal \leq MCCapacity[MCJug]
 
 =============================================================================
+-----END CFG-----

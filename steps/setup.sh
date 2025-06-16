@@ -29,6 +29,9 @@ zenml stack register mlflow_stack \
 
 echo "Project environment setup complete."
 
-# Optional: Uncomment to launch MLflow UI automatically
+# Optional: Uncomment to launch MLflow UI and ZenML automatically
 echo "Starting MLflow UI at http://localhost:5000"
 mlflow ui &
+
+echo "Starting ZenML server at http://localhost:8237"
+zenml login --local

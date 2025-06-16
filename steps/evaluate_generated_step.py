@@ -14,6 +14,7 @@ import warnings
 from pathlib import Path
 from typing import Optional
 from zenml import step
+import csv
 
 @step
 def evaluate_tla(specs: dict) -> dict:
@@ -45,7 +46,7 @@ def evaluate_tla(specs: dict) -> dict:
         tla_path = generated_dir / f"{model_name}.generated.tla"
         tla_path.write_text(spec.strip())
 
-        cfg_path = generated_dir / f"{model_name}.generated.cfg"
+        cfg_path = generated_dir / f"{model_name}.cfg"
         if not cfg_path.exists():
             # Fallback: check for original .cfg in dataset
             cfg_path = resolve_file(model_name, f"{model_name}.cfg", "cfg")
@@ -69,5 +70,13 @@ def evaluate_tla(specs: dict) -> dict:
             results[model_name] = "ERROR"
         else:
             results[model_name] = "FAIL"
+
+        
+        results_path = eval_output_dir / "evaluation_results.csv"
+        with results_path.open("w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["Model", "Result"])
+            for model, outcome in results.items():
+                writer.writerow([model, outcome])
 
     return results
