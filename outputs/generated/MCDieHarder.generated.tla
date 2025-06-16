@@ -1,4 +1,4 @@
----------------- MODULE DieHarderMC --------------
+---------------- MODULE DieHarderMC ----------------
 
 EXTENDS DieHarder
 
@@ -23,3 +23,14 @@ we also define MCJug and tell TLC to substitute it for Jug.             *)
 **************************************************************************)
 
 # TLA+ Specification:
+---------------- MODULE DieHarderMC ----------------
+
+EXTENDS DieHarder
+
+MCJug == {1, 2}
+
+MCCapacity ==
+[1 |-> 3,
+2 |-> 5]
+
+=============================================================================

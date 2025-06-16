@@ -22,6 +22,7 @@ from pathlib import Path
 from langchain.prompts import PromptTemplate
 from langchain.chains.llm import LLMChain
 from langchain_openai import ChatOpenAI
+#from langchain_ollama.llms import OllamaLLM
 from zenml import step
 
 
@@ -35,7 +36,7 @@ def prompt_llm() -> dict:
     val_path = split_dir / "val.json"
 
     NUM_FEW_SHOTS = 3
-    TARGET_MODEL_INDEX = 0
+    TARGET_MODEL_INDEX = 4
 
     def load_json_data(path):
         with open(path) as f:
@@ -69,17 +70,33 @@ def prompt_llm() -> dict:
     def build_few_shot_prompt(examples: list[dict]) -> str:
         parts = []
         for ex in examples:
-            comments = load_text(ex, "comments_clean")
-            tla = load_text(ex, "tla_clean").replace("----", "--")
-            parts.append(f"# Comments:\n{comments}\n\n# TLA+ Specification:\n{tla}")
+            # comments = load_text(ex, "comments_clean")
+            # tla = load_text(ex, "tla_clean").replace("----", "--")
+            full_tla = load_text(ex, "tla_original")
+            parts.append(f"# Full TLA+ Specification:\n{full_tla}")
         return "\n".join(parts)
+    
+    # Instruction header to give context to the LLM
+    instruction_header = (
+        "You are a helpful assistant trained to write valid TLA+ specifications.\n"
+        "Below are several complete and valid TLA+ specifications.\n"
+        "At the end, you will be given only a set of user-written comments.\n"
+        "Your task is to generate a valid TLA+ specification based on those comments.\n"
+        "Use the examples as inspiration for structure and style.\n"
+        "Format your answer as a valid TLA+ module.\n"
+    )
 
     few_shot_prompt = build_few_shot_prompt(few_shot_examples)
     target_comments = load_text(target_model, "comments_clean")
 
-    final_prompt = f"{few_shot_prompt}\n# Comments:\n{target_comments}\n\n# TLA+ Specification:\n"
+    final_prompt = (
+        instruction_header
+        + few_shot_prompt
+        + f"\n\n# Comments:\n{target_comments}\n\n# TLA+ Specification:\n"
+    )
 
     llm = ChatOpenAI(temperature=0, model="gpt-4")
+    #llm = OllamaLLM(model="llama3", temperature=0)
     chain = LLMChain(llm=llm, prompt=PromptTemplate.from_template("{input}"))
     response = chain.run(input=final_prompt)
 
