@@ -1,0 +1,36 @@
+@step
+def evaluate_tla(specs: dict) -> dict:
+    project_root = Path(__file__).resolve().parent.parent
+    generated_dir = project_root / "outputs" / "generated"
+    eval_output_dir = project_root / "outputs" / "evaluations"
+    eval_output_dir.mkdir(parents=True, exist_ok=True)
+
+    results = {}
+
+    for model_name, tla_code in specs.items():
+        print(f"\n--- Evaluating {model_name} ---")
+
+        # Write the generated spec to file
+        tla_path = generated_dir / f"{model_name}.generated.tla"
+        tla_path.write_text(tla_code.strip())
+
+        # Run TLC without a config file
+        result = subprocess.run(
+            ["tlc", "-nowarning", str(tla_path)],
+            capture_output=True,
+            text=True
+        )
+
+        # Write logs
+        log_path = eval_output_dir / f"{model_name}.tlc.log"
+        log_path.write_text(result.stdout + "\n=== STDERR ===\n" + result.stderr)
+
+        # Evaluate result based on TLC output
+        if "The specification is correct" in result.stdout:
+            results[model_name] = "PASS"
+        elif "TLC threw an unexpected exception" in result.stdout:
+            results[model_name] = "ERROR"
+        else:
+            results[model_name] = "FAIL"
+
+    return results

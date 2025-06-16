@@ -80,19 +80,24 @@ def prompt_llm() -> dict:
     instruction_header = (
         "You are a helpful assistant trained to write valid TLA+ specifications.\n"
         "Below are several complete and valid TLA+ specifications.\n"
-        "At the end, you will be given only a set of user-written comments.\n"
-        "Your task is to generate a valid TLA+ specification based on those comments.\n"
+        "At the end, you will be given only a set of user-written comments, "
+        "and the target model's .cfg file if available.\n"
+        "Your task is to generate a valid TLA+ specification based on those comments"
+        "AND its corresponding TLC configuration if none is provided .\n"
         "Use the examples as inspiration for structure and style.\n"
-        "Format your answer as a valid TLA+ module.\n"
+        "Format your answer as a valid TLA+ module, and .cfg if one is not provided like this:\n"
+        "---- MODULE MySpec ----\n... your spec ...\n====\n\n# TLC Configuration:\n... config lines ...\n"
     )
 
     few_shot_prompt = build_few_shot_prompt(few_shot_examples)
     target_comments = load_text(target_model, "comments_clean")
-
+    target_cfg = load_text(target_model, "cfg") or "None provided"
+    cfg_prompt = f"\n\n# TLC Configuration:\n{target_cfg}"
     final_prompt = (
         instruction_header
         + few_shot_prompt
         + f"\n\n# Comments:\n{target_comments}\n\n# TLA+ Specification:\n"
+        + cfg_prompt
     )
 
     llm = ChatOpenAI(temperature=0, model="gpt-4")
@@ -100,9 +105,19 @@ def prompt_llm() -> dict:
     chain = LLMChain(llm=llm, prompt=PromptTemplate.from_template("{input}"))
     response = chain.run(input=final_prompt)
 
+    # Split TLA and CFG from response
+    if "# TLC Configuration:" in response:
+        tla_part, cfg_part = response.split("# TLC Configuration:", 1)
+    else:
+        tla_part = response
+        cfg_part = ""
+
     generated_dir = project_root / "outputs" / "generated"
     generated_dir.mkdir(parents=True, exist_ok=True)
-    output_path = generated_dir / f"{target_model['model']}.generated.tla"
-    output_path.write_text(response.strip())
+    output_tla_path = generated_dir / f"{target_model['model']}.generated.tla"
+    output_cfg_path = generated_dir / f"{target_model['model']}.generated.cfg"
+    output_tla_path.write_text(tla_part.strip())
+    output_cfg_path.write_text(cfg_part.strip())
 
-    return {target_model['model']: response.strip()}
+
+    return {target_model['model']: tla_part.strip()}
