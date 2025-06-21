@@ -3,60 +3,119 @@ EXTENDS Naturals, FiniteSets, Sequences
 
 (***************************************************************************)
 (* Towers are represented by natural numbers                               *)
-(* all towers are empty except all disks are on the first Tower            *)
-(* All less significant bits are 0                                         *)
-(* Remaining tower does not change                                         *)
-(* No need to try to move onto the same tower (Move(...) prevents it too)  *)
-(* Modification History                                                    *)
-(* Last modified Tue May 17 14:55:33 CEST 2016 by markus                   *)
-(* Created Sun Jul 17 10:20:57 CEST 2011 by markus                         *)
 (***************************************************************************)
+CONSTANT Towers
 
-CONSTANTS D, N
+(***************************************************************************)
+(* all towers are empty except all disks are on the first Tower            *)
+(***************************************************************************)
+VARIABLES tower, disk
 
-VARIABLES towers
+(***************************************************************************)
+(* All less significant bits are 0                                         *)
+(***************************************************************************)
+IsPowerOfTwo(i) == CHOOSE k \in 0..31 : i = 2^k
 
-IsPowerOfTwo(i) == i \in {2^k : k \in 0..D}
+(***************************************************************************)
+(* A set of all powers of two up to n                                      *)
+(***************************************************************************)
+PowersOfTwo(n) == {i \in 1..n : IsPowerOfTwo(i)}
 
-PowersOfTwo(n) == {2^k : k \in 0..n}
+(***************************************************************************)
+(* Copied from TLA+'s Bags standard library. The sum of f[x] for all x in  *)
+(* DOMAIN f.                                                               *)
+(***************************************************************************)
+Sum(f) == LET S == DOMAIN f IN
+  IF S = {} THEN 0
+  ELSE LET x == CHOOSE y \in S : TRUE IN f[x] + Sum([y \in S \ {x} |-> f[y]])
 
-Sum(f) == LET S == {x \in DOMAIN f : f[x] /= 0} IN
-          IF S = {} THEN 0 ELSE LET x == CHOOSE y \in S : TRUE IN f[x] + Sum([f EXCEPT ![x] = 0])
+(***************************************************************************)
+(* D is number of disks and N number of towers                             *)
+(***************************************************************************)
+D == 3
+N == 3
 
-TowerInvariant == /\ towers \in [1..N -> Nat]
-                  /\ \A t \in 1..N : towers[t] \in PowersOfTwo(D)
-                  /\ Sum(towers) = 2^D - 1
+(***************************************************************************)
+(* Towers of Hanoi with N towers                                           *)
+(***************************************************************************)
+Init == /\ tower = [t \in Towers |-> IF t = 1 THEN 2^D - 1 ELSE 0]
+        /\ disk = [d \in 1..D |-> 1]
 
-Init == /\ towers = [t \in 1..N |-> IF t = 1 THEN 2^D - 1 ELSE 0]
-        /\ TowerInvariant
+(***************************************************************************)
+(* The total sum of all towers must amount to the disks in the system      *)
+(***************************************************************************)
+Invariant == Sum(tower) = 2^D - 1
 
-IsEmpty(tower) == tower = 0
+(***************************************************************************)
+(* Towers are naturals in the interval (0, 2^D]                           *)
+(***************************************************************************)
+TypeInvariant == /\ tower \in [Towers -> 0..(2^D - 1)]
+                 /\ disk \in [1..D -> Towers]
 
-HasDisk(disk, tower) == tower % 2^disk = 2^(disk - 1)
+(***************************************************************************)
+(* Now we define of the initial predicate, that specifies the initial      *)
+(* values of the variables.                                                *)
+(***************************************************************************)
+Empty(t) == tower[t] = 0
 
-IsSmallestDisk(disk, tower) == /\ HasDisk(disk, tower)
-                               /\ ~HasDisk(disk + 1, tower)
+(***************************************************************************)
+(* TRUE iff the disk is located on the given tower                         *)
+(***************************************************************************)
+OnTower(d, t) == disk[d] = t
 
-CanMoveDisk(disk, tower) == /\ ~IsEmpty(tower)
-                            /\ IsSmallestDisk(disk, tower)
+(***************************************************************************)
+(* TRUE iff disk is the smallest disk on tower                             *)
+(***************************************************************************)
+SmallestOnTower(d, t) == /\ OnTower(d, t)
+                         /\ \A e \in 1..D : ~OnTower(e, t) \/ d <= e
 
-CanMoveToDisk(disk, tower) == /\ IsEmpty(tower)
-                              \/ ~IsSmallestDisk(disk - 1, tower)
+(***************************************************************************)
+(* TRUE iff disk can be moved off of tower                                 *)
+(***************************************************************************)
+CanMoveOff(d, t) == /\ OnTower(d, t)
+                    /\ SmallestOnTower(d, t)
 
-Move(disk, from, to) == /\ CanMoveDisk(disk, towers[from])
-                        /\ CanMoveToDisk(disk, towers[to])
-                        /\ towers' = [towers EXCEPT ![from] = towers[from] - 2^(disk - 1),
-                                                      ![to] = towers[to] + 2^(disk - 1)]
-                        /\ TowerInvariant
+(***************************************************************************)
+(* TRUE iff disk can be moved to the tower                                 *)
+(***************************************************************************)
+CanMoveTo(d, t) == /\ ~OnTower(d, t)
+                   /\ (Empty(t) \/ \E e \in 1..D : /\ OnTower(e, t)
+                                                  /\ d < e)
 
-Next == \E disk \in 1..D, from \in 1..N, to \in 1..N :
-        /\ from # to
-        /\ Move(disk, from, to)
+(***************************************************************************)
+(* Define all possible actions that disks can perform.                     *)
+(***************************************************************************)
+Move(d, t) == /\ CanMoveOff(d, disk[d])
+              /\ CanMoveTo(d, t)
+              /\ tower' = [tower EXCEPT ![disk[d]] = @ - 2^(d-1),
+                                       ![t] = @ + 2^(d-1)]
+              /\ disk' = [disk EXCEPT ![d] = t]
 
-Spec == Init /\ [][Next]_towers
+(***************************************************************************)
+(* We define the formula Spec to be the complete specification, asserting  *)
+(* of a behavior that it begins in a state satisfying Init, and that every *)
+(* step either satisfies Next or else leaves the pair <<big, small>>       *)
+(* unchanged.                                                              *)
+(***************************************************************************)
+Next == \E d \in 1..D, t \in Towers : Move(d, t)
 
-NotSolved == towers[N] # 2^D - 1
+Spec == Init /\ [][Next]_<<tower, disk>>
 
-Invariant == TowerInvariant /\ NotSolved
+(***************************************************************************)
+(* The final configuration has all disks on the right tower. If TLC is set *)
+(* to run with an invariant rightTower # 2^N-1, it will search for         *)
+(* configurations in which this invariant is violated. If violation can be *)
+(* found, the stack trace shows the steps to solve the Hanoi problem.      *)
+(***************************************************************************)
+NotSolved == tower[N] # 2^D - 1
 
+(***************************************************************************)
+(* We find a solution by having TLC check if NotSolved is an invariant,    *)
+(* which will cause it to print out an "error trace" consisting of a       *)
+(* behavior ending in a state where NotSolved is false. With three disks,  *)
+(* and three towers the puzzle can be solved in seven moves.               *)
+(* The minimum number of moves required to solve a Tower of Hanoi puzzle   *)
+(* generally is 2n - 1, where n is the number of disks. Thus, the counter- *)
+(* examples shown by TLC will be of length 2n-1                            *)
+(***************************************************************************)
 =============================================================================

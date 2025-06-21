@@ -40,6 +40,7 @@ def evaluate_tla(specs: dict) -> dict:
 
     results = {}
     mlflow.set_experiment("tla_eval")
+    mlflow.set_tracking_uri("file:///workspaces/FormaLLM/mlruns")
 
     for model_name, spec in specs.items():
         print(f"\n--- {model_name} ---")
@@ -63,21 +64,32 @@ def evaluate_tla(specs: dict) -> dict:
             capture_output=True, text=True
         )
 
+        log_text = result.stdout + "\n=== STDERR ===\n" + result.stderr
         log_path = eval_output_dir / f"{model_name}.tlc.log"
-        log_path.write_text(result.stdout + "\n=== STDERR ===\n" + result.stderr)
+        log_path.write_text(log_text)
+
+        # Print some of the TLC output in ZenML logs
+        print(result.stdout[:500])
 
         with mlflow.start_run(run_name=model_name, nested=True):
-                    mlflow.log_param("model_name", model_name)
-                    mlflow.log_artifact(str(log_path))
-                    if "The specification is correct" in result.stdout:
-                        mlflow.log_metric("tlc_result", 1)
-                        results[model_name] = "PASS"
-                    elif "TLC threw an error" in result.stdout:
-                        mlflow.log_metric("tlc_result", -1)
-                        results[model_name] = "ERROR"
-                    else:
-                        mlflow.log_metric("tlc_result", 0)
-                        results[model_name] = "FAIL"
+            mlflow.log_param("model_name", model_name)
+            mlflow.log_param("return_code", result.returncode)
+            mlflow.log_artifact(str(log_path))
+
+            mlflow.log_text(log_text, f"{model_name}_tlc_output.txt")
+
+            if "The specification is correct" in result.stdout:
+                result_status = "PASS"
+                mlflow.log_metric("tlc_result", 1)
+            elif "TLC threw an error" in result.stdout or "TLC encountered an unexpected exception" in result.stdout:
+                result_status = "ERROR"
+                mlflow.log_metric("tlc_result", -1)
+            else:
+                result_status = "FAIL"
+                mlflow.log_metric("tlc_result", 0)
+
+            mlflow.log_param("result_status", result_status)
+            results[model_name] = result_status
 
         
         results_path = eval_output_dir / "evaluation_results.csv"

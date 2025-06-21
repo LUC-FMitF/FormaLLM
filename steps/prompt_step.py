@@ -18,6 +18,7 @@ License: MIT
 import json
 import os
 import warnings
+import time
 from pathlib import Path
 import mlflow
 from langchain.prompts import PromptTemplate
@@ -25,6 +26,12 @@ from langchain.chains.llm import LLMChain
 from langchain_openai import ChatOpenAI
 #from langchain_ollama.llms import OllamaLLM
 from zenml import step
+
+# Explicitly point MLflow to the ZenML tracking directory
+mlflow.set_tracking_uri("file:///workspaces/FormaLLM/mlruns")
+
+# Create or switch to a named experiment
+mlflow.set_experiment("tla_prompt_generation")
 
 # Enable automatic trace logging for LangChain
 mlflow.langchain.autolog()
@@ -135,5 +142,6 @@ def prompt_llm() -> dict:
         output_cfg_path.write_text(cfg_part.strip())
 
         results[target_model["model"]] = tla_part.strip()
+        time.sleep(6)
 
     return results
