@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/153774823308648142/8c20a8e0777b42109490b0d22f752e81/artifacts
+end_time: 1750864602005
+entry_point_name: ''
+experiment_id: '153774823308648142'
+lifecycle_stage: active
+run_id: 8c20a8e0777b42109490b0d22f752e81
+run_name: TwoPhase
+run_uuid: 8c20a8e0777b42109490b0d22f752e81
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750864601995
+status: 3
+tags: []
+user_id: root

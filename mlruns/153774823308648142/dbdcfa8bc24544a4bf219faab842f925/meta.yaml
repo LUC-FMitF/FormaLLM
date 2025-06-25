@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/153774823308648142/dbdcfa8bc24544a4bf219faab842f925/artifacts
+end_time: 1750738826457
+entry_point_name: ''
+experiment_id: '153774823308648142'
+lifecycle_stage: active
+run_id: dbdcfa8bc24544a4bf219faab842f925
+run_name: Majority
+run_uuid: dbdcfa8bc24544a4bf219faab842f925
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750738826449
+status: 3
+tags: []
+user_id: root

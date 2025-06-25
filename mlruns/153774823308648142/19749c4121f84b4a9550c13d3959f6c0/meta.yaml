@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/153774823308648142/19749c4121f84b4a9550c13d3959f6c0/artifacts
+end_time: 1750477909011
+entry_point_name: ''
+experiment_id: '153774823308648142'
+lifecycle_stage: active
+run_id: 19749c4121f84b4a9550c13d3959f6c0
+run_name: HDiskSynod
+run_uuid: 19749c4121f84b4a9550c13d3959f6c0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750477909002
+status: 3
+tags: []
+user_id: root

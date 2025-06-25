@@ -142,6 +142,6 @@ def prompt_llm() -> dict:
         output_cfg_path.write_text(cfg_part.strip())
 
         results[target_model["model"]] = tla_part.strip()
-        time.sleep(6)
+        time.sleep(10)
 
     return results

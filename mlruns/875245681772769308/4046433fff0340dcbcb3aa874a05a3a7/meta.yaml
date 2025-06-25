@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/875245681772769308/4046433fff0340dcbcb3aa874a05a3a7/artifacts
+end_time: 1750738832912
+entry_point_name: ''
+experiment_id: '875245681772769308'
+lifecycle_stage: active
+run_id: 4046433fff0340dcbcb3aa874a05a3a7
+run_name: sany_nbacc_ray97
+run_uuid: 4046433fff0340dcbcb3aa874a05a3a7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750738832735
+status: 3
+tags: []
+user_id: root

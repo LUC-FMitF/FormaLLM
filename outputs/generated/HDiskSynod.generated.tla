@@ -1,72 +1,55 @@
----- MODULE Bank ----
+---- MODULE BankAccount ----
 (***************************************************************************)
-(* This module models a simple bank account with a balance. The balance    *)
-(* can be increased by depositing money and decreased by withdrawing money.*)
-(* The balance cannot go below 0. If a withdrawal would result in a        *)
-(* negative balance, the withdrawal is not performed.                      *)
+(* A simple model of a bank account. The account has a balance, which is   *)
+(* initially 0. The account can receive inputs, which are either deposits  *)
+(* or withdrawals. Each input has an associated amount. The balance of the *)
+(* account after processing an input is the previous balance plus the      *)
+(* amount of the input if the input is a deposit, or the previous balance  *)
+(* minus the amount of the input if the input is a withdrawal. If the      *)
+(* balance of the account is 0, then the last input to the account must    *)
+(* have been a withdrawal.                                                 *)
 (***************************************************************************)
 
-EXTENDS Integers, Sequences, TLC
+EXTENDS Integers, Sequences
 
 CONSTANTS NotAnInput
 
 VARIABLES bk
 
-(***************************************************************************)
-(* The initial state of the bank account. The balance is 0 and there is no *)
-(* pending input.                                                          *)
-(***************************************************************************)
-Init ==
-    /\ bk.bal = 0
-    /\ bk.inp = NotAnInput
+vars == << bk >>
 
 (***************************************************************************)
-(* The type invariant ensures that the balance is a natural number and the *)
-(* input is either a natural number or the special value NotAnInput.       *)
+(* The type of an input to the account.                                    *)
 (***************************************************************************)
-TypeInvariant ==
-    /\ bk.bal \in Nat
-    /\ bk.inp \in Nat \cup {NotAnInput}
+InputType == { "deposit", "withdrawal" }
 
 (***************************************************************************)
-(* Deposit money into the bank account. The amount to deposit is given by  *)
-(* the input. After the deposit, the input is reset to NotAnInput.         *)
+(* The type of an input to the account.                                    *)
 (***************************************************************************)
-Deposit ==
-    /\ bk.inp \in Nat
-    /\ bk.bal' = bk.bal + bk.inp
-    /\ bk.inp' = NotAnInput
+Input == [ type: InputType, amount: Nat ]
 
 (***************************************************************************)
-(* Withdraw money from the bank account. The amount to withdraw is given   *)
-(* by the input. If the withdrawal would result in a negative balance, the *)
-(* withdrawal is not performed. After the withdrawal, the input is reset   *)
-(* to NotAnInput.                                                          *)
+(* The type of the bank account.                                           *)
 (***************************************************************************)
-Withdraw ==
-    /\ bk.inp \in Nat
-    /\ IF bk.bal >= bk.inp
-         THEN bk.bal' = bk.bal - bk.inp
-         ELSE bk.bal' = bk.bal
-    /\ bk.inp' = NotAnInput
+BankAccount == [ bal: Int, inp: Input \cup {NotAnInput} ]
 
 (***************************************************************************)
-(* The next-state relation.                                                *)
+(* The initial state of the bank account.                                  *)
+(***************************************************************************)
+Init == bk = [ bal |-> 0, inp |-> NotAnInput ]
+
+(***************************************************************************)
+(* The next state relation.                                                *)
 (***************************************************************************)
 Next ==
-    \/ Deposit
-    \/ Withdraw
+  /\ bk' \in BankAccount
+  /\ IF bk'.inp.type = "deposit"
+       THEN bk'.bal = bk.bal + bk'.inp.amount
+       ELSE bk'.bal = bk.bal - bk'.inp.amount
+  /\ (bk'.bal = 0) <=> (bk'.inp = NotAnInput)
 
 (***************************************************************************)
 (* The specification.                                                      *)
 (***************************************************************************)
-Spec ==
-    Init /\ [][Next]_bk
-
-(***************************************************************************)
-(* The balance is 0 if and only if the input is NotAnInput.                *)
-(***************************************************************************)
-BalanceZeroIffInputNotAnInput ==
-    (bk.bal = 0) <=> (bk.inp = NotAnInput)
-
+Spec == Init /\ [][Next]_vars
 =============================================================================

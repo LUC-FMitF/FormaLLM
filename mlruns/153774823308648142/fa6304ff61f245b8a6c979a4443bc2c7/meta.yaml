@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/153774823308648142/fa6304ff61f245b8a6c979a4443bc2c7/artifacts
+end_time: 1750864603683
+entry_point_name: ''
+experiment_id: '153774823308648142'
+lifecycle_stage: active
+run_id: fa6304ff61f245b8a6c979a4443bc2c7
+run_name: TLAPS
+run_uuid: fa6304ff61f245b8a6c979a4443bc2c7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750864603674
+status: 3
+tags: []
+user_id: root

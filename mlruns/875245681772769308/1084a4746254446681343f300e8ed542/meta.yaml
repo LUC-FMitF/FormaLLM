@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/875245681772769308/1084a4746254446681343f300e8ed542/artifacts
+end_time: 1750738830755
+entry_point_name: ''
+experiment_id: '875245681772769308'
+lifecycle_stage: active
+run_id: 1084a4746254446681343f300e8ed542
+run_name: sany_Majority
+run_uuid: 1084a4746254446681343f300e8ed542
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750738830592
+status: 3
+tags: []
+user_id: root

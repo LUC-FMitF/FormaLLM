@@ -1,0 +1,6 @@
+artifact_location: file:///workspaces/FormaLLM/mlruns/624557809534960378
+creation_time: 1750476857911
+experiment_id: '624557809534960378'
+last_update_time: 1750476857911
+lifecycle_stage: active
+name: tla_prompt_generation

@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/153774823308648142/020f3fb8765b4e749844821829d3f7e1/artifacts
+end_time: 1750864603315
+entry_point_name: ''
+experiment_id: '153774823308648142'
+lifecycle_stage: active
+run_id: 020f3fb8765b4e749844821829d3f7e1
+run_name: KVsnap
+run_uuid: 020f3fb8765b4e749844821829d3f7e1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750864603305
+status: 3
+tags: []
+user_id: root

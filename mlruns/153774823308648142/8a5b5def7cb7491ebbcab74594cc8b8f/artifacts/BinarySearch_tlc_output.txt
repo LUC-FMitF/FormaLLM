@@ -1,0 +1,20 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 26 and seed -481089311748825214 with 1 worker on 16 cores with 16056MB heap and 64MB offheap memory [pid: 9502] (Linux 6.11.0-26-generic amd64, Ubuntu 17.0.15 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /workspaces/FormaLLM/outputs/generated/BinarySearch.generated.tla
+Lexical error at line 11, column 38.  Encountered: ";" (59), after : ""
+
+Fatal errors while parsing TLA+ spec in file BinarySearch.generated
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module BinarySearch.generated
+
+Could not parse module BinarySearch.generated from file BinarySearch.generated.tla
+
+
+Starting... (2025-06-24 04:20:27)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-06-24 04:20:27)
+
+=== STDERR ===

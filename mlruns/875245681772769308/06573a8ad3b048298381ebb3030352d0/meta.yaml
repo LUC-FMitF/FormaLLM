@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/875245681772769308/06573a8ad3b048298381ebb3030352d0/artifacts
+end_time: 1750738831589
+entry_point_name: ''
+experiment_id: '875245681772769308'
+lifecycle_stage: active
+run_id: 06573a8ad3b048298381ebb3030352d0
+run_name: sany_Consensus
+run_uuid: 06573a8ad3b048298381ebb3030352d0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750738831428
+status: 3
+tags: []
+user_id: root

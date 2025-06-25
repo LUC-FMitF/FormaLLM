@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/153774823308648142/567b967e3e5348608bfd9bd4890521d4/artifacts
+end_time: 1750864601064
+entry_point_name: ''
+experiment_id: '153774823308648142'
+lifecycle_stage: active
+run_id: 567b967e3e5348608bfd9bd4890521d4
+run_name: MCDieHarder
+run_uuid: 567b967e3e5348608bfd9bd4890521d4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750864601055
+status: 3
+tags: []
+user_id: root

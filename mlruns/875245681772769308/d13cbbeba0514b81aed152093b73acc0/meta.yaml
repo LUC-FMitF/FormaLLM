@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/875245681772769308/d13cbbeba0514b81aed152093b73acc0/artifacts
+end_time: 1750864607604
+entry_point_name: ''
+experiment_id: '875245681772769308'
+lifecycle_stage: active
+run_id: d13cbbeba0514b81aed152093b73acc0
+run_name: sany_MultiPaxos
+run_uuid: d13cbbeba0514b81aed152093b73acc0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750864607422
+status: 3
+tags: []
+user_id: root

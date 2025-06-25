@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/153774823308648142/e640066036ec400db7e2e9306d4c539e/artifacts
+end_time: 1750864601549
+entry_point_name: ''
+experiment_id: '153774823308648142'
+lifecycle_stage: active
+run_id: e640066036ec400db7e2e9306d4c539e
+run_name: Hanoi
+run_uuid: e640066036ec400db7e2e9306d4c539e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750864601540
+status: 3
+tags: []
+user_id: root

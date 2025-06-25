@@ -1,0 +1,19 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 13 and seed 5735006973114139835 with 1 worker on 16 cores with 16056MB heap and 64MB offheap memory [pid: 14267] (Linux 6.11.0-26-generic amd64, Ubuntu 17.0.15 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /workspaces/FormaLLM/outputs/generated/MajorityProof.generated.tla
+
+Fatal errors while parsing TLA+ spec in file MajorityProof.generated
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+Unknown location
+
+File name 'MajorityProof.generated' does not match the name 'ProvingTypeCorrectness' of the top level module it contains.
+
+
+Starting... (2025-06-21 03:51:51)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-06-21 03:51:51)
+
+=== STDERR ===
