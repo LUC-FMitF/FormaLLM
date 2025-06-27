@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.8.1-base-ubuntu24.04
+FROM ubuntu:noble
 
 # Install Miniconda
 ENV CONDA_DIR /opt/conda
