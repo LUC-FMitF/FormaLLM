@@ -1,0 +1,22 @@
+# Core dependencies
+numpy
+pandas
+matplotlib
+python-dotenv
+
+# LangChain ecosystem
+langchain-core
+langchain-community
+langchain-openai
+langchain-ollama
+langchain-anthropic
+
+# ML and tracking tools
+mlflow
+openai
+
+# ZenML core and server (includes all necessary plugins for local dev)
+zenml[server]
+
+# DVC with Google Drive support
+dvc[gdrive]

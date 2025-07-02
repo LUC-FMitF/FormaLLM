@@ -5,17 +5,13 @@
     "dockerfile": "Dockerfile"
   },
   "containerEnv": {
-  "DOTENV_CONFIG_PATH": "/workspaces/FormaLLM/.env"
+    "DOTENV_CONFIG_PATH": "/workspaces/FormaLLM/.env"
   },
   "runArgs": [
-     "--env-file", ".env"
+    "--env-file", ".env"
   ],
-  "postCreateCommand": "conda run -n tla-llm conda clean -afy",
   "customizations": {
     "vscode": {
-      "settings": {
-        "python.defaultInterpreterPath": "/opt/conda/envs/tla-llm/bin/python"
-      },
       "extensions": [
         "ms-python.python",
         "ms-toolsai.jupyter",
@@ -25,5 +21,3 @@
   },
   "remoteUser": "root"
 }
-
-

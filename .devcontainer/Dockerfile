@@ -1,33 +1,17 @@
-FROM ubuntu:noble
+# Use official Python base image
+FROM python:3.11-slim
 
-# Install Miniconda
-ENV CONDA_DIR /opt/conda
+# Set working directory
+WORKDIR /workspaces/FormaLLM
+
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
+    openjdk-17-jdk \
     wget \
     curl \
-    bzip2 \
-    ca-certificates \
+    unzip \
     git \
-    && rm -rf /var/lib/apt/lists/* && \
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh && \
-    bash /tmp/miniconda.sh -b -p $CONDA_DIR && \
-    rm /tmp/miniconda.sh && \
-    ln -s $CONDA_DIR/etc/profile.d/conda.sh /etc/profile.d/conda.sh
-
-ENV PATH=$CONDA_DIR/bin:$PATH
-
-
-# Copy environment.yml (if found) to a temp location so we update the environment. Also
-# copy "noop.txt" so the COPY instruction does not fail if no environment.yml exists.
-COPY environment.yml* .devcontainer/noop.txt /tmp/conda-tmp/
-RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then umask 0002 && /opt/conda/bin/conda env update -n tla-llm -f /tmp/conda-tmp/environment.yml; fi \
-    && rm -rf /tmp/conda-tmp
-RUN conda init
-RUN echo "conda activate tla-llm" >> /root/.bashrc
-
-# Install Java for TLC
-RUN apt-get update && apt-get install -y openjdk-17-jdk wget unzip && \
-    rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 # Set environment variable for TLA+ tools
 ENV TLA_TOOLS_DIR=/opt/tla
@@ -40,3 +24,13 @@ RUN mkdir -p $TLA_TOOLS_DIR && \
 # Add TLC launcher script to PATH
 RUN echo '#!/bin/bash\nexec java -cp /opt/tla/tla2tools.jar tlc2.TLC "$@"' > /usr/local/bin/tlc && \
     chmod +x /usr/local/bin/tlc
+
+# Copy project files
+COPY . .
+
+# Upgrade pip and install dependencies
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+# Default command
+CMD ["bash"]
