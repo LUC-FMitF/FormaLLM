@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/475082049004021781/0607feff2e2e4d2293eea5f2e0d1f629/artifacts
+end_time: 1751777876030
+entry_point_name: ''
+experiment_id: '475082049004021781'
+lifecycle_stage: active
+run_id: 0607feff2e2e4d2293eea5f2e0d1f629
+run_name: sany_BinarySearch
+run_uuid: 0607feff2e2e4d2293eea5f2e0d1f629
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751777875856
+status: 3
+tags: []
+user_id: root

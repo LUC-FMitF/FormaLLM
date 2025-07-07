@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/699267422703754267/eaf045d374864b33b5d89fd3df1dcbb2/artifacts
+end_time: 1751777871517
+entry_point_name: ''
+experiment_id: '699267422703754267'
+lifecycle_stage: active
+run_id: eaf045d374864b33b5d89fd3df1dcbb2
+run_name: MultiPaxos
+run_uuid: eaf045d374864b33b5d89fd3df1dcbb2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751777871510
+status: 3
+tags: []
+user_id: root

@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/699267422703754267/399edb522ce54d6a9f88e2e2a5235523/artifacts
+end_time: 1751777870616
+entry_point_name: ''
+experiment_id: '699267422703754267'
+lifecycle_stage: active
+run_id: 399edb522ce54d6a9f88e2e2a5235523
+run_name: MCEWD687a
+run_uuid: 399edb522ce54d6a9f88e2e2a5235523
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751777870608
+status: 3
+tags: []
+user_id: root

@@ -1,0 +1,29 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 130 and seed 7516705881196057521 with 1 worker on 16 cores with 16056MB heap and 64MB offheap memory [pid: 5961] (Linux 6.11.0-26-generic amd64, Debian 17.0.15 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /workspaces/FormaLLM/outputs/generated/MCDieHarder.tla
+***Parse Error***
+Encountered "|->" at line 6, column 18 and token "1" 
+
+Residual stack trace follows:
+Some [] Form starting at line 6, column 15.
+ExtendableExpr starting at line 6, column 15.
+Expression starting at line 6, column 15.
+Definition starting at line 6, column 1.
+Module body starting at line 4, column 1.
+
+
+Fatal errors while parsing TLA+ spec in file MCDieHarder
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module MCDieHarder
+
+Could not parse module MCDieHarder from file MCDieHarder.tla
+
+
+Starting... (2025-07-06 04:57:50)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-07-06 04:57:50)
+
+=== STDERR ===

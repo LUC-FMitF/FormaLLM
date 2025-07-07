@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/699267422703754267/6cc5fa18b8004d2592d3b7d01f37bacb/artifacts
+end_time: 1751777870685
+entry_point_name: ''
+experiment_id: '699267422703754267'
+lifecycle_stage: active
+run_id: 6cc5fa18b8004d2592d3b7d01f37bacb
+run_name: EWD998ChanID_export
+run_uuid: 6cc5fa18b8004d2592d3b7d01f37bacb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751777870678
+status: 3
+tags: []
+user_id: root

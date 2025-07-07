@@ -50,7 +50,7 @@ def sanity_check_sany(specs: Dict[str, str]) -> Dict[str, str]:
     mlflow.set_experiment("tla_sanity_check")
 
     for model_name in specs.keys():
-        tla_path = generated_dir / f"{model_name}.generated.tla"
+        tla_path = generated_dir / f"{model_name}.tla"
 
         if not tla_path.exists():
             results[model_name] = "MISSING"

@@ -45,9 +45,7 @@ def evaluate_tla(specs: dict) -> dict:
     for model_name, spec in specs.items():
         print(f"\n--- {model_name} ---")
 
-        # Write Spec to disk
-        tla_path = generated_dir / f"{model_name}.generated.tla"
-        tla_path.write_text(spec.strip())
+        tla_path = generated_dir / f"{model_name}.tla"
 
         cfg_path = generated_dir / f"{model_name}.cfg"
         if not cfg_path.exists():

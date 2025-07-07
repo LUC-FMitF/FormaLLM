@@ -36,26 +36,34 @@ mlflow.set_experiment("tla_prompt_generation")
 # Enable automatic trace logging for LangChain
 mlflow.langchain.autolog()
 
+
 @step
 def prompt_llm() -> dict:
     project_root = Path(__file__).resolve().parent.parent
     data_dir = project_root / "data"
     split_dir = project_root / "outputs"
+    generated_dir = project_root / "outputs" / "generated"
+    generated_dir.mkdir(parents=True, exist_ok=True)
 
     train_path = split_dir / "train.json"
     val_path = split_dir / "val.json"
-
     NUM_FEW_SHOTS = 3
 
     def load_json_data(path):
         with open(path) as f:
             return json.load(f)["data"]
 
-    train_data = load_json_data(train_path)
-    val_data = load_json_data(val_path)
+    def get_module_base_name(model_meta: dict) -> str:
+        fname = model_meta.get("comments_clean")
+        if fname:
+            try:
+                return Path(fname).stem.replace("_comments_clean", "")
+            except Exception:
+                warnings.warn(f"Could not parse name from comments_clean: {fname}. Falling back to model.")
+        return model_meta.get("model", "UnnamedModel")
 
     def load_text(model_meta: dict, field: str) -> str:
-        model_name = model_meta["model"]
+        model_name = model_meta.get("model", "UNKNOWN")
         filename = model_meta.get(field)
         if not filename:
             warnings.warn(f"[{model_name}] Field '{field}' missing.")
@@ -77,44 +85,40 @@ def prompt_llm() -> dict:
     def build_few_shot_prompt(examples: list[dict]) -> str:
         parts = []
         for ex in examples:
-            # comments = load_text(ex, "comments_clean")
-            # tla = load_text(ex, "tla_clean").replace("----", "--")
             full_tla = load_text(ex, "tla_original")
             if full_tla:
                 parts.append(f"# Full TLA+ Specification:\n{full_tla}")
         return "\n".join(parts)
-    
-    # Instruction header to give context to the LLM
+
     instruction_header = (
         "You are a helpful assistant trained to write valid TLA+ specifications.\n"
         "Below are several complete and valid TLA+ specifications.\n"
         "At the end, you will be given only a set of user-written comments, "
         "and the target model's .cfg file if available.\n"
-        "Your task is to generate a valid TLA+ specification based on those comments"
-        "AND its corresponding TLC configuration if none is provided .\n"
+        "Your task is to generate a valid TLA+ specification based on those comments "
+        "AND its corresponding TLC configuration if none is provided.\n"
         "Use the examples as inspiration for structure and style.\n"
         "Format your answer as a valid TLA+ module, and .cfg if one is not provided like this:\n"
         "---- MODULE MySpec ----\n... your spec ...\n====\n\n# TLC Configuration:\n... config lines ...\n-----END CFG-----\n"
     )
-    
+
     llm = ChatOpenAI(temperature=0, model="gpt-4")
-    #llm = OllamaLLM(model="llama3", temperature=0)
     chain = LLMChain(llm=llm, prompt=PromptTemplate.from_template("{input}"))
 
-    generated_dir = project_root / "outputs" / "generated"
-    generated_dir.mkdir(parents=True, exist_ok=True)
-
+    train_data = load_json_data(train_path)
+    val_data = load_json_data(val_path)
     results = {}
 
     for i, target_model in enumerate(val_data):
+        module_name = get_module_base_name(target_model)
         few_shot_examples = train_data[:NUM_FEW_SHOTS]
         few_shot_prompt = build_few_shot_prompt(few_shot_examples)
         target_comments = load_text(target_model, "comments_clean")
-        target_cfg = load_text(target_model,"cfg")
+        target_cfg = load_text(target_model, "cfg")
         cfg_prompt = f"\n\n# TLC Configuration:\n{target_cfg}" if target_cfg else "\n\n# No configuration file provided."
 
         if not target_comments:
-            warnings.warn(f"Skipping model {target_model ['model']} because comments are missing")
+            warnings.warn(f"Skipping model {target_model.get('model', 'UNKNOWN')} due to missing comments.")
             continue
 
         final_prompt = (
@@ -122,26 +126,33 @@ def prompt_llm() -> dict:
             + "\n\n"
             + few_shot_prompt
             + cfg_prompt
-            + f"\n\n Comments:\n{target_comments}\n\n TLA+ Specification:\n"
+            + f"\n\n# Comments:\n{target_comments}\n\n"
+            + f"# TLA+ Specification:\n---- MODULE {module_name} ----\n"
         )
-        print(f"\n--- Generating spec for model: {target_model['model']} ---")
+
+        print(f"\n--- Generating spec for module: {module_name} ---")
         response = chain.run(input=final_prompt).strip()
 
-        # Split TLA and CFG from response
         if "# TLC Configuration:" in response:
             tla_part, cfg_part = response.split("# TLC Configuration:", 1)
-            cfg_part = cfg_part.replace ("-----END CFG-----","").strip()
+            cfg_part = cfg_part.replace("-----END CFG-----", "").strip()
         else:
             tla_part = response
             cfg_part = ""
 
+        # Ensure proper module syntax
+        tla_body = tla_part.strip()
+        if not tla_body.startswith("---- MODULE"):
+            tla_body = f"---- MODULE {module_name} ----\n" + tla_body
+        if not tla_body.rstrip().endswith("===="):
+            tla_body = tla_body.rstrip() + "\n===="
 
-        output_tla_path = generated_dir / f"{target_model['model']}.generated.tla"
-        output_cfg_path = generated_dir / f"{target_model['model']}.cfg"
-        output_tla_path.write_text(tla_part.strip())
-        output_cfg_path.write_text(cfg_part.strip())
+        output_tla_path = generated_dir / f"{module_name}.tla"
+        output_cfg_path = generated_dir / f"{module_name}.cfg"
+        output_tla_path.write_text(tla_body)
+        output_cfg_path.write_text(cfg_part)
 
-        results[target_model["model"]] = tla_part.strip()
+        results[module_name] = tla_body
         time.sleep(10)
 
     return results

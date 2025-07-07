@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/FormaLLM/mlruns/475082049004021781/2551e2d418c840d4a9f3a204ba72a552/artifacts
+end_time: 1751777874375
+entry_point_name: ''
+experiment_id: '475082049004021781'
+lifecycle_stage: active
+run_id: 2551e2d418c840d4a9f3a204ba72a552
+run_name: sany_TwoPhase
+run_uuid: 2551e2d418c840d4a9f3a204ba72a552
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751777874207
+status: 3
+tags: []
+user_id: root
