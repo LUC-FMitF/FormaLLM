@@ -129,7 +129,7 @@ All backends are used interchangeably through the same LangChain interface.
 
 ---
 
-## 🤖 LLM Backend Configuration
+## LLM Backend Configuration
 
 ### Supported Backends
 
@@ -179,7 +179,7 @@ See [OLLAMA_MODELS.md](OLLAMA_MODELS.md) for the complete list.
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Using Ollama (Local, No API Key Required)
 ```bash
