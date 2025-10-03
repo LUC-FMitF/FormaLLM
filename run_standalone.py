@@ -1,47 +1,28 @@
 #!/usr/bin/env python3
 """
-===============================================================================
-TLA+ Model Synthesis from Comments via Few-Shot Prompting
-===============================================================================
-This script sets up a pipeline for training and evaluating an LLM (via LangChain)
-to generate TLA+ specifications from structured comments using few-shot learning.
-
-It loads training examples from train.json and performs inference on one or more
-models from val.json. The test set is not used in this script and should be
-reserved for final evaluation.
-
-Author: Brian Ortiz
-License: MIT
-===============================================================================
+Standalone TLA+ generation script - no ZenML dependencies
+This allows testing LLM backends without ZenML orchestration issues
 """
-
 import json
 import os
 import warnings
 import time
+import argparse
 from pathlib import Path
-import mlflow
 from langchain.prompts import PromptTemplate
 from langchain.chains.llm import LLMChain
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 from langchain_ollama import ChatOllama
-from zenml import step
 
-# Explicitly point MLflow to the ZenML tracking directory
-project_root_mlflow = Path(__file__).resolve().parent.parent
-mlflow.set_tracking_uri(f"file://{project_root_mlflow}/mlruns")
-
-# Create or switch to a named experiment
-mlflow.set_experiment("tla_prompt_generation")
-
-# Enable automatic trace logging for LangChain
-mlflow.langchain.autolog()
+# Suppress warnings for cleaner output
+warnings.filterwarnings('ignore')
 
 
-@step
-def prompt_llm() -> dict:
-    project_root = Path(__file__).resolve().parent.parent
+def generate_tla_specs(backend="ollama", model="llama3.1"):
+    """Run the TLA+ generation without ZenML orchestration"""
+
+    project_root = Path(__file__).resolve().parent
     data_dir = project_root / "data"
     split_dir = project_root / "outputs"
     generated_dir = project_root / "outputs" / "generated"
@@ -104,10 +85,6 @@ def prompt_llm() -> dict:
         "---- MODULE MySpec ----\n... your spec ...\n====\n\n# TLC Configuration:\n... config lines ...\n-----END CFG-----\n"
     )
 
-    # Get LLM backend configuration from environment variables
-    backend = os.getenv("LLM_BACKEND", "openai")
-    model = os.getenv("LLM_MODEL", "gpt-4")
-
     # Initialize the appropriate LLM based on backend choice
     if backend == "openai":
         llm = ChatOpenAI(temperature=0, model=model)
@@ -118,7 +95,7 @@ def prompt_llm() -> dict:
     else:
         raise ValueError(f"Unsupported LLM backend: {backend}")
 
-    print(f"Using LLM: {backend} with model {model}")
+    print(f"[OK] Initialized {backend} with model {model}")
     chain = LLMChain(llm=llm, prompt=PromptTemplate.from_template("{input}"))
 
     train_data = load_json_data(train_path)
@@ -146,7 +123,7 @@ def prompt_llm() -> dict:
             + f"# TLA+ Specification:\n---- MODULE {module_name} ----\n"
         )
 
-        print(f"\n--- Generating spec for module: {module_name} ---")
+        print(f"\n--- Generating spec for module: {module_name} ({i+1}/{len(val_data)}) ---")
         response = chain.run(input=final_prompt).strip()
 
         if "# TLC Configuration:" in response:
@@ -168,7 +145,40 @@ def prompt_llm() -> dict:
         output_tla_path.write_text(tla_body)
         output_cfg_path.write_text(cfg_part)
 
+        print(f"  [OK] Saved: {output_tla_path}")
         results[module_name] = tla_body
         time.sleep(10)
 
     return results
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Standalone TLA+ generation with configurable LLM backend")
+    parser.add_argument("--backend", type=str, default=os.getenv("LLM_BACKEND", "ollama"),
+                        choices=["openai", "anthropic", "ollama"],
+                        help="LLM backend to use (default: ollama)")
+    parser.add_argument("--model", type=str, default=os.getenv("LLM_MODEL", "llama3.1"),
+                        help="Model name to use (default: llama3.1)")
+
+    args = parser.parse_args()
+
+    print("=" * 70)
+    print(" Standalone TLA+ Generation (No ZenML orchestration)")
+    print("=" * 70)
+    print(f" LLM Backend: {args.backend}")
+    print(f" Model: {args.model}")
+    print("=" * 70)
+    print()
+
+    try:
+        results = generate_tla_specs(backend=args.backend, model=args.model)
+        print()
+        print("=" * 70)
+        print(f" [SUCCESS] Generation completed successfully!")
+        print(f"   Generated {len(results)} specifications")
+        print("=" * 70)
+    except Exception as e:
+        print(f"\n[ERROR] {e}")
+        import traceback
+        traceback.print_exc()
+        exit(1)
