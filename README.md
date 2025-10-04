@@ -32,7 +32,11 @@ FormaLLM/
 ├── pipelines/
 │   └── tla_pipeline.py   # Orchestrates full pipeline
 ├── requirements.txt      # Python environment
-├── run_pipeline.py       # Entry point to launch the ZenML pipeline
+├── run.sh                # Interactive pipeline runner (recommended)
+├── run_pipeline.py       # ZenML pipeline runner with CLI args
+├── run_standalone.py     # Standalone runner (no ZenML, useful for compatibility)
+├── test_llm.py           # Quick LLM backend test script
+├── OLLAMA_MODELS.md      # Documentation for Ollama models
 ├── mlruns/               # MLflow experiment logs (locally)
 └── .env                  # File containing API keys (not tracked in source control)
 ```
@@ -41,9 +45,13 @@ FormaLLM/
 
 ## 🔧 Technologies and Tools
 
-### OpenAI API (via `langchain-openai`)
-- Powers the LLM prompting for TLA+ generation.
-- Uses `gpt-4` to generate valid TLA+ specs and optional TLC configs.
+### LLM Backends (Configurable)
+The pipeline supports multiple LLM backends:
+- **OpenAI GPT-4** (via `langchain-openai`) - High-quality commercial API
+- **Anthropic Claude** (via `langchain-anthropic`) - Alternative commercial API
+- **Ollama** (via `langchain-ollama`) - Local/open-source models (llama3.1, codellama, deepseek-r1, etc.)
+
+All backends are used interchangeably through the same LangChain interface.
 
 ### LangChain
 - Handles the prompt logic and LLM chaining.
@@ -97,5 +105,90 @@ FormaLLM/
    - Automatically tracks MLflow logs per run.
 
 6. **Execution**
+
+   **Option A: Interactive Script (Recommended)**
    ```bash
-   python run_pipeline.py
+   ./run.sh
+   ```
+   - Select LLM backend (GPT-4, Claude, or Ollama)
+   - Enter API keys for paid services (OpenAI/Anthropic)
+   - Choose from available Ollama models
+   - Select execution mode (ZenML orchestrated or standalone)
+
+   **Option B: Direct Execution**
+   ```bash
+   # Using environment variables
+   LLM_BACKEND=ollama LLM_MODEL=llama3.1 python run_standalone.py
+
+   # Or with CLI arguments
+   python run_standalone.py --backend ollama --model llama3.1
+
+   # ZenML orchestrated pipeline
+   python run_pipeline.py --backend openai --model gpt-4
+   ```
+
+---
+
+## LLM Backend Configuration
+
+### Supported Backends
+
+#### 1. OpenAI (GPT-4)
+```bash
+export OPENAI_API_KEY="your-api-key-here"
+./run.sh  # Select option 1
+```
+
+#### 2. Anthropic (Claude)
+```bash
+export ANTHROPIC_API_KEY="your-api-key-here"
+./run.sh  # Select option 2
+```
+
+#### 3. Ollama (Local Models)
+```bash
+# Install Ollama first: https://ollama.ai
+ollama pull llama3.1  # or any other model
+./run.sh  # Select option 3
+```
+
+**Popular Ollama Models:**
+- `llama3.1` - 8B params, 4.7GB - Recommended for general use
+- `codellama` - 7B params, 3.8GB - Code generation specialist
+- `deepseek-r1` - 7B params, 4.7GB - Reasoning & code
+- `qwq` - 32B params, 20GB - Advanced reasoning
+- `phi4` - 14B params, 9.1GB - Microsoft flagship
+- `mistral` - 7B params, 4.1GB - Fast & capable
+
+See [OLLAMA_MODELS.md](OLLAMA_MODELS.md) for the complete list.
+
+### API Key Management
+
+**For paid APIs (OpenAI/Anthropic):**
+1. The interactive script (`./run.sh`) will prompt for API keys
+2. Or set environment variables:
+   ```bash
+   export OPENAI_API_KEY="sk-..."
+   export ANTHROPIC_API_KEY="sk-ant-..."
+   ```
+
+**For Ollama:**
+- No API key needed
+- Runs 100% locally
+- Requires Ollama to be installed and running
+
+---
+
+## Quick Start
+
+### Using Ollama (Local, No API Key Required)
+```bash
+# 1. Install Ollama
+# Visit https://ollama.ai
+
+# 2. Pull a model
+ollama pull llama3.1
+
+# 3. Run the pipeline
+./run.sh
+# Select: 3 (Ollama) → 1 (llama3.1) → 2 (Standalone mode)
