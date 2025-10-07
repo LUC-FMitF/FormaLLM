@@ -6,7 +6,7 @@ WORKDIR /workspaces/FormaLLM
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    openjdk-17-jdk \
+    openjdk-25-jdk \
     wget \
     curl \
     unzip \
