@@ -237,7 +237,7 @@ docker-compose --profile local-llm --profile tracking up -d  # Full setup
 ```
 
 **Available Services:**
-- **Ollama**: Local LLM inference (port 11434)
+- **Ollama**: Local LLM inference (port 11435 - uses 11435 to avoid conflict with native installs)
 - **LocalAI**: OpenAI-compatible local API (port 8080) 
 - **Text Generation WebUI**: Gradio interface (port 7860)
 - **MLflow Server**: Experiment tracking (port 5001)
@@ -288,7 +288,7 @@ ANTHROPIC_MODEL=claude-3-5-sonnet-20241022
 
 # Ollama settings
 OLLAMA_ENABLED=true
-OLLAMA_BASE_URL=http://localhost:11434
+OLLAMA_BASE_URL=http://localhost:11434  # Use 11435 for Docker Compose Ollama
 OLLAMA_MODEL=llama3.1
 
 # Pipeline settings

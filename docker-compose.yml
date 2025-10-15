@@ -4,7 +4,7 @@ services:
     image: ollama/ollama:latest
     container_name: formaLLM-ollama
     ports:
-      - "11434:11434"
+      - "11435:11434"  # Map to 11435 to avoid conflict with native Ollama
     volumes:
       - ollama_data:/root/.ollama
     environment:

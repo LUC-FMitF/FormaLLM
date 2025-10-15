@@ -71,53 +71,6 @@ fi
 if [ "$setup_mode" = true ]; then
     echo -e "${YELLOW} Initial setup detected - configuring environment...${NC}"
     echo ""
-    
-    # Initialize ZenML and MLflow
-    echo -e "${BLUE}Setting up ZenML and MLflow...${NC}"
-    
-    # Initialize ZenML
-    echo "Initializing ZenML..."
-    zenml init || echo "ZenML already initialized"
-    
-    # Install ZenML integrations
-    echo "Installing ZenML integrations..."
-    zenml integration install mlflow -y || echo "MLflow integration already installed"
-    
-    # Register MLflow experiment tracker
-    echo "Registering MLflow experiment tracker..."
-    zenml experiment-tracker register mlflow_tracker --flavor=mlflow \
-        --tracking_uri="file:///workspaces/FormaLLM/mlruns" 2>/dev/null || echo "Tracker already exists"
-    
-    # Create new stack with MLflow tracker
-    echo "Creating ZenML stack with MLflow tracker..."
-    zenml stack register mlflow_stack \
-        -e mlflow_tracker \
-        -a default \
-        -o default \
-        --set 2>/dev/null || echo "Stack already exists"
-    
-    echo -e "${GREEN} ZenML and MLflow setup complete${NC}"
-    
-    # Optionally start MLflow UI and ZenML server in background
-    read -p "Start MLflow UI at http://localhost:5000? (y/n) [y]: " start_mlflow
-    start_mlflow=${start_mlflow:-y}
-    if [[ "$start_mlflow" =~ ^[Yy]$ ]]; then
-        echo "Starting MLflow UI..."
-        mlflow ui --host 0.0.0.0 &
-        echo -e "${GREEN} MLflow UI started at http://localhost:5000${NC}"
-    fi
-    
-    read -p "Start ZenML server at http://localhost:8237? (y/n) [n]: " start_zenml
-    start_zenml=${start_zenml:-n}
-    if [[ "$start_zenml" =~ ^[Yy]$ ]]; then
-        echo "Starting ZenML server..."
-        zenml login --local &
-        echo -e "${GREEN} ZenML server started at http://localhost:8237${NC}"
-    fi
-    
-    echo ""
-    echo -e "${GREEN} Project environment setup complete.${NC}"
-    echo ""
 fi
 
 # Function to safely update environment variables
@@ -218,7 +171,8 @@ configure_ollama() {
             
             if [[ "$use_docker" =~ ^[Yy]$ ]]; then
                 update_env_var "OLLAMA_ENABLED" "true"
-                update_env_var "OLLAMA_BASE_URL" "http://localhost:11434"
+                update_env_var "OLLAMA_BASE_URL" "http://localhost:11435"
+                echo -e "${YELLOW}ℹ Docker Ollama will run on port 11435 (avoiding conflict with native Ollama)${NC}"
                 
                 echo ""
                 echo "Popular Ollama models:"
