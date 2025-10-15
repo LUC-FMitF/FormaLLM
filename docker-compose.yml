@@ -1,0 +1,163 @@
+services:
+  # Ollama service for local LLM inference
+  ollama:
+    image: ollama/ollama:latest
+    container_name: formaLLM-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+    restart: unless-stopped
+    networks:
+      - formaLLM-network
+    profiles:
+      - ollama
+      - local-llm
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Alternative: LocalAI service (OpenAI-compatible API for local models)
+  localai:
+    image: quay.io/go-skynet/local-ai:latest
+    container_name: formaLLM-localai
+    ports:
+      - "8080:8080"
+    volumes:
+      - localai_models:/models
+      - ./localai_config:/build/models
+    environment:
+      - DEBUG=true
+      - MODELS_PATH=/models
+      - PRELOAD_MODELS_CONFIG=/build/models/preload_models.yaml
+    restart: unless-stopped
+    networks:
+      - formaLLM-network
+    profiles:
+      - localai
+      - local-llm
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Text Generation WebUI (Gradio interface for local models)
+  text-generation-webui:
+    image: atinoda/text-generation-webui:default
+    container_name: formaLLM-webui
+    ports:
+      - "7860:7860"
+      - "5000:5000"  # API port
+    volumes:
+      - webui_models:/app/models
+      - webui_characters:/app/characters
+      - webui_presets:/app/presets
+      - webui_extensions:/app/extensions
+      - webui_training:/app/training
+    environment:
+      - CLI_ARGS=--listen --api --api-blocking-port 5000
+    restart: unless-stopped
+    networks:
+      - formaLLM-network
+    profiles:
+      - webui
+      - local-llm
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  # MLflow tracking server (for experiment management)
+  mlflow:
+    image: python:3.11-slim
+    container_name: formaLLM-mlflow
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./mlruns:/app/mlruns
+      - ./artifacts:/app/artifacts
+    working_dir: /app
+    command: >
+      bash -c "pip install mlflow && 
+               mlflow server 
+               --host 0.0.0.0 
+               --port 5000 
+               --backend-store-uri file:///app/mlruns 
+               --default-artifact-root file:///app/artifacts"
+    restart: unless-stopped
+    networks:
+      - formaLLM-network
+    profiles:
+      - mlflow
+      - tracking
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis for caching (optional - for advanced setups)
+  redis:
+    image: redis:7-alpine
+    container_name: formaLLM-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - formaLLM-network
+    profiles:
+      - cache
+      - advanced
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  ollama_data:
+    driver: local
+  localai_models:
+    driver: local
+  webui_models:
+    driver: local
+  webui_characters:
+    driver: local
+  webui_presets:
+    driver: local
+  webui_extensions:
+    driver: local
+  webui_training:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  formaLLM-network:
+    driver: bridge
+
+# Profile definitions for easy service management:
+# 
+# Start only Ollama:
+#   docker-compose --profile ollama up -d
+#
+# Start all local LLM services:
+#   docker-compose --profile local-llm up -d
+#
+# Start with MLflow tracking:
+#   docker-compose --profile ollama --profile tracking up -d
+#
+# Full development setup:
+#   docker-compose --profile local-llm --profile tracking up -d

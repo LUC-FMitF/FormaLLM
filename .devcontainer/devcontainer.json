@@ -1,5 +1,5 @@
 {
-  "name": "TLA+ LLM Research",
+  "name": "FormaLLM Multi-LLM Research",
   "build": {
     "context": "..",
     "dockerfile": "Dockerfile"
@@ -10,13 +10,23 @@
   "runArgs": [
     "--env-file", ".env"
   ],
+  "postCreateCommand": "chmod +x /workspaces/FormaLLM/run.sh && (/workspaces/FormaLLM/run.sh --setup || echo 'Setup completed with warnings. Run ./run.sh --setup to reconfigure.')",
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
         "ms-toolsai.jupyter",
-        "ms-azuretools.vscode-docker"
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.remote-containers"
       ]
+    }
+  },
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": false
     }
   },
   "remoteUser": "root"
