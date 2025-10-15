@@ -7,9 +7,11 @@
   "containerEnv": {
     "DOTENV_CONFIG_PATH": "/workspaces/FormaLLM/.env"
   },
+  "initializeCommand": "docker network create formaLLM-network 2>/dev/null || true",
   "runArgs": [
     "--name=formaLLM",
-    "--env-file", ".env"
+    "--env-file", ".env",
+    "--network=formaLLM-network"
   ],
   "postCreateCommand": "chmod +x /workspaces/FormaLLM/run.sh && (/workspaces/FormaLLM/run.sh --setup || echo 'Setup completed with warnings. Run ./run.sh --setup to reconfigure.')",
   "customizations": {

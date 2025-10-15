@@ -20,6 +20,7 @@ import os
 import warnings
 import time
 from pathlib import Path
+from dotenv import load_dotenv
 import mlflow
 from langchain.prompts import PromptTemplate
 from langchain.chains.llm import LLMChain
@@ -28,8 +29,13 @@ from langchain_anthropic import ChatAnthropic
 from langchain_ollama import ChatOllama
 from zenml import step
 
-# Explicitly point MLflow to the ZenML tracking directory
+# Load environment variables from .env file (critical for ZenML step execution)
 project_root_mlflow = Path(__file__).resolve().parent.parent
+env_path = project_root_mlflow / ".env"
+if env_path.exists():
+    load_dotenv(env_path, override=True)
+
+# Explicitly point MLflow to the ZenML tracking directory
 mlflow.set_tracking_uri(f"file://{project_root_mlflow}/mlruns")
 
 # Create or switch to a named experiment

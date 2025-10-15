@@ -68,8 +68,71 @@ if [ "$1" = "--setup" ] || [ ! -f "$ENV_FILE" ]; then
     setup_mode=true
 fi
 
+# If not in setup mode, check if .env exists and has required variables
+if [ "$setup_mode" = false ]; then
+    if [ ! -f "$ENV_FILE" ]; then
+        echo -e "${RED}Error: No configuration found!${NC}"
+        echo -e "${YELLOW}Please run: ./run.sh --setup${NC}"
+        exit 1
+    fi
+    
+    # Check if LLM_BACKEND is configured
+    if ! grep -q "^LLM_BACKEND=" "$ENV_FILE" 2>/dev/null; then
+        echo -e "${YELLOW}Warning: Configuration incomplete. Running setup...${NC}"
+        setup_mode=true
+    fi
+fi
+
 if [ "$setup_mode" = true ]; then
-    echo -e "${YELLOW} Initial setup detected - configuring environment...${NC}"
+    echo -e "${YELLOW}Initial setup detected - configuring environment...${NC}"
+    echo ""
+
+        
+    # Initialize ZenML and MLflow
+    echo -e "${BLUE}Setting up ZenML and MLflow...${NC}"
+    
+    # Initialize ZenML
+    echo "Initializing ZenML..."
+    zenml init || echo "ZenML already initialized"
+    
+    # Install ZenML integrations
+    echo "Installing ZenML integrations..."
+    zenml integration install mlflow -y || echo "MLflow integration already installed"
+    
+    # Register MLflow experiment tracker
+    echo "Registering MLflow experiment tracker..."
+    zenml experiment-tracker register mlflow_tracker --flavor=mlflow \
+        --tracking_uri="file:///workspaces/FormaLLM/mlruns" 2>/dev/null || echo "Tracker already exists"
+    
+    # Create new stack with MLflow tracker
+    echo "Creating ZenML stack with MLflow tracker..."
+    zenml stack register mlflow_stack \
+        -e mlflow_tracker \
+        -a default \
+        -o default \
+        --set 2>/dev/null || echo "Stack already exists"
+    
+    echo -e "${GREEN} ZenML and MLflow setup complete${NC}"
+    
+    # Optionally start MLflow UI and ZenML server in background
+    read -p "Start MLflow UI at http://localhost:5000? (y/n) [y]: " start_mlflow
+    start_mlflow=${start_mlflow:-y}
+    if [[ "$start_mlflow" =~ ^[Yy]$ ]]; then
+        echo "Starting MLflow UI..."
+        mlflow ui --host 0.0.0.0 &
+        echo -e "${GREEN} MLflow UI started at http://localhost:5000${NC}"
+    fi
+    
+    read -p "Start ZenML server at http://localhost:8237? (y/n) [n]: " start_zenml
+    start_zenml=${start_zenml:-n}
+    if [[ "$start_zenml" =~ ^[Yy]$ ]]; then
+        echo "Starting ZenML server..."
+        zenml login --local &
+        echo -e "${GREEN} ZenML server started at http://localhost:8237${NC}"
+    fi
+    
+    echo ""
+    echo -e "${GREEN} Project environment setup complete.${NC}"
     echo ""
 fi
 
@@ -86,8 +149,9 @@ update_env_var() {
     fi
     
     if grep -q "^${key}=" "$ENV_FILE"; then
-        # Update existing
-        sed -i "s/^${key}=.*/${key}=${value}/" "$ENV_FILE"
+        # Update existing - escape special characters for sed
+        local escaped_value=$(printf '%s\n' "$value" | sed 's/[\/&]/\\&/g')
+        sed -i "s/^${key}=.*/${key}=${escaped_value}/" "$ENV_FILE"
     else
         # Add new
         echo "${key}=${value}" >> "$ENV_FILE"
@@ -171,8 +235,14 @@ configure_ollama() {
             
             if [[ "$use_docker" =~ ^[Yy]$ ]]; then
                 update_env_var "OLLAMA_ENABLED" "true"
-                update_env_var "OLLAMA_BASE_URL" "http://localhost:11435"
-                echo -e "${YELLOW}ℹ Docker Ollama will run on port 11435 (avoiding conflict with native Ollama)${NC}"
+                # Use service name when in dev container (same Docker network), localhost otherwise
+                if [ -f "/.dockerenv" ]; then
+                    update_env_var "OLLAMA_BASE_URL" "http://ollama:11434"
+                    echo -e "${YELLOW}Note: Using Docker service name 'ollama' on shared network${NC}"
+                else
+                    update_env_var "OLLAMA_BASE_URL" "http://localhost:11435"
+                    echo -e "${YELLOW}Note: Docker Ollama accessible via localhost:11435${NC}"
+                fi
                 
                 echo ""
                 echo "Popular Ollama models:"
@@ -197,6 +267,10 @@ configure_ollama() {
                 
                 echo -e "${BLUE}Pulling model: $ollama_model${NC}"
                 docker-compose exec ollama ollama pull "$ollama_model" || echo -e "${YELLOW}Model pull will continue in background${NC}"
+                
+                # Set backend and model variables BEFORE returning
+                update_env_var "LLM_BACKEND" "ollama"
+                update_env_var "LLM_MODEL" "$ollama_model"
                 
                 echo -e "${GREEN} Ollama Docker service configured${NC}"
                 return
@@ -278,20 +352,32 @@ echo -e "${BLUE}  Backend: ${LLM_BACKEND:-Not Set}${NC}"
 echo -e "${BLUE}  Model: ${LLM_MODEL:-Not Set}${NC}"
 echo -e "${BLUE}=============================================${NC}"
 
-# Skip execution if this is just setup mode
+# After setup, ask if user wants to run pipeline
 if [ "$setup_mode" = true ]; then
     echo ""
-    echo -e "${GREEN} Setup completed successfully!${NC}"
+    echo -e "${GREEN}Setup completed successfully!${NC}"
     echo ""
     echo "Configuration saved to: $ENV_FILE"
     echo ""
-    echo "Next steps:"
-    echo "1. Review your .env file: cat .env"
-    echo "2. Test LLM connection: python test_llm.py" 
-    echo "3. Run pipeline: ./run.sh"
+    
+    # Ask if user wants to continue to run the pipeline
+    read -p "Would you like to run the pipeline now? (y/n) [n]: " run_now
+    run_now=${run_now:-n}
+    
+    if [[ ! "$run_now" =~ ^[Yy]$ ]]; then
+        echo ""
+        echo "Next steps:"
+        echo "1. Review your .env file: cat .env"
+        echo "2. Test LLM connection: python test_llm.py" 
+        echo "3. Run pipeline: ./run.sh"
+        echo ""
+        echo -e "${YELLOW}To reconfigure, run: ./run.sh --setup${NC}"
+        exit 0
+    fi
+    
     echo ""
-    echo -e "${YELLOW}To reconfigure, run: ./run.sh --setup${NC}"
-    exit 0
+    echo -e "${BLUE}Proceeding to pipeline execution...${NC}"
+    # Continue to execution section below
 fi
 
 echo ""

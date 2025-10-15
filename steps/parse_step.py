@@ -4,7 +4,14 @@ from pathlib import Path
 from typing import Dict
 from zenml import step
 import os
+from dotenv import load_dotenv
 import mlflow
+
+# Load environment variables from .env file (critical for ZenML step execution)
+project_root_env = Path(__file__).resolve().parent.parent
+env_path = project_root_env / ".env"
+if env_path.exists():
+    load_dotenv(env_path, override=True)
 
 # Ensure your MLflow version supports tracing (>=2.14.3)
 from packaging.version import Version

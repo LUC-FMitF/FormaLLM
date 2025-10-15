@@ -146,7 +146,8 @@ volumes:
 
 networks:
   formaLLM-network:
-    driver: bridge
+    external: true
+    name: formaLLM-network  # Use the same network as dev container
 
 # Profile definitions for easy service management:
 # 
