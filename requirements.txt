@@ -20,3 +20,5 @@ zenml[server]
 
 # DVC with Google Drive support
 dvc[gdrive]
+
+wheel
