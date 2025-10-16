@@ -20,6 +20,7 @@ import os
 import warnings
 import time
 from pathlib import Path
+from dotenv import load_dotenv
 import mlflow
 from langchain.prompts import PromptTemplate
 from langchain.chains.llm import LLMChain
@@ -28,8 +29,13 @@ from langchain_anthropic import ChatAnthropic
 from langchain_ollama import ChatOllama
 from zenml import step
 
-# Explicitly point MLflow to the ZenML tracking directory
+# Load environment variables from .env file (critical for ZenML step execution)
 project_root_mlflow = Path(__file__).resolve().parent.parent
+env_path = project_root_mlflow / ".env"
+if env_path.exists():
+    load_dotenv(env_path, override=True)
+
+# Explicitly point MLflow to the ZenML tracking directory
 mlflow.set_tracking_uri(f"file://{project_root_mlflow}/mlruns")
 
 # Create or switch to a named experiment
@@ -49,7 +55,7 @@ def prompt_llm() -> dict:
 
     train_path = split_dir / "train.json"
     val_path = split_dir / "val.json"
-    NUM_FEW_SHOTS = 3
+    NUM_FEW_SHOTS = int(os.getenv("NUM_FEW_SHOTS", "3"))
 
     def load_json_data(path):
         with open(path) as f:
@@ -105,20 +111,43 @@ def prompt_llm() -> dict:
     )
 
     # Get LLM backend configuration from environment variables
-    backend = os.getenv("LLM_BACKEND", "openai")
-    model = os.getenv("LLM_MODEL", "gpt-4")
+    backend = os.getenv("LLM_BACKEND", "ollama")
+    model = os.getenv("LLM_MODEL", "llama3.1")
+    
+    print(f"🤖 Initializing LLM: {backend} with model {model}")
 
-    # Initialize the appropriate LLM based on backend choice
-    if backend == "openai":
-        llm = ChatOpenAI(temperature=0, model=model)
-    elif backend == "anthropic":
-        llm = ChatAnthropic(temperature=0, model=model)
-    elif backend == "ollama":
-        llm = ChatOllama(temperature=0, model=model)
-    else:
-        raise ValueError(f"Unsupported LLM backend: {backend}")
+    # Initialize the appropriate LLM based on backend choice with error handling
+    try:
+        if backend == "openai":
+            api_key = os.getenv("OPENAI_API_KEY")
+            if not api_key or api_key == "your-openai-key-here":
+                raise ValueError("OpenAI API key not configured. Please set OPENAI_API_KEY environment variable.")
+            llm = ChatOpenAI(temperature=0, model=model, api_key=api_key)
+            
+        elif backend == "anthropic":
+            api_key = os.getenv("ANTHROPIC_API_KEY") 
+            if not api_key or api_key == "your-anthropic-key-here":
+                raise ValueError("Anthropic API key not configured. Please set ANTHROPIC_API_KEY environment variable.")
+            llm = ChatAnthropic(temperature=0, model=model, api_key=api_key)
+            
+        elif backend == "ollama":
+            base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+            llm = ChatOllama(
+                temperature=0, 
+                model=model,
+                base_url=base_url
+            )
+            print(f"🦙 Ollama endpoint: {base_url}")
+            
+        else:
+            raise ValueError(f"Unsupported LLM backend: {backend}. Supported backends: openai, anthropic, ollama")
+            
+    except Exception as e:
+        print(f"❌ Error initializing {backend} LLM: {str(e)}")
+        print("💡 Tip: Run './run.sh --setup' to configure your LLM backend")
+        raise
 
-    print(f"Using LLM: {backend} with model {model}")
+    print(f"✅ Successfully initialized {backend} LLM with model {model}")
     chain = LLMChain(llm=llm, prompt=PromptTemplate.from_template("{input}"))
 
     train_data = load_json_data(train_path)
