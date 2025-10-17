@@ -45,7 +45,7 @@ FormaLLM/
 
 ---
 
-## � Getting Started
+## Getting Started
 
 ### Option 1: Dev Container (Recommended)
 The dev container automatically sets up the environment and prompts for LLM configuration:
@@ -149,7 +149,7 @@ All backends use the same LangChain interface for consistent behavior.
    ./run.sh
    ```
 
-   **⚡ Quick Commands**
+   **Quick Commands**
    ```bash
    # Test LLM connections
    python test_llm.py --all
@@ -270,7 +270,7 @@ docker-compose ps
 
 ---
 
-## ⚙️ Advanced Configuration
+## Advanced Configuration
 
 ### Environment Variables (.env)
 ```bash
