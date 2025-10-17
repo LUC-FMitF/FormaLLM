@@ -2,11 +2,11 @@
 
 This project explores the use of Large Language Models (LLMs) to automatically generate formal specifications in [TLA+](https://lamport.azurewebsites.net/tla/tla.html) from natural language descriptions (comments). The system supports multiple LLM backends (OpenAI, Anthropic, local Ollama), automated setup, and Docker Compose integration for comprehensive testing environments.
 
-**🚀 Quick Start:** Run `./run.sh --setup` to interactively configure your LLM backends and start testing!
+**Quick Start:** Run `./run.sh --setup` to interactively configure your LLM backends and start testing!
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 FormaLLM/
@@ -33,11 +33,11 @@ FormaLLM/
 ├── pipelines/
 │   └── tla_pipeline.py   # ZenML orchestration
 ├── requirements.txt      # Python dependencies
-├── run.sh                # 🌟 Enhanced multi-LLM setup & runner
-├── docker-compose.yml    # 🌟 Local LLM services (Ollama, MLflow, etc.)
-├── .env.template         # 🌟 Configuration template
+├── run.sh                # Enhanced multi-LLM setup & runner
+├── docker-compose.yml    # Local LLM services (Ollama, MLflow, etc.)
+├── .env.template         # Configuration template
 ├── run_pipeline.py       # ZenML pipeline runner
-├── test_llm.py           # 🌟 Multi-backend testing script
+├── test_llm.py           # Multi-backend testing script
 ├── OLLAMA_MODELS.md      # Ollama model documentation
 ├── mlruns/               # MLflow experiment logs
 └── .env                  # Your configuration (not tracked)
@@ -74,14 +74,14 @@ python test_llm.py --all
 
 ---
 
-## 🤖 LLM Backend Configuration
+## LLM Backend Configuration
 
 ### Supported Backends
 The pipeline supports multiple LLM backends with seamless switching:
 
-- **🏢 OpenAI GPT-4** (via `langchain-openai`) - High-quality commercial API
-- **🧠 Anthropic Claude** (via `langchain-anthropic`) - Alternative commercial API  
-- **🦙 Ollama** (via `langchain-ollama`) - Local/open-source models with Docker support
+- **OpenAI GPT-4** (via `langchain-openai`) - High-quality commercial API
+- **Anthropic Claude** (via `langchain-anthropic`) - Alternative commercial API  
+- **Ollama** (via `langchain-ollama`) - Local/open-source models with Docker support
 
 All backends use the same LangChain interface for consistent behavior.
 
@@ -140,7 +140,7 @@ All backends use the same LangChain interface for consistent behavior.
 
    6. **Pipeline Execution**
 
-   **🌟 Interactive Setup & Execution (Recommended)**
+   **Interactive Setup & Execution (Recommended)**
    ```bash
    # First-time setup
    ./run.sh --setup
@@ -160,7 +160,7 @@ All backends use the same LangChain interface for consistent behavior.
 
 ---
 
-## 🛠️ Multi-LLM Setup & Configuration
+## Multi-LLM Setup & Configuration
 
 ### 1. OpenAI GPT Configuration
 ```bash
@@ -197,7 +197,7 @@ LLM_BACKEND=anthropic
 # Select your preferred model
 ```
 
-**🐳 Docker Compose Integration:**
+**Docker Compose Integration:**
 ```bash
 # Start Ollama service
 docker-compose --profile ollama up -d
@@ -224,7 +224,7 @@ See [OLLAMA_MODELS.md](OLLAMA_MODELS.md) for the complete list.
 
 ---
 
-## 🔧 Docker Compose Services
+## Docker Compose Services
 
 The project includes comprehensive Docker Compose setup for local development:
 
@@ -245,7 +245,7 @@ docker-compose --profile local-llm --profile tracking up -d  # Full setup
 
 ---
 
-## 🧪 Testing & Validation
+## Testing & Validation
 
 ### Test LLM Backends
 ```bash
@@ -300,9 +300,9 @@ Copy `.env.template` to `.env` and customize for your setup.
 
 ---
 
-## 🎯 Quick Start Workflows
+## Quick Start Workflows
 
-### 🦙 Ollama (Local, No API Keys)
+### Ollama (Local, No API Keys)
 ```bash
 ./run.sh --setup
 # → Select: 3 (Ollama)  
@@ -312,7 +312,7 @@ python test_llm.py
 ./run.sh
 ```
 
-### 🏢 OpenAI (Commercial)
+### OpenAI (Commercial)
 ```bash  
 ./run.sh --setup
 # → Select: 1 (OpenAI)
@@ -321,7 +321,7 @@ python test_llm.py
 ./run.sh
 ```
 
-### 🧠 Multi-Backend Testing
+### Multi-Backend Testing
 ```bash
 ./run.sh --setup
 # → Select: 4 (Configure All)
@@ -382,29 +382,29 @@ See [OLLAMA_MODELS.md](OLLAMA_MODELS.md) for the complete list.
 
 ---
 
-## 🌟 Enhanced Features
+## Enhanced Features
 
 ### Developer Experience Improvements
-- **🔄 Automated Setup**: Dev container with `postCreateCommand` for zero-config start
-- **🎨 Visual Feedback**: Color-coded terminal output with emojis and progress indicators
-- **🛠️ Smart Error Handling**: Specific troubleshooting guidance for configuration issues
+- **Automated Setup**: Dev container with `postCreateCommand` for zero-config start
+- **Visual Feedback**: Color-coded terminal output with progress indicators
+- **Smart Error Handling**: Specific troubleshooting guidance for configuration issues
 - **⚡ Quick Testing**: Multi-backend validation with health checks
 
 ### Infrastructure & Deployment
-- **🐳 Docker Integration**: Full Docker Compose stack for local LLM services
-- **📊 Experiment Tracking**: Enhanced MLflow integration with automatic logging
-- **🔧 Environment Management**: Template-based configuration with security best practices
-- **🔀 Flexible Backends**: Seamless switching between commercial and local LLMs
+- **Docker Integration**: Full Docker Compose stack for local LLM services
+- **Experiment Tracking**: Enhanced MLflow integration with automatic logging
+- **Environment Management**: Template-based configuration with security best practices
+- **Flexible Backends**: Seamless switching between commercial and local LLMs
 
 ### Production Ready Features
-- **🔒 Security**: API key validation and secure environment handling
-- **📈 Monitoring**: Comprehensive health checks and service orchestration
-- **🚀 Scalability**: Profile-based deployment for different scenarios
-- **📝 Documentation**: Comprehensive setup guides and troubleshooting tips
+- **Security**: API key validation and secure environment handling
+- **Monitoring**: Comprehensive health checks and service orchestration
+- **Scalability**: Profile-based deployment for different scenarios
+- **Documentation**: Comprehensive setup guides and troubleshooting tips
 
 ---
 
-## 📚 Additional Resources
+## Additional Resources
 
 - **[Ollama Models](OLLAMA_MODELS.md)**: Complete list of supported local models
 - **[.env.template](.env.template)**: Configuration template with all options
@@ -413,7 +413,7 @@ See [OLLAMA_MODELS.md](OLLAMA_MODELS.md) for the complete list.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 1. **Fork the repository** and create your feature branch
 2. **Test your changes** with `python test_llm.py --all`
@@ -424,6 +424,6 @@ For major changes, please open an issue first to discuss the proposed changes.
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.

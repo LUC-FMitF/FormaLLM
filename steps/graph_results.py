@@ -5,10 +5,17 @@ from zenml import step
 
 @step
 def graph_results() -> None:
+    import os
     project_root = Path(__file__).resolve().parent.parent
-    results_path = project_root / "outputs" / "evaluations" / "evaluation_results.csv"
+    
+    # Get model info from environment
+    backend = os.getenv("LLM_BACKEND", "ollama")
+    model = os.getenv("LLM_MODEL", "llama3.1")
+    model_output_dir = project_root / "outputs" / f"{backend}_{model}"
+    
+    results_path = model_output_dir / "evaluations" / "evaluation_results.csv"
     if not results_path.exists():
-        print("Evaluation results file not found.")
+        print(f"Evaluation results file not found at: {results_path}")
         return
 
     df = pd.read_csv(results_path)

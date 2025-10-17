@@ -35,23 +35,12 @@ env_path = project_root_mlflow / ".env"
 if env_path.exists():
     load_dotenv(env_path, override=True)
 
-# Explicitly point MLflow to the ZenML tracking directory
-mlflow.set_tracking_uri(f"file://{project_root_mlflow}/mlruns")
-
-# Create or switch to a named experiment
-mlflow.set_experiment("tla_prompt_generation")
-
-# Enable automatic trace logging for LangChain
-mlflow.langchain.autolog()
-
 
 @step
 def prompt_llm() -> dict:
     project_root = Path(__file__).resolve().parent.parent
     data_dir = project_root / "data"
     split_dir = project_root / "outputs"
-    generated_dir = project_root / "outputs" / "generated"
-    generated_dir.mkdir(parents=True, exist_ok=True)
 
     train_path = split_dir / "train.json"
     val_path = split_dir / "val.json"
@@ -114,7 +103,21 @@ def prompt_llm() -> dict:
     backend = os.getenv("LLM_BACKEND", "ollama")
     model = os.getenv("LLM_MODEL", "llama3.1")
     
-    print(f"🤖 Initializing LLM: {backend} with model {model}")
+    # Create model-specific output directory
+    model_output_dir = project_root / "outputs" / f"{backend}_{model}"
+    generated_dir = model_output_dir / "generated"
+    generated_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Setup model-specific MLflow tracking
+    mlflow_dir = model_output_dir / "mlruns"
+    mlflow_dir.mkdir(parents=True, exist_ok=True)
+    mlflow.set_tracking_uri(f"file://{mlflow_dir}")
+    mlflow.set_experiment(f"tla_prompt_{backend}_{model}")
+    mlflow.langchain.autolog()
+    
+    print(f"Initializing LLM: {backend} with model {model}")
+    print(f"Output directory: {model_output_dir}")
+    print(f"MLflow tracking: {mlflow_dir}")
 
     # Initialize the appropriate LLM based on backend choice with error handling
     try:
@@ -137,17 +140,17 @@ def prompt_llm() -> dict:
                 model=model,
                 base_url=base_url
             )
-            print(f"🦙 Ollama endpoint: {base_url}")
+            print(f"Ollama endpoint: {base_url}")
             
         else:
             raise ValueError(f"Unsupported LLM backend: {backend}. Supported backends: openai, anthropic, ollama")
             
     except Exception as e:
-        print(f"❌ Error initializing {backend} LLM: {str(e)}")
-        print("💡 Tip: Run './run.sh --setup' to configure your LLM backend")
+        print(f"Error initializing {backend} LLM: {str(e)}")
+        print("Tip: Run './run.sh --setup' to configure your LLM backend")
         raise
 
-    print(f"✅ Successfully initialized {backend} LLM with model {model}")
+    print(f"Successfully initialized {backend} LLM with model {model}")
     chain = LLMChain(llm=llm, prompt=PromptTemplate.from_template("{input}"))
 
     train_data = load_json_data(train_path)

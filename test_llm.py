@@ -47,7 +47,7 @@ def load_env():
 
 def test_llm_backend(backend, model, test_prompt="Hello! Can you help me with TLA+ specifications?"):
     """Test a specific LLM backend"""
-    print_colored(f"\n🧪 Testing {backend.upper()} with model: {model}", BLUE)
+    print_colored(f"\nTesting {backend.upper()} with model: {model}", BLUE)
     print("-" * 60)
     
     try:
@@ -67,12 +67,12 @@ def test_llm_backend(backend, model, test_prompt="Hello! Can you help me with TL
         elif backend == "ollama":
             base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
             llm = ChatOllama(temperature=0, model=model, base_url=base_url)
-            print(f"🦙 Ollama endpoint: {base_url}")
+            print(f"Ollama endpoint: {base_url}")
             
         else:
             raise ValueError(f"Unsupported backend: {backend}")
         
-        print_colored("✓ LLM initialized successfully", GREEN)
+        print_colored("[+] LLM initialized successfully", GREEN)
         
         # Test with a simple prompt
         chain = LLMChain(
@@ -80,21 +80,21 @@ def test_llm_backend(backend, model, test_prompt="Hello! Can you help me with TL
             prompt=PromptTemplate.from_template("{input}")
         )
         
-        print(f"📝 Testing with prompt: '{test_prompt}'")
+        print(f"Testing with prompt: '{test_prompt}'")
         response = chain.run(input=test_prompt)
         
-        print_colored("✓ Response received successfully", GREEN)
-        print(f"📤 Response preview: {response[:100]}...")
+        print_colored("[+] Response received successfully", GREEN)
+        print(f"Response preview: {response[:100]}...")
         
         return True, response
         
     except Exception as e:
-        print_colored(f"❌ Error testing {backend}: {str(e)}", RED)
+        print_colored(f"[ERROR] Error testing {backend}: {str(e)}", RED)
         return False, str(e)
 
 def main():
     """Main test function"""
-    print_colored("🚀 FormaLLM Multi-LLM Backend Test", BLUE)
+    print_colored("FormaLLM Multi-LLM Backend Test", BLUE)
     print_colored("=" * 60, BLUE)
     
     # Load environment variables
@@ -104,7 +104,7 @@ def main():
     current_backend = os.getenv("LLM_BACKEND", "ollama")
     current_model = os.getenv("LLM_MODEL", "llama3.1")
     
-    print(f"\n📋 Current Configuration:")
+    print(f"\nCurrent Configuration:")
     print(f"   Backend: {current_backend}")
     print(f"   Model: {current_model}")
     
@@ -112,10 +112,10 @@ def main():
     success, result = test_llm_backend(current_backend, current_model)
     
     if success:
-        print_colored(f"\n🎉 {current_backend.upper()} backend test PASSED!", GREEN)
+        print_colored(f"\n{current_backend.upper()} backend test PASSED!", GREEN)
     else:
-        print_colored(f"\n💥 {current_backend.upper()} backend test FAILED!", RED)
-        print_colored("💡 Troubleshooting tips:", YELLOW)
+        print_colored(f"\n{current_backend.upper()} backend test FAILED!", RED)
+        print_colored("Troubleshooting tips:", YELLOW)
         
         if current_backend == "openai":
             print("   • Check your OPENAI_API_KEY in .env file")
@@ -135,7 +135,7 @@ def main():
     
     # Offer to test other backends
     if len(sys.argv) > 1 and sys.argv[1] == "--all":
-        print_colored("\n🔍 Testing all configured backends...", BLUE)
+        print_colored("\nTesting all configured backends...", BLUE)
         
         backends_to_test = []
         
@@ -154,16 +154,16 @@ def main():
                 success, _ = test_llm_backend(backend, model)
                 results[backend] = success
         
-        print_colored("\n📊 Test Results Summary:", BLUE)
+        print_colored("\nTest Results Summary:", BLUE)
         print("-" * 40)
         results[current_backend] = success  # Add current backend result
         
         for backend, passed in results.items():
-            status = "✅ PASS" if passed else "❌ FAIL"
+            status = "[PASS]" if passed else "[FAIL]"
             print(f"   {backend.upper()}: {status}")
     
-    print_colored(f"\n🔧 To reconfigure LLMs: ./run.sh --setup", YELLOW)
-    print_colored(f"🔧 To test all backends: python test_llm.py --all", YELLOW)
+    print_colored(f"\nTo reconfigure LLMs: ./run.sh --setup", YELLOW)
+    print_colored(f"To test all backends: python test_llm.py --all", YELLOW)
 
 if __name__ == "__main__":
     main()

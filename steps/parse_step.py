@@ -48,13 +48,23 @@ def sanity_check_sany(specs: Dict[str, str]) -> Dict[str, str]:
     Logs output and results to MLflow with tracing.
     """
     project_root = Path(__file__).resolve().parent.parent
-    generated_dir = project_root / "outputs" / "generated"
+    
+    # Get model info from environment
+    backend = os.getenv("LLM_BACKEND", "ollama")
+    model = os.getenv("LLM_MODEL", "llama3.1")
+    model_output_dir = project_root / "outputs" / f"{backend}_{model}"
+    
+    generated_dir = model_output_dir / "generated"
     tools_jar_path = os.environ.get("TLA_TOOLS_DIR", "/opt/tla") + "/tla2tools.jar"
-    sany_logs_dir = project_root / "outputs" / "sany_logs"
+    sany_logs_dir = model_output_dir / "sany_logs"
     sany_logs_dir.mkdir(parents=True, exist_ok=True)
 
+    # Setup model-specific MLflow tracking
+    mlflow_dir = model_output_dir / "mlruns"
+    mlflow.set_tracking_uri(f"file://{mlflow_dir}")
+    mlflow.set_experiment(f"tla_sanity_check_{backend}_{model}")
+    
     results = {}
-    mlflow.set_experiment("tla_sanity_check")
 
     for model_name in specs.keys():
         tla_path = generated_dir / f"{model_name}.tla"

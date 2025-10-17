@@ -19,10 +19,17 @@ import mlflow
 
 @step(enable_cache=False)
 def evaluate_tla(specs: dict) -> dict:
+    import os
     project_root = Path(__file__).resolve().parent.parent
     data_dir = project_root / "data"
-    generated_dir = project_root / "outputs" / "generated"
-    eval_output_dir = project_root / "outputs" / "evaluations"
+    
+    # Get model info from environment
+    backend = os.getenv("LLM_BACKEND", "ollama")
+    model = os.getenv("LLM_MODEL", "llama3.1")
+    model_output_dir = project_root / "outputs" / f"{backend}_{model}"
+    
+    generated_dir = model_output_dir / "generated"
+    eval_output_dir = model_output_dir / "evaluations"
     eval_output_dir.mkdir(parents=True, exist_ok=True)
 
     def resolve_file(model_name: str, filename: str, subdir: str) -> Optional[Path]:
@@ -39,8 +46,11 @@ def evaluate_tla(specs: dict) -> dict:
         return None
 
     results = {}
-    mlflow.set_experiment("tla_eval")
-    mlflow.set_tracking_uri("file:///workspaces/FormaLLM/mlruns")
+    
+    # Setup model-specific MLflow tracking
+    mlflow_dir = model_output_dir / "mlruns"
+    mlflow.set_tracking_uri(f"file://{mlflow_dir}")
+    mlflow.set_experiment(f"tla_eval_{backend}_{model}")
 
     for model_name, spec in specs.items():
         print(f"\n--- {model_name} ---")
