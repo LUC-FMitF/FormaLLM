@@ -388,7 +388,7 @@ See [OLLAMA_MODELS.md](OLLAMA_MODELS.md) for the complete list.
 - **Automated Setup**: Dev container with `postCreateCommand` for zero-config start
 - **Visual Feedback**: Color-coded terminal output with progress indicators
 - **Smart Error Handling**: Specific troubleshooting guidance for configuration issues
-- **⚡ Quick Testing**: Multi-backend validation with health checks
+- **Quick Testing**: Multi-backend validation with health checks
 
 ### Infrastructure & Deployment
 - **Docker Integration**: Full Docker Compose stack for local LLM services
