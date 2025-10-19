@@ -1,0 +1,11 @@
+{
+  "test_models": [
+    {
+      "id": "test_001",
+      "model": "simple_counter",
+      "tla_original": "simple_counter.tla",
+      "comments": "simple_counter_comments.txt",
+      "cfg": "simple_counter.cfg"
+    }
+  ]
+}

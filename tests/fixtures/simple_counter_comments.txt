@@ -1,0 +1,5 @@
+This is a simple counter specification.
+We have a single variable called counter.
+Initially, the counter starts at 0.
+On each step, the counter increments by 1.
+The counter should always be a natural number.
