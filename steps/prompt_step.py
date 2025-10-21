@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ===============================================================================
 TLA+ Model Synthesis from Comments via Few-Shot Prompting
@@ -22,8 +21,7 @@ import time
 from pathlib import Path
 from dotenv import load_dotenv
 import mlflow
-from langchain.prompts import PromptTemplate
-from langchain.chains.llm import LLMChain
+from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 from langchain_ollama import ChatOllama
@@ -151,8 +149,8 @@ def prompt_llm() -> dict:
         raise
 
     print(f"Successfully initialized {backend} LLM with model {model}")
-    chain = LLMChain(llm=llm, prompt=PromptTemplate.from_template("{input}"))
-
+    prompt = PromptTemplate.from_template("{input}")
+    chain = prompt | llm
     train_data = load_json_data(train_path)
     val_data = load_json_data(val_path)
     results = {}
@@ -179,7 +177,7 @@ def prompt_llm() -> dict:
         )
 
         print(f"\n--- Generating spec for module: {module_name} ---")
-        response = chain.run(input=final_prompt).strip()
+        response = chain.invoke({"input": final_prompt})
 
         if "# TLC Configuration:" in response:
             tla_part, cfg_part = response.split("# TLC Configuration:", 1)
@@ -188,12 +186,16 @@ def prompt_llm() -> dict:
             tla_part = response
             cfg_part = ""
 
-        # Ensure proper module syntax
-        tla_body = tla_part.strip()
+        if hasattr(tla_part, "content"): 
+            tla_body = tla_part.content.strip()
+        else:
+            tla_body = str(tla_part).strip()
+
         if not tla_body.startswith("---- MODULE"):
             tla_body = f"---- MODULE {module_name} ----\n" + tla_body
         if not tla_body.rstrip().endswith("===="):
             tla_body = tla_body.rstrip() + "\n===="
+
 
         output_tla_path = generated_dir / f"{module_name}.tla"
         output_cfg_path = generated_dir / f"{module_name}.cfg"
