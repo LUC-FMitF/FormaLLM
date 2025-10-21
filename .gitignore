@@ -136,6 +136,9 @@ venv*/
 ENV/
 env.bak/
 venv.bak/
+# Ignore common dotenv variants but keep the shared template
+.env.*
+!.env.template
 
 # Spyder project settings
 .spyderproject
@@ -199,4 +202,7 @@ cython_debug/
 outputs/*
 
 # MLFlow runs
-#mlruns/*
+mlruns/*
+
+#ZenML Config
+.zen/*
