@@ -1,43 +1,7 @@
 #!/bin/bash
 ################################################################################
 # FormaLLM Multi-LLM Pipeline Setup and Runner
-#############                # Start Docker Compose with better error handling
-                echo -e "${BLUE}Starting Ollama service...${NC}"
-                
-                # Check if Ollama is already running
-                if docker compose ps ollama 2>/dev/null | grep -q "Up"; then
-                    echo -e "${YELLOW} Ollama service already running${NC}"
-                elif docker compose ps ollama 2>/dev/null | grep -q "ollama"; then
-                    echo -e "${BLUE}Restarting existing Ollama service...${NC}"
-                    docker compose restart ollama
-                else
-                    echo -e "${BLUE}Creating new Ollama service...${NC}"
-                    if ! docker compose up -d ollama; then
-                        echo -e "${RED} Failed to start Ollama service${NC}"
-                        echo -e "${YELLOW} Try: docker compose down && docker compose up -d ollama${NC}"
-                        return 1
-                    fi
-                fi
-                
-                echo -e "${YELLOW}Waiting for Ollama to be ready...${NC}"
-                sleep 15
-                
-                # Test if Ollama is accessible
-                echo -e "${BLUE}Testing Ollama connection...${NC}"
-                if docker compose exec ollama curl -s http://localhost:11434/api/health >/dev/null 2>&1; then
-                    echo -e "${GREEN} Ollama service is running${NC}"
-                    
-                    echo -e "${BLUE}Pulling model: $ollama_model${NC}"
-                    if docker compose exec ollama ollama pull "$ollama_model"; then
-                        echo -e "${GREEN} Model $ollama_model ready${NC}"
-                    else
-                        echo -e "${YELLOW} Model pull failed - you can try manually later${NC}"
-                    fi
-                else
-                    echo -e "${YELLOW} Ollama may still be starting up${NC}"
-                fi
-                
-                echo -e "${GREEN} Ollama Docker service configured${NC}"########################################################
+################################################################################
 # Enhanced script that:
 # - Sets up environment variables for multiple LLM backends
 # - Manages Docker Compose services for local LLMs
@@ -46,374 +10,478 @@
 
 set -e
 
-# Colors for better UX
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
-
-# Configuration
-ENV_FILE="${PWD}/.env"
-DOCKER_COMPOSE_FILE="${PWD}/docker-compose.yml"
-
-echo -e "${BLUE}=============================================${NC}"
-echo -e "${BLUE}   FormaLLM Multi-LLM Pipeline Setup${NC}"
-echo -e "${BLUE}=============================================${NC}"
-echo ""
-
-# Check if we're in setup mode (first run) or execution mode
-setup_mode=false
-if [ "$1" = "--setup" ] || [ ! -f "$ENV_FILE" ]; then
-    setup_mode=true
-fi
-
-# If not in setup mode, check if .env exists and has required variables
-if [ "$setup_mode" = false ]; then
-    if [ ! -f "$ENV_FILE" ]; then
-        echo -e "${RED}Error: No configuration found!${NC}"
-        echo -e "${YELLOW}Please run: ./run.sh --setup${NC}"
-        exit 1
-    fi
-    
-    # Check if LLM_BACKEND is configured
-    if ! grep -q "^LLM_BACKEND=" "$ENV_FILE" 2>/dev/null; then
-        echo -e "${YELLOW}Warning: Configuration incomplete. Running setup...${NC}"
-        setup_mode=true
-    fi
-fi
-
-if [ "$setup_mode" = true ]; then
-    echo -e "${YELLOW}Initial setup detected - configuring environment...${NC}"
-    echo ""
-
-        
-    # Initialize ZenML and MLflow
-    echo -e "${BLUE}Setting up ZenML and MLflow...${NC}"
-    
-    # Initialize ZenML
-    echo "Initializing ZenML..."
-    zenml init || echo "ZenML already initialized"
-    
-    # Install ZenML integrations
-    echo "Installing ZenML integrations..."
-    zenml integration install mlflow -y || echo "MLflow integration already installed"
-    
-    # Register MLflow experiment tracker
-    echo "Registering MLflow experiment tracker..."
-    zenml experiment-tracker register mlflow_tracker --flavor=mlflow \
-        --tracking_uri="file:///workspaces/FormaLLM/mlruns" 2>/dev/null || echo "Tracker already exists"
-    
-    # Create new stack with MLflow tracker
-    echo "Creating ZenML stack with MLflow tracker..."
-    zenml stack register mlflow_stack \
-        -e mlflow_tracker \
-        -a default \
-        -o default \
-        --set 2>/dev/null || echo "Stack already exists"
-    
-    echo -e "${GREEN} ZenML and MLflow setup complete${NC}"
-    
-    # Optionally start MLflow UI and ZenML server in background
-    read -p "Start MLflow UI at http://localhost:5000? (y/n) [y]: " start_mlflow
-    start_mlflow=${start_mlflow:-y}
-    if [[ "$start_mlflow" =~ ^[Yy]$ ]]; then
-        echo "Starting MLflow UI..."
-        mlflow ui --host 0.0.0.0 &
-        echo -e "${GREEN} MLflow UI started at http://localhost:5000${NC}"
-    fi
-    
-    read -p "Start ZenML server at http://localhost:8237? (y/n) [n]: " start_zenml
-    start_zenml=${start_zenml:-n}
-    if [[ "$start_zenml" =~ ^[Yy]$ ]]; then
-        echo "Starting ZenML server..."
-        zenml login --local &
-        echo -e "${GREEN} ZenML server started at http://localhost:8237${NC}"
-    fi
-    
-    echo ""
-    echo -e "${GREEN} Project environment setup complete.${NC}"
-    echo ""
-fi
-
-# Function to safely update environment variables
+# Function to update or add environment variable in .env file
 update_env_var() {
     local key=$1
     local value=$2
+    local env_file=".env"
     
-    # Create .env file if it doesn't exist
-    if [ ! -f "$ENV_FILE" ]; then
-        echo "# FormaLLM Environment Configuration" > "$ENV_FILE"
-        echo "# Generated by run.sh on $(date)" >> "$ENV_FILE"
-        echo "" >> "$ENV_FILE"
+    # Create .env if it doesn't exist
+    touch "$env_file"
+    
+    # Remove existing key if present
+    if grep -q "^${key}=" "$env_file" 2>/dev/null; then
+        # Use temporary file for cross-platform compatibility
+        grep -v "^${key}=" "$env_file" > "${env_file}.tmp" && mv "${env_file}.tmp" "$env_file"
     fi
     
-    if grep -q "^${key}=" "$ENV_FILE"; then
-        # Update existing - escape special characters for sed
-        local escaped_value=$(printf '%s\n' "$value" | sed 's/[\/&]/\\&/g')
-        sed -i "s/^${key}=.*/${key}=${escaped_value}/" "$ENV_FILE"
-    else
-        # Add new
-        echo "${key}=${value}" >> "$ENV_FILE"
-    fi
+    # Add new value
+    echo "${key}=\"${value}\"" >> "$env_file"
 }
 
-if [ "$setup_mode" = true ]; then
-    echo "Available LLM backends:"
-    echo "  1) OpenAI GPT-4 (Commercial API)"
-    echo "  2) Anthropic Claude (Commercial API)" 
-    echo "  3) Ollama (Local/Docker)"
-    echo "  4) Configure All (Recommended for development)"
+# Function to clean up old LLM configuration from .env
+clean_llm_config() {
+    local env_file=".env"
+    
+    if [ ! -f "$env_file" ]; then
+        return
+    fi
+    
     echo ""
-    read -p "Select LLM backend(s) to configure (1-4): " backend_choice
-else
-    echo "Available LLM backends:"
-    echo "  1) OpenAI GPT-4"
-    echo "  2) Anthropic Claude"
-    echo "  3) Ollama (Local)"
+    echo "Cleaning previous LLM configuration..."
+    
+    # Remove all LLM-related variables (including old deprecated ones)
+    local vars_to_remove=("LLM_BACKEND" "LLM_MODEL" "OLLAMA_DEPLOYMENT" "OLLAMA_BASE_URL" "OLLAMA_ENABLED" "OLLAMA_MODEL")
+    
+    for var in "${vars_to_remove[@]}"; do
+        # Match both with and without quotes
+        if grep -q "^${var}=" "$env_file" 2>/dev/null; then
+            grep -v "^${var}=" "$env_file" > "${env_file}.tmp" && mv "${env_file}.tmp" "$env_file"
+        fi
+    done
+    
+    echo "Previous configuration cleared."
+}
+
+echo "============================================="
+echo "   ZenML TLA+ Pipeline - LLM Selection"
+echo "============================================="
+
+# Check if this is a fresh setup or reconfiguration
+if [ -f ".env" ] && grep -q "^LLM_BACKEND=" ".env" 2>/dev/null; then
     echo ""
-    read -p "Select LLM backend for this run (1-3): " backend_choice
+    echo "Existing LLM configuration detected."
+    current_backend=$(grep "^LLM_BACKEND=" ".env" | cut -d'=' -f2 | tr -d '"')
+    current_model=$(grep "^LLM_MODEL=" ".env" | cut -d'=' -f2 | tr -d '"')
+    echo "Current: Backend=$current_backend, Model=$current_model"
+    echo ""
+    read -p "Would you like to reconfigure? (y/n) [y]: " reconfigure
+    reconfigure=${reconfigure:-y}
+    
+    if [[ ! "$reconfigure" =~ ^[Yy]$ ]]; then
+        echo "Using existing configuration."
+        echo ""
+        echo "To run pipeline with current settings:"
+        echo "  python run_pipeline.py --backend $current_backend --model $current_model"
+        echo "or"
+        echo "  python run_standalone.py --backend $current_backend --model $current_model"
+        exit 0
+    fi
+    
+    # Clean old configuration
+    clean_llm_config
 fi
 
-# Configuration functions
-configure_openai() {
-    echo -e "${BLUE}Configuring OpenAI GPT...${NC}"
-    
-    if [ "$setup_mode" = true ]; then
-        read -p "Enter your OpenAI API key (or press Enter to skip): " api_key
-        if [ ! -z "$api_key" ]; then
-            update_env_var "OPENAI_API_KEY" "$api_key"
-            echo -e "${GREEN} OpenAI API key configured${NC}"
-        else
-            update_env_var "OPENAI_API_KEY" "your-openai-key-here"
-            echo -e "${YELLOW} OpenAI API key placeholder added${NC}"
-        fi
-        
-        read -p "Enter OpenAI model (default: gpt-4): " openai_model
-        openai_model=${openai_model:-"gpt-4"}
-        update_env_var "OPENAI_MODEL" "$openai_model"
-    fi
-    
-    update_env_var "LLM_BACKEND" "openai"
-    current_model=$(grep "^OPENAI_MODEL=" "$ENV_FILE" 2>/dev/null | cut -d'=' -f2 || echo "gpt-4")
-    update_env_var "LLM_MODEL" "$current_model"
-    echo -e "${GREEN}Selected: OpenAI GPT${NC}"
-}
+echo ""
+echo "Available LLM backends:"
+echo "  1) GPT-4 (OpenAI)"
+echo "  2) Claude (Anthropic)"
+echo "  3) Ollama (Local)"
+echo ""
+read -p "Select LLM backend (1-3): " backend_choice
 
-configure_anthropic() {
-    echo -e "${BLUE}Configuring Anthropic Claude...${NC}"
-    
-    if [ "$setup_mode" = true ]; then
-        read -p "Enter your Anthropic API key (or press Enter to skip): " api_key
-        if [ ! -z "$api_key" ]; then
-            update_env_var "ANTHROPIC_API_KEY" "$api_key"
-            echo -e "${GREEN} Anthropic API key configured${NC}"
-        else
-            update_env_var "ANTHROPIC_API_KEY" "your-anthropic-key-here"
-            echo -e "${YELLOW} Anthropic API key placeholder added${NC}"
-        fi
-        
-        read -p "Enter Claude model (default: claude-3-5-sonnet-20241022): " claude_model
-        claude_model=${claude_model:-"claude-3-5-sonnet-20241022"}
-        update_env_var "ANTHROPIC_MODEL" "$claude_model"
-    fi
-    
-    update_env_var "LLM_BACKEND" "anthropic"
-    current_model=$(grep "^ANTHROPIC_MODEL=" "$ENV_FILE" 2>/dev/null | cut -d'=' -f2 || echo "claude-3-5-sonnet-20241022")
-    update_env_var "LLM_MODEL" "$current_model"
-    echo -e "${GREEN}Selected: Anthropic Claude${NC}"
-}
-
-configure_ollama() {
-    echo -e "${BLUE}Configuring Ollama (Local)...${NC}"
-    
-    if [ "$setup_mode" = true ]; then
-        # Check if Docker Compose is available
-        if command -v docker-compose &> /dev/null && [ -f "$DOCKER_COMPOSE_FILE" ]; then
-            read -p "Start Ollama via Docker Compose? (y/n) [y]: " use_docker
-            use_docker=${use_docker:-y}
-            
-            if [[ "$use_docker" =~ ^[Yy]$ ]]; then
-                update_env_var "OLLAMA_ENABLED" "true"
-                # Use service name when in dev container (same Docker network), localhost otherwise
-                if [ -f "/.dockerenv" ]; then
-                    update_env_var "OLLAMA_BASE_URL" "http://ollama:11434"
-                    echo -e "${YELLOW}Note: Using Docker service name 'ollama' on shared network${NC}"
-                else
-                    update_env_var "OLLAMA_BASE_URL" "http://localhost:11435"
-                    echo -e "${YELLOW}Note: Docker Ollama accessible via localhost:11435${NC}"
-                fi
-                
-                echo ""
-                echo "Popular Ollama models:"
-                echo "  • llama3.1 (8B, 4.7GB) - General purpose, recommended"
-                echo "  • codellama (7B, 3.8GB) - Code specialized"
-                echo "  • deepseek-r1 (7B, 4.7GB) - Reasoning model"
-                echo "  • qwq (32B, 20GB) - Advanced reasoning"
-                echo "  • phi4 (14B, 9.1GB) - Microsoft model"
-                echo "  • mistral (7B, 4.1GB) - Fast & capable"
-                echo ""
-                
-                read -p "Enter Ollama model to use (default: llama3.1): " ollama_model
-                ollama_model=${ollama_model:-"llama3.1"}
-                update_env_var "OLLAMA_MODEL" "$ollama_model"
-                
-                # Start Docker Compose
-                echo -e "${BLUE}Starting Ollama service...${NC}"
-                docker-compose up -d ollama
-                
-                echo -e "${YELLOW}Waiting for Ollama to start...${NC}"
-                sleep 10
-                
-                echo -e "${BLUE}Pulling model: $ollama_model${NC}"
-                docker-compose exec ollama ollama pull "$ollama_model" || echo -e "${YELLOW}Model pull will continue in background${NC}"
-                
-                # Set backend and model variables BEFORE returning
-                update_env_var "LLM_BACKEND" "ollama"
-                update_env_var "LLM_MODEL" "$ollama_model"
-                
-                echo -e "${GREEN} Ollama Docker service configured${NC}"
-                return
-            fi
-        fi
-        
-        # Fallback to native Ollama
-        update_env_var "OLLAMA_ENABLED" "true"
-        update_env_var "OLLAMA_BASE_URL" "http://localhost:11434"
-        
-        if ! command -v ollama &> /dev/null; then
-            echo -e "${RED}Error: Ollama CLI not found and Docker not configured.${NC}"
-            echo "Please install Ollama or configure Docker Compose."
-            return 1
-        fi
-        
-        # Handle native Ollama model selection (existing logic)
-        ollama_model="llama3.1"
-        update_env_var "OLLAMA_MODEL" "$ollama_model"
-    fi
-    
-    update_env_var "LLM_BACKEND" "ollama"
-    current_model=$(grep "^OLLAMA_MODEL=" "$ENV_FILE" 2>/dev/null | cut -d'=' -f2 || echo "llama3.1")
-    update_env_var "LLM_MODEL" "$current_model"
-    echo -e "${GREEN}Selected: Ollama Local${NC}"
-}
-
-# Handle backend selection
 case $backend_choice in
     1)
-        configure_openai
-        ;;
-    2)
-        configure_anthropic
-        ;;
-    3)
-        configure_ollama
-        ;;
-    4)
-        if [ "$setup_mode" = true ]; then
-            echo -e "${BLUE}Configuring all backends...${NC}"
-            configure_openai
+        update_env_var "LLM_BACKEND" "openai"
+        update_env_var "LLM_MODEL" "gpt-4"
+        echo ""
+        echo "Selected: GPT-4 (OpenAI)"
+
+        if [ -z "$OPENAI_API_KEY" ]; then
             echo ""
-            configure_anthropic  
+            read -sp "Enter your OpenAI API key: " api_key
             echo ""
-            configure_ollama
-            echo ""
-            
-            # Set default backend
-            read -p "Set default backend (openai/anthropic/ollama) [ollama]: " default_backend
-            default_backend=${default_backend:-ollama}
-            update_env_var "LLM_BACKEND" "$default_backend"
-            echo -e "${GREEN} All backends configured, default: $default_backend${NC}"
+            update_env_var "OPENAI_API_KEY" "$api_key"
         else
-            echo -e "${RED}Option 4 only available in setup mode${NC}"
-            exit 1
+            echo "Using existing OPENAI_API_KEY from environment"
         fi
         ;;
+    2)
+        update_env_var "LLM_BACKEND" "anthropic"
+        update_env_var "LLM_MODEL" "claude-3-5-sonnet-20241022"
+        echo ""
+        echo "Selected: Claude (Anthropic)"
+
+        if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo ""
+            read -sp "Enter your Anthropic API key: " api_key
+            echo ""
+            update_env_var "ANTHROPIC_API_KEY" "$api_key"
+        else
+            echo "Using existing ANTHROPIC_API_KEY from environment"
+        fi
+        ;;
+    3)
+        echo LLM_BACKEND="ollama" >> .env
+        echo ""
+        echo "Selected: Ollama"
+        echo ""
+        echo "Choose Ollama deployment option:"
+        echo "  1) Native Ollama (installed on host system) - DEFAULT"
+        echo "  2) Docker Compose Ollama (containerized service)"
+        echo "  3) External Ollama (remote server or custom URL)"
+        echo ""
+        read -p "Select deployment (1-3) [1]: " ollama_deployment
+        ollama_deployment=${ollama_deployment:-1}
+
+        case $ollama_deployment in
+            1)
+                # Native Ollama installation
+                echo ""
+                echo "Using native Ollama installation"
+                update_env_var "LLM_BACKEND" "ollama"
+                update_env_var "OLLAMA_BASE_URL" "http://localhost:11434"
+
+                if ! command -v ollama &> /dev/null; then
+                    echo "Error: Ollama CLI not found. Please install Ollama first."
+                    echo "Visit: https://ollama.ai/download"
+                    exit 1
+                fi
+
+                echo "Available Ollama models on your system:"
+                models=($(ollama list 2>/dev/null | tail -n +2 | awk '{print $1}'))
+
+                if [ ${#models[@]} -eq 0 ]; then
+                    echo "  No models installed."
+                    echo ""
+                    echo "Popular models for code generation:"
+                    echo "  - llama3.1        (8B, 4.7GB)  - Good all-around"
+                    echo "  - codellama       (7B, 3.8GB)  - Code specialized"
+                    echo "  - deepseek-r1     (7B, 4.7GB)  - Reasoning model"
+                    echo "  - qwq             (32B, 20GB)  - Advanced reasoning"
+                    echo "  - phi4            (14B, 9.1GB) - Microsoft model"
+                    echo "  - mistral         (7B, 4.1GB)  - Fast & capable"
+                    echo "  - gemma3          (4B, 3.3GB)  - Google model"
+                    echo ""
+                    read -p "Enter model name to pull and use: " model_name
+                    if [ -z "$model_name" ]; then
+                        echo "No model specified. Exiting."
+                        exit 1
+                    fi
+                    echo "Pulling model '$model_name'..."
+                    ollama pull "$model_name"
+                    if [ $? -ne 0 ]; then
+                        echo "Failed to pull model. Exiting."
+                        exit 1
+                    fi
+                    update_env_var "LLM_MODEL" "$model_name"
+                else
+                    for i in "${!models[@]}"; do
+                        echo "  $((i+1))) ${models[$i]}"
+                    done
+
+                    echo ""
+                    echo "Popular models (if not installed above):"
+                    echo "  llama3.1, codellama, deepseek-r1, qwq, phi4, mistral, gemma3"
+                    echo ""
+                    read -p "Select model by number or enter model name [1]: " selection
+
+                    selection=${selection:-1}
+
+                    if [[ "$selection" =~ ^[0-9]+$ ]] && [ "$selection" -ge 1 ] && [ "$selection" -le "${#models[@]}" ]; then
+                        update_env_var "LLM_MODEL" "${models[$((selection-1))]}"
+                    else
+                        update_env_var "LLM_MODEL" "$selection"
+
+                        if ! ollama list 2>/dev/null | grep -q "^$selection"; then
+                            echo ""
+                            echo "Model '$selection' not found locally."
+                            read -p "Do you want to pull it now? (y/n) [y]: " pull_model
+                            pull_model=${pull_model:-y}
+
+                            if [[ "$pull_model" =~ ^[Yy]$ ]]; then
+                                echo "Pulling model '$selection'..."
+                                ollama pull "$selection"
+                                if [ $? -ne 0 ]; then
+                                    echo "Failed to pull model. Exiting."
+                                    exit 1
+                                fi
+                            else
+                                echo "Cannot proceed without the model. Exiting."
+                                exit 1
+                            fi
+                        fi
+                    fi
+                fi
+                ;;
+
+            2)
+                # Docker Compose Ollama
+                echo ""
+                echo "Using Docker Compose Ollama service"
+                update_env_var "LLM_BACKEND" "ollama"
+                update_env_var "OLLAMA_BASE_URL" "http://localhost:11435"
+
+                echo ""
+                echo "Popular models for code generation:"
+                echo "  - llama3.1        (8B, 4.7GB)  - Good all-around"
+                echo "  - codellama       (7B, 3.8GB)  - Code specialized"
+                echo "  - deepseek-r1     (7B, 4.7GB)  - Reasoning model"
+                echo "  - qwq             (32B, 20GB)  - Advanced reasoning"
+                echo "  - phi4            (14B, 9.1GB) - Microsoft model"
+                echo "  - mistral         (7B, 4.1GB)  - Fast & capable"
+                echo "  - gemma3          (4B, 3.3GB)  - Google model"
+                echo ""
+                read -p "Enter model name to use [llama3.1]: " ollama_model
+                ollama_model=${ollama_model:-llama3.1}
+                update_env_var "LLM_MODEL" "$ollama_model"
+
+                echo ""
+                echo "Starting Ollama Docker service..."
+                
+                # Check if Ollama is already running
+                if docker compose ps ollama 2>/dev/null | grep -q "Up"; then
+                    echo "Ollama service already running"
+                elif docker compose ps ollama 2>/dev/null | grep -q "ollama"; then
+                    echo "Restarting existing Ollama service..."
+                    docker compose restart ollama
+                else
+                    echo "Creating new Ollama service..."
+                    if ! docker compose up -d ollama; then
+                        echo "Failed to start Ollama service"
+                        echo "Try: docker compose down && docker compose up -d ollama"
+                        exit 1
+                    fi
+                fi
+                
+                echo "Waiting for Ollama to be ready..."
+                sleep 15
+                
+                # Test if Ollama is accessible
+                echo "Testing Ollama connection..."
+                if docker compose exec ollama curl -s http://localhost:11434/api/health >/dev/null 2>&1; then
+                    echo "Ollama service is running"
+                    
+                    echo "Pulling model: $ollama_model"
+                    if docker compose exec ollama ollama pull "$ollama_model"; then
+                        echo "Model $ollama_model ready"
+                    else
+                        echo "Model pull failed - you can try manually later"
+                    fi
+                else
+                    echo "Ollama may still be starting up"
+                fi
+                
+                echo "Ollama Docker service configured"
+                ;;
+
+            3)
+                # External Ollama server
+                echo ""
+                echo "Using external Ollama server"
+                update_env_var "LLM_BACKEND" "ollama"
+                
+                read -p "Enter Ollama server URL [http://localhost:11434]: " ollama_url
+                ollama_url=${ollama_url:-http://localhost:11434}
+                update_env_var "OLLAMA_BASE_URL" "$ollama_url"
+
+                read -p "Enter model name to use [llama3.1]: " ollama_model
+                ollama_model=${ollama_model:-llama3.1}
+                update_env_var "LLM_MODEL" "$ollama_model"
+
+                echo "External Ollama configured at: $ollama_url"
+                echo "Model: $ollama_model"
+                ;;
+
+            *)
+                echo "Invalid selection. Defaulting to native Ollama."
+                update_env_var "LLM_BACKEND" "ollama"
+                update_env_var "OLLAMA_BASE_URL" "http://localhost:11434"
+                update_env_var "LLM_MODEL" "llama3.1"
+                ;;
+        esac
+
+        echo ""
+        echo "Ollama configuration complete"
+        ;;
     *)
-        echo -e "${RED}Invalid selection. Exiting.${NC}"
+        echo "Invalid selection. Exiting."
         exit 1
         ;;
 esac
 
-# Add standard environment variables
-update_env_var "MLFLOW_TRACKING_URI" "file://${PWD}/mlruns"
-update_env_var "TLA_TOOLS_DIR" "/opt/tla"
-
-echo ""
-
-# Load current configuration for display
-if [ -f "$ENV_FILE" ]; then
-    source "$ENV_FILE"
+# Load the environment variables from .env file into current shell
+if [ -f ".env" ]; then
+    # Export only the LLM_BACKEND and LLM_MODEL variables
+    export $(grep -E "^(LLM_BACKEND|LLM_MODEL)=" .env | xargs)
 fi
 
-echo -e "${BLUE}=============================================${NC}"
-echo -e "${BLUE}Current Configuration:${NC}"
-echo -e "${BLUE}  Backend: ${LLM_BACKEND:-Not Set}${NC}"
-echo -e "${BLUE}  Model: ${LLM_MODEL:-Not Set}${NC}"
-echo -e "${BLUE}=============================================${NC}"
+echo ""
+echo "============================================="
+echo "Running pipeline with:"
+echo "  Backend: ${LLM_BACKEND//\"/}"
+echo "  Model: ${LLM_MODEL//\"/}"
+echo "============================================="
+echo ""
 
-# After setup, ask if user wants to run pipeline
-if [ "$setup_mode" = true ]; then
+# Check for optional tracking services
+check_tracking_services() {
     echo ""
-    echo -e "${GREEN}Setup completed successfully!${NC}"
-    echo ""
-    echo "Configuration saved to: $ENV_FILE"
-    echo ""
+    echo "Checking for tracking services..."
     
-    # Ask if user wants to continue to run the pipeline
-    read -p "Would you like to run the pipeline now? (y/n) [n]: " run_now
-    run_now=${run_now:-n}
-    
-    if [[ ! "$run_now" =~ ^[Yy]$ ]]; then
-        echo ""
-        echo "Next steps:"
-        echo "1. Review your .env file: cat .env"
-        echo "2. Test LLM connection: python test_llm.py" 
-        echo "3. Run pipeline: ./run.sh"
-        echo ""
-        echo -e "${YELLOW}To reconfigure, run: ./run.sh --setup${NC}"
-        exit 0
+    # Check if MLflow is running on port 5001 (Docker) or 5000 (native)
+    mlflow_running=false
+    if curl -s http://localhost:5001/health >/dev/null 2>&1; then
+        echo "MLflow server detected on port 5001 (Docker)"
+        mlflow_running=true
+    elif curl -s http://localhost:5000/health >/dev/null 2>&1; then
+        echo "MLflow server detected on port 5000 (native)"
+        mlflow_running=true
+    elif lsof -Pi :5001 -sTCP:LISTEN -t >/dev/null 2>&1; then
+        echo "Service detected on MLflow Docker port 5001"
+        mlflow_running=true
+    elif lsof -Pi :5000 -sTCP:LISTEN -t >/dev/null 2>&1; then
+        echo "Service detected on MLflow native port 5000"
+        mlflow_running=true
     fi
     
+    # Check if ZenML server is running (port 8237)
+    zenml_running=false
+    
+    # Try multiple methods to detect port 8237
+    if ss -tlnp 2>/dev/null | grep -q ":8237"; then
+        echo "ZenML server detected on port 8237 (via ss)"
+        zenml_running=true
+    elif netstat -tlnp 2>/dev/null | grep -q ":8237"; then
+        echo "ZenML server detected on port 8237 (via netstat)"
+        zenml_running=true
+    elif lsof -Pi :8237 -sTCP:LISTEN -t >/dev/null 2>&1; then
+        echo "ZenML server detected on port 8237 (via lsof)"
+        zenml_running=true
+    elif command -v zenml &> /dev/null && zenml status 2>/dev/null | grep -q "Running"; then
+        echo "ZenML server is running (via zenml status)"
+        zenml_running=true
+    elif nc -z localhost 8237 2>/dev/null; then
+        echo "ZenML server detected on port 8237 (via nc)"
+        zenml_running=true
+    fi
+    
+    # Offer to start services if not running
+    if [ "$mlflow_running" = false ] || [ "$zenml_running" = false ]; then
+        echo ""
+        echo "Optional tracking services status:"
+        [ "$mlflow_running" = true ] && echo "  MLflow: Running" || echo "  MLflow: Not running"
+        [ "$zenml_running" = true ] && echo "  ZenML: Running" || echo "  ZenML: Not running"
+        echo ""
+        echo "These services are optional. The pipeline will work without them."
+        read -p "Would you like to start missing services? (y/n) [n]: " start_services
+        start_services=${start_services:-n}
+        
+        if [[ "$start_services" =~ ^[Yy]$ ]]; then
+            # Start MLflow if not running
+            if [ "$mlflow_running" = false ]; then
+                echo ""
+                echo "Starting MLflow..."
+                echo "Choose MLflow deployment:"
+                echo "  1) Docker Compose (port 5001)"
+                echo "  2) Native Python (port 5000)"
+                echo "  3) Skip MLflow"
+                read -p "Select option (1-3) [1]: " mlflow_choice
+                mlflow_choice=${mlflow_choice:-1}
+                
+                case $mlflow_choice in
+                    1)
+                        if docker compose ps mlflow 2>/dev/null | grep -q "Up"; then
+                            echo "MLflow Docker service already running"
+                        else
+                            echo "Starting MLflow via Docker Compose..."
+                            if docker compose --profile mlflow up -d mlflow; then
+                                echo "MLflow started on http://localhost:5001"
+                                sleep 3
+                            else
+                                echo "Warning: Failed to start MLflow Docker service"
+                            fi
+                        fi
+                        ;;
+                    2)
+                        if lsof -Pi :5000 -sTCP:LISTEN -t >/dev/null 2>&1; then
+                            echo "Port 5000 already in use. Skipping native MLflow."
+                        else
+                            echo "Starting MLflow in background..."
+                            nohup mlflow server --host 0.0.0.0 --port 5000 > mlflow.log 2>&1 &
+                            echo "MLflow started on http://localhost:5000 (logs: mlflow.log)"
+                            sleep 3
+                        fi
+                        ;;
+                    3)
+                        echo "Skipping MLflow"
+                        ;;
+                esac
+            fi
+            
+            # Start ZenML if not running
+            if [ "$zenml_running" = false ]; then
+                echo ""
+                if command -v zenml &> /dev/null; then
+                    read -p "Start ZenML server? (y/n) [n]: " start_zenml
+                    start_zenml=${start_zenml:-n}
+                    if [[ "$start_zenml" =~ ^[Yy]$ ]]; then
+                        echo "Starting ZenML server..."
+                        zenml up
+                        sleep 3
+                    fi
+                else
+                    echo "ZenML CLI not found. Skipping."
+                fi
+            fi
+        else
+            echo "Continuing without starting additional services."
+        fi
+    else
+        echo "Tracking services already running."
+    fi
     echo ""
-    echo -e "${BLUE}Proceeding to pipeline execution...${NC}"
-    # Continue to execution section below
-fi
+}
 
-echo ""
+# Check and optionally start tracking services
+check_tracking_services
+
 echo "Choose execution mode:"
 echo "  1) ZenML orchestrated pipeline (full pipeline with tracking)"
 echo "  2) Standalone mode (recommended - avoids ZenML/numba conflicts)"
-echo "  3) Test LLM connection only"
 echo ""
-read -p "Select mode (1-3) [default: 2]: " exec_mode
+echo "Note: Configuration will be loaded from .env file"
+read -p "Select mode (1-2) [default: 2]: " exec_mode
 exec_mode=${exec_mode:-2}
 
 case $exec_mode in
     1)
-        echo -e "${BLUE}Starting ZenML pipeline...${NC}"
-        python run_pipeline.py
-        ;;
-    2)
-        echo -e "${BLUE}Starting standalone pipeline...${NC}"
-        if [ -f "run_standalone.py" ]; then
-            python run_standalone.py
-        else
-            echo -e "${YELLOW}run_standalone.py not found, using ZenML pipeline${NC}"
-            python run_pipeline.py
+        echo ""
+        echo "Starting ZenML pipeline..."
+        if ! python run_pipeline.py; then
+            echo ""
+            echo "ZenML pipeline failed. This might be due to:"
+            echo "  - ZenML configuration issues"
+            echo "  - Missing ZenML initialization"
+            echo ""
+            echo "Try running standalone mode instead (option 2)"
+            echo "Or reinitialize ZenML: zenml init"
+            exit 1
         fi
         ;;
-    3)
-        echo -e "${BLUE}Testing LLM connection...${NC}"
-        python test_llm.py
+    2)
+        echo ""
+        echo "Starting standalone pipeline..."
+        python run_standalone.py
         ;;
     *)
-        echo -e "${YELLOW}Invalid selection. Using standalone mode.${NC}"
-        python run_pipeline.py
+        echo "Invalid selection. Using standalone mode."
+        echo ""
+        python run_standalone.py
         ;;
 esac
 
 echo ""
-echo -e "${GREEN}=============================================${NC}"
-echo -e "${GREEN}Execution completed!${NC}"
-echo -e "${GREEN}=============================================${NC}"
+echo "============================================="
+echo "Pipeline execution completed!"
+echo "============================================="
