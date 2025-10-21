@@ -5,6 +5,7 @@ matplotlib
 python-dotenv
 
 # LangChain ecosystem
+langchain[all]
 langchain-core
 langchain-community
 langchain-openai

@@ -205,4 +205,4 @@ outputs/*
 mlruns/*
 
 #ZenML Config
-.zen/*
+#.zen/*
