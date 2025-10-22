@@ -41,7 +41,7 @@ def run_sany(model_name: str, tla_path: str, tools_jar_path: str) -> Dict[str, s
         "stderr": result.stderr
     }
 
-@step
+@step(enable_cache=False)
 def sanity_check_sany(specs: Dict[str, str]) -> Dict[str, str]:
     """
     Runs the SANY parser on each generated TLA+ file to validate syntax.

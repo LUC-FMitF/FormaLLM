@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 from zenml import step
 
-@step
+@step(enable_cache=False)
 def graph_results() -> None:
     import os
     project_root = Path(__file__).resolve().parent.parent

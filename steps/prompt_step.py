@@ -34,7 +34,7 @@ if env_path.exists():
     load_dotenv(env_path, override=True)
 
 
-@step
+@step(enable_cache=False)
 def prompt_llm() -> dict:
     project_root = Path(__file__).resolve().parent.parent
     data_dir = project_root / "data"
