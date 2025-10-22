@@ -77,24 +77,33 @@ def prompt_llm() -> dict:
         warnings.warn(f"[{model_name}] File '{filename}' not found.")
         return ""
 
-    def build_few_shot_prompt(examples: list[dict]) -> str:
-        parts = []
-        for ex in examples:
-            full_tla = load_text(ex, "tla_original")
-            if full_tla:
-                parts.append(f"# Full TLA+ Specification:\n{full_tla}")
-        return "\n".join(parts)
+    from langchain_core.prompts import ChatPromptTemplate
+    from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 
-    instruction_header = (
-        "You are a helpful assistant trained to write valid TLA+ specifications.\n"
-        "Below are several complete and valid TLA+ specifications.\n"
-        "At the end, you will be given only a set of user-written comments, "
-        "and the target model's .cfg file if available.\n"
-        "Your task is to generate a valid TLA+ specification based on those comments "
-        "AND its corresponding TLC configuration if none is provided.\n"
-        "Use the examples as inspiration for structure and style.\n"
-        "Format your answer as a valid TLA+ module, and .cfg if one is not provided like this:\n"
-        "---- MODULE MySpec ----\n... your spec ...\n====\n\n# TLC Configuration:\n... config lines ...\n-----END CFG-----\n"
+    def build_few_shot_messages(examples: list[dict]) -> list:
+        messages = []
+        for ex in examples:
+            comments = load_text(ex, "comments_clean")
+            full_tla = load_text(ex, "tla_original")
+            cfg = load_text(ex, "cfg")
+            module_name = get_module_base_name(ex)
+            if not comments or not full_tla:
+                continue
+            # Compose the user message (comments + optional cfg)
+            user_msg = f"# Comments:\n{comments}"
+            if cfg:
+                user_msg += f"\n\n# TLC Configuration:\n{cfg}"
+            # Compose the assistant message (TLA+ spec)
+            ai_msg = f"---- MODULE {module_name} ----\n{full_tla}\n===="
+            messages.append(HumanMessage(content=user_msg))
+            messages.append(AIMessage(content=ai_msg))
+        return messages
+
+    system_message = SystemMessage(
+        content="You are a helpful assistant trained to write valid TLA+ specifications. "
+        "Given user comments and (optionally) a TLC config, generate a valid TLA+ module and config. "
+        "Format your answer as a valid TLA+ module, and .cfg if one is not provided like this: "
+        "---- MODULE MySpec ----\n... your spec ...\n====\n\n# TLC Configuration:\n... config lines ...\n-----END CFG-----"
     )
 
     # Get LLM backend configuration from environment variables
@@ -149,8 +158,7 @@ def prompt_llm() -> dict:
         raise
 
     print(f"Successfully initialized {backend} LLM with model {model}")
-    prompt = PromptTemplate.from_template("{input}")
-    chain = prompt | llm
+    prompt = None  # will be built per target
     train_data = load_json_data(train_path)
     val_data = load_json_data(val_path)
     results = {}
@@ -158,44 +166,39 @@ def prompt_llm() -> dict:
     for i, target_model in enumerate(val_data):
         module_name = get_module_base_name(target_model)
         few_shot_examples = train_data[:NUM_FEW_SHOTS]
-        few_shot_prompt = build_few_shot_prompt(few_shot_examples)
+        few_shot_msgs = build_few_shot_messages(few_shot_examples)
         target_comments = load_text(target_model, "comments_clean")
         target_cfg = load_text(target_model, "cfg")
-        cfg_prompt = f"\n\n# TLC Configuration:\n{target_cfg}" if target_cfg else "\n\n# No configuration file provided."
-
         if not target_comments:
             warnings.warn(f"Skipping model {target_model.get('model', 'UNKNOWN')} due to missing comments.")
             continue
-
-        final_prompt = (
-            instruction_header
-            + "\n\n"
-            + few_shot_prompt
-            + cfg_prompt
-            + f"\n\n# Comments:\n{target_comments}\n\n"
-            + f"# TLA+ Specification:\n---- MODULE {module_name} ----\n"
-        )
-
+        # Compose the user message for the target
+        user_msg = f"# Comments:\n{target_comments}"
+        if target_cfg:
+            user_msg += f"\n\n# TLC Configuration:\n{target_cfg}"
+        # Build the full prompt as a list of messages
+        all_messages = [system_message] + few_shot_msgs + [HumanMessage(content=user_msg)]
         print(f"\n--- Generating spec for module: {module_name} ---")
-        response = chain.invoke({"input": final_prompt})
+        response = llm.invoke(all_messages)
 
-        if "# TLC Configuration:" in response:
-            tla_part, cfg_part = response.split("# TLC Configuration:", 1)
+        # Handle response (string or Message)
+        if hasattr(response, "content"):
+            response_text = response.content.strip()
+        else:
+            response_text = str(response).strip()
+
+        if "# TLC Configuration:" in response_text:
+            tla_part, cfg_part = response_text.split("# TLC Configuration:", 1)
             cfg_part = cfg_part.replace("-----END CFG-----", "").strip()
         else:
-            tla_part = response
+            tla_part = response_text
             cfg_part = ""
 
-        if hasattr(tla_part, "content"): 
-            tla_body = tla_part.content.strip()
-        else:
-            tla_body = str(tla_part).strip()
-
-        if not tla_body.startswith("---- MODULE"):
+        tla_body = tla_part.strip()
+        if not tla_body.startswith(f"---- MODULE"):
             tla_body = f"---- MODULE {module_name} ----\n" + tla_body
         if not tla_body.rstrip().endswith("===="):
             tla_body = tla_body.rstrip() + "\n===="
-
 
         output_tla_path = generated_dir / f"{module_name}.tla"
         output_cfg_path = generated_dir / f"{module_name}.cfg"
@@ -203,6 +206,6 @@ def prompt_llm() -> dict:
         output_cfg_path.write_text(cfg_part)
 
         results[module_name] = tla_body
-        time.sleep(10)
+        #time.sleep(10)
 
     return results
