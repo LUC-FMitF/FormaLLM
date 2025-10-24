@@ -11,6 +11,7 @@ License: MIT
 
 import subprocess
 import warnings
+import time
 from pathlib import Path
 from typing import Optional
 from zenml import step
@@ -59,25 +60,22 @@ def evaluate_tla(specs: dict) -> dict:
 
         cfg_path = generated_dir / f"{model_name}.cfg"
         if not cfg_path.exists():
-            # Fallback: check for original .cfg in dataset
             cfg_path = resolve_file(model_name, f"{model_name}.cfg", "cfg")
 
         if not cfg_path or not cfg_path.exists():
-            print(f"Skipping {model_name} due to missing .cfg file.")
             results[model_name] = "SKIPPED"
             continue
-        
+        unique_id = f"{model_name}_{int(time.time() * 1000000)}"
+        metadir = eval_output_dir / "states" / unique_id
+        metadir.mkdir(parents=True, exist_ok=True)
         result = subprocess.run(
-            ["tlc", "-nowarning", "-config", str(cfg_path), str(tla_path)],
+            ["tlc", "-nowarning", "-metadir", str(metadir),
+             "-config", str(cfg_path), str(tla_path)],
             capture_output=True, text=True
         )
-
         log_text = result.stdout + "\n=== STDERR ===\n" + result.stderr
         log_path = eval_output_dir / f"{model_name}.tlc.log"
         log_path.write_text(log_text)
-
-        # Print some of the TLC output in ZenML logs
-        print(result.stdout[:500])
 
         with mlflow.start_run(run_name=model_name, nested=True):
             mlflow.log_param("model_name", model_name)

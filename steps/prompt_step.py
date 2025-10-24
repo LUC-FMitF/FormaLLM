@@ -17,11 +17,10 @@ License: MIT
 import json
 import os
 import warnings
-import time
+import re
 from pathlib import Path
 from dotenv import load_dotenv
 import mlflow
-from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 from langchain_ollama import ChatOllama
@@ -77,8 +76,54 @@ def prompt_llm() -> dict:
         warnings.warn(f"[{model_name}] File '{filename}' not found.")
         return ""
 
-    from langchain_core.prompts import ChatPromptTemplate
     from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
+
+    def clean_llm_response(response_text: str, module_name: str) -> str:
+        if "```" in response_text:
+            code_blocks = re.findall(r'```(?:tla|tlaplus)?\n(.*?)\n```', response_text, re.DOTALL)
+            if code_blocks:
+                response_text = code_blocks[0]
+            else:
+                response_text = response_text.replace("```tla", "").replace("```", "")
+        explanatory_phrases = [
+            r'^Here is .*?:[\s\n]*',
+            r'^Here\'s .*?:[\s\n]*',
+            r'^This is .*?:[\s\n]*',
+            r'^Below is .*?:[\s\n]*',
+            r'^I\'ve created .*?:[\s\n]*',
+            r'^The following .*?:[\s\n]*',
+        ]
+        for phrase in explanatory_phrases:
+            response_text = re.sub(phrase, '', response_text, flags=re.IGNORECASE | re.MULTILINE)
+        if "---- MODULE" in response_text:
+            module_start = response_text.find("---- MODULE")
+            response_text = response_text[module_start:]
+        module_match = re.search(r'---- MODULE (\w+) ----', response_text)
+        if module_match:
+            llm_module_name = module_match.group(1)
+            if llm_module_name != module_name:
+                response_text = response_text.replace(
+                    f"---- MODULE {llm_module_name} ----",
+                    f"---- MODULE {module_name} ----",
+                    1
+                )
+                response_text = re.sub(
+                    r'-+ MODULE ' + re.escape(llm_module_name) + r' -+',
+                    '',
+                    response_text
+                )
+        lines = response_text.split('\n')
+        cleaned_lines = []
+        seen_module_header = False
+        for line in lines:
+            if re.match(r'^-+\s*MODULE\s+\w+\s+-+$', line):
+                if not seen_module_header:
+                    cleaned_lines.append(line)
+                    seen_module_header = True
+            else:
+                cleaned_lines.append(line)
+        response_text = '\n'.join(cleaned_lines)
+        return response_text.strip()
 
     def build_few_shot_messages(examples: list[dict]) -> list:
         messages = []
@@ -89,44 +134,61 @@ def prompt_llm() -> dict:
             module_name = get_module_base_name(ex)
             if not comments or not full_tla:
                 continue
-            # Compose the user message (comments + optional cfg)
             user_msg = f"# Comments:\n{comments}"
             if cfg:
                 user_msg += f"\n\n# TLC Configuration:\n{cfg}"
-            # Compose the assistant message (TLA+ spec)
             ai_msg = f"---- MODULE {module_name} ----\n{full_tla}\n===="
             messages.append(HumanMessage(content=user_msg))
             messages.append(AIMessage(content=ai_msg))
         return messages
 
     system_message = SystemMessage(
-        content="You are a helpful assistant trained to write valid TLA+ specifications. "
-        "Given user comments and (optionally) a TLC config, generate a valid TLA+ module and config. "
-        "Format your answer as a valid TLA+ module, and .cfg if one is not provided like this: "
-        "---- MODULE MySpec ----\n... your spec ...\n====\n\n# TLC Configuration:\n... config lines ...\n-----END CFG-----"
+        content="""You are a TLA+ code generator. You MUST generate ONLY valid TLA+ code with no explanations.
+CRITICAL RULES:
+1. Output ONLY the TLA+ module - NO markdown, NO explanations, NO commentary
+2. Module name MUST match the target specification exactly
+3. Include all required sections: EXTENDS, CONSTANTS (if needed), VARIABLES, Init, Next, Spec
+4. Use correct TLA+ syntax - define all symbols before using them
+5. Start with exactly: ---- MODULE <ModuleName> ----
+6. End with exactly: ====
+7. Do NOT include phrases like "Here is" or "This is" - output code ONLY
+8. Do NOT wrap code in markdown blocks (```) - output raw TLA+ only
+TLA+ SYNTAX REMINDERS:
+Boolean operators: /\\ (AND), \\/ (OR), ~ (NOT), => (IMPLIES)
+Primed variables for next state: x' = x + 1
+Quantifiers: \\A (forall), \\E (exists)
+Sets: {1, 2, 3}, {x \\in S : P(x)}
+Functions: [x \\in S |-> expr]
+Records: [field1: value1, field2: value2]
+REQUIRED STRUCTURE:
+---- MODULE ModuleName ----
+EXTENDS <standard modules if needed>
+CONSTANTS <constants if any>
+VARIABLES <all state variables>
+Init == <initial state predicate>
+Next == <next state relation>
+Spec == Init /\\ [][Next]_<<vars>>
+<optional: additional definitions, invariants, properties>
+====
+If a TLC Configuration is needed and not provided, add it after ==== in this format:
+# TLC Configuration:
+CONSTANTS
+  <constant> = <value>
+SPECIFICATION Spec
+INVARIANTS <invariant names>
+Now generate the TLA+ specification based on the comments provided."""
     )
 
-    # Get LLM backend configuration from environment variables
     backend = os.getenv("LLM_BACKEND", "ollama")
     model = os.getenv("LLM_MODEL", "llama3.1")
-    
-    # Create model-specific output directory
     model_output_dir = project_root / "outputs" / f"{backend}_{model}"
     generated_dir = model_output_dir / "generated"
     generated_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Setup model-specific MLflow tracking
     mlflow_dir = model_output_dir / "mlruns"
     mlflow_dir.mkdir(parents=True, exist_ok=True)
     mlflow.set_tracking_uri(f"file://{mlflow_dir}")
     mlflow.set_experiment(f"tla_prompt_{backend}_{model}")
     mlflow.langchain.autolog()
-    
-    print(f"Initializing LLM: {backend} with model {model}")
-    print(f"Output directory: {model_output_dir}")
-    print(f"MLflow tracking: {mlflow_dir}")
-
-    # Initialize the appropriate LLM based on backend choice with error handling
     try:
         if backend == "openai":
             api_key = os.getenv("OPENAI_API_KEY")
@@ -153,16 +215,10 @@ def prompt_llm() -> dict:
             raise ValueError(f"Unsupported LLM backend: {backend}. Supported backends: openai, anthropic, ollama")
             
     except Exception as e:
-        print(f"Error initializing {backend} LLM: {str(e)}")
-        print("Tip: Run './run.sh --setup' to configure your LLM backend")
         raise
-
-    print(f"Successfully initialized {backend} LLM with model {model}")
-    prompt = None  # will be built per target
     train_data = load_json_data(train_path)
     val_data = load_json_data(val_path)
     results = {}
-
     for i, target_model in enumerate(val_data):
         module_name = get_module_base_name(target_model)
         few_shot_examples = train_data[:NUM_FEW_SHOTS]
@@ -172,21 +228,16 @@ def prompt_llm() -> dict:
         if not target_comments:
             warnings.warn(f"Skipping model {target_model.get('model', 'UNKNOWN')} due to missing comments.")
             continue
-        # Compose the user message for the target
         user_msg = f"# Comments:\n{target_comments}"
         if target_cfg:
             user_msg += f"\n\n# TLC Configuration:\n{target_cfg}"
-        # Build the full prompt as a list of messages
         all_messages = [system_message] + few_shot_msgs + [HumanMessage(content=user_msg)]
-        print(f"\n--- Generating spec for module: {module_name} ---")
         response = llm.invoke(all_messages)
-
-        # Handle response (string or Message)
         if hasattr(response, "content"):
             response_text = response.content.strip()
         else:
             response_text = str(response).strip()
-
+        response_text = clean_llm_response(response_text, module_name)
         if "# TLC Configuration:" in response_text:
             tla_part, cfg_part = response_text.split("# TLC Configuration:", 1)
             cfg_part = cfg_part.replace("-----END CFG-----", "").strip()
@@ -195,17 +246,13 @@ def prompt_llm() -> dict:
             cfg_part = ""
 
         tla_body = tla_part.strip()
-        if not tla_body.startswith(f"---- MODULE"):
+        if not tla_body.startswith("---- MODULE"):
             tla_body = f"---- MODULE {module_name} ----\n" + tla_body
         if not tla_body.rstrip().endswith("===="):
             tla_body = tla_body.rstrip() + "\n===="
-
         output_tla_path = generated_dir / f"{module_name}.tla"
         output_cfg_path = generated_dir / f"{module_name}.cfg"
         output_tla_path.write_text(tla_body)
         output_cfg_path.write_text(cfg_part)
-
         results[module_name] = tla_body
-        #time.sleep(10)
-
     return results
