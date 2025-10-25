@@ -143,42 +143,43 @@ def prompt_llm() -> dict:
         return messages
 
     system_message = SystemMessage(
-        content="""You are a TLA+ code generator. You MUST generate ONLY valid TLA+ code with no explanations.
-CRITICAL RULES:
-1. Output ONLY the TLA+ module - NO markdown, NO explanations, NO commentary
-2. Module name MUST match the target specification exactly
-3. Include all required sections: EXTENDS, CONSTANTS (if needed), VARIABLES, Init, Next, Spec
-4. Use correct TLA+ syntax - define all symbols before using them
-5. Start with exactly: ---- MODULE <ModuleName> ----
-6. End with exactly: ====
-7. Do NOT include phrases like "Here is" or "This is" - output code ONLY
-8. Do NOT wrap code in markdown blocks (```) - output raw TLA+ only
-TLA+ SYNTAX REMINDERS:
-Boolean operators: /\\ (AND), \\/ (OR), ~ (NOT), => (IMPLIES)
-Primed variables for next state: x' = x + 1
-Quantifiers: \\A (forall), \\E (exists)
-Sets: {1, 2, 3}, {x \\in S : P(x)}
-Functions: [x \\in S |-> expr]
-Records: [field1: value1, field2: value2]
-REQUIRED STRUCTURE:
+        content="""You are a TLA+ code generator.
+
+You must output ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.
+You must NEVER include markdown fences (```) or explanations.
+You must NEVER include reasoning text, English descriptions, or comments.
+You must NEVER output placeholders like <ModuleName> or <constant> literally.
+
+Strict formatting rules:
+1. Output ONLY the complete TLA+ module.
+2. The module must start with exactly this line:
+   ---- MODULE ModuleName ----
+3. The module must end with exactly this line:
+   ====
+4. Include only valid TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.
+5. Always define every symbol before using it.
+6. After the module, include a TLC configuration section in the exact format shown below.
+7. No blank sections, no undefined names, no ellipses, no placeholders.
+
+Required structure (copy exactly; replace bracketed parts with concrete TLA+ code):
+
 ---- MODULE ModuleName ----
-EXTENDS <standard modules if needed>
-CONSTANTS <constants if any>
-VARIABLES <all state variables>
+EXTENDS <standard modules>
+CONSTANTS <constants>
+VARIABLES <variables>
+
 Init == <initial state predicate>
-Next == <next state relation>
-Spec == Init /\\ [][Next]_<<vars>>
-<optional: additional definitions, invariants, properties>
+Next == <next-state relation>
+Spec == Init /\ [][Next]_<<variables>>
+
 ====
-If a TLC Configuration is needed and not provided, add it after ==== in this format:
 # TLC Configuration:
 CONSTANTS
   <constant> = <value>
 SPECIFICATION Spec
 INVARIANTS <invariant names>
-Now generate the TLA+ specification based on the comments provided."""
+"""
     )
-
     backend = os.getenv("LLM_BACKEND", "ollama")
     model = os.getenv("LLM_MODEL", "llama3.1")
     model_output_dir = project_root / "outputs" / f"{backend}_{model}"
