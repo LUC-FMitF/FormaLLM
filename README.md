@@ -401,6 +401,66 @@ See [OLLAMA_MODELS.md](OLLAMA_MODELS.md) for the complete list.
 - **Monitoring**: Comprehensive health checks and service orchestration
 - **Scalability**: Profile-based deployment for different scenarios
 - **Documentation**: Comprehensive setup guides and troubleshooting tips
+- **Regression Testing**: Automated testing to prevent quality degradation
+
+---
+
+## Regression Testing
+
+FormaLLM includes a comprehensive regression testing suite to ensure pipeline changes don't introduce regressions and to track improvements over time.
+
+### Automatic Testing
+
+Regression tests run automatically after each pipeline execution:
+
+```bash
+./run.sh
+# Pipeline runs...
+# Regression tests run automatically
+# Reports: regressions, improvements, and current pass rate
+```
+
+### Manual Testing
+
+```bash
+# Compare current results against baseline
+python test_regression.py
+
+# Show detailed results including all tests
+python test_regression.py --verbose
+
+# Update baseline after verifying improvements
+python test_regression.py --save-baseline
+```
+
+### Understanding Results
+
+- **✅ NO REGRESSIONS**: No previously passing tests are now failing
+- **❌ REGRESSIONS**: Tests that passed before but fail now (investigate!)
+- **🎉 IMPROVEMENTS**: Tests that failed before but pass now (update baseline!)
+- **PASS RATE**: Percentage of tests that generate valid TLA+ specs
+
+### Workflow Example
+
+```bash
+# Day 1: Establish baseline
+./run.sh
+# Result: 0/26 passing, baseline created
+
+# Day 2: Improve prompts
+vim steps/prompt_step.py
+./run.sh
+# Result: 3/26 passing, 3 improvements!
+python test_regression.py --save-baseline
+
+# Day 3: Try different model
+export LLM_MODEL="codellama"
+./run.sh
+# Result: 2/26 passing, 1 regression
+# Investigate regression before updating baseline
+```
+
+For complete documentation, see **[TESTING.md](TESTING.md)**.
 
 ---
 

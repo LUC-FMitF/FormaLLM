@@ -67,8 +67,10 @@ def evaluate_tla(specs: dict) -> dict:
             results[model_name] = "SKIPPED"
             continue
         
+        metadir = eval_output_dir / f"{model_name}_metadir"
+        
         result = subprocess.run(
-            ["tlc", "-nowarning", "-config", str(cfg_path), str(tla_path)],
+            ["tlc", "-nowarning", "-metadir", str(metadir), "-config", str(cfg_path), str(tla_path)],
             capture_output=True, text=True
         )
 

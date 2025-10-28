@@ -485,3 +485,25 @@ echo ""
 echo "============================================="
 echo "Pipeline execution completed!"
 echo "============================================="
+
+# Run regression tests if baseline exists
+if [ -f "outputs/baseline_results.csv" ]; then
+    echo ""
+    echo "Running regression tests..."
+    if python test_regression.py; then
+        echo "✅ Regression tests passed!"
+    else
+        echo "❌ Regression tests failed!"
+        echo ""
+        read -p "Would you like to update the baseline? (y/n) [n]: " update_baseline
+        update_baseline=${update_baseline:-n}
+        if [[ "$update_baseline" =~ ^[Yy]$ ]]; then
+            python test_regression.py --save-baseline
+            echo "Baseline updated."
+        fi
+    fi
+else
+    echo ""
+    echo "No baseline found. Creating initial baseline..."
+    python test_regression.py --save-baseline
+fi
