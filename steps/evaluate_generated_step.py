@@ -22,7 +22,6 @@ from steps.sany_metrics import SANYMetricsCollector
 
 @step(enable_cache=False)
 def evaluate_tla(parsed: dict) -> dict:
-    import os
     project_root = Path(__file__).resolve().parent.parent
     data_dir = project_root / "data"
     
