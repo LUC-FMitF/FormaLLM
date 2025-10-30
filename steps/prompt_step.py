@@ -18,10 +18,13 @@ import json
 import os
 import warnings
 import time
+import re
 from pathlib import Path
 from dotenv import load_dotenv
 import mlflow
 from langchain_core.prompts import PromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 from langchain_ollama import ChatOllama
@@ -77,9 +80,53 @@ def prompt_llm() -> dict:
         warnings.warn(f"[{model_name}] File '{filename}' not found.")
         return ""
 
-    from langchain_core.prompts import ChatPromptTemplate
-    from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
-
+    def clean_llm_response(response_text: str, module_name: str) -> str:
+        if "```" in response_text:
+            code_blocks = re.findall(r'```(?:tla|tlaplus)?\n(.*?)\n```', response_text, re.DOTALL)
+            if code_blocks:
+                response_text = code_blocks[0]
+            else:
+                response_text = response_text.replace("```tla", "").replace("```", "")
+        explanatory_phrases = [
+            r'^Here is .*?:[\s\n]*',
+            r'^Here\'s .*?:[\s\n]*',
+            r'^This is .*?:[\s\n]*',
+            r'^Below is .*?:[\s\n]*',
+            r'^I\'ve created .*?:[\s\n]*',
+            r'^The following .*?:[\s\n]*',
+        ]
+        for phrase in explanatory_phrases:
+            response_text = re.sub(phrase, '', response_text, flags=re.IGNORECASE | re.MULTILINE)
+        if "---- MODULE" in response_text:
+            module_start = response_text.find("---- MODULE")
+            response_text = response_text[module_start:]
+        module_match = re.search(r'---- MODULE (\w+) ----', response_text)
+        if module_match:
+            llm_module_name = module_match.group(1)
+            if llm_module_name != module_name:
+                response_text = response_text.replace(
+                    f"---- MODULE {llm_module_name} ----",
+                    f"---- MODULE {module_name} ----",
+                    1
+                )
+                response_text = re.sub(
+                    r'-+ MODULE ' + re.escape(llm_module_name) + r' -+',
+                    '',
+                    response_text
+                )
+        lines = response_text.split('\n')
+        cleaned_lines = []
+        seen_module_header = False
+        for line in lines:
+            if re.match(r'^-+\s*MODULE\s+\w+\s+-+$', line):
+                if not seen_module_header:
+                    cleaned_lines.append(line)
+                    seen_module_header = True
+            else:
+                cleaned_lines.append(line)
+        response_text = '\n'.join(cleaned_lines)
+        return response_text.strip()
+            
     def build_few_shot_messages(examples: list[dict]) -> list:
         messages = []
         for ex in examples:
@@ -100,11 +147,51 @@ def prompt_llm() -> dict:
         return messages
 
     system_message = SystemMessage(
-        content="You are a helpful assistant trained to write valid TLA+ specifications. "
-        "Given user comments and (optionally) a TLC config, generate a valid TLA+ module and config. "
-        "Format your answer as a valid TLA+ module, and .cfg if one is not provided like this: "
-        "---- MODULE MySpec ----\n... your spec ...\n====\n\n# TLC Configuration:\n... config lines ...\n-----END CFG-----"
-    )
+        content="""You are a TLA+ code generator.
+
+You must output ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.
+You must NEVER include markdown fences (```) or explanations.
+You must NEVER include reasoning text, English descriptions, or comments.
+You must NEVER output placeholders like <ModuleName> or <constant> literally.
+
+Strict formatting rules:
+1. Output ONLY the complete TLA+ module.
+2. The module must start with exactly this line:
+   ---- MODULE ModuleName ----
+3. The module must end with exactly this line:
+   ====
+4. Include only valid TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.
+5. Always define every symbol before using it.
+6. After the module, include a TLC configuration section in the exact format shown below.
+7. No blank sections, no undefined names, no ellipses, no placeholders.
+
+## TLA+ Syntax Hints
+- A formula [A]_v is called a temporal formula, and is shorthand for the formula A \/ v' = v.  In other words, the formula is true if A is true or if the value of v remains unchanged.  Usually, v is a tuple of the spec's variables.
+- The symbol \`#\` is alternative syntax used for inequality in TLA+; the other symbol is \`/=\".
+
+## TLA+ Convention Hints
+- The type correctness invariant is typically called TypeOK.
+- Users can employ TLA labels as a means to conceptually associate a comment with a sub-formula like a specific disjunct or conjunct of a TLA formula. Even though these labels have no other function, they facilitate referencing particular parts of the formula from a comment.
+
+Required structure (copy exactly; replace bracketed parts with concrete TLA+ code):
+
+---- MODULE ModuleName ----
+EXTENDS <standard modules>
+CONSTANTS <constants>
+VARIABLES <variables>
+
+Init == <initial state predicate>
+Next == <next-state relation>
+Spec == Init /\ [][Next]_<<variables>>
+
+====
+# TLC Configuration:
+CONSTANTS
+  <constant> = <value>
+SPECIFICATION Spec
+INVARIANTS <invariant names>
+"""
+)
 
     # Get LLM backend configuration from environment variables
     backend = os.getenv("LLM_BACKEND", "ollama")
