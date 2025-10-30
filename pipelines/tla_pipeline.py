@@ -8,5 +8,5 @@ from steps.graph_results import graph_results
 def tla_pipeline():
     specs = prompt_llm()
     parsed = sanity_check_sany(specs)
-    evaluate_tla(specs)
+    evaluate_tla(parsed)  # Use 'parsed' as input to ensure sanity_check_sany completes first
     graph_results()
