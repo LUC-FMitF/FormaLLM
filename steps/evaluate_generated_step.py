@@ -12,6 +12,7 @@ License: MIT
 
 import subprocess
 import warnings
+import shutil
 from pathlib import Path
 from typing import Optional
 from zenml import step
@@ -75,7 +76,7 @@ def evaluate_tla(parsed: dict) -> dict:
         # Clean up TLC state directory to prevent timestamp conflicts on re-runs
         states_dir = generated_dir / "states"
         if states_dir.exists():
-            import shutil
+
             shutil.rmtree(states_dir, ignore_errors=True)
         
         result = subprocess.run(
