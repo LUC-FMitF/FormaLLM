@@ -23,6 +23,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import mlflow
 from langchain_core.prompts import PromptTemplate
+from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 from langchain_ollama import ChatOllama
@@ -271,6 +272,9 @@ INVARIANTS <invariant names>
             response_text = response.content.strip()
         else:
             response_text = str(response).strip()
+
+        # Clean the LLM response
+        response_text = clean_llm_response(response_text, module_name)
 
         if "# TLC Configuration:" in response_text:
             tla_part, cfg_part = response_text.split("# TLC Configuration:", 1)
