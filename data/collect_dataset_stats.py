@@ -9,15 +9,56 @@ import json
 from pathlib import Path
 from typing import Dict, List, Optional
 import tiktoken
+import argparse
+import os
 
-def count_tokens(text: str, model: str = "gpt-4") -> int:
-    """Count tokens using tiktoken."""
+
+# Token encoder will be initialized in main() based on CLI arg or env var
+_TOKEN_ENCODER = None
+_TOKEN_MODEL = None
+
+
+def init_token_encoder(model_name: str):
+    """Initialize and cache a tiktoken encoder for the requested model.
+
+    Falls back to a safe encoding if the model is unknown to tiktoken.
+    """
+    global _TOKEN_ENCODER, _TOKEN_MODEL
+    _TOKEN_MODEL = model_name
     try:
-        encoding = tiktoken.encoding_for_model(model)
-        return len(encoding.encode(text))
+        _TOKEN_ENCODER = tiktoken.encoding_for_model(model_name)
     except Exception:
-        # Fallback: rough estimate
-        return len(text.split())
+        try:
+            # Common fallback for OpenAI-compatible models
+            _TOKEN_ENCODER = tiktoken.get_encoding("cl100k_base")
+        except Exception:
+            _TOKEN_ENCODER = None
+
+
+def count_tokens(text: str, model: str = None) -> int:
+    """Count tokens using cached tiktoken encoder or a per-call model.
+
+    If a model is provided it will try to use it; otherwise uses the global
+    encoder initialized with init_token_encoder(). If token counting fails,
+    returns a word-count fallback.
+    """
+    # Prefer per-call model if supplied
+    if model:
+        try:
+            enc = tiktoken.encoding_for_model(model)
+            return len(enc.encode(text))
+        except Exception:
+            pass
+
+    # Use cached encoder if available
+    if _TOKEN_ENCODER:
+        try:
+            return len(_TOKEN_ENCODER.encode(text))
+        except Exception:
+            pass
+
+    # Final fallback: rough estimate by words
+    return len(text.split())
 
 def get_file_stats(file_path: Path) -> Optional[Dict]:
     """Get statistics for a single file."""
@@ -155,4 +196,12 @@ def collect_dataset_stats():
         print("No statistics collected")
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Collect original dataset statistics")
+    parser.add_argument("--token-model", type=str, help="Token model name for tiktoken (env: TOKEN_MODEL or LLM_MODEL)")
+    args = parser.parse_args()
+
+    # Determine token model: CLI -> TOKEN_MODEL env -> LLM_MODEL env -> default
+    token_model = args.token_model or os.getenv("TOKEN_MODEL") or os.getenv("LLM_MODEL") or "gpt-4"
+    init_token_encoder(token_model)
+
     collect_dataset_stats()
