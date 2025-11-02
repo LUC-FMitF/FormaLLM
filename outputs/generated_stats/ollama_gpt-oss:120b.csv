@@ -1,0 +1,2 @@
+model_name,tla_size_bytes,tla_size_kb,tla_lines,tla_characters,tla_tokens,tla_words,cfg_size_bytes,cfg_size_kb,cfg_lines,cfg_characters,cfg_tokens,cfg_words,total_size_bytes,total_size_kb,total_tokens,has_cfg,llm_backend,llm_model,llm_input_tokens,llm_output_tokens,llm_total_tokens
+MCDieHarder,1827,1.78,38,1819,334,198,137,0.13,8,137,42,19,1964,1.92,376,True,ollama,gpt-oss:120b,,,

@@ -201,6 +201,13 @@ cython_debug/
 
 outputs/*
 
+# Keep generated_stats and a couple of important CSVs in version control
+!outputs/generated_stats/
+!outputs/generated_stats/**
+!outputs/baseline_results.csv
+!outputs/collect_generated_stats.csv
+!outputs/collect_generated_stats.py
+
 # MLFlow runs
 mlruns/*
 
