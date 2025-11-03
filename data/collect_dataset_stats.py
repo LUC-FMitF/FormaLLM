@@ -8,7 +8,12 @@ import csv
 import json
 from pathlib import Path
 from typing import Dict, List, Optional
-import tiktoken
+try:
+    import tiktoken
+    _HAVE_TIKTOKEN = True
+except Exception:
+    tiktoken = None
+    _HAVE_TIKTOKEN = False
 import argparse
 import os
 
@@ -153,9 +158,20 @@ def collect_dataset_stats():
             model_stats.get('cfg_tokens')
         ])) or None
         
+        # Split tokens into 'reasoning' (comments / natural language) and
+        # 'default' (TLA+ and CFG specification tokens). This provides a
+        # simple, reproducible breakdown for dataset-level analysis.
+        reasoning_tokens = model_stats.get('comments_tokens') or None
+        default_tokens = sum(filter(None, [
+            model_stats.get('tla_tokens'),
+            model_stats.get('cfg_tokens')
+        ])) or None
+
         model_stats['total_size_bytes'] = total_size_bytes
         model_stats['total_size_kb'] = round(total_size_bytes / 1024, 2) if total_size_bytes else None
         model_stats['total_tokens'] = total_tokens
+        model_stats['reasoning_tokens'] = reasoning_tokens
+        model_stats['default_tokens'] = default_tokens
         
         stats.append(model_stats)
     
@@ -168,7 +184,8 @@ def collect_dataset_stats():
         for prefix in ['comments', 'tla', 'cfg']:
             for suffix in ['size_bytes', 'size_kb', 'lines', 'characters', 'tokens', 'words']:
                 fieldnames.append(f'{prefix}_{suffix}')
-        fieldnames.extend(['total_size_bytes', 'total_size_kb', 'total_tokens'])
+        # Add total and per-segment token fields
+        fieldnames.extend(['total_size_bytes', 'total_size_kb', 'total_tokens', 'reasoning_tokens', 'default_tokens'])
         
         with open(output_path, 'w', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
