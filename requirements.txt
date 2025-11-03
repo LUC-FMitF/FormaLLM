@@ -1,4 +1,6 @@
 # Core dependencies
+wheel
+pip
 numpy
 pandas
 matplotlib
@@ -22,4 +24,4 @@ zenml[server]
 # DVC with Google Drive support
 dvc[gdrive]
 
-wheel
+

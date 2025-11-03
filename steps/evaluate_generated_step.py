@@ -80,7 +80,7 @@ def evaluate_tla(parsed: dict) -> dict:
             shutil.rmtree(states_dir, ignore_errors=True)
         
         result = subprocess.run(
-            ["tlc", "-nowarning", "-config", str(cfg_path), str(tla_path)],
+            ["tlc", "-workers", "auto", "-nowarning", "-config", str(cfg_path), str(tla_path)],
             capture_output=True, text=True
         )
 

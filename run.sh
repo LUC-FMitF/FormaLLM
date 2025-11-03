@@ -84,7 +84,7 @@ fi
 
 echo ""
 echo "Available LLM backends:"
-echo "  1) GPT-4 (OpenAI)"
+echo "  1) GPT-5 (OpenAI)"
 echo "  2) Claude (Anthropic)"
 echo "  3) Ollama (Local)"
 echo ""
@@ -93,9 +93,9 @@ read -p "Select LLM backend (1-3): " backend_choice
 case $backend_choice in
     1)
         update_env_var "LLM_BACKEND" "openai"
-        update_env_var "LLM_MODEL" "gpt-4"
+        update_env_var "LLM_MODEL" "gpt-5"
         echo ""
-        echo "Selected: GPT-4 (OpenAI)"
+        echo "Selected: GPT-5 (OpenAI)"
 
         if [ -z "$OPENAI_API_KEY" ]; then
             echo ""
@@ -108,7 +108,7 @@ case $backend_choice in
         ;;
     2)
         update_env_var "LLM_BACKEND" "anthropic"
-        update_env_var "LLM_MODEL" "claude-3-5-sonnet-20241022"
+        update_env_var "LLM_MODEL" "claude-sonnet-4-5"
         echo ""
         echo "Selected: Claude (Anthropic)"
 
