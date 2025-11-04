@@ -1,78 +1,60 @@
-# FormaLLM: Multi-LLM TLA+ Research Pipeline
+# FormaLLM
 
-This project explores the use of Large Language Models (LLMs) to automatically generate formal specifications in [TLA+](https://lamport.azurewebsites.net/tla/tla.html) from natural language descriptions (comments). The system supports multiple LLM backends (OpenAI, Anthropic, local Ollama), automated setup, and Docker Compose integration for comprehensive testing environments.
+Research pipeline for automatic TLA+ specification generation from natural language using Large Language Models. Supports OpenAI GPT, Anthropic Claude, and local Ollama models.
 
-**Quick Start:** Run `./run.sh --setup` to interactively configure your LLM backends and start testing!
+## Quick Start
 
----
+```bash
+./run.sh --setup    # Configure LLM backends
+python test_llm.py  # Verify setup
+./run.sh            # Run pipeline
+```
 
 ## Project Structure
 
 ```
 FormaLLM/
-├── .devcontainer/        
-│   ├── Dockerfile         # Enhanced with Docker-in-Docker support
-│   └── devcontainer.json  # Auto-setup via postCreateCommand
-├── data/                 # Original and supporting data files
-│   └── <model_name>/
-│       ├── txt/          # Natural language comments
-│       ├── tla/          # Ground-truth .tla files
-│       └── cfg/          # Ground-truth .cfg files
-├── outputs/
-│   ├── evaluations/      # TLC logs and results
-│   ├── generated/        # LLM-generated .tla and .cfg files
-│   ├── test.json         # Testing metadata
-│   ├── train.json        # Training metadata
-│   └── val.json          # Validation metadata
-├── steps/
-│   ├── data_split_step.py         # Train/validation/test split
-│   ├── evaluate_generated_step.py # TLC evaluation with multi-backend
-│   ├── graph_results.py           # Results summary CSV + visualization
-│   ├── parse_step.py              # SANY validation
-│   └── prompt_step.py             # Enhanced multi-LLM prompting
-├── pipelines/
-│   └── tla_pipeline.py   # ZenML orchestration
-├── requirements.txt      # Python dependencies
-├── run.sh                # Enhanced multi-LLM setup & runner
-├── docker-compose.yml    # Local LLM services (Ollama, MLflow, etc.)
-├── .env.template         # Configuration template
-├── run_pipeline.py       # ZenML pipeline runner
-├── test_llm.py           # Multi-backend testing script
-├── OLLAMA_MODELS.md      # Ollama model documentation
-├── mlruns/               # MLflow experiment logs
-└── .env                  # Your configuration (not tracked)
+├── data/           # Input data (comments, TLA+ specs, configs)
+├── outputs/        # Generated specs and evaluation results
+├── steps/          # Pipeline components (prompt, parse, evaluate)
+├── pipelines/      # ZenML orchestration
+├── run.sh          # Setup and execution script
+└── docker-compose.yml  # Local services (Ollama, MLflow)
 ```
 
----
+## Supported Backends
 
-## Getting Started
+- **OpenAI**: Commercial GPT models
+- **Anthropic**: Claude models  
+- **Ollama**: Local open-source models
 
-### Option 1: Dev Container (Recommended)
-The dev container automatically sets up the environment and prompts for LLM configuration:
+## Pipeline Steps
 
-1. **Open in VS Code Dev Container** (requires Docker)
-2. **Automatic Setup**: The `postCreateCommand` runs `./run.sh --setup` 
-3. **Follow Prompts**: Select your LLM backends and enter API keys
-4. **Start Testing**: Run `python test_llm.py` or `./run.sh`
+1. **Prompt Generation**: LLM generates TLA+ specs from comments
+2. **SANY Validation**: Syntax checking with detailed error analysis
+3. **TLC Evaluation**: Model checking with comprehensive metrics
+4. **Results Analysis**: Statistics and visualization
 
-### Option 2: Manual Setup
+## Configuration
+
+Copy `.env.template` to `.env` and set your preferences:
+
 ```bash
-# 1. Clone and install dependencies
-git clone <repository>
-cd FormaLLM
-pip install -r requirements.txt
-
-# 2. Configure LLM backends
-./run.sh --setup
-
-# 3. Test your configuration
-python test_llm.py --all
-
-# 4. Run the pipeline
-./run.sh
+LLM_BACKEND=ollama
+LLM_MODEL=llama3.1
+OPENAI_API_KEY=sk-...     # If using OpenAI
+ANTHROPIC_API_KEY=sk-...  # If using Anthropic
 ```
 
----
+## Documentation
+
+- [Setup Guide](doc/SETUP_GUIDE.md)
+- [Architecture](doc/ARCHITECTURE.md) 
+- [Development](doc/DEVELOPMENT.md)
+
+## License
+
+MIT License
 
 ## LLM Backend Configuration
 
@@ -114,21 +96,34 @@ All backends use the same LangChain interface for consistent behavior.
 
 2. **TLC Evaluation (`evaluate_generated_step.py`)**
    - Loads each generated `.tla` and `.cfg` file.
-   - Runs the TLC via Java subprocess.
-   - Logs `PASS`, `FAIL`, or `ERROR` status per file.
+   - Runs TLC model checker via Java subprocess.
+   - **Enhanced Metrics Collection**: Comprehensive analysis including:
+     - Execution status classification (PASS/FAIL/ERROR/SEMANTIC_ERROR/TIMEOUT)
+     - Semantic error analysis with detailed categorization
+     - State space exploration metrics (states generated, depth, outdegree)
+     - Performance data (execution time, memory usage, worker configuration)
+     - Temporal properties detection and analysis
+   - Exports: `tlc_metrics.csv`, `evaluation_results.csv`, individual `.tlc.log` files
 
-3. **Sanity Check Step (`parse_step.py`)**
+3. **SANY Parsing (`parse_step.py`)**
    - Loads each generated `.tla` file.
-   - Runs the SANY parser via Java subprocess.
-   - Logs `PASS`, `FAIL`, or `ERROR` status per file.
+   - Runs SANY syntax parser via Java subprocess.
+   - **Enhanced Metrics Collection**: Detailed syntax analysis including:
+     - Parse success/failure classification with specific error types
+     - Error location analysis (early/mid/late line categorization)
+     - Character-specific issue detection (backticks, semicolons, Unicode)
+     - First error extraction with context and categorization
+   - Exports: `sany_metrics.csv`, individual `.sany.log` files
 
-4. **Tables and Graphs (`graph_results.py`)**
-   -  Reads `evaluation_results.csv` from the `outputs/evaluations/` directory.
-   - Counts the number of models with each result (`PASS`, `FAIL`, `ERROR`, etc.).
-   - Saves Artifacts**:
-       - `evaluation_summary.csv`: Tabular breakdown of results by type.
-       - `evaluation_summary.png`: Bar chart of model validation outcomes.
-   -  Prints the summary table directly to the console for quick insights.
+4. **Results Analysis (`graph_results.py` + Enhanced Analytics)**
+   - Reads comprehensive metrics from `tlc_metrics.csv` and `sany_metrics.csv`
+   - Generates summary statistics and visualizations
+   - Provides detailed error pattern analysis and performance insights
+   - **📊 For detailed metrics documentation, see [docs/ENHANCED_METRICS.md](docs/ENHANCED_METRICS.md)**
+   - Saves artifacts:
+     - `evaluation_summary.csv`: Tabular breakdown of results by type
+     - `evaluation_summary.png`: Bar chart of model validation outcomes
+   - Advanced analysis available via `analyze_tlc_metrics.py`
 
 
 5. **Pipeline Orchestration (`tla_pipeline.py`)**
