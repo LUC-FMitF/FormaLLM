@@ -1,0 +1,17 @@
+    cff-version: 1.2.0
+    title: "FormaLLM"
+    message: "If you use this software, please cite it as below."
+    type: software
+    authors:
+      - given-names: "Brian"
+        family-names: "Ortiz"
+        orcid: "https://orcid.org/0009-0002-4223-8159"
+      - given-names: "Arslan"
+        family-names: "Bisharat"
+        orcid: "https://orcid.org/0000-0000-0000-0000"
+      - given-names: "Eric"
+        family-names: "Spencers"
+        orcid: "https://orcid.org/0000-0000-0000-0000"
+    version: 0.0.1
+    date-released: 2025-11-21
+    license: "MIT"
