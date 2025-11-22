@@ -14,4 +14,5 @@
         orcid: "https://orcid.org/0000-0000-0000-0000"
     version: 0.0.1
     date-released: 2025-11-21
+    url: "https://github.com/LUC-FMitF/FormaLLM"
     license: "MIT"
