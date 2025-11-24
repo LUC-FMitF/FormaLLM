@@ -316,8 +316,8 @@ class TLCMetricsCollector:
         if depth_match:
             metrics["state_graph_depth"] = int(depth_match.group(1))
         
-        # "The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 3"
-        outdegree_match = re.search(r"The average outdegree of the complete state graph is ([\d.]+) \(minimum is (\d+), the maximum (\d+)", log_content)
+        # "The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 3)"
+        outdegree_match = re.search(r"The average outdegree of the complete state graph is ([\d.]+) \(minimum is (\d+), the maximum (\d+)\)", log_content)
         if outdegree_match:
             metrics["average_outdegree"] = float(outdegree_match.group(1))
             metrics["min_outdegree"] = int(outdegree_match.group(2))
