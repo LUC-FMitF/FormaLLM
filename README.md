@@ -119,7 +119,7 @@ All backends use the same LangChain interface for consistent behavior.
    - Reads comprehensive metrics from `tlc_metrics.csv` and `sany_metrics.csv`
    - Generates summary statistics and visualizations
    - Provides detailed error pattern analysis and performance insights
-   - **📊 For detailed metrics documentation, see [docs/ENHANCED_METRICS.md](docs/ENHANCED_METRICS.md)**
+   - **📊 Detailed metrics documentation is available in the project documentation folder.**
    - Saves artifacts:
      - `evaluation_summary.csv`: Tabular breakdown of results by type
      - `evaluation_summary.png`: Bar chart of model validation outcomes
