@@ -219,9 +219,12 @@ class TLCMetricsCollector:
         # Pattern: "Finished in XXs at" or "Finished in XXmXXs at"
         time_match = re.search(r"Finished in (\d+)(?:m(\d+))?s at", log_content)
         if time_match:
-            minutes = int(time_match.group(2)) if time_match.group(2) else 0
-            seconds = int(time_match.group(1)) if not time_match.group(2) else minutes
-            total_seconds = (int(time_match.group(1)) * 60 + seconds) if time_match.group(2) else seconds
+            if time_match.group(2):
+                minutes = int(time_match.group(1))
+                seconds = int(time_match.group(2))
+                total_seconds = minutes * 60 + seconds
+            else:
+                total_seconds = int(time_match.group(1))
             return float(total_seconds)
         return 0.0
 
