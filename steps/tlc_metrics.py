@@ -251,7 +251,7 @@ class TLCMetricsCollector:
         error_section = error_section[:section_end]
         
         # Extract individual errors: "line X, col Y to line A, col B of module ModuleName"
-        error_pattern = r"line (\d+), col \d+ to line \d+, col \d+ of module \w+\s*\n\s*(.+?)(?=\n\s*\n|$)"
+        error_pattern = r"line (\d+), col \d+ to line \d+, col \d+ of module \S+\s*\n\s*(.+?)(?=\n\s*\n|$)"
         matches = re.findall(error_pattern, error_section, re.DOTALL)
         
         for line_num_str, error_msg in matches:
