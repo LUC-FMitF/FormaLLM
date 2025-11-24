@@ -1,0 +1,21 @@
+execution_duration_ms: 250
+request_preview: '{"model_name": "EWD998ChanID_export", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/EWD998ChanID_export.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-20T11:08:35.539Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/EWD998ChanID_export.tla\nParsing
+  file /tmp/FiniteSets.tla\nParsing file /tmp/Naturals.tla\nParsing file /tmp/Sequences.tla\nSemantic
+  processing of module Naturals\nSemantic processing of module Sequences\nSemantic
+  processing of module FiniteSets\nSemantic processing of module EWD998ChanID_export\nSemantic
+  errors:\n\n*** Errors: 4\n\nline 31, col 1 to line 39, col 15 of module EWD998ChanID_export\n\nOperator
+  Init already defined or declared.\n\n\nline 35, col 15 to line 35, col 16 of module
+  EWD998ChanID_export\n\nUnknown operator: `n1''.\n\n\nline 36, col 16 to line 36,
+  col 19 of module EWD998ChanID_export\n\nUnknown operator: `Idle''.\n\n\nline 31,
+  col 1 to line 39, col 15 of module EWD998ChanID_export\n\nMultiply-defined symbol
+  ''Init'': this definition or declaration conflicts \nwith the one at line 18,...'
+state: OK
+trace_id: tr-eb3dd70e6f62768c813c5e553df62399
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

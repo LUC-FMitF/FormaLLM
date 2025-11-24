@@ -1,0 +1,3 @@
+Majority.tla
+***Parse Error***
+Encountered "<" at line 36, column 27 and token "i"

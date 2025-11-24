@@ -1,0 +1,33 @@
+execution_duration_ms: 9421
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-11-11T18:25:49.223Z'
+response_preview: '{"generations": [[{"text": "```\nHere is the complete TLA+ module
+  for the specification of a parameterized and partially synchronous model of eventually
+  perfect failure detectors with crash faults:\n\n```\n---- MODULE EPFailureDetector
+  ----\nEXTENDS Sequences, FiniteSets, TLC\nCONSTANTS\n  N = 3\n  T = 1\n  d0 = 2\n  SendPoint
+  = 2\n  PredictPoint = 3\n  DELTA = 1\n  PHI = 1\nVARIABLES\n  failed[i \\in 1..N]\n  moved''[i
+  \\in 1..N] \\* No pauses\n  fromLastHeard[i \\in 1..N][j \\in 1..N] \\* How long
+  a process p_i has not taken a transition.\n  procPause[i \\in 1..N]\n  outgoingMessages[i
+  \\in 1..N]\n  inDelivery[i \\in 1..N][j \\in 1..N]\nINIT\n  failed'' = FALSE\n  moved''
+  = \"NO\"\n  fromLastHeard'' = 0\n  procPause'' = 0\n  outgoingMessages'' = {}\n  inDelivery''
+  = {}\nNEXT\n  ASSUME <<A>>: \\E i \\in 1..N : failed[i] = TRUE => <<B>>: \\A m \\in
+  outgoingMessages : <<C>>: (m.content.to # i /\\ m.age <= DELTA)\n  CASE <<D>>: (TLC_Next
+  == \"SEND\" OR TLC_Next == \"PREDICT\") <<E>>: (<<F>>:...'
+state: OK
+trace_id: tr-254fd4c797a2c10ac7327c9da55b4ea1
+trace_location:
+  mlflow_experiment:
+    experiment_id: '491570867932421798'
+  type: MLFLOW_EXPERIMENT

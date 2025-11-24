@@ -1,0 +1,20 @@
+execution_duration_ms: 207
+request_preview: '{"model_name": "MCDieHarder", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/MCDieHarder.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-18T23:12:21.804Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/MCDieHarder.tla\n***Parse
+  Error***\nEncountered \"IN\" at line 27, column 42 and token \"n\" \n\nResidual
+  stack trace follows:\nQuant Bound starting at line 27, column 40.\nSome { } form
+  starting at line 27, column 18.\nExtendableExpr starting at line 27, column 18.\nExpression
+  starting at line 27, column 12.\nDefinition starting at line 27, column 1.\n\n\nFatal
+  errors while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/MCDieHarder.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module MCDieHarder\n\nCould not parse module MCDieHarder
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/MCDieHarder.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-a0fcd6539c74488055b3c0a2557df78f
+trace_location:
+  mlflow_experiment:
+    experiment_id: '945940535758439216'
+  type: MLFLOW_EXPERIMENT

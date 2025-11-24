@@ -1,0 +1,18 @@
+execution_duration_ms: 202
+request_preview: '{"model_name": "TLAPS", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/TLAPS.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T19:06:35.136Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/TLAPS.tla\n***Parse
+  Error***\nWas expecting \"==== or more Module body\"\nEncountered \"It\" at line
+  2, column 1 and token \"----\" \n\nResidual stack trace follows:\nModule definition
+  starting at line 1, column 1.\n\n\nFatal errors while parsing TLA+ spec in file
+  /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/TLAPS.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module TLAPS\n\nCould not parse module TLAPS from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/TLAPS.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-dddecdf1b300bf9e4a8abaef97d9a708
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

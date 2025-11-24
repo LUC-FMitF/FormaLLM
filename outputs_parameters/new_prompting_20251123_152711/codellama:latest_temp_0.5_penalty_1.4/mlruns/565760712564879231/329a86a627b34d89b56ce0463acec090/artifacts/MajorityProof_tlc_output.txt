@@ -1,0 +1,50 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 114 and seed -775911470187467938 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 123945] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MajorityProof.tla
+Parsing file /tmp/FiniteSets.tla
+Parsing file /tmp/Naturals.tla
+Parsing file /tmp/Sequences.tla
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module MajorityProof
+Semantic errors:
+
+*** Errors: 6
+
+line 79, col 71 to line 79, col 71 of module MajorityProof
+
+Unknown operator: `S'.
+
+
+line 82, col 94 to line 82, col 94 of module MajorityProof
+
+Unknown operator: `S'.
+
+
+line 85, col 64 to line 85, col 64 of module MajorityProof
+
+Unknown operator: `S'.
+
+
+line 88, col 84 to line 88, col 84 of module MajorityProof
+
+Unknown operator: `S'.
+
+
+line 88, col 69 to line 88, col 74 of module MajorityProof
+
+The operator AllZSeqOfLengthNandElemInS requires 1 arguments.
+
+
+line 91, col 61 to line 91, col 61 of module MajorityProof
+
+Unknown operator: `S'.
+
+
+
+Starting... (2025-11-19 14:54:24)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-19 14:54:24)
+
+=== STDERR ===

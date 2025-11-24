@@ -1,0 +1,13 @@
+execution_duration_ms: 218
+request_preview: '{"model_name": "BufferedRandomAccessFile", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/BufferedRandomAccessFile.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-18T22:17:51.837Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/BufferedRandomAccessFile.tla\nSemantic
+  processing of module BufferedRandomAccessFile\n", "stderr": ""}'
+state: OK
+trace_id: tr-d70820f9e8788827c76a01581acd3946
+trace_location:
+  mlflow_experiment:
+    experiment_id: '945940535758439216'
+  type: MLFLOW_EXPERIMENT

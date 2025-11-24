@@ -1,0 +1,3 @@
+d/Hanoi.tla
+***Parse Error***
+Encountered "->" at line 12, column 22 and token "]"

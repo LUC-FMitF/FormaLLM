@@ -1,0 +1,3 @@
+WD687a.tla
+***Parse Error***
+Encountered "|->" at line 15, column 21 and token ".."

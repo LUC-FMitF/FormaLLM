@@ -1,0 +1,33 @@
+execution_duration_ms: 11676
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-24T15:16:52.584Z'
+response_preview: '{"generations": [[{"text": "Here is a complete TLA+ module that
+  implements the Boyer-Moore majority vote algorithm and its proof using TLC configuration.
+  \n\n```tla\n---- MODULE MajorityVote ----\nEXTENDS FiniteSets, Integers1, Sequences\n\nCONSTANTS
+  n == \\* maximum sequence length for model checking\n         2 * n\n\nVARIABLES
+  seq[0..n-1] /\\ cand, nextPos, lowerBound, countPrefix, totalCount == \\* input
+  sequence of values, next position to be checked, current candidate, lower bound
+  and counts\n\nASSUME Initially(totalCount = 0) \n   AND Initially(lowerBound = n
+  DIV 2 + 1)\n   AND Initially(nextPos = 0)\n   AND \\* inductive invariant for proving
+  correctness\n     [](Cardinality(seq[i] : i \\in nextPos..n-1) <= n DIV 2\n        /\\
+  (totalCount > 0 ==> totalCount >= lowerBound)\n        /\\ (cand = seq[nextPos]
+  /\\ lowerBound > n DIV 2 ==> totalCount - Cardinality(seq[i] : i \\in nextPos..n-1)
+  <= n DIV 2))\n   AND \\* main correctness property: cand can be the only value that
+  has...'
+state: OK
+trace_id: tr-b67e6601c1d20bfac69532edd52b5476
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

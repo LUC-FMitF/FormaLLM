@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/mlruns/686419802160078495/ac2ed0a250aa4898a4075101e59f7675/artifacts
+end_time: 1763509531787
+entry_point_name: ''
+experiment_id: '686419802160078495'
+lifecycle_stage: active
+run_id: ac2ed0a250aa4898a4075101e59f7675
+run_name: MCDieHarder
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763509531756
+status: 3
+tags: []
+user_id: arslanbisharat

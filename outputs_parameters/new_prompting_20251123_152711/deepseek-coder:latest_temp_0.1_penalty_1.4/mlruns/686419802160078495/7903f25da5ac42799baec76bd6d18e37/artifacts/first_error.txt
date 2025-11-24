@@ -1,0 +1,2 @@
+:latest/generated/HDiskSynod.tla
+Lexical error at line 23, column 17.  Encountered: "\u21d2" (8658), after : ""

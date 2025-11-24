@@ -1,0 +1,66 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 62 and seed -4875496933101854262 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 51765] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Majority.tla
+Semantic processing of module Majority
+Semantic errors:
+
+*** Errors: 9
+
+line 17, col 13 to line 17, col 13 of module Majority
+
+Multiply-defined symbol 'j': this definition or declaration conflicts 
+with the one at line 9, col 13 to line 9, col 13 of module Majority.
+
+
+line 18, col 13 to line 18, col 16 of module Majority
+
+Multiply-defined symbol 'cand': this definition or declaration conflicts 
+with the one at line 10, col 13 to line 10, col 16 of module Majority.
+
+
+line 19, col 13 to line 19, col 14 of module Majority
+
+Multiply-defined symbol 'lb': this definition or declaration conflicts 
+with the one at line 11, col 13 to line 11, col 14 of module Majority.
+
+
+line 20, col 13 to line 20, col 19 of module Majority
+
+Multiply-defined symbol 'indexes': this definition or declaration conflicts 
+with the one at line 12, col 13 to line 12, col 19 of module Majority.
+
+
+line 21, col 13 to line 21, col 15 of module Majority
+
+Multiply-defined symbol 'occ': this definition or declaration conflicts 
+with the one at line 13, col 13 to line 13, col 15 of module Majority.
+
+
+line 22, col 13 to line 22, col 18 of module Majority
+
+Multiply-defined symbol 'allOcc': this definition or declaration conflicts 
+with the one at line 14, col 13 to line 14, col 18 of module Majority.
+
+
+line 23, col 13 to line 23, col 13 of module Majority
+
+Multiply-defined symbol 'v': this definition or declaration conflicts 
+with the one at line 15, col 13 to line 15, col 13 of module Majority.
+
+
+line 28, col 15 to line 28, col 19 of module Majority
+
+Unknown operator: `NoVal'.
+
+
+line 33, col 12 to line 33, col 16 of module Majority
+
+Unknown operator: `NoVal'.
+
+
+
+Starting... (2025-11-19 12:50:56)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-19 12:50:57)
+
+=== STDERR ===

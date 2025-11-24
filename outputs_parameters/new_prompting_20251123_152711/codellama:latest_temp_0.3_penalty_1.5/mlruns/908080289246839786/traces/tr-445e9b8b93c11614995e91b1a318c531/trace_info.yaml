@@ -1,0 +1,18 @@
+execution_duration_ms: 205
+request_preview: '{"model_name": "YoYoNoPruning", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/YoYoNoPruning.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-19T05:19:47.381Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/YoYoNoPruning.tla\nLexical
+  error at line 17, column 432.  Encountered: \"\\n\" (10), after : \"\\\"* dow* messag*
+  es from neighbors **that he node considers as incoming*, and also to preserve                      *)\"\n\nFatal
+  errors while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/YoYoNoPruning.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module YoYoNoPruning\n\nCould not parse module YoYoNoPruning
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/YoYoNoPruning.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-445e9b8b93c11614995e91b1a318c531
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

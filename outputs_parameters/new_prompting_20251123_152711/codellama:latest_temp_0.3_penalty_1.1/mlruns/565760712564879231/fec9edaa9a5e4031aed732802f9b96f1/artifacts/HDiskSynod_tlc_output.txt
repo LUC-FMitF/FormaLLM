@@ -1,0 +1,81 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 89 and seed -9139026969362712722 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 520561] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla
+Semantic processing of module HDiskSynod
+Semantic errors:
+
+*** Errors: 12
+
+line 15, col 1 to line 16, col 16 of module HDiskSynod
+
+Operator Inp already defined or declared.
+
+
+line 16, col 5 to line 16, col 5 of module HDiskSynod
+
+Unsupported expression type `['.
+
+
+line 15, col 1 to line 16, col 16 of module HDiskSynod
+
+Multiply-defined symbol 'Inp': this definition or declaration conflicts 
+with the one at line 7, col 13 to line 7, col 15 of module HDiskSynod.
+
+
+line 17, col 1 to line 18, col 15 of module HDiskSynod
+
+Operator Bal already defined or declared.
+
+
+line 18, col 5 to line 18, col 5 of module HDiskSynod
+
+Unsupported expression type `['.
+
+
+line 17, col 1 to line 18, col 15 of module HDiskSynod
+
+Multiply-defined symbol 'Bal': this definition or declaration conflicts 
+with the one at line 8, col 13 to line 8, col 15 of module HDiskSynod.
+
+
+line 20, col 1 to line 21, col 16 of module HDiskSynod
+
+Operator bk already defined or declared.
+
+
+line 20, col 1 to line 21, col 16 of module HDiskSynod
+
+Multiply-defined symbol 'bk': this definition or declaration conflicts 
+with the one at line 11, col 13 to line 11, col 14 of module HDiskSynod.
+
+
+line 24, col 11 to line 24, col 13 of module HDiskSynod
+
+Multiply-defined symbol 'inp': this definition or declaration conflicts 
+with the one at line 12, col 13 to line 12, col 15 of module HDiskSynod.
+
+
+line 25, col 11 to line 25, col 13 of module HDiskSynod
+
+Multiply-defined symbol 'inp': this definition or declaration conflicts 
+with the one at line 12, col 13 to line 12, col 15 of module HDiskSynod.
+
+
+line 26, col 11 to line 26, col 13 of module HDiskSynod
+
+Multiply-defined symbol 'bal': this definition or declaration conflicts 
+with the one at line 13, col 13 to line 13, col 15 of module HDiskSynod.
+
+
+line 27, col 11 to line 27, col 13 of module HDiskSynod
+
+Multiply-defined symbol 'bal': this definition or declaration conflicts 
+with the one at line 13, col 13 to line 13, col 15 of module HDiskSynod.
+
+
+
+Starting... (2025-11-20 05:08:42)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-20 05:08:42)
+
+=== STDERR ===

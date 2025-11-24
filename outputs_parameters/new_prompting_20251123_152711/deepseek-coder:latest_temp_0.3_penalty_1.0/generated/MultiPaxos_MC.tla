@@ -1,0 +1,2 @@
+---- MODULE MultiPaxos_MC ------ Modules for Reliably-Secure Messaging using a Transport Layer with High Throughput and Small Message Size. This module uses TLC (TLA+) to define the protocol, its configuration settings as well any necessary invariants or type check invariances related operations on this ZeroMQReliableMessagePassing system
+====

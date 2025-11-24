@@ -1,0 +1,22 @@
+execution_duration_ms: 554
+request_preview: '{"model_name": "MajorityProof", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MajorityProof.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-10-31T18:00:43.669Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MajorityProof.tla\nParsing
+  file /tmp/FiniteSets.tla\nParsing file /tmp/Naturals.tla\nParsing file /tmp/Sequences.tla\nSemantic
+  processing of module Naturals\nSemantic processing of module Sequences\nSemantic
+  processing of module FiniteSets\nSemantic processing of module MajorityProof\nSemantic
+  errors:\n\n*** Errors: 525\n\nline 79, col 1 to line 82, col 26 of module MajorityProof\n\nOperator
+  ZSeqOfLength already defined or declared.\n\n\nline 85, col 1 to line 85, col 49
+  of module MajorityProof\n\nOperator ZSeq already defined or declared.\n\n\nline
+  88, col 1 to line 91, col 28 of module MajorityProof\n\nOperator ZLen already defined
+  or declared.\n\n\nline 94, col 1 to line 97, col 43 of module MajorityProof\n\nOperator
+  ZSeqFromSeq already defined or declared.\n\n\nline 100, col 1 to line 103, col 42
+  ...'
+state: OK
+trace_id: tr-201f2953f806f5580f530549b0518241
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

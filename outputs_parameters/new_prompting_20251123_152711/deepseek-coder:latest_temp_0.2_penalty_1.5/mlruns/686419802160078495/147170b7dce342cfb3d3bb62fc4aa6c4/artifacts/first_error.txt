@@ -1,0 +1,2 @@
+test/generated/YoYoNoPruning.tla
+Lexical error at line 4, column 59.  Encountered: "\u2018" (8216), after : ""

@@ -1,0 +1,2 @@
+ma:latest/generated/Relation.tla
+Lexical error at line 16, column 93.  Encountered: "\n" (10), after : "?"

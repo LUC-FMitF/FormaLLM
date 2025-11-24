@@ -1,0 +1,2 @@
+llama:latest/generated/Hanoi.tla
+Lexical error at line 22, column 305.  Encountered: "\n" (10), after : "\")   satisfying Init and every step either satisfies Next or else leaves th e pair <<big , sma

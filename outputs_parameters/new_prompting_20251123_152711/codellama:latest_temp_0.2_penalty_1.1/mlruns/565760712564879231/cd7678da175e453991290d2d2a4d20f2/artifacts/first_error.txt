@@ -1,0 +1,3 @@
+/Hanoi.tla
+***Parse Error***
+Encountered "|->" at line 7, column 19 and token "N"

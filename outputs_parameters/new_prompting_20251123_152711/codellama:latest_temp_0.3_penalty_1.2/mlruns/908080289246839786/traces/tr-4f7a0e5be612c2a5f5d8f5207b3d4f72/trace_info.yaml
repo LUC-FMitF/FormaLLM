@@ -1,0 +1,16 @@
+execution_duration_ms: 261
+request_preview: '{"model_name": "nbacc_ray97", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/nbacc_ray97.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T17:52:44.549Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/nbacc_ray97.tla\nParsing
+  file /tmp/FiniteSets.tla\nParsing file /tmp/Naturals.tla\nParsing file /tmp/Sequences.tla\nSemantic
+  processing of module Naturals\nSemantic processing of module Sequences\nSemantic
+  processing of module FiniteSets\nSemantic processing of module nbacc_ray97\n", "stderr":
+  ""}'
+state: OK
+trace_id: tr-4f7a0e5be612c2a5f5d8f5207b3d4f72
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

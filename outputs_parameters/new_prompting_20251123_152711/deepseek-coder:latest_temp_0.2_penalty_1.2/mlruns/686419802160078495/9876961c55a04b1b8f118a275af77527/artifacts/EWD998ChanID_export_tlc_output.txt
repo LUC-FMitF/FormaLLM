@@ -1,0 +1,20 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 128 and seed 6851783418376663897 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 2608126] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/EWD998ChanID_export.tla
+Lexical error at line 20, column 10.  Encountered: "\u2264" (8804), after : ""
+
+Fatal errors while parsing TLA+ spec in file EWD998ChanID_export
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module EWD998ChanID_export
+
+Could not parse module EWD998ChanID_export from file EWD998ChanID_export.tla
+
+
+Starting... (2025-11-18 17:24:38)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-18 17:24:38)
+
+=== STDERR ===

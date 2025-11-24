@@ -1,0 +1,19 @@
+execution_duration_ms: 213
+request_preview: '{"model_name": "nbacc_ray97", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/nbacc_ray97.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T21:23:21.192Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/nbacc_ray97.tla\n***Parse
+  Error***\nWas expecting \"==== or more Module body\"\nEncountered \"=\" at line
+  19, column 15 and token \"Proc\" \n\nResidual stack trace follows:\nModule definition
+  starting at line 1, column 1.\n\n\nFatal errors while parsing TLA+ spec in file
+  /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/nbacc_ray97.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module nbacc_ray97\n\nCould not parse module nbacc_ray97
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/nbacc_ray97.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-a4486589161e4c8d1254b38457510dac
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

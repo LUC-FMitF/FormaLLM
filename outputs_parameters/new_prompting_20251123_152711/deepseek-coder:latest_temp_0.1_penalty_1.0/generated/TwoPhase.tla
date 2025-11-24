@@ -1,0 +1,17 @@
+---- MODULE TwoPhase 
+(***************************************************************************)
+(* The two-phase handshake protocol, which is a simple but very important      *)
+(* hardware protocol by which a producer process and a consumer process       *)
+(* alternateively perform actions, with the producer going first. The system   *)
+(* is pictured as follows:                                                     *)
+(*                                                                            *)
+------------ p ------------                                                   *)
+|            | -----------------> |            |                                  *)
+| Producer  |                    | Consumer   |                                  *)
+|            | ----------------- |            |                                  *)
+------------ c ------------                                                     *)
+(* The invariant that is needed for the proof.                                 *)
+(***************************************************************************)
+(* The proof is as follows:                                                    *)
+(***************************************************************************)
+====

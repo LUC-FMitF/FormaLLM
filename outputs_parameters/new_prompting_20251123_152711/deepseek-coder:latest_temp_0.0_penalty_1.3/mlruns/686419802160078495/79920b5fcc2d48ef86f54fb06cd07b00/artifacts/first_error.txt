@@ -1,0 +1,2 @@
+:latest/generated/HDiskSynod.tla
+Lexical error at line 17, column 11.  Encountered: "\u2190" (8592), after : ""

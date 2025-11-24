@@ -1,0 +1,2 @@
+ma:latest/generated/Majority.tla
+Lexical error at line 24, column 18.  Encountered: ";" (59), after : ""

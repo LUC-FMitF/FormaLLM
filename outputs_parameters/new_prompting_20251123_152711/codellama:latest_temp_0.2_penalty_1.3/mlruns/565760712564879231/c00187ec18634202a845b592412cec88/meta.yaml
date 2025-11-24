@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/565760712564879231/c00187ec18634202a845b592412cec88/artifacts
+end_time: 1763578257065
+entry_point_name: ''
+experiment_id: '565760712564879231'
+lifecycle_stage: active
+run_id: c00187ec18634202a845b592412cec88
+run_name: Majority
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763578257016
+status: 3
+tags: []
+user_id: arslanbisharat

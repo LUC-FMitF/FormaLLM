@@ -1,0 +1,2 @@
+r:latest/generated/Alternate.tla
+Lexical error at line 36, column 40.  Encountered: "\u2208" (8712), after : ""

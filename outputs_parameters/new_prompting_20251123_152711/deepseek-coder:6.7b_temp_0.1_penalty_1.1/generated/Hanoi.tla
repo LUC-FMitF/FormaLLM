@@ -1,0 +1,77 @@
+---- MODULE Hanoi ----
+(**************************************************************************)
+(* Towers are represented by natural numbers
+   all towers are empty except all disks are on the first Tower
+   All less significant bits are 0
+   Remaining tower does not change
+   No need to try to move onto the same tower  (Move(...) prevents it too)
+   Modification History
+   Last modified Tue May 17 14:55:33 CEST 2016 by markus
+   Created Sun Jul 17 10:20<｜begin▁of▁sentence｜> CET 2011 by markus
+**************************************************************************)
+(* TRUE iff i is a power of two                                             *)
+**************************************************************************)
+(* A set of all powers of two up to n                                       *)
+**************************************************************************)
+(* Copied from TLA+'s Bags standard library. The sum of f[x] for all x in   *)
+(* DOMAIN f.                                                                *)
+**************************************************************************)
+(* D is number of disks and N number of towers                              *)
+**************************************************************************)
+(* Towers of Hanoi with N towers                                            *)
+**************************************************************************)
+(* The total sum of all towers must amount to the disks in the system       *)
+**************************************************************************)
+(* Towers are naturals in the interval (0, 2^D] *)
+(* Now we define of the initial predicate, that specifies the initial       *)
+(* values of the variables.                                                 *)
+**************************************************************************)
+(* TRUE iff the tower is empty                                              *)
+**************************************************************************)
+(* TRUE iff the disk is located on the given tower                          *)
+**************************************************************************)
+(* TRUE iff disk is the smallest disk on tower                              *)
+**************************************************************************)
+(* TRUE iff disk can be moved off of tower                                  *)
+**************************************************************************)
+(* TRUE iff disk can be moved to the tower                                  *)
+**************************************************************************)
+(* *)
+(* *)
+(* Define all possible actions that disks can perform.                      *)
+(* *)
+(* We define the formula Spec to be the complete specification, asserting   *)
+(* of a behavior that it begins in a state satisfying Init, and that every  *)
+(* step either satisfies Next or else leaves the pair <<big, small>>        *)
+(* unchanged.                                                               *)
+(* *)
+(* The final configuration has all disks on the right tower. If TLC is set  *)
+(* to run with an invariant rightTower 2^N-1, it will search for          *)
+(* configurations in which this invariant is violated. If violation can be  *)
+(* found, the stack trace shows the steps to solve the Hanoi problem.       *)
+(* *)
+(* We find a solution by having TLC check if NotSolved is an invariant,     *)
+(* which will cause it to print out an  "error trace" consisting of a        *)
+(* behavior ending in a state where NotSolved is false. With three disks,   *)
+(* and three towers the puzzle can be solved in seven moves.                *)
+(* The minimum number of moves required to solve a Tower of Hanoi puzzle    *)
+(* generally is 2n  - 1, where n is the number of disks. Thus, the counter- *)
+(* examples shown by TLC will be of length 2n-1                             *)
+(**************************************************************************)
+
+CONSTANTS
+  N, D
+
+VARIABLES
+  Towers \subseteq Powerset(Nat)
+
+ASSUME
+  Init == Towers = {0}
+  Next == \A x: Nat : (x \in Towers[0] -> EX y: Nat : (y \in Towers[1] /\ y > x))
+
+INVARIANT
+  rightTower == \A x: Nat : (x \in Towers[-1] -> x = 2^D - x)
+
+SPECIFICATION
+  Spec == Init /\ WF(Next)
+====

@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/908080289246839786/a2546e055fe64adfa0b5bd2548274c6c/artifacts
+end_time: 1763510949758
+entry_point_name: ''
+experiment_id: '908080289246839786'
+lifecycle_stage: active
+run_id: a2546e055fe64adfa0b5bd2548274c6c
+run_name: sany_EWD998ChanID_export
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763510949522
+status: 3
+tags: []
+user_id: arslanbisharat

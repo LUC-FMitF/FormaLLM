@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/565760712564879231/2f1d27a825c141b28029b9e72ee3fad1/artifacts
+end_time: 1763505177319
+entry_point_name: ''
+experiment_id: '565760712564879231'
+lifecycle_stage: active
+run_id: 2f1d27a825c141b28029b9e72ee3fad1
+run_name: HDiskSynod
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763505177281
+status: 3
+tags: []
+user_id: arslanbisharat

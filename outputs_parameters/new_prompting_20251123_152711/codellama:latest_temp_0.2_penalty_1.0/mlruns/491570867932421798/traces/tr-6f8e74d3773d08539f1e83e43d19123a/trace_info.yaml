@@ -1,0 +1,31 @@
+execution_duration_ms: 523456
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-19T12:11:47.799Z'
+response_preview: '{"generations": [[{"text": "---- MODULE MajorityVote ----\n------------------------------
+  MODEL MAJORITY_VOTE --------------------------\n(***************************************************************************\n*
+  TLA+ specification and proof of the majority vote algorithm due to Boyer *)\nAND
+  Moore.                                                                *\nR.S. BOYER,
+  J. S. MOORE: MJRTY - A FAST MAJORITY VOTE ALGORITHM           *\nIN: R.S. BOYER
+  (ED.): AUTOMATED REASONING : ESSAYS IN HONOR OF WOODY       *\nBLEDSOE, PP. 105-117
+  . DORDRECHT , THE NETHERLANDS , 1991                 *)\n***************************************************************************)\nCONSTANT
+  Seq \\* input sequence of values, never changes\nVARIABLES j   \\* next position
+  to be checked in the prefix\ncand    \\* current candidate for having a majority\nlb     \\*
+  lower bound on number of occurrences of cand so far \nindices \\* set of indexes
+  in the prefix strictly before j holding v\nv      ...'
+state: OK
+trace_id: tr-6f8e74d3773d08539f1e83e43d19123a
+trace_location:
+  mlflow_experiment:
+    experiment_id: '491570867932421798'
+  type: MLFLOW_EXPERIMENT

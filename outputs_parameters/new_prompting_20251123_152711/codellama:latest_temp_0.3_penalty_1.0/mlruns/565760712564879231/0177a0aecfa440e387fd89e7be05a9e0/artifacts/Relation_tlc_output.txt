@@ -1,0 +1,20 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 41 and seed -8159863785321273721 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 1800884] (Linux 6.8.0-86-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Relation.tla
+Lexical error at line 13, column 40.  Encountered: " " (32), after : "?"
+
+Fatal errors while parsing TLA+ spec in file Relation
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module Relation
+
+Could not parse module Relation from file Relation.tla
+
+
+Starting... (2025-11-11 11:59:26)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-11 11:59:26)
+
+=== STDERR ===

@@ -1,0 +1,2 @@
+==== or more Module body"
+Encountered "ASSIGN" at line 31, column 1 and token "totalCount"

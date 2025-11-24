@@ -1,0 +1,27 @@
+---- MODULE ClientCentric ----- ------------------ TLC Configuration -------------------------------------
+CONSTANTS InitValues = [k \in Keys | -> InitValue] (* Initial state for each key *)
+SPECIFICATION Spec(* Main specification of the module, defined below. It is a placeholder at this point and will be replaced by actual spec later on*)
+INVARIANTS Inv1(State), Inv2(Transactions) 
+=====================================================================================================================
+ ---------------------------------------------------------------------------
+(* Definitions *)
+TYPE State == [k \in Keys | -> Value] (* A state is a function from keys to values. It represents the database's current status*)
+OPERATOR Read(State, Key) ==  IF (Key,\_) IN Domain[state](Keys), THEN  state([key]) ELSE InitValue FI(* Returns value of key in State if it exists *)
+TYPE Operation == [op: {ReadOp, WriteOp}, arg1 : Keys] (* An operation is a tuple with an operator and one argument*)
+OPERATOR Apply(Operation,State) ==  IF op = Read THEN  state ELSE \state[arg1](value)\ FI(* Applies the given Operation to State *)
+TYPE Transaction == [ops: Seq (Set Operations), start : TimeStamp , commit :TimeStamp] (* A transaction is a sequence of operations with timestamps*)
+OPERATOR Apply(Transaction,State) ==  FOLD (\state[op](Apply([op], state)), ops)(InitValue))(* Applies the given Transaction to State *) 
+TYPE ExecutionElem == [parent: State , txn : Transactions , result : State] (* An execution element is a triple of parent, transaction and resulting states*)
+OPERATOR Next(Execution) ==  IF |tx| > 0 THEN \result[1..-2](Apply([op], state)) ELSE InitValue FI(* Calculates the next state in an Execution *) 
+TYPE CommitTest == State -> BOOLEAN (* A commit test is a predicate on states*)  
+OPERATOR CT_SER(Transaction,Execution) ==  \A txn' : Transactions IN execution: |tx| > 0 /\ Apply([op], state)[commit] FI(* Checks if the given transaction commits according to serializable isolation level *) 
+TYPE IsolationLevel == CommitTest (* An isolation Level is a commit test*)  
+OPERATOR SatisfyIsol(Transactions,CT) ==  \E execution : Executions IN execs: |tx| > 0 /\ CT([op], state)[commit] FI(* Checks if the given transactions satisfy an isolation level *) 
+TYPE Values == [value:\Nat -> Value](* Set of all possible values*)  
+OPERATOR PrintT(State) ==  (* A helper operator to print states in a readable format. It is not defined here, but should be implemented elsewhere based on the specific requirements and platform *) 
+(* Specification Definition Here: This placeholder will eventually hold actual specification definitions later *)   
+SPECIFICATION S == \A txn : Transactions IN transactions /\ SatisfyIsol(transactions,[op],state)[CT_SER] FI   (* The main spec for the module*) 
+(* Invariants Definition Here: This placeholder will eventually hold actual invariant definitions later *)   
+INVARIANTS Inv1 ==  \A state : States, txn IN transactions /\ Apply([op], InitValues)(commit) =< commit(txn),   (* An invaraint that checks if all committed timestamps are valid*) 
+Inv2 ==  |transactions| > 0 -> EXISTS x:Nat[1.. |transaction] : start (xth transaction in transactions ) < end ((x-1) th tx)(* A second invariant to check the order of operations *)  
+=====================================================================================================================

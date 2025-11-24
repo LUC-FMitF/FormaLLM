@@ -1,0 +1,2 @@
+er:latest/generated/Majority.tla
+Lexical error at line 18, column 16.  Encountered: "\u2200" (8704), after : ""

@@ -1,0 +1,21 @@
+execution_duration_ms: 202
+request_preview: '{"model_name": "nbacc_ray97", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/nbacc_ray97.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T15:55:23.318Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/nbacc_ray97.tla\n***Parse
+  Error***\nWas expecting \"Identifier, _ or prefix op\"\nEncountered \"VARIABLES\"
+  at line 15, column 1 and token \",\" \n\nResidual stack trace follows:\nConstant
+  declaration items starting at line 15, column 1.\nParameter declaration starting
+  at line 11, column 1.\nModule body starting at line 11, column 1.\nModule definition
+  starting at line 1, column 1.\n\n\nFatal errors while parsing TLA+ spec in file
+  /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/nbacc_ray97.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module nbacc_ray97\n\nCould not parse module nbacc_ray97
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/nbacc_ray97.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-9921df6ba6f83498b4ed15b448b7df82
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

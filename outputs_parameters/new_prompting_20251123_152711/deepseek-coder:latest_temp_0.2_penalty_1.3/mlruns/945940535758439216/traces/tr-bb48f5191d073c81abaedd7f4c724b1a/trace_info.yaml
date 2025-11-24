@@ -1,0 +1,17 @@
+execution_duration_ms: 207
+request_preview: '{"model_name": "YoYoNoPruning", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/YoYoNoPruning.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-18T22:42:15.697Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/YoYoNoPruning.tla\nLexical
+  error at line 5, column 25.  Encountered: \"\\u221e\" (8734), after : \"\"\n\nFatal
+  errors while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/YoYoNoPruning.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module YoYoNoPruning\n\nCould not parse module YoYoNoPruning
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/YoYoNoPruning.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-bb48f5191d073c81abaedd7f4c724b1a
+trace_location:
+  mlflow_experiment:
+    experiment_id: '945940535758439216'
+  type: MLFLOW_EXPERIMENT

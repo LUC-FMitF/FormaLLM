@@ -1,0 +1,2 @@
+ntifier"
+Encountered "Beginning of definition" at line 20, column 3 and token "VARIABLES"

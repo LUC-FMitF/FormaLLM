@@ -1,0 +1,2 @@
+"==== or more Module body"
+Encountered "xInit" at line 10, column 13 and token "x"

@@ -1,0 +1,19 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 117 and seed 6124168393416530773 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 1393983] (Linux 6.8.0-86-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MCEWD687a.tla
+Semantic processing of module MCEWD687a
+Semantic errors:
+
+*** Errors: 1
+
+line 53, col 16 to line 53, col 19 of module MCEWD687a
+
+Unknown operator: `Next'.
+
+
+
+Starting... (2025-11-11 09:42:36)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-11 09:42:36)
+
+=== STDERR ===

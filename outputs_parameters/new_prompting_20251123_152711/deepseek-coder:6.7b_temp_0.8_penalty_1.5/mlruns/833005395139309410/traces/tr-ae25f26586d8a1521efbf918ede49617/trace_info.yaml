@@ -1,0 +1,33 @@
+execution_duration_ms: 95069
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-11-11T18:44:30.907Z'
+response_preview: '{"generations": [[{"text": "---- MODULE VoucherCancel -----------------------------------------------\nEXTENDS
+  FiniteSets, Naturals, Sequences\nCONSTANTS\n  Hs = {holder1, holder2, holder3}\n  Is
+  = {issuer1, issuer2, issuer3}\nVARIABLES\n  msgs : (H -> I) -> BOOLEAN\n  vState[v]
+  : VOUCHER_STATE\n  hState[h] : HOLDER_STATE\n  iState[i] : ISSUER_STATE\n  vlcState[v]
+  : VoucherLifeCycle.VLC_STATE\nInit == msgs = {} /\\ vState[v] = VoucherLifeCycle.INITIAL
+  forall v in V\nNext == (msgs'' = IF hState[h] = PREPARED /\\ iState[i] = PREPARED
+  THEN msgs ELSE msgs'') \n       /\\ vlcState[v] = VoucherLifeCycle.CANCELLED forall
+  v in V\nSpec == Init /\\ []Next\n====\nCONSTANTS\n  Hs = {holder1, holder2, holder3}\n  Is
+  = {issuer1, issuer2, issuer3}\nINVARIANTS\n  VTPTypeOK := (hState[h] = PREPARED
+  /\\ iState[i] = PREPARED) => msgs'' = IF hState[h] = PREPARED /\\ iState[i] = PREPARED
+  THEN msgs ELSE msgs'')\n  VTPConsistent := (vlcState[v] = VoucherLifeCycle.ISSUED
+  forall v in V) => hState[h] = PREPARED ...'
+state: OK
+trace_id: tr-ae25f26586d8a1521efbf918ede49617
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

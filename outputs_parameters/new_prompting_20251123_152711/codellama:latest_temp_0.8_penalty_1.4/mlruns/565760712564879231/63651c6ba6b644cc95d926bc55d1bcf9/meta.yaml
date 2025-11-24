@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/565760712564879231/63651c6ba6b644cc95d926bc55d1bcf9/artifacts
+end_time: 1763529595114
+entry_point_name: ''
+experiment_id: '565760712564879231'
+lifecycle_stage: active
+run_id: 63651c6ba6b644cc95d926bc55d1bcf9
+run_name: Consensus
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763529595072
+status: 3
+tags: []
+user_id: arslanbisharat

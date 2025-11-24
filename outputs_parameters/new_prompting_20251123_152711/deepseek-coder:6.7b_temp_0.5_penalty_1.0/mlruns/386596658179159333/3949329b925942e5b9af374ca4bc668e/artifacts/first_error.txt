@@ -1,0 +1,2 @@
+k-coder:6.7b/generated/TLAPS.tla
+Lexical error at line 2, column 323.  Encountered: "\n" (10), after : "?"

@@ -1,0 +1,26 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 3 and seed 7052931572912328615 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 493911] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/VoucherTransfer.tla
+***Parse Error***
+Was expecting "==== or more Module body"
+Encountered "=" at line 29, column 5 and token "V" 
+
+Residual stack trace follows:
+Module definition starting at line 1, column 1.
+
+
+Fatal errors while parsing TLA+ spec in file VoucherTransfer
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module VoucherTransfer
+
+Could not parse module VoucherTransfer from file VoucherTransfer.tla
+
+
+Starting... (2025-11-20 04:13:45)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-20 04:13:45)
+
+=== STDERR ===

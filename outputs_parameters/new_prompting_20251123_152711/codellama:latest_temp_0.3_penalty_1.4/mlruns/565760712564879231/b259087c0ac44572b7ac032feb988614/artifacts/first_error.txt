@@ -1,0 +1,2 @@
+g "==== or more Module body"
+Encountered "LET" at line 10, column 1 and token "----"

@@ -1,0 +1,2 @@
+6.7b/generated/MajorityProof.tla
+Lexical error at line 97, column 2.  Encountered: "\uff5c" (65372), after : ""

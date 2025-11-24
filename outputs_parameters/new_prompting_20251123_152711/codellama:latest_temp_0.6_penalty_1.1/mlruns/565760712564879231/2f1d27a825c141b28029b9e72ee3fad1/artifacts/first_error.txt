@@ -1,0 +1,3 @@
+Synod.tla
+***Parse Error***
+Encountered "WITH" at line 32, column 19 and token "bk"

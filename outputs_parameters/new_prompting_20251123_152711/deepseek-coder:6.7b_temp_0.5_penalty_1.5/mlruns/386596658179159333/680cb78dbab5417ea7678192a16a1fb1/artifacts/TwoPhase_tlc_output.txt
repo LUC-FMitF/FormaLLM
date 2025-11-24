@@ -1,0 +1,26 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 8 and seed 2303199990010706703 with 112 workers on 112 cores with 30688MB heap and 64MB offheap memory [pid: 2167497] (Linux 6.8.0-86-generic amd64, Ubuntu 25 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/bortiz4/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/TwoPhase.tla
+***Parse Error***
+Was expecting "==== or more Module body"
+Encountered "=" at line 5, column 8 and token "RM" 
+
+Residual stack trace follows:
+Module definition starting at line 1, column 1.
+
+
+Fatal errors while parsing TLA+ spec in file TwoPhase
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module TwoPhase
+
+Could not parse module TwoPhase from file TwoPhase.tla
+
+
+Starting... (2025-11-03 09:22:33)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-03 09:22:33)
+
+=== STDERR ===

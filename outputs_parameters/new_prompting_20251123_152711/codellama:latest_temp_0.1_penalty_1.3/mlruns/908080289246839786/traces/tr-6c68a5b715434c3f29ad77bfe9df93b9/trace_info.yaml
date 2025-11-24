@@ -1,0 +1,19 @@
+execution_duration_ms: 205
+request_preview: '{"model_name": "TLAPS", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/TLAPS.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T15:42:32.477Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/TLAPS.tla\n***Parse
+  Error***\nEncountered \"Beginning of definition\" at line 3, column 5 and token
+  \"/\\\\\" \n\nResidual stack trace follows:\nExtendableExpr starting at line 3,
+  column 5.\nExpression starting at line 3, column 5.\nJunction Item starting at line
+  3, column 3.\nAND-OR Junction starting at line 3, column 3.\nExtendableExpr starting
+  at line 3, column 3.\n\n\nFatal errors while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/TLAPS.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module TLAPS\n\nCould not parse module TLAPS from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/TLAPS.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-6c68a5b715434c3f29ad77bfe9df93b9
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

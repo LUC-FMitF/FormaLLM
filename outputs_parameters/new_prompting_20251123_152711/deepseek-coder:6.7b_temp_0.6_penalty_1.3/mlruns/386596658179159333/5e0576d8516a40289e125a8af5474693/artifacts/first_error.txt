@@ -1,0 +1,2 @@
+ing "==== or more Module body"
+Encountered "=" at line 28, column 7 and token "A_0"

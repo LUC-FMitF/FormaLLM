@@ -1,0 +1,22 @@
+execution_duration_ms: 257
+request_preview: '{"model_name": "Majority", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Majority.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-19T18:50:47.838Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Majority.tla\nSemantic
+  processing of module Majority\nSemantic errors:\n\n*** Errors: 9\n\nline 17, col
+  13 to line 17, col 13 of module Majority\n\nMultiply-defined symbol ''j'': this
+  definition or declaration conflicts \nwith the one at line 9, col 13 to line 9,
+  col 13 of module Majority.\n\n\nline 18, col 13 to line 18, col 16 of module Majority\n\nMultiply-defined
+  symbol ''cand'': this definition or declaration conflicts \nwith the one at line
+  10, col 13 to line 10, col 16 of module Majority.\n\n\nline 19, col 13 to line 19,
+  col 14 of module Majority\n\nMultiply-defined symbol ''lb'': this definition or
+  declaration conflicts \nwith the one at line 11, col 13 to line 11, col 14 of module
+  Majority.\n\n\nline 20, col 13 to line 20, col 19 of module Majority\n\nMultiply-defined
+  symbol ''indexes'': this definit...'
+state: OK
+trace_id: tr-14210e19a383eb6d3037dd88c63eaaae
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

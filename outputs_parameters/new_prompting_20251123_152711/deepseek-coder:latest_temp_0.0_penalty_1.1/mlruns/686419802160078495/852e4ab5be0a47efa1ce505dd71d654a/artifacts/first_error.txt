@@ -1,0 +1,2 @@
+atest/generated/EWD687a_anim.tla
+Lexical error at line 71, column 35.  Encountered: "." (46), after : "?"

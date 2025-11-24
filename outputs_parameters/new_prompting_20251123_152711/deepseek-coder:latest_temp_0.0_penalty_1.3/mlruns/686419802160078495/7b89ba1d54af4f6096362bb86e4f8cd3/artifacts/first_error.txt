@@ -1,0 +1,2 @@
+r:latest/generated/Alternate.tla
+Lexical error at line 9, column 42.  Encountered: ";" (59), after : ""

@@ -1,0 +1,29 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 123 and seed 9045892282682399827 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 1705764] (Linux 6.8.0-86-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MajorityProof.tla
+***Parse Error***
+Encountered "," at line 98, column 32 and token "e" 
+
+Residual stack trace follows:
+ExtendableExpr starting at line 98, column 30.
+ExtendableExpr starting at line 98, column 15.
+Expression starting at line 98, column 15.
+Quant Bound starting at line 98, column 9.
+Some { } form starting at line 94, column 8.
+
+
+Fatal errors while parsing TLA+ spec in file MajorityProof
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module MajorityProof
+
+Could not parse module MajorityProof from file MajorityProof.tla
+
+
+Starting... (2025-11-11 10:43:12)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-11 10:43:12)
+
+=== STDERR ===

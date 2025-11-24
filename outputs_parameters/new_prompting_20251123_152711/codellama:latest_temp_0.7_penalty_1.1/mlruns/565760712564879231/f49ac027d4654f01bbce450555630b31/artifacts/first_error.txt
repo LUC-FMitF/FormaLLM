@@ -1,0 +1,2 @@
+test/generated/SimpleRegular.tla
+Lexical error at line 5, column 80.  Encountered: "\n" (10), after : "\")"

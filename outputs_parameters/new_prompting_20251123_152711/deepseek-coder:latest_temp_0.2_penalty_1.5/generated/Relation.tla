@@ -1,0 +1,10 @@
+---- MODULE Relation ----------------- Modules for handling relations ----- Module ENDS HERE ---\\--- TLA+ --- \/\/--//\\----- Theorems and Definitions ///// \\ /\/------./. .-. ..... -.-' `'. ' '.   `..
+plus 4(***************************************************************************)   (*** MODULE Relations *) (* This module provides some basic operations on relations, represented as binary Boolean functions over set S.)     **/ ((* Last modified Sun Jun15 by merz. Created Tue Apr26 at time of authoring in CEST ))
+(***************************************************************************)   (*** Is the relation R reflexive? *) (* The function isReflex : forall s, Relation r => Boolean; where S = Set and Pair a b <=> EQUALS pair.rel_op {s} set of all pairs in which fst x equals to first element o 
+(*** Is the relation R irrefl? *) (* The function isIrReflex : forall s, Relation r => Boolean; where S = Set and Pair a b <=> EQUALS pair.rel_op {s} set of all pairs in which fst x equals to first element o 
+(*** Is the relation R symmetric? *) (* The function isSymetric : forall s, Relation r => Boolean; where S = Set and Pair a b <=> EQUALS pair.rel_op {s} set of all pairs in which fst x equals to second element o 
+(*** Is the relation R asym? *) (* The function isAsymmetric : forall s, Relation r => Boolean; where S = Set and Pair a b <=> EQUALS pair.rel_op {s} set of all pairs in which fst x equals to third element o 
+(*** Is the relation R trans? *) (* The function isTransitive : forall s, Relation r => Boolean; where S = Set and Pair a b <=> EQUALS pair.rel_op {s} set of all pairs in which fst x equals to third element o 
+(*** TransClosure relation R *) (* The function transclosureRel : forall s, Relation r => Relations; where S = Set and Pair a b <=> EQUALS pair.rel_op {s} set of all pairs in which fst x equals to third element o 
+(*** ReflexiveTransClosure relation R *) (* The function refltransclosureRel : forall s, Relation r => Relations; where S = Set and Pair a b <=> EQUALS pair.rel
+====

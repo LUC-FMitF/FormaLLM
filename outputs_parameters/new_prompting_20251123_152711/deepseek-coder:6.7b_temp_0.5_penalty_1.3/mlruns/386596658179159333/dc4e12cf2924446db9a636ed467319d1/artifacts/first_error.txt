@@ -1,0 +1,2 @@
+e Module body"
+Encountered "LAMPORT_CONSTANTS" at line 5, column 1 and token "----"

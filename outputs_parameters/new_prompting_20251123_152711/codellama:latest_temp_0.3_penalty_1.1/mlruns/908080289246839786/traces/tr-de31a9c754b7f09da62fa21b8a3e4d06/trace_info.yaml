@@ -1,0 +1,20 @@
+execution_duration_ms: 208
+request_preview: '{"model_name": "Alternate", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Alternate.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-19T07:47:46.501Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Alternate.tla\n***Parse
+  Error***\nEncountered \"THEN\" at line 16, column 65 and token \"v\" \n\nResidual
+  stack trace follows:\nIF THEN ELSE starting at line 16, column 49.\nExtendableExpr
+  starting at line 16, column 44.\nExtendableExpr starting at line 16, column 26.\nExpression
+  starting at line 16, column 26.\nQuantified form starting at line 16, column 8.\n\n\nFatal
+  errors while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Alternate.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module Alternate\n\nCould not parse module Alternate from
+  file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Alternate.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-de31a9c754b7f09da62fa21b8a3e4d06
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

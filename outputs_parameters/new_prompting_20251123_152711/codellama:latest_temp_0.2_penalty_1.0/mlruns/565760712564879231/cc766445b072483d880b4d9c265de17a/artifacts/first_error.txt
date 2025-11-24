@@ -1,0 +1,3 @@
+erCancel.tla
+***Parse Error***
+Encountered "]" at line 14, column 9 and token "v"

@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/mlruns/386596658179159333/8594af203c1845b684f68bafb258acd7/artifacts
+end_time: 1762901812264
+entry_point_name: ''
+experiment_id: '386596658179159333'
+lifecycle_stage: active
+run_id: 8594af203c1845b684f68bafb258acd7
+run_name: Relation
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762901812233
+status: 3
+tags: []
+user_id: arslanbisharat

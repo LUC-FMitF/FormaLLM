@@ -1,0 +1,2 @@
+6.7b/generated/SimpleRegular.tla
+Lexical error at line 14, column 70.  Encountered: ";" (59), after : ""

@@ -1,0 +1,20 @@
+execution_duration_ms: 209
+request_preview: '{"model_name": "TwoPhase", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/TwoPhase.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-24T16:58:53.803Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/TwoPhase.tla\n***Parse
+  Error***\nEncountered \"[]\" at line 44, column 3 and token \"x\" \n\nResidual stack
+  trace follows:\nCase Arm starting at line 43, column 8.\nCASE Expression starting
+  at line 43, column 3.\nExpression starting at line 43, column 3.\nDefinition starting
+  at line 42, column 1.\nModule body starting at line 39, column 1.\n\n\nFatal errors
+  while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/TwoPhase.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module TwoPhase\n\nCould not parse module TwoPhase from
+  file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/TwoPhase.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-ee5ccc9472055edd1b2c77bf28e29789
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

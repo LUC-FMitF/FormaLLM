@@ -1,0 +1,10 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 85 and seed -1686626932006067806 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 2548722] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Error: TLC threw an unexpected exception.
+This was probably caused by an error in the spec or model.
+See the User Output or TLC Console for clues to what happened.
+The exception was a java.lang.NullPointerException
+: Cannot invoke "String.equals(Object)" because "tt.image" is null
+Finished in 00s at (2025-11-18 16:17:56)
+
+=== STDERR ===

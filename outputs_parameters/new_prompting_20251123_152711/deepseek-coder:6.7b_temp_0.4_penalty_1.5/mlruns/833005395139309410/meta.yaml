@@ -1,0 +1,6 @@
+artifact_location: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/mlruns/833005395139309410
+creation_time: 1761929409134
+experiment_id: '833005395139309410'
+last_update_time: 1761929409134
+lifecycle_stage: active
+name: tla_prompt_ollama_deepseek-coder:6.7b

@@ -1,0 +1,5797 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 118 and seed 2672835169909845430 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 1394522] (Linux 6.8.0-86-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MajorityProof.tla
+Parsing file /tmp/FiniteSets.tla
+Parsing file /tmp/Naturals.tla
+Parsing file /tmp/Sequences.tla
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module MajorityProof
+Semantic errors:
+
+*** Errors: 525
+
+line 79, col 1 to line 82, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 85, col 1 to line 85, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 88, col 1 to line 91, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 94, col 1 to line 97, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 100, col 1 to line 103, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 106, col 1 to line 116, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 119, col 1 to line 122, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 125, col 1 to line 132, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 135, col 1 to line 138, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 141, col 1 to line 141, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 144, col 1 to line 147, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 150, col 1 to line 153, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 156, col 1 to line 159, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 162, col 1 to line 172, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 175, col 1 to line 178, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 181, col 1 to line 188, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 191, col 1 to line 194, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 197, col 1 to line 197, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 200, col 1 to line 203, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 206, col 1 to line 209, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 212, col 1 to line 215, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 218, col 1 to line 228, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 231, col 1 to line 234, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 237, col 1 to line 244, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 247, col 1 to line 250, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 253, col 1 to line 253, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 256, col 1 to line 259, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 262, col 1 to line 265, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 268, col 1 to line 271, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 274, col 1 to line 284, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 287, col 1 to line 290, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 293, col 1 to line 300, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 303, col 1 to line 306, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 309, col 1 to line 309, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 312, col 1 to line 315, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 318, col 1 to line 321, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 324, col 1 to line 327, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 330, col 1 to line 340, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 343, col 1 to line 346, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 349, col 1 to line 356, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 359, col 1 to line 362, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 365, col 1 to line 365, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 368, col 1 to line 371, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 374, col 1 to line 377, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 380, col 1 to line 383, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 386, col 1 to line 396, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 399, col 1 to line 402, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 405, col 1 to line 412, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 415, col 1 to line 418, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 421, col 1 to line 421, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 424, col 1 to line 427, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 430, col 1 to line 433, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 436, col 1 to line 439, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 442, col 1 to line 452, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 455, col 1 to line 458, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 461, col 1 to line 468, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 471, col 1 to line 474, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 477, col 1 to line 477, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 480, col 1 to line 483, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 486, col 1 to line 489, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 492, col 1 to line 495, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 498, col 1 to line 508, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 511, col 1 to line 514, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 517, col 1 to line 524, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 527, col 1 to line 530, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 533, col 1 to line 533, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 536, col 1 to line 539, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 542, col 1 to line 545, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 548, col 1 to line 551, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 554, col 1 to line 564, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 567, col 1 to line 570, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 573, col 1 to line 580, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 583, col 1 to line 586, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 589, col 1 to line 589, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 592, col 1 to line 595, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 598, col 1 to line 601, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 604, col 1 to line 607, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 610, col 1 to line 620, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 623, col 1 to line 626, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 629, col 1 to line 636, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 639, col 1 to line 642, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 645, col 1 to line 645, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 648, col 1 to line 651, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 654, col 1 to line 657, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 660, col 1 to line 663, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 666, col 1 to line 676, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 679, col 1 to line 682, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 685, col 1 to line 692, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 695, col 1 to line 698, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 701, col 1 to line 701, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 704, col 1 to line 707, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 710, col 1 to line 713, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 716, col 1 to line 719, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 722, col 1 to line 732, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 735, col 1 to line 738, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 741, col 1 to line 748, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 751, col 1 to line 754, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 757, col 1 to line 757, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 760, col 1 to line 763, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 766, col 1 to line 769, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 772, col 1 to line 775, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 778, col 1 to line 788, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 791, col 1 to line 794, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 797, col 1 to line 804, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 807, col 1 to line 810, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 813, col 1 to line 813, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 816, col 1 to line 819, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 822, col 1 to line 825, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 828, col 1 to line 831, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 834, col 1 to line 844, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 847, col 1 to line 850, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 853, col 1 to line 860, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 863, col 1 to line 866, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 869, col 1 to line 869, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 872, col 1 to line 875, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 878, col 1 to line 881, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 884, col 1 to line 887, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 890, col 1 to line 900, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 903, col 1 to line 906, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 909, col 1 to line 916, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 919, col 1 to line 922, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 925, col 1 to line 925, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 928, col 1 to line 931, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 934, col 1 to line 937, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 940, col 1 to line 943, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 946, col 1 to line 956, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 959, col 1 to line 962, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 965, col 1 to line 972, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 975, col 1 to line 978, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 981, col 1 to line 981, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 984, col 1 to line 987, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 990, col 1 to line 993, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 996, col 1 to line 999, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1002, col 1 to line 1012, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1015, col 1 to line 1018, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1021, col 1 to line 1028, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1031, col 1 to line 1034, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1037, col 1 to line 1037, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1040, col 1 to line 1043, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1046, col 1 to line 1049, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1052, col 1 to line 1055, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1058, col 1 to line 1068, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1071, col 1 to line 1074, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1077, col 1 to line 1084, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1087, col 1 to line 1090, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1093, col 1 to line 1093, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1096, col 1 to line 1099, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1102, col 1 to line 1105, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1108, col 1 to line 1111, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1114, col 1 to line 1124, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1127, col 1 to line 1130, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1133, col 1 to line 1140, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1143, col 1 to line 1146, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1149, col 1 to line 1149, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1152, col 1 to line 1155, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1158, col 1 to line 1161, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1164, col 1 to line 1167, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1170, col 1 to line 1180, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1183, col 1 to line 1186, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1189, col 1 to line 1196, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1199, col 1 to line 1202, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1205, col 1 to line 1205, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1208, col 1 to line 1211, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1214, col 1 to line 1217, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1220, col 1 to line 1223, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1226, col 1 to line 1236, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1239, col 1 to line 1242, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1245, col 1 to line 1252, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1255, col 1 to line 1258, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1261, col 1 to line 1261, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1264, col 1 to line 1267, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1270, col 1 to line 1273, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1276, col 1 to line 1279, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1282, col 1 to line 1292, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1295, col 1 to line 1298, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1301, col 1 to line 1308, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1311, col 1 to line 1314, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1317, col 1 to line 1317, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1320, col 1 to line 1323, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1326, col 1 to line 1329, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1332, col 1 to line 1335, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1338, col 1 to line 1348, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1351, col 1 to line 1354, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1357, col 1 to line 1364, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1367, col 1 to line 1370, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1373, col 1 to line 1373, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1376, col 1 to line 1379, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1382, col 1 to line 1385, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1388, col 1 to line 1391, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1394, col 1 to line 1404, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1407, col 1 to line 1410, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1413, col 1 to line 1420, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1423, col 1 to line 1426, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1429, col 1 to line 1429, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1432, col 1 to line 1435, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1438, col 1 to line 1441, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1444, col 1 to line 1447, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1450, col 1 to line 1460, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1463, col 1 to line 1466, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1469, col 1 to line 1476, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1479, col 1 to line 1482, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1485, col 1 to line 1485, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1488, col 1 to line 1491, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1494, col 1 to line 1497, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1500, col 1 to line 1503, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1506, col 1 to line 1516, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1519, col 1 to line 1522, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1525, col 1 to line 1532, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1535, col 1 to line 1538, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1541, col 1 to line 1541, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1544, col 1 to line 1547, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1550, col 1 to line 1553, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1556, col 1 to line 1559, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1562, col 1 to line 1572, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1575, col 1 to line 1578, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1581, col 1 to line 1588, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1591, col 1 to line 1594, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1597, col 1 to line 1597, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1600, col 1 to line 1603, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1606, col 1 to line 1609, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1612, col 1 to line 1615, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1618, col 1 to line 1628, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1631, col 1 to line 1634, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1637, col 1 to line 1644, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1647, col 1 to line 1650, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1653, col 1 to line 1653, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1656, col 1 to line 1659, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1662, col 1 to line 1665, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1668, col 1 to line 1671, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1674, col 1 to line 1684, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1687, col 1 to line 1690, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1693, col 1 to line 1700, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1703, col 1 to line 1706, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1709, col 1 to line 1709, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1712, col 1 to line 1715, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1718, col 1 to line 1721, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1724, col 1 to line 1727, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1730, col 1 to line 1740, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1743, col 1 to line 1746, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1749, col 1 to line 1756, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1759, col 1 to line 1762, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1765, col 1 to line 1765, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1768, col 1 to line 1771, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1774, col 1 to line 1777, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1780, col 1 to line 1783, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1786, col 1 to line 1796, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1799, col 1 to line 1802, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1805, col 1 to line 1812, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1815, col 1 to line 1818, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1821, col 1 to line 1821, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1824, col 1 to line 1827, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1830, col 1 to line 1833, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1836, col 1 to line 1839, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1842, col 1 to line 1852, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1855, col 1 to line 1858, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1861, col 1 to line 1868, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1871, col 1 to line 1874, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1877, col 1 to line 1877, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1880, col 1 to line 1883, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1886, col 1 to line 1889, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1892, col 1 to line 1895, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1898, col 1 to line 1908, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1911, col 1 to line 1914, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1917, col 1 to line 1924, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1927, col 1 to line 1930, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1933, col 1 to line 1933, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1936, col 1 to line 1939, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1942, col 1 to line 1945, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 1948, col 1 to line 1951, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 1954, col 1 to line 1964, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 1967, col 1 to line 1970, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 1973, col 1 to line 1980, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 1983, col 1 to line 1986, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 1989, col 1 to line 1989, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 1992, col 1 to line 1995, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 1998, col 1 to line 2001, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2004, col 1 to line 2007, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2010, col 1 to line 2020, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2023, col 1 to line 2026, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2029, col 1 to line 2036, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2039, col 1 to line 2042, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2045, col 1 to line 2045, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2048, col 1 to line 2051, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2054, col 1 to line 2057, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2060, col 1 to line 2063, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2066, col 1 to line 2076, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2079, col 1 to line 2082, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2085, col 1 to line 2092, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2095, col 1 to line 2098, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2101, col 1 to line 2101, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2104, col 1 to line 2107, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2110, col 1 to line 2113, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2116, col 1 to line 2119, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2122, col 1 to line 2132, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2135, col 1 to line 2138, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2141, col 1 to line 2148, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2151, col 1 to line 2154, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2157, col 1 to line 2157, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2160, col 1 to line 2163, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2166, col 1 to line 2169, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2172, col 1 to line 2175, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2178, col 1 to line 2188, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2191, col 1 to line 2194, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2197, col 1 to line 2204, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2207, col 1 to line 2210, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2213, col 1 to line 2213, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2216, col 1 to line 2219, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2222, col 1 to line 2225, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2228, col 1 to line 2231, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2234, col 1 to line 2244, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2247, col 1 to line 2250, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2253, col 1 to line 2260, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2263, col 1 to line 2266, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2269, col 1 to line 2269, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2272, col 1 to line 2275, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2278, col 1 to line 2281, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2284, col 1 to line 2287, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2290, col 1 to line 2300, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2303, col 1 to line 2306, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2309, col 1 to line 2316, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2319, col 1 to line 2322, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2325, col 1 to line 2325, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2328, col 1 to line 2331, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2334, col 1 to line 2337, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2340, col 1 to line 2343, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2346, col 1 to line 2356, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2359, col 1 to line 2362, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2365, col 1 to line 2372, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2375, col 1 to line 2378, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2381, col 1 to line 2381, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2384, col 1 to line 2387, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2390, col 1 to line 2393, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2396, col 1 to line 2399, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2402, col 1 to line 2412, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2415, col 1 to line 2418, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2421, col 1 to line 2428, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2431, col 1 to line 2434, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2437, col 1 to line 2437, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2440, col 1 to line 2443, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2446, col 1 to line 2449, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2452, col 1 to line 2455, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2458, col 1 to line 2468, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2471, col 1 to line 2474, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2477, col 1 to line 2484, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2487, col 1 to line 2490, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2493, col 1 to line 2493, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2496, col 1 to line 2499, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2502, col 1 to line 2505, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2508, col 1 to line 2511, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2514, col 1 to line 2524, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2527, col 1 to line 2530, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2533, col 1 to line 2540, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2543, col 1 to line 2546, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2549, col 1 to line 2549, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2552, col 1 to line 2555, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2558, col 1 to line 2561, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2564, col 1 to line 2567, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2570, col 1 to line 2580, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2583, col 1 to line 2586, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2589, col 1 to line 2596, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2599, col 1 to line 2602, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2605, col 1 to line 2605, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2608, col 1 to line 2611, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2614, col 1 to line 2617, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2620, col 1 to line 2623, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2626, col 1 to line 2636, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2639, col 1 to line 2642, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2645, col 1 to line 2652, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2655, col 1 to line 2658, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2661, col 1 to line 2661, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2664, col 1 to line 2667, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2670, col 1 to line 2673, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2676, col 1 to line 2679, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2682, col 1 to line 2692, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2695, col 1 to line 2698, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2701, col 1 to line 2708, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2711, col 1 to line 2714, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2717, col 1 to line 2717, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2720, col 1 to line 2723, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2726, col 1 to line 2729, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2732, col 1 to line 2735, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2738, col 1 to line 2748, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2751, col 1 to line 2754, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2757, col 1 to line 2764, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2767, col 1 to line 2770, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2773, col 1 to line 2773, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2776, col 1 to line 2779, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2782, col 1 to line 2785, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2788, col 1 to line 2791, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2794, col 1 to line 2804, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2807, col 1 to line 2810, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2813, col 1 to line 2820, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2823, col 1 to line 2826, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2829, col 1 to line 2829, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2832, col 1 to line 2835, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2838, col 1 to line 2841, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2844, col 1 to line 2847, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2850, col 1 to line 2860, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2863, col 1 to line 2866, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2869, col 1 to line 2876, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2879, col 1 to line 2882, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2885, col 1 to line 2885, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2888, col 1 to line 2891, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2894, col 1 to line 2897, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2900, col 1 to line 2903, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2906, col 1 to line 2916, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2919, col 1 to line 2922, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2925, col 1 to line 2932, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2935, col 1 to line 2938, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2941, col 1 to line 2941, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 2944, col 1 to line 2947, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 2950, col 1 to line 2953, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 2956, col 1 to line 2959, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 2962, col 1 to line 2972, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 2975, col 1 to line 2978, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 2981, col 1 to line 2988, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 2991, col 1 to line 2994, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 2997, col 1 to line 2997, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3000, col 1 to line 3003, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3006, col 1 to line 3009, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3012, col 1 to line 3015, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3018, col 1 to line 3028, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3031, col 1 to line 3034, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3037, col 1 to line 3044, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3047, col 1 to line 3050, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3053, col 1 to line 3053, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3056, col 1 to line 3059, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3062, col 1 to line 3065, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3068, col 1 to line 3071, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3074, col 1 to line 3084, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3087, col 1 to line 3090, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3093, col 1 to line 3100, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3103, col 1 to line 3106, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3109, col 1 to line 3109, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3112, col 1 to line 3115, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3118, col 1 to line 3121, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3124, col 1 to line 3127, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3130, col 1 to line 3140, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3143, col 1 to line 3146, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3149, col 1 to line 3156, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3159, col 1 to line 3162, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3165, col 1 to line 3165, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3168, col 1 to line 3171, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3174, col 1 to line 3177, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3180, col 1 to line 3183, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3186, col 1 to line 3196, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3199, col 1 to line 3202, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3205, col 1 to line 3212, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3215, col 1 to line 3218, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3221, col 1 to line 3221, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3224, col 1 to line 3227, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3230, col 1 to line 3233, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3236, col 1 to line 3239, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3242, col 1 to line 3252, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3255, col 1 to line 3258, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3261, col 1 to line 3268, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3271, col 1 to line 3274, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3277, col 1 to line 3277, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3280, col 1 to line 3283, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3286, col 1 to line 3289, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3292, col 1 to line 3295, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3298, col 1 to line 3308, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3311, col 1 to line 3314, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3317, col 1 to line 3324, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3327, col 1 to line 3330, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3333, col 1 to line 3333, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3336, col 1 to line 3339, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3342, col 1 to line 3345, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3348, col 1 to line 3351, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3354, col 1 to line 3364, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3367, col 1 to line 3370, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3373, col 1 to line 3380, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3383, col 1 to line 3386, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3389, col 1 to line 3389, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3392, col 1 to line 3395, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3398, col 1 to line 3401, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3404, col 1 to line 3407, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3410, col 1 to line 3420, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3423, col 1 to line 3426, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3429, col 1 to line 3436, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3439, col 1 to line 3442, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3445, col 1 to line 3445, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3448, col 1 to line 3451, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3454, col 1 to line 3457, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3460, col 1 to line 3463, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3466, col 1 to line 3476, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3479, col 1 to line 3482, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3485, col 1 to line 3492, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3495, col 1 to line 3498, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3501, col 1 to line 3501, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3504, col 1 to line 3507, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3510, col 1 to line 3513, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3516, col 1 to line 3519, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3522, col 1 to line 3532, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3535, col 1 to line 3538, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3541, col 1 to line 3548, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3551, col 1 to line 3554, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3557, col 1 to line 3557, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3560, col 1 to line 3563, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3566, col 1 to line 3569, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3572, col 1 to line 3575, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3578, col 1 to line 3588, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3591, col 1 to line 3594, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3597, col 1 to line 3604, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3607, col 1 to line 3610, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3613, col 1 to line 3613, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3616, col 1 to line 3619, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3622, col 1 to line 3625, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3628, col 1 to line 3631, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3634, col 1 to line 3644, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3647, col 1 to line 3650, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3653, col 1 to line 3660, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3663, col 1 to line 3666, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3669, col 1 to line 3669, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3672, col 1 to line 3675, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3678, col 1 to line 3681, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3684, col 1 to line 3687, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+line 3690, col 1 to line 3700, col 22 of module MajorityProof
+
+Operator \preceq already defined or declared.
+
+
+line 3703, col 1 to line 3706, col 51 of module MajorityProof
+
+Operator Rotation already defined or declared.
+
+
+line 3709, col 1 to line 3716, col 3 of module MajorityProof
+
+Operator Rotations already defined or declared.
+
+
+line 3719, col 1 to line 3722, col 26 of module MajorityProof
+
+Operator ZSeqOfLength already defined or declared.
+
+
+line 3725, col 1 to line 3725, col 49 of module MajorityProof
+
+Operator ZSeq already defined or declared.
+
+
+line 3728, col 1 to line 3731, col 28 of module MajorityProof
+
+Operator ZLen already defined or declared.
+
+
+line 3734, col 1 to line 3737, col 43 of module MajorityProof
+
+Operator ZSeqFromSeq already defined or declared.
+
+
+line 3740, col 1 to line 3743, col 42 of module MajorityProof
+
+Operator SeqFromZSeq already defined or declared.
+
+
+*** Warnings: 525
+
+line 79, col 1 to line 82, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 85, col 1 to line 85, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 88, col 1 to line 91, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 94, col 1 to line 97, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 100, col 1 to line 103, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 106, col 1 to line 116, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 119, col 1 to line 122, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 125, col 1 to line 132, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 135, col 1 to line 138, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 141, col 1 to line 141, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 144, col 1 to line 147, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 150, col 1 to line 153, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 156, col 1 to line 159, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 162, col 1 to line 172, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 175, col 1 to line 178, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 181, col 1 to line 188, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 191, col 1 to line 194, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 197, col 1 to line 197, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 200, col 1 to line 203, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 206, col 1 to line 209, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 212, col 1 to line 215, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 218, col 1 to line 228, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 231, col 1 to line 234, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 237, col 1 to line 244, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 247, col 1 to line 250, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 253, col 1 to line 253, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 256, col 1 to line 259, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 262, col 1 to line 265, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 268, col 1 to line 271, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 274, col 1 to line 284, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 287, col 1 to line 290, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 293, col 1 to line 300, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 303, col 1 to line 306, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 309, col 1 to line 309, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 312, col 1 to line 315, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 318, col 1 to line 321, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 324, col 1 to line 327, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 330, col 1 to line 340, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 343, col 1 to line 346, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 349, col 1 to line 356, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 359, col 1 to line 362, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 365, col 1 to line 365, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 368, col 1 to line 371, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 374, col 1 to line 377, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 380, col 1 to line 383, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 386, col 1 to line 396, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 399, col 1 to line 402, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 405, col 1 to line 412, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 415, col 1 to line 418, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 421, col 1 to line 421, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 424, col 1 to line 427, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 430, col 1 to line 433, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 436, col 1 to line 439, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 442, col 1 to line 452, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 455, col 1 to line 458, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 461, col 1 to line 468, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 471, col 1 to line 474, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 477, col 1 to line 477, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 480, col 1 to line 483, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 486, col 1 to line 489, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 492, col 1 to line 495, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 498, col 1 to line 508, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 511, col 1 to line 514, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 517, col 1 to line 524, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 527, col 1 to line 530, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 533, col 1 to line 533, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 536, col 1 to line 539, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 542, col 1 to line 545, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 548, col 1 to line 551, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 554, col 1 to line 564, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 567, col 1 to line 570, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 573, col 1 to line 580, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 583, col 1 to line 586, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 589, col 1 to line 589, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 592, col 1 to line 595, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 598, col 1 to line 601, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 604, col 1 to line 607, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 610, col 1 to line 620, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 623, col 1 to line 626, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 629, col 1 to line 636, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 639, col 1 to line 642, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 645, col 1 to line 645, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 648, col 1 to line 651, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 654, col 1 to line 657, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 660, col 1 to line 663, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 666, col 1 to line 676, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 679, col 1 to line 682, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 685, col 1 to line 692, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 695, col 1 to line 698, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 701, col 1 to line 701, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 704, col 1 to line 707, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 710, col 1 to line 713, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 716, col 1 to line 719, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 722, col 1 to line 732, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 735, col 1 to line 738, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 741, col 1 to line 748, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 751, col 1 to line 754, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 757, col 1 to line 757, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 760, col 1 to line 763, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 766, col 1 to line 769, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 772, col 1 to line 775, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 778, col 1 to line 788, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 791, col 1 to line 794, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 797, col 1 to line 804, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 807, col 1 to line 810, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 813, col 1 to line 813, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 816, col 1 to line 819, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 822, col 1 to line 825, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 828, col 1 to line 831, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 834, col 1 to line 844, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 847, col 1 to line 850, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 853, col 1 to line 860, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 863, col 1 to line 866, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 869, col 1 to line 869, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 872, col 1 to line 875, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 878, col 1 to line 881, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 884, col 1 to line 887, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 890, col 1 to line 900, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 903, col 1 to line 906, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 909, col 1 to line 916, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 919, col 1 to line 922, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 925, col 1 to line 925, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 928, col 1 to line 931, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 934, col 1 to line 937, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 940, col 1 to line 943, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 946, col 1 to line 956, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 959, col 1 to line 962, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 965, col 1 to line 972, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 975, col 1 to line 978, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 981, col 1 to line 981, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 984, col 1 to line 987, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 990, col 1 to line 993, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 996, col 1 to line 999, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1002, col 1 to line 1012, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1015, col 1 to line 1018, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1021, col 1 to line 1028, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1031, col 1 to line 1034, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1037, col 1 to line 1037, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1040, col 1 to line 1043, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1046, col 1 to line 1049, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1052, col 1 to line 1055, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1058, col 1 to line 1068, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1071, col 1 to line 1074, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1077, col 1 to line 1084, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1087, col 1 to line 1090, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1093, col 1 to line 1093, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1096, col 1 to line 1099, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1102, col 1 to line 1105, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1108, col 1 to line 1111, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1114, col 1 to line 1124, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1127, col 1 to line 1130, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1133, col 1 to line 1140, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1143, col 1 to line 1146, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1149, col 1 to line 1149, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1152, col 1 to line 1155, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1158, col 1 to line 1161, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1164, col 1 to line 1167, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1170, col 1 to line 1180, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1183, col 1 to line 1186, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1189, col 1 to line 1196, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1199, col 1 to line 1202, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1205, col 1 to line 1205, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1208, col 1 to line 1211, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1214, col 1 to line 1217, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1220, col 1 to line 1223, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1226, col 1 to line 1236, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1239, col 1 to line 1242, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1245, col 1 to line 1252, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1255, col 1 to line 1258, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1261, col 1 to line 1261, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1264, col 1 to line 1267, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1270, col 1 to line 1273, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1276, col 1 to line 1279, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1282, col 1 to line 1292, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1295, col 1 to line 1298, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1301, col 1 to line 1308, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1311, col 1 to line 1314, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1317, col 1 to line 1317, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1320, col 1 to line 1323, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1326, col 1 to line 1329, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1332, col 1 to line 1335, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1338, col 1 to line 1348, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1351, col 1 to line 1354, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1357, col 1 to line 1364, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1367, col 1 to line 1370, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1373, col 1 to line 1373, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1376, col 1 to line 1379, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1382, col 1 to line 1385, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1388, col 1 to line 1391, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1394, col 1 to line 1404, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1407, col 1 to line 1410, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1413, col 1 to line 1420, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1423, col 1 to line 1426, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1429, col 1 to line 1429, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1432, col 1 to line 1435, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1438, col 1 to line 1441, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1444, col 1 to line 1447, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1450, col 1 to line 1460, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1463, col 1 to line 1466, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1469, col 1 to line 1476, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1479, col 1 to line 1482, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1485, col 1 to line 1485, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1488, col 1 to line 1491, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1494, col 1 to line 1497, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1500, col 1 to line 1503, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1506, col 1 to line 1516, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1519, col 1 to line 1522, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1525, col 1 to line 1532, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1535, col 1 to line 1538, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1541, col 1 to line 1541, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1544, col 1 to line 1547, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1550, col 1 to line 1553, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1556, col 1 to line 1559, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1562, col 1 to line 1572, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1575, col 1 to line 1578, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1581, col 1 to line 1588, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1591, col 1 to line 1594, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1597, col 1 to line 1597, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1600, col 1 to line 1603, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1606, col 1 to line 1609, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1612, col 1 to line 1615, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1618, col 1 to line 1628, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1631, col 1 to line 1634, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1637, col 1 to line 1644, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1647, col 1 to line 1650, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1653, col 1 to line 1653, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1656, col 1 to line 1659, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1662, col 1 to line 1665, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1668, col 1 to line 1671, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1674, col 1 to line 1684, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1687, col 1 to line 1690, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1693, col 1 to line 1700, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1703, col 1 to line 1706, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1709, col 1 to line 1709, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1712, col 1 to line 1715, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1718, col 1 to line 1721, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1724, col 1 to line 1727, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1730, col 1 to line 1740, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1743, col 1 to line 1746, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1749, col 1 to line 1756, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1759, col 1 to line 1762, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1765, col 1 to line 1765, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1768, col 1 to line 1771, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1774, col 1 to line 1777, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1780, col 1 to line 1783, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1786, col 1 to line 1796, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1799, col 1 to line 1802, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1805, col 1 to line 1812, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1815, col 1 to line 1818, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1821, col 1 to line 1821, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1824, col 1 to line 1827, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1830, col 1 to line 1833, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1836, col 1 to line 1839, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1842, col 1 to line 1852, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1855, col 1 to line 1858, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1861, col 1 to line 1868, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1871, col 1 to line 1874, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1877, col 1 to line 1877, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1880, col 1 to line 1883, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1886, col 1 to line 1889, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1892, col 1 to line 1895, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1898, col 1 to line 1908, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1911, col 1 to line 1914, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1917, col 1 to line 1924, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1927, col 1 to line 1930, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1933, col 1 to line 1933, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1936, col 1 to line 1939, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1942, col 1 to line 1945, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 1948, col 1 to line 1951, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 1954, col 1 to line 1964, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 1967, col 1 to line 1970, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 1973, col 1 to line 1980, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 1983, col 1 to line 1986, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 1989, col 1 to line 1989, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 1992, col 1 to line 1995, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 1998, col 1 to line 2001, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2004, col 1 to line 2007, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2010, col 1 to line 2020, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2023, col 1 to line 2026, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2029, col 1 to line 2036, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2039, col 1 to line 2042, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2045, col 1 to line 2045, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2048, col 1 to line 2051, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2054, col 1 to line 2057, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2060, col 1 to line 2063, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2066, col 1 to line 2076, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2079, col 1 to line 2082, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2085, col 1 to line 2092, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2095, col 1 to line 2098, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2101, col 1 to line 2101, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2104, col 1 to line 2107, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2110, col 1 to line 2113, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2116, col 1 to line 2119, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2122, col 1 to line 2132, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2135, col 1 to line 2138, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2141, col 1 to line 2148, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2151, col 1 to line 2154, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2157, col 1 to line 2157, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2160, col 1 to line 2163, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2166, col 1 to line 2169, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2172, col 1 to line 2175, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2178, col 1 to line 2188, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2191, col 1 to line 2194, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2197, col 1 to line 2204, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2207, col 1 to line 2210, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2213, col 1 to line 2213, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2216, col 1 to line 2219, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2222, col 1 to line 2225, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2228, col 1 to line 2231, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2234, col 1 to line 2244, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2247, col 1 to line 2250, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2253, col 1 to line 2260, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2263, col 1 to line 2266, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2269, col 1 to line 2269, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2272, col 1 to line 2275, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2278, col 1 to line 2281, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2284, col 1 to line 2287, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2290, col 1 to line 2300, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2303, col 1 to line 2306, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2309, col 1 to line 2316, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2319, col 1 to line 2322, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2325, col 1 to line 2325, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2328, col 1 to line 2331, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2334, col 1 to line 2337, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2340, col 1 to line 2343, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2346, col 1 to line 2356, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2359, col 1 to line 2362, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2365, col 1 to line 2372, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2375, col 1 to line 2378, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2381, col 1 to line 2381, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2384, col 1 to line 2387, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2390, col 1 to line 2393, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2396, col 1 to line 2399, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2402, col 1 to line 2412, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2415, col 1 to line 2418, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2421, col 1 to line 2428, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2431, col 1 to line 2434, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2437, col 1 to line 2437, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2440, col 1 to line 2443, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2446, col 1 to line 2449, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2452, col 1 to line 2455, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2458, col 1 to line 2468, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2471, col 1 to line 2474, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2477, col 1 to line 2484, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2487, col 1 to line 2490, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2493, col 1 to line 2493, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2496, col 1 to line 2499, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2502, col 1 to line 2505, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2508, col 1 to line 2511, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2514, col 1 to line 2524, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2527, col 1 to line 2530, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2533, col 1 to line 2540, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2543, col 1 to line 2546, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2549, col 1 to line 2549, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2552, col 1 to line 2555, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2558, col 1 to line 2561, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2564, col 1 to line 2567, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2570, col 1 to line 2580, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2583, col 1 to line 2586, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2589, col 1 to line 2596, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2599, col 1 to line 2602, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2605, col 1 to line 2605, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2608, col 1 to line 2611, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2614, col 1 to line 2617, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2620, col 1 to line 2623, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2626, col 1 to line 2636, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2639, col 1 to line 2642, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2645, col 1 to line 2652, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2655, col 1 to line 2658, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2661, col 1 to line 2661, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2664, col 1 to line 2667, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2670, col 1 to line 2673, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2676, col 1 to line 2679, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2682, col 1 to line 2692, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2695, col 1 to line 2698, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2701, col 1 to line 2708, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2711, col 1 to line 2714, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2717, col 1 to line 2717, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2720, col 1 to line 2723, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2726, col 1 to line 2729, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2732, col 1 to line 2735, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2738, col 1 to line 2748, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2751, col 1 to line 2754, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2757, col 1 to line 2764, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2767, col 1 to line 2770, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2773, col 1 to line 2773, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2776, col 1 to line 2779, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2782, col 1 to line 2785, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2788, col 1 to line 2791, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2794, col 1 to line 2804, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2807, col 1 to line 2810, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2813, col 1 to line 2820, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2823, col 1 to line 2826, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2829, col 1 to line 2829, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2832, col 1 to line 2835, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2838, col 1 to line 2841, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2844, col 1 to line 2847, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2850, col 1 to line 2860, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2863, col 1 to line 2866, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2869, col 1 to line 2876, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2879, col 1 to line 2882, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2885, col 1 to line 2885, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2888, col 1 to line 2891, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2894, col 1 to line 2897, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2900, col 1 to line 2903, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2906, col 1 to line 2916, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2919, col 1 to line 2922, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2925, col 1 to line 2932, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2935, col 1 to line 2938, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2941, col 1 to line 2941, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 2944, col 1 to line 2947, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 2950, col 1 to line 2953, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 2956, col 1 to line 2959, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 2962, col 1 to line 2972, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 2975, col 1 to line 2978, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 2981, col 1 to line 2988, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 2991, col 1 to line 2994, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 2997, col 1 to line 2997, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3000, col 1 to line 3003, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3006, col 1 to line 3009, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3012, col 1 to line 3015, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3018, col 1 to line 3028, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3031, col 1 to line 3034, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3037, col 1 to line 3044, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3047, col 1 to line 3050, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3053, col 1 to line 3053, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3056, col 1 to line 3059, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3062, col 1 to line 3065, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3068, col 1 to line 3071, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3074, col 1 to line 3084, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3087, col 1 to line 3090, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3093, col 1 to line 3100, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3103, col 1 to line 3106, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3109, col 1 to line 3109, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3112, col 1 to line 3115, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3118, col 1 to line 3121, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3124, col 1 to line 3127, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3130, col 1 to line 3140, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3143, col 1 to line 3146, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3149, col 1 to line 3156, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3159, col 1 to line 3162, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3165, col 1 to line 3165, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3168, col 1 to line 3171, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3174, col 1 to line 3177, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3180, col 1 to line 3183, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3186, col 1 to line 3196, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3199, col 1 to line 3202, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3205, col 1 to line 3212, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3215, col 1 to line 3218, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3221, col 1 to line 3221, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3224, col 1 to line 3227, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3230, col 1 to line 3233, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3236, col 1 to line 3239, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3242, col 1 to line 3252, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3255, col 1 to line 3258, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3261, col 1 to line 3268, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3271, col 1 to line 3274, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3277, col 1 to line 3277, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3280, col 1 to line 3283, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3286, col 1 to line 3289, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3292, col 1 to line 3295, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3298, col 1 to line 3308, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3311, col 1 to line 3314, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3317, col 1 to line 3324, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3327, col 1 to line 3330, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3333, col 1 to line 3333, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3336, col 1 to line 3339, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3342, col 1 to line 3345, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3348, col 1 to line 3351, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3354, col 1 to line 3364, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3367, col 1 to line 3370, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3373, col 1 to line 3380, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3383, col 1 to line 3386, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3389, col 1 to line 3389, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3392, col 1 to line 3395, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3398, col 1 to line 3401, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3404, col 1 to line 3407, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3410, col 1 to line 3420, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3423, col 1 to line 3426, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3429, col 1 to line 3436, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3439, col 1 to line 3442, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3445, col 1 to line 3445, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3448, col 1 to line 3451, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3454, col 1 to line 3457, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3460, col 1 to line 3463, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3466, col 1 to line 3476, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3479, col 1 to line 3482, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3485, col 1 to line 3492, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3495, col 1 to line 3498, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3501, col 1 to line 3501, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3504, col 1 to line 3507, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3510, col 1 to line 3513, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3516, col 1 to line 3519, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3522, col 1 to line 3532, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3535, col 1 to line 3538, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3541, col 1 to line 3548, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3551, col 1 to line 3554, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3557, col 1 to line 3557, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3560, col 1 to line 3563, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3566, col 1 to line 3569, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3572, col 1 to line 3575, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3578, col 1 to line 3588, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3591, col 1 to line 3594, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3597, col 1 to line 3604, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3607, col 1 to line 3610, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3613, col 1 to line 3613, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3616, col 1 to line 3619, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3622, col 1 to line 3625, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3628, col 1 to line 3631, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3634, col 1 to line 3644, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3647, col 1 to line 3650, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3653, col 1 to line 3660, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3663, col 1 to line 3666, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3669, col 1 to line 3669, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3672, col 1 to line 3675, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3678, col 1 to line 3681, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3684, col 1 to line 3687, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+line 3690, col 1 to line 3700, col 22 of module MajorityProof
+
+Multiple declarations or definitions for symbol \preceq.  
+This duplicates the one at line 50, col 1 to line 60, col 22 of module MajorityProof.
+
+
+line 3703, col 1 to line 3706, col 51 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotation.  
+This duplicates the one at line 63, col 1 to line 66, col 51 of module MajorityProof.
+
+
+line 3709, col 1 to line 3716, col 3 of module MajorityProof
+
+Multiple declarations or definitions for symbol Rotations.  
+This duplicates the one at line 69, col 1 to line 76, col 3 of module MajorityProof.
+
+
+line 3719, col 1 to line 3722, col 26 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqOfLength.  
+This duplicates the one at line 23, col 1 to line 26, col 26 of module MajorityProof.
+
+
+line 3725, col 1 to line 3725, col 49 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeq.  
+This duplicates the one at line 29, col 1 to line 29, col 49 of module MajorityProof.
+
+
+line 3728, col 1 to line 3731, col 28 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZLen.  
+This duplicates the one at line 32, col 1 to line 35, col 28 of module MajorityProof.
+
+
+line 3734, col 1 to line 3737, col 43 of module MajorityProof
+
+Multiple declarations or definitions for symbol ZSeqFromSeq.  
+This duplicates the one at line 38, col 1 to line 41, col 43 of module MajorityProof.
+
+
+line 3740, col 1 to line 3743, col 42 of module MajorityProof
+
+Multiple declarations or definitions for symbol SeqFromZSeq.  
+This duplicates the one at line 44, col 1 to line 47, col 42 of module MajorityProof.
+
+
+
+Starting... (2025-11-11 09:42:43)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-11 09:42:43)
+
+=== STDERR ===

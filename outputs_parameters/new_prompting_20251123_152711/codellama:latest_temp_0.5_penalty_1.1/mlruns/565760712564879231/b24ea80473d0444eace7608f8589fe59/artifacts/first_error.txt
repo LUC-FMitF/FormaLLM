@@ -1,0 +1,2 @@
+=== or more Module body"
+Encountered "MODULUE" at line 2, column 31 and token "-----------------------------"

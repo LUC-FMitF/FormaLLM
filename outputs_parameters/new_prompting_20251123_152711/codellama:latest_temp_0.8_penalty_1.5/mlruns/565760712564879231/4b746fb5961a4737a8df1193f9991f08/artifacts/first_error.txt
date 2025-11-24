@@ -1,0 +1,2 @@
+:latest/generated/MultiPaxos.tla
+Lexical error at line 29, column 21.  Encountered: ";" (59), after : ""

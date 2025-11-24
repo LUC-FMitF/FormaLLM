@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/mlruns/686419802160078495/7e1ed7e340bf4baab27d4d7a2e792699/artifacts
+end_time: 1763509537812
+entry_point_name: ''
+experiment_id: '686419802160078495'
+lifecycle_stage: active
+run_id: 7e1ed7e340bf4baab27d4d7a2e792699
+run_name: MultiPaxos
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763509537778
+status: 3
+tags: []
+user_id: arslanbisharat

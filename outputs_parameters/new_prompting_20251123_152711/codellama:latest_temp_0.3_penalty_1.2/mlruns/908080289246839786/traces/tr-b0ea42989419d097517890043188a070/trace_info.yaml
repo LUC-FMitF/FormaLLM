@@ -1,0 +1,16 @@
+execution_duration_ms: 246
+request_preview: '{"model_name": "TLAPS", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/TLAPS.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-20T17:37:07.259Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/TLAPS.tla\nParsing
+  file /tmp/Integers.tla\nParsing file /tmp/Sequences.tla\nParsing file /tmp/Naturals.tla\nSemantic
+  processing of module Naturals\nSemantic processing of module Integers\nSemantic
+  processing of module Sequences\nSemantic processing of module TLAPS\n", "stderr":
+  ""}'
+state: OK
+trace_id: tr-b0ea42989419d097517890043188a070
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

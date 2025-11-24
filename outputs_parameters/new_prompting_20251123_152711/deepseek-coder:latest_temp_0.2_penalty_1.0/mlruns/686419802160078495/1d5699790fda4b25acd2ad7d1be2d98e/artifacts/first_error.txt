@@ -1,0 +1,2 @@
+:latest/generated/HDiskSynod.tla
+Lexical error at line 17, column 21.  Encountered: "\u2261" (8801), after : ""

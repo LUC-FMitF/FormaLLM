@@ -1,0 +1,29 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 3 and seed -5881007611440974258 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 2834555] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Consensus.tla
+***Parse Error***
+Was expecting "Identifier, _ or prefix op"
+Encountered "----------------------------" at line 2, column 42 and token "CONSTANTS" 
+
+Residual stack trace follows:
+Constant declaration items starting at line 2, column 42.
+Parameter declaration starting at line 2, column 32.
+Module body starting at line 2, column 1.
+Module definition starting at line 1, column 1.
+
+
+Fatal errors while parsing TLA+ spec in file Consensus
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module Consensus
+
+Could not parse module Consensus from file Consensus.tla
+
+
+Starting... (2025-11-18 20:41:11)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-18 20:41:11)
+
+=== STDERR ===

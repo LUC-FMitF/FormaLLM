@@ -1,0 +1,19 @@
+execution_duration_ms: 221
+request_preview: '{"model_name": "MCConsensus", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MCConsensus.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T17:13:42.072Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MCConsensus.tla\n***Parse
+  Error***\nWas expecting \"==== or more Module body\"\nEncountered \"=\" at line
+  15, column 17 and token \"Value\" \n\nResidual stack trace follows:\nModule definition
+  starting at line 1, column 1.\n\n\nFatal errors while parsing TLA+ spec in file
+  /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MCConsensus.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module MCConsensus\n\nCould not parse module MCConsensus
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MCConsensus.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-481e6fbdae967519db4b4ada5729980f
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

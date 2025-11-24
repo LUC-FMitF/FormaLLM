@@ -1,0 +1,2 @@
+r:latest/generated/Consensus.tla
+Lexical error at line 10, column 57.  Encountered: ";" (59), after : ""

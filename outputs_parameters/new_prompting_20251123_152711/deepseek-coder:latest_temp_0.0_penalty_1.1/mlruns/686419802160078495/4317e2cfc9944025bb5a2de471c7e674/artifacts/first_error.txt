@@ -1,0 +1,2 @@
+enerated/EWD998ChanID_export.tla
+Lexical error at line 7, column 10.  Encountered: "\u2192" (8594), after : ""

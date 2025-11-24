@@ -1,0 +1,22 @@
+execution_duration_ms: 218
+request_preview: '{"model_name": "HDiskSynod", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-19T10:05:30.519Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla\nSemantic
+  processing of module HDiskSynod\nSemantic errors:\n\n*** Errors: 6\n\nline 15, col
+  1 to line 16, col 30 of module HDiskSynod\n\nOperator Balance already defined or
+  declared.\n\n\nline 16, col 26 to line 16, col 27 of module HDiskSynod\n\nCould
+  not find declaration or definition of symbol ''>=''.\n\n\nline 16, col 24 to line
+  16, col 29 of module HDiskSynod\n\nCouldn''t resolve infix operator symbol `>=''.\n\n\nline
+  15, col 1 to line 16, col 30 of module HDiskSynod\n\nMultiply-defined symbol ''Balance'':
+  this definition or declaration conflicts \nwith the one at line 8, col 13 to line
+  8, col 19 of module HDiskSynod.\n\n\nline 19, col 15 to line 19, col 17 of module
+  HDiskSynod\n\nUnknown operator: `bal''.\n\n\nline 25, col 8 to line 25, col 10 of
+  module HDiskSynod\n\nUnknown operator: `...'
+state: OK
+trace_id: tr-375bdb67b0a23190d0168e90545fee67
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

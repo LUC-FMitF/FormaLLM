@@ -1,0 +1,2 @@
+atest/generated/BinarySearch.tla
+Lexical error at line 9, column 30.  Encountered: "\u2208" (8712), after : ""

@@ -1,0 +1,35 @@
+---- MODULE ClientCentric ----
+EXTENDS FiniteSets, Naturals, Sequences
+
+(* Defines operations on a database state *)
+CONSTANTS InitValue = _|_ (* TODO: Define the initial value for each key in your system. It could be bottom (_|_) if no specific initialization is needed. *)
+
+TYPE State == [Key -> Value]
+OPERATOR ReadState(s, k) == DOMAIN {x \in s |-> x[k]} (* The set of states from which the operation can read its value *)
+(* An Operation represents a key and value for write operations. For simplicity we assume that a transaction only writes each key once. *)
+TYPE Transaction = [ops: Seq(Operation), start: TimeStamp, commit: TimeStamp] (* A total order of Operations *)
+OPERATOR ApplyTransaction == \seq  -> seq[commit := CommitTime, parentState := resultState](* Given system state and single transaction (sequence of operations), determines new state *)
+TYPE ExecutionElem = [parentState: State, transaction: Transaction, resultState: State] (* Represents an execution as a sequence of transactions with their corresponding parent state. Note that this does not include the "final state" of the execution since it is not a parent state of any transaction. *)
+OPERATOR ParentState(e) == e[Len(e)-1].parentState(* The parent state is the last state in the ExecutionElem sequence (denoted as sp,T )*)
+TYPE Operation = [key: Key, value: Value] (* Represents a read or write of key and value *)
+OPERATOR WriteOperation == \op -> op[value := op.value](* Writes an operation's value to the state *)
+(* The set of keys in which s1 (the parentState) and s2 (resultState, ie next transaction resultState) differ as Delta(s1,s2). We express this as NO-CONF_T  (s), where T is a Transaction.*)
+OPERATOR NoConflict == \seq -> EXISTS t : seq[commit > parentState].transaction /\ DOMAIN ParentState(t) SUBSET DomainDifference(ParentState(seq[-1]),\Domain Difference(parentState,resultState))(* The write set of T comprises the keys that T updates: WT = {k|w(k, v) ∈ ΣT } *)
+OPERATOR WriteSet == \t -> DOMAIN t.transaction[ops].key (* For simplicity we assume a transaction only writes each key once.*)
+(* The commit test for serializability is that every operation in T can read from s (the parentState). We express this as CT_SER(T, e), where T is the Transaction and e is an ExecutionElem sequence *)
+OPERATOR CommitTestSerializable == \seq -> EXISTS t : seq[EXISTS op : DOMAIN ParentState(t) /\ EXISTS s: ReadStatesForTransaction(op)(ParentState(t))](DOMAIN WriteSet(s).key SUBSET DomainDifference(DomainOfApplication(WriteOperation, State), ApplicationImage(ReadStatesForTransaction(seq[-1].transaction.ops[0]),(ParentState(t))) UNION {x \in ParentState(t) |-> x INTERSECT DOMAIN ReadStatesForEmptyTransaction})(* The commit test for snapshot isolation is that every operation in T can read from s_T′ , where s_T ≡ sp. We express this as CT_SSER (timestamps).*)
+OPERATOR CommitTestSnapshotIsolation == \seq -> EXISTS t : seq[EXISTS op: DOMAIN ParentState(t) /\ EXISTS s: ReadStatesForTransaction(op)(ParentState(s))](DOMAIN WriteSet(s).key SUBSET DomainDifference(DomainOfApplication(WriteOperation, State), ApplicationImage(ReadStatesForEmptyTransaction,(ParentState(seq[-1].transaction.ops[0]))) UNION {x \in ParentState(t) |-> x INTERSECT DOMAIN ReadStatesForEmptyTransaction})(* The commit test for read committed is that every operation in T can read from s_T , where s ≡ sp *)
+OPERATOR CommitTestReadCommitted == \seq -> EXISTS t : seq[EXISTS op: DOMAIN ParentState(t) /\ EXISTS s: ReadStatesForTransaction(op)(ParentState(s))](DOMAIN WriteSet(s).key SUBSET DomainDifference(DomainOfApplication(WriteOperation, State), ApplicationImage(ReadStatesForEmptyTransaction,(ParentState(seq[-1].transaction.ops[0]))) UNION {x \in ParentState(t) |-> x INTERSECT DOMAIN ReadStatesForEmptyTransaction})(* Check types in derived specification *)
+CONSTANTS CT_SER = CommitTestSerializable, CT_SSER = CommitTestSnapshotIsolation, CT_RC = CommitTestReadCommitted (* Given system state and single transaction (sequence of operations), determines new state.*)
+OPERATOR ApplyTransaction == \seq -> Append(seq[commit := seq[-1].transaction.start + DeltaTime], [parentState: State, transaction: Transaction])(* Lists all possible permutations for a set of transactions *)
+TYPE Permutation = Seq(ExecutionElem) (* All possible permutations are sequences (permutations) of ExecutionElems*)
+OPERATOR PermuteTransactions == \transactions -> {p |-> p := [e |-> e[transaction: transactions[i]] FOR i IN 0..Len(transactions)-1]}(* Helpers representing Reads and Writes *)
+(* The set of keys in which s (the state) and sp (parentState, the resultState from previous transaction) differ as Delta(s,sp).*)
+OPERATOR StateDelta == \seq -> DOMAIN ParentState(seq[-1])\DIFF DomainDifference(ParentState(seq[-2]) UNION WriteSet(DomainOfApplication(WriteOperation, State)), ApplicationImage(ReadStatesForEmptyTransaction,(ParentState(seq[-1].transaction.ops[0]))))(* The set of keys in which s and sp differ as Delta(s,sp). We express this as NO-CONF_T  (s), where T is a Transaction *)
+OPERATOR NoConflict == \t -> DOMAIN StateDelta(ParentState(seq[-1]))\DIFF WriteSet(DomainOfApplication(WriteOperation, State))(* The write set of T comprises the keys that T updates: WT = {k|w(k, v) ∈ ΣT } *)
+OPERATOR WriteSet == \t -> DOMAIN t.transaction[ops].key (* For simplicity we assume a transaction only writes each key once.*)
+(* The commit test for serializability is that every operation in T can read from s (the parentState). We express this as CT_SER(T, e), where T is the Transaction and e is an ExecutionElem sequence *)
+OPERATOR CommitTestSerializable == \seq -> EXISTS t : seq[EXISTS op: DOMAIN ParentState(t) /\ EXISTS s: ReadStatesForTransaction(op)(ParentState(s))](DOMAIN WriteSet(s).key SUBSET DomainDifference(DomainOfApplication(WriteOperation, State), ApplicationImage(ReadStatesForEmptyTransaction,(ParentState(seq[-1].transaction.ops[0]))) UNION {x \in ParentState(t) |-> x INTERSECT DOMAIN ReadStatesForEmptyTransaction})(* The commit test for snapshot isolation is that every operation in T can read from s_T′ , where s_T ≡ sp. We express this as CT_SSER (timestamps).*)
+OPERATOR CommitTestSnapshotIsolation == \seq -<｜begin▁of▁sentence｜>: ReadStatesForTransaction(op)(ParentState(s))](DOMAIN WriteSet(s).key SUBSET DomainDifference(DomainOfApplication(WriteOperation, State), ApplicationImage(ReadStatesForEmptyTransaction,(ParentState(seq[-1].transaction.ops[0]))) UNION {x \in ParentState(t) |-> x INTERSECT DOMAIN ReadStatesForEmptyTransaction})(* The commit test for read committed is that every operation in T can read from s_T , where s ≡ sp *)
+OPERATOR CommitTestReadCommitted == \seq -: ReadStatesForTransaction(op)(ParentState(s))](DOMAIN WriteSet(s).key SUBSET DomainDifference(DomainOfApplication(WriteOperation, State), ApplicationImage(ReadStatesForEmptyTransaction,(ParentState(seq[-1].transaction.ops[0]))) UNION {x \in ParentState(t) |-> x INTERSECT DOMAIN ReadStatesForEmptyTransaction})
+====

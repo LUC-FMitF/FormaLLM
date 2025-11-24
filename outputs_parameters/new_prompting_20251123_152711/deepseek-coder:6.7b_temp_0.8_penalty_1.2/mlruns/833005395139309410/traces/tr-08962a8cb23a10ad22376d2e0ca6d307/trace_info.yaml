@@ -1,0 +1,32 @@
+execution_duration_ms: 13331
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-24T14:05:10.358Z'
+response_preview: '{"generations": [[{"text": "Here is a complete TLA+ module for
+  the Tower of Hanoi problem:\n\n```tla\n---- MODULE Hanoi ----\n------------------------
+  MODULE Hanoi ------------------------\n\nCONSTANTS  N, D, Empty, NotEmpty\nVARIABLES  Towers,
+  Disk, Move\n\nASSUME \n  N \\in \\mathbb{N} \\setminus \\{0\\},\n  D \\in \\mathbb{N},\n  Disk
+  \\subseteq \\{0, 1, ..., 2^D - 1\\},\n  Towers \\subseteq \\mathbb{N}^N,\n  Move
+  \\subseteq Towers \\times Disk,\n  Empty == 0,\n  NotEmpty == 1,\n  TowersInit ==
+  [n \\in N |-> IF n = 0 THEN Empty ELSE NotEmpty],\n  DiskInit == [d \\in 0..2^D
+  - 1]\n\nDEFINE\n  Move(tower, disk) ==\n    [n \\in 0..N - 1 |-> IF n = tower THEN
+  disk ELSE Towers[n]],\n  IsEmpty(tower) == Towers[tower] = Empty,\n  IsNotEmpty(tower)
+  == Towers[tower] = NotEmpty,\n  TopDisk(tower) == IF IsNotEmpty(tower) THEN MAX(Disk
+  : Disk \\in Towers[tower]) ELSE Empty,\n  CanMoveOff(tower, disk) == IsNotEmpty(tower)
+  AND TopDisk(tower) = disk,\n  CanMoveOn(tower, disk) == IsEmpty(tower) O...'
+state: OK
+trace_id: tr-08962a8cb23a10ad22376d2e0ca6d307
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

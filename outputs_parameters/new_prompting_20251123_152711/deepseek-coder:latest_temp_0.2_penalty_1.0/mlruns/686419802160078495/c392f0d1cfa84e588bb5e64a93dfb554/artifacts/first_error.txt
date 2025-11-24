@@ -1,0 +1,2 @@
+atest/generated/EWD687a_anim.tla
+Lexical error at line 50, column 58.  Encountered: "\u2192" (8594), after : ""

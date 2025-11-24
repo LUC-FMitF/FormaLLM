@@ -1,0 +1,44 @@
+---- MODULE EWD687a_anim -------------------------------------------------------
+
+CONSTANTS
+    L = L
+    P1 = P1
+    P2 = P2
+    P3 = P3
+    P4 = P4
+    P5 = P5
+
+CONSTANT
+    Procs <- {L, P1, P2, P3, P4, P5}
+
+CONSTANT
+    Edges <- Network
+
+CONSTANT
+    Leader <- L
+
+SPECIFICATION
+    Spec
+
+INVARIANT
+    TypeOK
+    DT1Inv
+    InterestingBehavior
+
+PROPERTY
+    DT2
+    CountersConsistent
+    TreeWithRoot
+    StableUpEdge
+
+ALIAS
+    Alias
+
+CHECK_DEADLOCK
+    FALSE
+
+ACTION_CONSTRAINT
+    NoSuperfluousIdleSteps
+
+=============================================================================
+====

@@ -1,0 +1,22 @@
+execution_duration_ms: 223
+request_preview: '{"model_name": "MCDieHarder", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MCDieHarder.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T16:42:55.882Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MCDieHarder.tla\nSemantic
+  processing of module MCDieHarder\nSemantic errors:\n\n*** Errors: 8\n\nline 14,
+  col 13 to line 14, col 13 of module MCDieHarder\n\nCould not find declaration or
+  definition of symbol ''>''.\n\n\nline 14, col 8 to line 14, col 17 of module MCDieHarder\n\nCouldn''t
+  resolve infix operator symbol `>''.\n\n\nline 15, col 22 to line 15, col 22 of module
+  MCDieHarder\n\nCould not find declaration or definition of symbol ''<''.\n\n\nline
+  15, col 8 to line 15, col 27 of module MCDieHarder\n\nCouldn''t resolve infix operator
+  symbol `<''.\n\n\nline 18, col 15 to line 18, col 15 of module MCDieHarder\n\nCould
+  not find declaration or definition of symbol ''+''.\n\n\nline 18, col 13 to line
+  18, col 17 of module MCDieHarder\n\nCouldn''t resolve infix operator symbol `+''.\n\n\nline
+  19, col 15 to line 19,...'
+state: OK
+trace_id: tr-feb8c101191d789004bae0966d8274b8
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

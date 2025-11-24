@@ -1,0 +1,13 @@
+execution_duration_ms: 217
+request_preview: '{"model_name": "MCConsensus", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/MCConsensus.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T19:06:31.640Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/MCConsensus.tla\nSemantic
+  processing of module MCConsensus\n", "stderr": ""}'
+state: OK
+trace_id: tr-b6f39ee07b73ba1f8f76a80b834d3f1b
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

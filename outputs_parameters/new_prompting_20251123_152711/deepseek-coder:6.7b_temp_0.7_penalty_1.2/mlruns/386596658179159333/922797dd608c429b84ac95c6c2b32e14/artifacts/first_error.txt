@@ -1,0 +1,3 @@
+woPhase.tla
+***Parse Error***
+Encountered "[]" at line 44, column 3 and token "x"

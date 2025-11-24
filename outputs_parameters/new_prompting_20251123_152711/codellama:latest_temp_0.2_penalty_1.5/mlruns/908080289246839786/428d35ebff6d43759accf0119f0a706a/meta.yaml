@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/908080289246839786/428d35ebff6d43759accf0119f0a706a/artifacts
+end_time: 1763621580925
+entry_point_name: ''
+experiment_id: '908080289246839786'
+lifecycle_stage: active
+run_id: 428d35ebff6d43759accf0119f0a706a
+run_name: sany_VoucherCancel
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763621580687
+status: 3
+tags: []
+user_id: arslanbisharat

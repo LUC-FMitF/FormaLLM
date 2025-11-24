@@ -1,0 +1,2 @@
+st/generated/VoucherTransfer.tla
+Lexical error at line 5, column 42.  Encountered: ";" (59), after : ""

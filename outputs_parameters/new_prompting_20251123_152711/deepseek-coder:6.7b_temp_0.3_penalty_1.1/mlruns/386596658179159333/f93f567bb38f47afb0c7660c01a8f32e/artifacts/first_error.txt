@@ -1,0 +1,2 @@
+:6.7b/generated/BinarySearch.tla
+Lexical error at line 22, column 35.  Encountered: "\uff5c" (65372), after : ""

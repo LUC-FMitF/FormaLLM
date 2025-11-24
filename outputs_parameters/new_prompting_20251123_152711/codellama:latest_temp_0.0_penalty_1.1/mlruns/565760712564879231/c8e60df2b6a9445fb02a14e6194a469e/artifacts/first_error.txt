@@ -1,0 +1,2 @@
+latest/generated/nbacc_ray97.tla
+Lexical error at line 1908, column 13.  Encountered: "\n" (10), after : "\""

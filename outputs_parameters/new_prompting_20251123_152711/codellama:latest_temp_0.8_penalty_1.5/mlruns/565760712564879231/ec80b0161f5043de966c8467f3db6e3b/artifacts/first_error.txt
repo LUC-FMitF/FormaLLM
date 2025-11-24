@@ -1,0 +1,2 @@
+a:latest/generated/Consensus.tla
+Lexical error at line 9, column 96.  Encountered: "`" (96), after : ""

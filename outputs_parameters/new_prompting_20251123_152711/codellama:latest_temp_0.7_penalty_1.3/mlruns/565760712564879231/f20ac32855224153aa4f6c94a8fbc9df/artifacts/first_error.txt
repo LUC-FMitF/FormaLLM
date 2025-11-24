@@ -1,0 +1,3 @@
+ityProof.tla
+***Parse Error***
+Encountered "=" at line 109, column 12 and token "j"

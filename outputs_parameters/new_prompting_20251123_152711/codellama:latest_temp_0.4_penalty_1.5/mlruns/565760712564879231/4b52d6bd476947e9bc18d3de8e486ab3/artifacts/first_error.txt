@@ -1,0 +1,2 @@
+ing "==== or more Module body"
+Encountered "=" at line 16, column 18 and token "Symbols"

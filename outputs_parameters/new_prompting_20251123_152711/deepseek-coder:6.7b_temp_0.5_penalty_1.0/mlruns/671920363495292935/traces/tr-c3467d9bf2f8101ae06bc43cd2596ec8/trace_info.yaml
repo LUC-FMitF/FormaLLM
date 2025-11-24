@@ -1,0 +1,17 @@
+execution_duration_ms: 203
+request_preview: '{"model_name": "BufferedRandomAccessFile", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/BufferedRandomAccessFile.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T20:14:17.779Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/BufferedRandomAccessFile.tla\nLexical
+  error at line 6, column 9.  Encountered: \"\\u27e8\" (10216), after : \"\"\n\nFatal
+  errors while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/BufferedRandomAccessFile.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module BufferedRandomAccessFile\n\nCould not parse module
+  BufferedRandomAccessFile from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/BufferedRandomAccessFile.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-c3467d9bf2f8101ae06bc43cd2596ec8
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

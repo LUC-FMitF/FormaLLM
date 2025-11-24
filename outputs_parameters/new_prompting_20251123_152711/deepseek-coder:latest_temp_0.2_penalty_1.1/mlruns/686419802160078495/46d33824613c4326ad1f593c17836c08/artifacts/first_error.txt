@@ -1,0 +1,3 @@
+entric.tla
+***Parse Error***
+Encountered "|->" at line 22, column 28 and token "commit"

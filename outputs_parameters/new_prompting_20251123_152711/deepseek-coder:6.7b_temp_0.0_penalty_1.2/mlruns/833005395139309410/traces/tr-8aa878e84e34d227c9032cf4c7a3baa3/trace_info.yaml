@@ -1,0 +1,33 @@
+execution_duration_ms: 7799
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-11-11T22:06:55.964Z'
+response_preview: '{"generations": [[{"text": "Here''s a TLA+ specification for the
+  Yo-Yo leader election algorithm. This model assumes undirected graphs without self-loops
+  and integer identities for nodes. The model includes definitions of nodes, edges,
+  incoming and outgoing neighbors, mailboxes, phases (down or up), and invariants
+  related to sources, sinks, and the stabilization condition.\n\n```tla\n---- MODULE
+  YoYo -----------------------------------------------\nEXTENDS FiniteSets, Naturals,
+  Sequences, Integers\n\nCONSTANTS Node = {0 ..}\nVARIABLES Graph, Neighbors, Mailbox,
+  Phase, DownMessages, UpMessages\nInit == (Graph = {}, Neighbors = [n \\in Node |->
+  {}], Mailbox = [], Phase = \"down\", DownMessages = {}, UpMessages = {})\nNext ==
+  ... (* Define the next state relation here *)\nSpec == Init /\\ [][][Next]_<Node,
+  Graph, Neighbors, Mailbox, Phase, DownMessages, UpMessages>\n\n====\n# TLC Configuration:\nCONSTANTS\n  Node
+  = {0 ..}\nSPECIFICATION Spec\nINVARIANTS SourceOK, SinkOK, StabilizationOK...'
+state: OK
+trace_id: tr-8aa878e84e34d227c9032cf4c7a3baa3
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

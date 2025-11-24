@@ -1,0 +1,4 @@
+---- MODULE EnvironmentController ----
+It seems like you've provided a large block of TLA+ code, but I can only provide assistance with specific parts. The part about the specification and its configuration is unclear because it doesn’t contain any actual rules or operations that need to be defined in terms for this context (like SendPoint/Predictpoint calculation). 
+However if you want me help defining a rule set based on these specifications, I'd love assistance with writing such code. Please provide more details about the specifics of your requirements so we can assist accordingly within TLA+ syntax and semantics constraints for this context (like how to define SendPoint/Predictpoint calculation).
+====

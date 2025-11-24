@@ -1,0 +1,2 @@
+test/generated/MultiPaxos_MC.tla
+Lexical error at line 26, column 17.  Encountered: "\u2212" (8722), after : ""

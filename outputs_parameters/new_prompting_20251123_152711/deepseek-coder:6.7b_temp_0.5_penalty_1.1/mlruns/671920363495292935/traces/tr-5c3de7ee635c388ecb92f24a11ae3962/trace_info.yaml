@@ -1,0 +1,20 @@
+execution_duration_ms: 208
+request_preview: '{"model_name": "Majority", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Majority.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T20:14:15.633Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Majority.tla\n***Parse
+  Error***\nEncountered \"<\" at line 36, column 27 and token \"i\" \n\nResidual stack
+  trace follows:\nQuant Bound starting at line 36, column 25.\nSome { } form starting
+  at line 36, column 20.\nExtendableExpr starting at line 36, column 20.\nExpression
+  starting at line 36, column 20.\nDefinition starting at line 36, column 1.\n\n\nFatal
+  errors while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Majority.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module Majority\n\nCould not parse module Majority from
+  file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Majority.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-5c3de7ee635c388ecb92f24a11ae3962
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

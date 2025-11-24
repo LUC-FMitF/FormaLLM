@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/mlruns/386596658179159333/7c9cc635ca9041fda27669b2686eacbc/artifacts
+end_time: 1762898888285
+entry_point_name: ''
+experiment_id: '386596658179159333'
+lifecycle_stage: active
+run_id: 7c9cc635ca9041fda27669b2686eacbc
+run_name: Majority
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762898888251
+status: 3
+tags: []
+user_id: arslanbisharat

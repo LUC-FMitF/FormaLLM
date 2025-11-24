@@ -1,0 +1,11 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 21 and seed 4692734477280041809 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 2570902] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Error: TLC threw an unexpected exception.
+This was probably caused by an error in the spec or model.
+See the User Output or TLC Console for clues to what happened.
+The exception was a tlc2.tool.ConfigFileException
+: TLC found an error in the configuration file at line 28
+It was expecting a keyword, but did not find it.
+Finished in 00s at (2025-11-18 16:42:19)
+
+=== STDERR ===

@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/mlruns/671920363495292935/508eee9b00224c029eda8cc9633ab5b8/artifacts
+end_time: 1762887993024
+entry_point_name: ''
+experiment_id: '671920363495292935'
+lifecycle_stage: active
+run_id: 508eee9b00224c029eda8cc9633ab5b8
+run_name: sany_VoucherCancel
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762887992806
+status: 3
+tags: []
+user_id: arslanbisharat

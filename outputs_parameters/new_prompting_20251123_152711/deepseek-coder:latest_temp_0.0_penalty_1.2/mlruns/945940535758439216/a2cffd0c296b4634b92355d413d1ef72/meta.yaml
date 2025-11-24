@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/mlruns/945940535758439216/a2cffd0c296b4634b92355d413d1ef72/artifacts
+end_time: 1763504271332
+entry_point_name: ''
+experiment_id: '945940535758439216'
+lifecycle_stage: active
+run_id: a2cffd0c296b4634b92355d413d1ef72
+run_name: sany_MultiPaxos
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763504271110
+status: 3
+tags: []
+user_id: arslanbisharat

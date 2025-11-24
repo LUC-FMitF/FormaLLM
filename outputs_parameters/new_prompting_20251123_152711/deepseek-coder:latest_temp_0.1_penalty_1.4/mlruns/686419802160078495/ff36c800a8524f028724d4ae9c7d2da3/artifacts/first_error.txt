@@ -1,0 +1,2 @@
+test/generated/YoYoNoPruning.tla
+Lexical error at line 9, column 13.  Encountered: "\u2208" (8712), after : ""

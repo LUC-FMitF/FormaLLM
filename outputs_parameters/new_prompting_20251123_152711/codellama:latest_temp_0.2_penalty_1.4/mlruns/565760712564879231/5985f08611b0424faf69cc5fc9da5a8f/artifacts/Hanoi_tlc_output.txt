@@ -1,0 +1,26 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 130 and seed -2044523486951424483 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 520620] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Hanoi.tla
+***Parse Error***
+Was expecting "==== or more Module body"
+Encountered "big" at line 9, column 3 and token "N" 
+
+Residual stack trace follows:
+Module definition starting at line 1, column 1.
+
+
+Fatal errors while parsing TLA+ spec in file Hanoi
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module Hanoi
+
+Could not parse module Hanoi from file Hanoi.tla
+
+
+Starting... (2025-11-20 05:08:42)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-20 05:08:42)
+
+=== STDERR ===

@@ -1,0 +1,2 @@
+test/generated/MajorityProof.tla
+Lexical error at line 4, column 47.  Encountered: "\u2212" (8722), after : ""

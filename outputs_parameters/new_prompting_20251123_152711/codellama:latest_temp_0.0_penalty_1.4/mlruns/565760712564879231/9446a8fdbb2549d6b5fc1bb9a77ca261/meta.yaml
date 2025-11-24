@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/565760712564879231/9446a8fdbb2549d6b5fc1bb9a77ca261/artifacts
+end_time: 1762883570384
+entry_point_name: ''
+experiment_id: '565760712564879231'
+lifecycle_stage: active
+run_id: 9446a8fdbb2549d6b5fc1bb9a77ca261
+run_name: VoucherTransfer
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762883570348
+status: 3
+tags: []
+user_id: arslanbisharat

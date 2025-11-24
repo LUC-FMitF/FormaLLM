@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/mlruns/686419802160078495/b19997051c2c4902b3952544e547c636/artifacts
+end_time: 1763509535013
+entry_point_name: ''
+experiment_id: '686419802160078495'
+lifecycle_stage: active
+run_id: b19997051c2c4902b3952544e547c636
+run_name: TwoPhase
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763509534979
+status: 3
+tags: []
+user_id: arslanbisharat

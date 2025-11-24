@@ -1,0 +1,32 @@
+execution_duration_ms: 3904
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-24T19:50:25.146Z'
+response_preview: '{"generations": [[{"text": "Here is the complete TLA+ module with
+  TLC configuration:\n\n```tla\nMODULE TowersOfHanoi\n\nCONSTANTS D, N, NotSolved\n\nVARIABLES
+  Towers, Disk, Move\n\nINITIAL \n  Towers ← [0..N-1]\n  Disk ← 0\n  Move ← 0\n\nPREFUNCTION
+  IsPowerOfTwo(i: NAT) : BOOL\n  IF i = 0\n  THEN TRUE\n  ELSE IsPowerOfTwo(i 2)\n\nPREFUNCTION
+  PowersOfTwo(n: NAT) : SET NAT\n  IF n = 0\n  THEN {0}\n  ELSE {2 ← 1 + PowersOfTwo(n
+  2)}\n\nSPECIFICATION Spec\n\nINVARIANT RightTower(tower: NAT) : BOOL\n  IF IsPowerOfTwo(N
+  2 + tower)\n  THEN TRUE\n  ELSE FALSE\n\nACTION Move(tower: NAT, disk: NAT)\n  IF
+  Towers[tower] ≠ 0\n  THEN IF Disk ≠ 0\n       THEN IF Towers[tower] ≠ Disk\n            THEN
+  Move(tower, Disk 1)\n            ELSE Move(tower, Disk 2)\n       ELSE IF Towers[tower]
+  ≠ Disk\n            THEN Move(tower, Disk 2)\n            ELSE Move(tower, Disk
+  1)\n  ELSE IF Disk ≠ 0\n       THEN Move(tower, Disk)\n  ELSE Move(tower, Disk 2)\n\nACTION
+  Next\n  IF Towers[tower] ≠ 0\n  THEN IF Tow...'
+state: OK
+trace_id: tr-015d685ad8d7f7560c5c56781eb8b2ea
+trace_location:
+  mlflow_experiment:
+    experiment_id: '246597357361846690'
+  type: MLFLOW_EXPERIMENT

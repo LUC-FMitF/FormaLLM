@@ -1,0 +1,2 @@
+ted/BufferedRandomAccessFile.tla
+Lexical error at line 6, column 9.  Encountered: "\u27e8" (10216), after : ""

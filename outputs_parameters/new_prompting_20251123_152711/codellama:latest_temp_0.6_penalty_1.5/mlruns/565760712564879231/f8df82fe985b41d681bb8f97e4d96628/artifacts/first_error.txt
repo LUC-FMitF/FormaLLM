@@ -1,0 +1,2 @@
+"==== or more Module body"
+Encountered "UNION" at line 25, column 4 and token "]"

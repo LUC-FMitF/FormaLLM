@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/908080289246839786/622e81e1b7984c5eb80d8ebe4b9741ea/artifacts
+end_time: 1763529584788
+entry_point_name: ''
+experiment_id: '908080289246839786'
+lifecycle_stage: active
+run_id: 622e81e1b7984c5eb80d8ebe4b9741ea
+run_name: sany_VoucherTransfer
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763529584556
+status: 3
+tags: []
+user_id: arslanbisharat

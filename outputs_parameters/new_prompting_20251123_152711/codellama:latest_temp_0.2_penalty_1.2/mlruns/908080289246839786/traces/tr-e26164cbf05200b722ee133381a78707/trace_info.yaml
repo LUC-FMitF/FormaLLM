@@ -1,0 +1,15 @@
+execution_duration_ms: 226
+request_preview: '{"model_name": "MCEWD687a", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MCEWD687a.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-10-31T18:00:39.900Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MCEWD687a.tla\nSemantic
+  processing of module MCEWD687a\nSemantic errors:\n\n*** Errors: 1\n\nline 53, col
+  16 to line 53, col 19 of module MCEWD687a\n\nUnknown operator: `Next''.\n\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-e26164cbf05200b722ee133381a78707
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

@@ -1,0 +1,2 @@
+:latest/generated/HDiskSynod.tla
+Lexical error at line 12, column 25.  Encountered: "\u2192" (8594), after : ""

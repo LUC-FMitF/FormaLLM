@@ -1,0 +1,17 @@
+execution_duration_ms: 197
+request_preview: '{"model_name": "SimpleRegular", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/SimpleRegular.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-24T03:22:40.109Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/SimpleRegular.tla\nLexical
+  error at line 10, column 68.  Encountered: \";\" (59), after : \"\"\n\nFatal errors
+  while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/SimpleRegular.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module SimpleRegular\n\nCould not parse module SimpleRegular
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/SimpleRegular.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-7cd0cf052007565135d8704a51cd98e3
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

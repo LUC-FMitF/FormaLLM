@@ -1,0 +1,4 @@
+---- MODULE Alternate -----(MODIFIED BY YOUR NAME HERE ) ------------------------------- (END OF CHANGE LOG RECORDS FOR THIS FILE.)   -- TLA+/TLC Configuration for the Module 'AlternateAction' ---    ****************************************************************************) (* Defines a system that alternately performs two actions, where v changes from *)
+0 to */* and 1. The variable x represents part of state changed by A_i action(s). Two constant operators XInit (x) is assumed asserting initial value for the given parameter 'v', while operator *XAct*( i , /* ) assumes that changing a'value v from*/
+0 to */* represent an Action-A_(1 or 2), and so on. *) (* END OF CHANGE LOG RECORDS FOR THIS FILE.)   -- TLA+/TLC Configuration for the Module 'AlternateAction'.(END)  (MODIFIED BY YOUR NAME HERE )
+====

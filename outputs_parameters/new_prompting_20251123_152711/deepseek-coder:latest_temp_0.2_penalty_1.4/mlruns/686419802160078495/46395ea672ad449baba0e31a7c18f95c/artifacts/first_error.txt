@@ -1,0 +1,2 @@
+er:latest/generated/Majority.tla
+Lexical error at line 18, column 7.  Encountered: "\u2192" (8594), after : ""

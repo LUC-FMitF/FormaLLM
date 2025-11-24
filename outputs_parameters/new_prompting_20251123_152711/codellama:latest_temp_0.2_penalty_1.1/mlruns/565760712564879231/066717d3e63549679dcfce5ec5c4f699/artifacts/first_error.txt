@@ -1,0 +1,2 @@
+more Module body"
+Encountered "INITIALISATION" at line 33, column 1 and token "INVARIANTS"

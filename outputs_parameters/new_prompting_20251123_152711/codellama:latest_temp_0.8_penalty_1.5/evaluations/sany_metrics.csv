@@ -1,0 +1,49 @@
+model_name,parse_status,first_error_line,first_error_type,error_location_category,error_types_found,first_error_message
+MCDieHarder,FAILED,1,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""*"" at line 1, column 49 and token ""----"""
+ClientCentric,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"""==== or more Module body""
+Encountered ""MODEL"" at line 2, column 43 and token ""-----------------------------------------"""
+HDiskSynod,FAILED,1,Lexical Error: Unclosed Comment,early,Lexical Error: Unclosed Comment,"Lexical {error: EOF reached, possibly open comment starting around line 1"
+Alternate,FAILED,5,Lexical Error: Semicolon,early,Lexical Error: Semicolon,"a:latest/generated/Alternate.tla
+Lexical error at line 5, column 196.  Encountered: "";"" (59), after : """""
+Hanoi,FAILED,3,Lexical Error: Semicolon,early,Lexical Error: Semicolon,"llama:latest/generated/Hanoi.tla
+Lexical error at line 3, column 258.  Encountered: "";"" (59), after : """""
+Relation,FAILED,591,Lexical Error: Unclosed Comment,late,Lexical Error: Unclosed Comment,"Lexical {error: EOF reached, possibly open comment starting around line 591"
+MCEWD687a,FAILED,8,Lexical Error: Semicolon,early,Lexical Error: Semicolon,"a:latest/generated/MCEWD687a.tla
+Lexical error at line 8, column 33.  Encountered: "";"" (59), after : """""
+EWD998ChanID_export,FAILED,3,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""("" at line 3, column 52 and token ""---------------------------"""
+EWD687a_anim,FAILED,1,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""*"" at line 1, column 57 and token ""-------------------------------"""
+TwoPhase,FAILED,2,Lexical Error: Unclosed Comment,early,Lexical Error: Unclosed Comment,"Lexical {error: EOF reached, possibly open comment starting around line 2"
+MCConsensus,FAILED,6,Lexical Error: Semicolon,early,Lexical Error: Semicolon,"latest/generated/MCConsensus.tla
+Lexical error at line 6, column 63.  Encountered: "";"" (59), after : """""
+Majority,FAILED,2,Lexical Error: Semicolon,early,Lexical Error: Semicolon,"ma:latest/generated/Majority.tla
+Lexical error at line 2, column 207.  Encountered: "";"" (59), after : """""
+VoucherTransfer,FAILED,2,Lexical Error: Semicolon,early,Lexical Error: Semicolon,"st/generated/VoucherTransfer.tla
+Lexical error at line 2, column 138.  Encountered: "";"" (59), after : """""
+EnvironmentController,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""T"" at line 2, column 13 and token ""N"""
+MultiPaxos_MC,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered "")"" at line 2, column 49 and token ""--------------"""
+VoucherCancel,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ng ""==== or more Module body""
+Encountered ""--"" at line 2, column 64 and token ""----------"""
+Consensus,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"more Module body""
+Encountered ""CONFIGURATION"" at line 2, column 32 and token ""------------------------------"""
+MultiPaxos,FAILED,3,Lexical Error: Semicolon,early,Lexical Error: Semicolon,":latest/generated/MultiPaxos.tla
+Lexical error at line 3, column 40.  Encountered: "";"" (59), after : """""
+BinarySearch,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"""==== or more Module body""
+Encountered ""MODEL"" at line 2, column 44 and token ""------------"""
+SimpleRegular,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"""==== or more Module body""
+Encountered ""MODEL"" at line 2, column 32 and token ""------------------------------"""
+BufferedRandomAccessFile,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""["" at line 2, column 28 and token ""---------------------------"""
+KVsnap,FAILED,3,Lexical Error: Semicolon,early,Lexical Error: Semicolon,"lama:latest/generated/KVsnap.tla
+Lexical error at line 3, column 14.  Encountered: "";"" (59), after : """""
+MajorityProof,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered "")"" at line 2, column 80 and token ""----"""
+YoYoNoPruning,FAILED,6,Lexical Error: Unclosed Comment,early,Lexical Error: Unclosed Comment,"Lexical {error: EOF reached, possibly open comment starting around line 6"
+nbacc_ray97,FAILED,1,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ng ""==== or more Module body""
+Encountered ""<<"" at line 1, column 30 and token ""----"""
+TLAPS,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"""==== or more Module body""
+Encountered ""This"" at line 2, column 1 and token ""----"""

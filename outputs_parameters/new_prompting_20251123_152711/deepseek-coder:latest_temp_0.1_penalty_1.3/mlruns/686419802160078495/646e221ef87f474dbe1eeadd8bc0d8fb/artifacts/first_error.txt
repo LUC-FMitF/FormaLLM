@@ -1,0 +1,2 @@
+coder:latest/generated/TLAPS.tla
+Lexical error at line 2, column 157.  Encountered: " " (32), after : "?"

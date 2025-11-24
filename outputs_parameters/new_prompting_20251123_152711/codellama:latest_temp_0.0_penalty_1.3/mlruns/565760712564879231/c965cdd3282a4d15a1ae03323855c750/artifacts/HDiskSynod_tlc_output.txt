@@ -1,0 +1,45 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 52 and seed -1672769955285650522 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 3462005] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla
+Semantic processing of module HDiskSynod
+Semantic errors:
+
+*** Errors: 6
+
+line 15, col 1 to line 16, col 30 of module HDiskSynod
+
+Operator Balance already defined or declared.
+
+
+line 16, col 26 to line 16, col 27 of module HDiskSynod
+
+Could not find declaration or definition of symbol '>='.
+
+
+line 16, col 24 to line 16, col 29 of module HDiskSynod
+
+Couldn't resolve infix operator symbol `>='.
+
+
+line 15, col 1 to line 16, col 30 of module HDiskSynod
+
+Multiply-defined symbol 'Balance': this definition or declaration conflicts 
+with the one at line 8, col 13 to line 8, col 19 of module HDiskSynod.
+
+
+line 19, col 15 to line 19, col 17 of module HDiskSynod
+
+Unknown operator: `bal'.
+
+
+line 25, col 8 to line 25, col 10 of module HDiskSynod
+
+Unknown operator: `bal'.
+
+
+
+Starting... (2025-11-19 04:05:37)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-19 04:05:37)
+
+=== STDERR ===

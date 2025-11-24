@@ -1,0 +1,2 @@
+er:latest/generated/Relation.tla
+Lexical error at line 14, column 26.  Encountered: "\u2208" (8712), after : ""

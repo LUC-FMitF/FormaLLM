@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/565760712564879231/302dc160f6ad4ea2881f8497421574ef/artifacts
+end_time: 1763550592839
+entry_point_name: ''
+experiment_id: '565760712564879231'
+lifecycle_stage: active
+run_id: 302dc160f6ad4ea2881f8497421574ef
+run_name: Relation
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763550592791
+status: 3
+tags: []
+user_id: arslanbisharat

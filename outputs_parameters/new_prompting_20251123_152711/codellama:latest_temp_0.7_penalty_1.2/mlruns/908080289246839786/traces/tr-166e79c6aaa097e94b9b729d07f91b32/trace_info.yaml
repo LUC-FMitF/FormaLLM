@@ -1,0 +1,19 @@
+execution_duration_ms: 211
+request_preview: '{"model_name": "Relation", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Relation.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T17:52:39.888Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Relation.tla\n***Parse
+  Error***\nWas expecting \"==== or more Module body\"\nEncountered \"y\" at line
+  22, column 41 and token \"=\" \n\nResidual stack trace follows:\nModule definition
+  starting at line 1, column 1.\n\n\nFatal errors while parsing TLA+ spec in file
+  /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Relation.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module Relation\n\nCould not parse module Relation from
+  file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Relation.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-166e79c6aaa097e94b9b729d07f91b32
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

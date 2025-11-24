@@ -1,0 +1,2 @@
+test/generated/MajorityProof.tla
+Lexical error at line 18, column 8.  Encountered: "\u2205" (8709), after : ""

@@ -1,0 +1,2 @@
+=== or more Module body"
+Encountered "initial" at line 17, column 10 and token "<"

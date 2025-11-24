@@ -1,0 +1,32 @@
+execution_duration_ms: 69429
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-24T16:10:30.204Z'
+response_preview: '{"generations": [[{"text": "## MODULE BinarySearch\n---- MODULE
+  BinarySearch ----\n--------------------------- MODULE BinarySearch ---------------------------\n(***************************************************************************)\n(*
+  This module defines a binary search algorithm for finding an item in a   *)\n(*
+  sorted sequence, and contains a TLAPS-checked proof of its safety        *)\n(*
+  property.  We assume a sorted sequence seq with elements in some set     *)\n(*
+  Values of integers and a number val in Values, it sets the value         *)\n(*
+  `result'' to either a number i with seq[i] = val, or to 0 if there is no  *)\n(*
+  such i.                                                                  *)\n(*
+  It is surprisingly difficult to get such a binary search algorithm       *)\n(*
+  correct without making errors that have to be caught by debugging.  I    *)\n(*
+  suggest trying to write a correct PlusCal binary search algorithm      *)\n(* yourself
+  before looking at this one. ...'
+state: OK
+trace_id: tr-9d1711f428e50d75df30601d617ea76f
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

@@ -1,0 +1,2 @@
+g "Identifier, _ or prefix op"
+Encountered "*" at line 7, column 74 and token ","

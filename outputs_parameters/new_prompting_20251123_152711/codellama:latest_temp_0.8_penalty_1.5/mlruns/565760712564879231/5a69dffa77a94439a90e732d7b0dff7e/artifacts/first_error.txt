@@ -1,0 +1,2 @@
+more Module body"
+Encountered "CONFIGURATION" at line 2, column 32 and token "------------------------------"

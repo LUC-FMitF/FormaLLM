@@ -1,0 +1,2 @@
+erated/EnvironmentController.tla
+Lexical error at line 4, column 154.  Encountered: ";" (59), after : ""

@@ -1,0 +1,20 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 109 and seed -3310245834769279515 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 1885497] (Linux 6.8.0-86-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Majority.tla
+Lexical error at line 2, column 4.  Encountered: "\u8f93" (36755), after : ""
+
+Fatal errors while parsing TLA+ spec in file Majority
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module Majority
+
+Could not parse module Majority from file Majority.tla
+
+
+Starting... (2025-11-11 13:06:39)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-11 13:06:39)
+
+=== STDERR ===

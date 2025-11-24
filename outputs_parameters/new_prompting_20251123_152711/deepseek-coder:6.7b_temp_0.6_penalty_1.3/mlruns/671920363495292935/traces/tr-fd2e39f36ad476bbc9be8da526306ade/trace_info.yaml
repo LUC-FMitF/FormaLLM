@@ -1,0 +1,17 @@
+execution_duration_ms: 236
+request_preview: '{"model_name": "EWD998ChanID_export", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/EWD998ChanID_export.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-10-31T17:29:43.833Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/EWD998ChanID_export.tla\nLexical
+  error at line 13, column 20.  Encountered: \"\\u2208\" (8712), after : \"\"\n\nFatal
+  errors while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/EWD998ChanID_export.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module EWD998ChanID_export\n\nCould not parse module EWD998ChanID_export
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/EWD998ChanID_export.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-fd2e39f36ad476bbc9be8da526306ade
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

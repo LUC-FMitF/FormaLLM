@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/908080289246839786/36563bbdd31b4451bbc4993e6be0b633/artifacts
+end_time: 1763603547225
+entry_point_name: ''
+experiment_id: '908080289246839786'
+lifecycle_stage: active
+run_id: 36563bbdd31b4451bbc4993e6be0b633
+run_name: sany_KVsnap
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763603546981
+status: 3
+tags: []
+user_id: arslanbisharat

@@ -1,0 +1,2 @@
+test/generated/YoYoNoPruning.tla
+Lexical error at line 12, column 75.  Encountered: ";" (59), after : ""

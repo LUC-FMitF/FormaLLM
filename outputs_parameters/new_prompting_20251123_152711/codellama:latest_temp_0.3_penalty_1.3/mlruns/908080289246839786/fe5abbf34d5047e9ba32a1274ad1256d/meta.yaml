@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/908080289246839786/fe5abbf34d5047e9ba32a1274ad1256d/artifacts
+end_time: 1763508577080
+entry_point_name: ''
+experiment_id: '908080289246839786'
+lifecycle_stage: active
+run_id: fe5abbf34d5047e9ba32a1274ad1256d
+run_name: sany_SimpleRegular
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763508576847
+status: 3
+tags: []
+user_id: arslanbisharat

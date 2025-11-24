@@ -1,0 +1,2 @@
+:latest/generated/HDiskSynod.tla
+Lexical error at line 9, column 25.  Encountered: ";" (59), after : ""

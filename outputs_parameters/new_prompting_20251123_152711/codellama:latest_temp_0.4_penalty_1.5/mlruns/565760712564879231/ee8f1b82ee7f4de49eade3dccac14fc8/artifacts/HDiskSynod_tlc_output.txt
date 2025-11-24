@@ -1,0 +1,97 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 55 and seed 9087509042503915121 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 97944] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla
+Semantic processing of module HDiskSynod
+Semantic errors:
+
+*** Errors: 16
+
+line 17, col 25 to line 17, col 27 of module HDiskSynod
+
+Unknown operator: `Inp'.
+
+
+line 19, col 1 to line 20, col 25 of module HDiskSynod
+
+Operator Balance already defined or declared.
+
+
+line 19, col 1 to line 20, col 25 of module HDiskSynod
+
+Multiply-defined symbol 'Balance': this definition or declaration conflicts 
+with the one at line 9, col 13 to line 9, col 19 of module HDiskSynod.
+
+
+line 22, col 1 to line 23, col 28 of module HDiskSynod
+
+Operator InpBal already defined or declared.
+
+
+line 22, col 1 to line 23, col 28 of module HDiskSynod
+
+Multiply-defined symbol 'InpBal': this definition or declaration conflicts 
+with the one at line 10, col 13 to line 10, col 18 of module HDiskSynod.
+
+
+line 25, col 1 to line 26, col 29 of module HDiskSynod
+
+Operator OutBal already defined or declared.
+
+
+line 25, col 1 to line 26, col 29 of module HDiskSynod
+
+Multiply-defined symbol 'OutBal': this definition or declaration conflicts 
+with the one at line 11, col 13 to line 11, col 18 of module HDiskSynod.
+
+
+line 29, col 17 to line 29, col 19 of module HDiskSynod
+
+Unknown operator: `Inp'.
+
+
+line 29, col 45 to line 29, col 45 of module HDiskSynod
+
+Could not find declaration or definition of symbol '>'.
+
+
+line 29, col 38 to line 29, col 47 of module HDiskSynod
+
+Couldn't resolve infix operator symbol `>'.
+
+
+line 30, col 17 to line 30, col 19 of module HDiskSynod
+
+Unknown operator: `Out'.
+
+
+line 30, col 45 to line 30, col 45 of module HDiskSynod
+
+Could not find declaration or definition of symbol '>'.
+
+
+line 30, col 38 to line 30, col 47 of module HDiskSynod
+
+Couldn't resolve infix operator symbol `>'.
+
+
+line 33, col 118 to line 33, col 118 of module HDiskSynod
+
+Could not find declaration or definition of symbol '-'.
+
+
+line 33, col 116 to line 33, col 120 of module HDiskSynod
+
+Couldn't resolve infix operator symbol `-'.
+
+
+line 36, col 5 to line 36, col 8 of module HDiskSynod
+
+Unknown operator: `Init'.
+
+
+
+Starting... (2025-11-19 14:04:57)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-19 14:04:57)
+
+=== STDERR ===

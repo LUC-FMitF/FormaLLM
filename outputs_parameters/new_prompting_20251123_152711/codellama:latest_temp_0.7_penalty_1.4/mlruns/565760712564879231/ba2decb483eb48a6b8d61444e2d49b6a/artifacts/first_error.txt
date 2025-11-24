@@ -1,0 +1,2 @@
+:latest/generated/HDiskSynod.tla
+Lexical error at line 24, column 37.  Encountered: "\u2227" (8743), after : ""

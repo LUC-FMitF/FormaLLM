@@ -1,0 +1,33 @@
+execution_duration_ms: 15428
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-10-31T17:05:35.322Z'
+response_preview: '{"generations": [[{"text": "---- MODULE VoucherTransfer -------------------------------\nEXTENDS
+  FiniteSets, Naturals, Sequences\nCONSTANTS V, SH, DH\nVARIABLES msgs, vState[V],
+  vlcState[V], shState[SH], dhState[DH]\n\nInit ==\n  msgs = {}\n  \\* Initial state
+  of all vouchers is unknown\n  vState[v] = UNDEFINED : v \\in V\n  \\* Initial state
+  of all voucher life cycles is unknown\n  vlcState[v] = UNDEFINED : v \\in V\n  \\*
+  Initial state of all source holders is unknown\n  shState[sh] = UNDEFINED : sh \\in
+  SH\n  \\* Initial state of all destination holders is unknown\n  dhState[dh] = UNDEFINED
+  : dh \\in DH\n\nNext ==\n  CASE msgs \n    [] OTHER -> Init\n    [msg |-> msg'']
+  /\\ msg'' = \"Prepared\" \n      -> Prepare(msg)\n    [msg |-> msg''] /\\ msg''
+  = \"Transfer\" \n      -> Transfer(msg)\n    [msg |-> msg''] /\\ msg'' = \"Abort\"
+  \n      -> Abort(msg)\n  \nSpec == Init /\\ []Next[msgs]_<<V, SH, DH>>\n\n====\n#
+  TLC Configuration:\nCONSTANTS V, SH, DH\nINVARIANTS VTPTypeOK VTPConsistent\...'
+state: OK
+trace_id: tr-fb341c0d8526d3bdd31d5b47ef6eb460
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

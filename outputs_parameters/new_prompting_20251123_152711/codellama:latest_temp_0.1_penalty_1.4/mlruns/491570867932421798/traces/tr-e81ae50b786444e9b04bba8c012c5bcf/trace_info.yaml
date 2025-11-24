@@ -1,0 +1,33 @@
+execution_duration_ms: 16877
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-11-11T17:47:38.162Z'
+response_preview: '{"generations": [[{"text": "---- MODULE VoucherCancel ----\n-------------------------------\nEXTENDS
+  VoucherLifeCycle\nCONSTANTS\n  V = {v1, v2, v3}\n  H = {holder1, holder2, holder3}\n  I
+  = {issuer1, issuer2, issuer3}\nVARIABLES\n  msgs :: SET Msg\nINIT\n  msgs == {}\nNEXT\n  msgs''
+  == msgs + msg\n  IF msg.type = \"Prepared\" /\\ msg.vh \\in H /\\ msg.vc \\in I
+  THEN\n    vState[msg.v] = \"prepared\"\n    vlcState[msg.v] = \"prepared\"\n    hState[msg.vh]
+  = \"prepared\"\n    iState[msg.vc] = \"prepared\"\n  ELSIF msg.type = \"Cancel\"
+  /\\ msg.vh \\in H THEN\n    vState[msg.v] = \"cancelled\"\n    vlcState[msg.v] =
+  \"cancelled\"\n    hState[msg.vh] = \"cancelled\"\n  ELSIF msg.type = \"Abort\"
+  /\\ msg.vc \\in I THEN\n    vState[msg.v] = \"aborted\"\n    vlcState[msg.v] = \"aborted\"\n    iState[msg.vc]
+  = \"aborted\"\n  FI\nSPECIFICATION\n  VTPSpec ==\n  [][\n    \\E v \\in V, h \\in
+  H |->\n      (\n        (\n          \\A msg \\in msgs : msg.type = \"Prepared\"
+  /\\ msg.vh = h /\\ msg...'
+state: OK
+trace_id: tr-e81ae50b786444e9b04bba8c012c5bcf
+trace_location:
+  mlflow_experiment:
+    experiment_id: '491570867932421798'
+  type: MLFLOW_EXPERIMENT

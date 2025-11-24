@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/mlruns/686419802160078495/4ffc82cc759d482cbe35c8f1733b7f1a/artifacts
+end_time: 1764026928945
+entry_point_name: ''
+experiment_id: '686419802160078495'
+lifecycle_stage: active
+run_id: 4ffc82cc759d482cbe35c8f1733b7f1a
+run_name: KVsnap
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764026928903
+status: 3
+tags: []
+user_id: arslanbisharat

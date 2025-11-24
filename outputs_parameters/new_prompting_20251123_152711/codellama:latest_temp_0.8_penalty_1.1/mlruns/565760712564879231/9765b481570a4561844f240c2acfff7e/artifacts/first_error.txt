@@ -1,0 +1,2 @@
+eclaration, prefix op, _ or )"
+Encountered "0" at line 21, column 6 and token "("

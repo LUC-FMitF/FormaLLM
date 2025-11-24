@@ -1,0 +1,2 @@
+dentifier, _ or prefix op"
+Encountered "LOCAL" at line 36, column 1 and token ","

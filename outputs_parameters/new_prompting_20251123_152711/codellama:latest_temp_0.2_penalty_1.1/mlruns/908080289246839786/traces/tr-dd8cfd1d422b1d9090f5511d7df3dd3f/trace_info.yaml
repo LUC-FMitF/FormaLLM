@@ -1,0 +1,17 @@
+execution_duration_ms: 206
+request_preview: '{"model_name": "HDiskSynod", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-20T17:37:01.577Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla\nLexical
+  error at line 9, column 25.  Encountered: \";\" (59), after : \"\"\n\nFatal errors
+  while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module HDiskSynod\n\nCould not parse module HDiskSynod from
+  file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-dd8cfd1d422b1d9090f5511d7df3dd3f
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

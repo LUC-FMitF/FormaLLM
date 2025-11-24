@@ -1,0 +1,2 @@
+ng "==== or more Module body"
+Encountered "P1" at line 9, column 5 and token "L"

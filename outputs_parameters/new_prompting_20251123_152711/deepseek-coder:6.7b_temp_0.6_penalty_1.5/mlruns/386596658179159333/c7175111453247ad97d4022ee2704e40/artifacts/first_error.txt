@@ -1,0 +1,2 @@
+re Module body"
+Encountered "VoucherLifeCycle" at line 12, column 16 and token "MODULE"

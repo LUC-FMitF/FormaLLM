@@ -1,0 +1,6 @@
+---- MODULE EnvironmentController ----
+CONSTANTS N T d0 SendPoint PredictPoint DELTA PHI  # Constants: number of processes, time-out interval for all delta(p)(q), default value of relative speed between different process.
+INVARIANT TypeOK                     # Invariant to ensure type safety in the system (every message is sent from a correct source and received by an existing destination). 
+PROPERTIES StrongCompleteness EventuallyStrongAccuracy      	# Two properties of eventually perfect failure detector: strong completeness, eventualy accurate.   # Properties to check for in the system (eventually every process that crashes is permanently suspected by all correct processes and there's a time after which no proper process can be suspicious anymore).
+SPECIFICATION Spec                     	# The specification of our algorithm: send alive message at appropriate times, make predictions about failures.  # A more detailed description of the system (send 'alive messages to all processes with each global tick and use these messages for making predicitions about future process' failure).
+====

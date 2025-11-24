@@ -1,0 +1,2 @@
+"==== or more Module body"
+Encountered "Allow" at line 4, column 1 and token "----"

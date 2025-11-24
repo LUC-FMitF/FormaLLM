@@ -1,0 +1,2 @@
+oder:6.7b/generated/Relation.tla
+Lexical error at line 19, column 69.  Encountered: "\n" (10), after : "?"

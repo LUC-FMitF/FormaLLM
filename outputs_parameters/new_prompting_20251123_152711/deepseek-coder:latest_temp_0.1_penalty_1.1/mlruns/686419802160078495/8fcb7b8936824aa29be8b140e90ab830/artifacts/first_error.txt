@@ -1,0 +1,2 @@
+coder:latest/generated/Hanoi.tla
+Lexical error at line 16, column 22.  Encountered: "\u21b7" (8631), after : ""

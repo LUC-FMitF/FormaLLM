@@ -1,0 +1,2 @@
+:latest/generated/MultiPaxos.tla
+Lexical error at line 24, column 77.  Encountered: "`" (96), after : ""

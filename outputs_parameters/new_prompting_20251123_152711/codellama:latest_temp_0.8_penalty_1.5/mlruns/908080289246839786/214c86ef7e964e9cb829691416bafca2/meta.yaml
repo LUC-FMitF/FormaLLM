@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/908080289246839786/214c86ef7e964e9cb829691416bafca2/artifacts
+end_time: 1763979362167
+entry_point_name: ''
+experiment_id: '908080289246839786'
+lifecycle_stage: active
+run_id: 214c86ef7e964e9cb829691416bafca2
+run_name: sany_MCDieHarder
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763979361929
+status: 3
+tags: []
+user_id: arslanbisharat

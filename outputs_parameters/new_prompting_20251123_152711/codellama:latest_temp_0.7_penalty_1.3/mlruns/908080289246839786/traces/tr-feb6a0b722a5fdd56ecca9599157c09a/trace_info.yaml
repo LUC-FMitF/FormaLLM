@@ -1,0 +1,22 @@
+execution_duration_ms: 231
+request_preview: '{"model_name": "HDiskSynod", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-20T11:08:34.271Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla\nSemantic
+  processing of module HDiskSynod\nSemantic errors:\n\n*** Errors: 12\n\nline 15,
+  col 1 to line 16, col 16 of module HDiskSynod\n\nOperator Inp already defined or
+  declared.\n\n\nline 16, col 5 to line 16, col 5 of module HDiskSynod\n\nUnsupported
+  expression type `[''.\n\n\nline 15, col 1 to line 16, col 16 of module HDiskSynod\n\nMultiply-defined
+  symbol ''Inp'': this definition or declaration conflicts \nwith the one at line
+  7, col 13 to line 7, col 15 of module HDiskSynod.\n\n\nline 17, col 1 to line 18,
+  col 15 of module HDiskSynod\n\nOperator Bal already defined or declared.\n\n\nline
+  18, col 5 to line 18, col 5 of module HDiskSynod\n\nUnsupported expression type
+  `[''.\n\n\nline 17, col 1 to line 18, col 15 of module HDiskSynod\n\nMultiply-defined
+  symbol ''Bal'': this definition or ...'
+state: OK
+trace_id: tr-feb6a0b722a5fdd56ecca9599157c09a
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

@@ -1,0 +1,2 @@
+:latest/generated/HDiskSynod.tla
+Lexical error at line 2, column 200.  Encountered: "`" (96), after : ""

@@ -1,0 +1,2 @@
+= or more Module body"
+Encountered "DieHarder" at line 2, column 16 and token "Module"

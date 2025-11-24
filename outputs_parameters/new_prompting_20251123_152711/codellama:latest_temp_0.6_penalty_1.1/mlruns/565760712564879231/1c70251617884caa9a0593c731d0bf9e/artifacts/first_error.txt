@@ -1,0 +1,2 @@
+ma:latest/generated/Relation.tla
+Lexical error at line 5, column 38.  Encountered: " " (32), after : "?"

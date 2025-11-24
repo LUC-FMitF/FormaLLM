@@ -1,0 +1,3 @@
+Harder.tla
+***Parse Error***
+Encountered "|->" at line 16, column 11 and token "\'"

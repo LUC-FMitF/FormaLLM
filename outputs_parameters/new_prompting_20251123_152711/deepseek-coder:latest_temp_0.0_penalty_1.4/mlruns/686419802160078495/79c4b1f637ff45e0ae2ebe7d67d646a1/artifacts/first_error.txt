@@ -1,0 +1,2 @@
+:latest/generated/MultiPaxos.tla
+Lexical error at line 2, column 143.  Encountered: " " (32), after : "?"

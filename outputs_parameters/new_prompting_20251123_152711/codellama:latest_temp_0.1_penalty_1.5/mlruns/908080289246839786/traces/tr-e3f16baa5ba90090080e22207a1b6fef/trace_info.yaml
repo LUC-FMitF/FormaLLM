@@ -1,0 +1,22 @@
+execution_duration_ms: 233
+request_preview: '{"model_name": "HDiskSynod", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-19T20:04:49.355Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla\nSemantic
+  processing of module HDiskSynod\nSemantic errors:\n\n*** Errors: 16\n\nline 17,
+  col 25 to line 17, col 27 of module HDiskSynod\n\nUnknown operator: `Inp''.\n\n\nline
+  19, col 1 to line 20, col 25 of module HDiskSynod\n\nOperator Balance already defined
+  or declared.\n\n\nline 19, col 1 to line 20, col 25 of module HDiskSynod\n\nMultiply-defined
+  symbol ''Balance'': this definition or declaration conflicts \nwith the one at line
+  9, col 13 to line 9, col 19 of module HDiskSynod.\n\n\nline 22, col 1 to line 23,
+  col 28 of module HDiskSynod\n\nOperator InpBal already defined or declared.\n\n\nline
+  22, col 1 to line 23, col 28 of module HDiskSynod\n\nMultiply-defined symbol ''InpBal'':
+  this definition or declaration conflicts \nwith the one at line 10, col 13 to line
+  10, col 18 of module HD...'
+state: OK
+trace_id: tr-e3f16baa5ba90090080e22207a1b6fef
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

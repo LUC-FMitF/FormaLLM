@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/908080289246839786/51f1f11254c649e794f3e828ff167e04/artifacts
+end_time: 1762881518209
+entry_point_name: ''
+experiment_id: '908080289246839786'
+lifecycle_stage: active
+run_id: 51f1f11254c649e794f3e828ff167e04
+run_name: sany_EnvironmentController
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762881517975
+status: 3
+tags: []
+user_id: arslanbisharat

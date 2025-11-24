@@ -1,0 +1,2 @@
+g "==== or more Module body"
+Encountered "\in" at line 3, column 21 and token "InitValue"

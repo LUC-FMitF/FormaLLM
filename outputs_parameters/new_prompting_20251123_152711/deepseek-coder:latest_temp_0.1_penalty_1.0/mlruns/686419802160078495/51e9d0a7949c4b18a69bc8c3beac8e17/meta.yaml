@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/mlruns/686419802160078495/51e9d0a7949c4b18a69bc8c3beac8e17/artifacts
+end_time: 1763511478147
+entry_point_name: ''
+experiment_id: '686419802160078495'
+lifecycle_stage: active
+run_id: 51e9d0a7949c4b18a69bc8c3beac8e17
+run_name: SimpleRegular
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763511478120
+status: 3
+tags: []
+user_id: arslanbisharat

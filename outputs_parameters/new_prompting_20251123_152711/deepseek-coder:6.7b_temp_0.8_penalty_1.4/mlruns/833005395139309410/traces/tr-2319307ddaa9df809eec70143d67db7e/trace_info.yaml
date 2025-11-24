@@ -1,0 +1,33 @@
+execution_duration_ms: 17947
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-24T16:56:03.810Z'
+response_preview: '{"generations": [[{"text": "Here is the complete TLA+ module for
+  the Boyer-Moore majority vote algorithm:\n\n```tla\n---- MODULE BoyerMooreMajorityVote
+  ----\nEXTENDS FiniteSets, Naturals, Sequences, ZSequences\n\nCONSTANTS \n  EmptySeq
+  == <<>>,\n  NoCand == NULL,\n  LowerBound == 0\n\nVARIABLES\n  seq == EmptySeq,
+  (* input sequence of values, never changes *)\n  nextPos == LowerBound, (* next
+  position of sequence to be checked *)\n  cand == NoCand, (* current candidate for
+  having a majority *)\n  lb == LowerBound, (* lower bound for the number of occurrences
+  of the candidate so far *)\n  indexes == EmptyZSeq (* set of indexes in the prefix
+  of the sequence strictly before j holding v *)\n\n(* number of times v occurs in
+  that prefix *)\nPREFIXCOUNT(v) == LET pos == ZIndices(indexes) IN Sum(pos, i =>
+  seq[i] = v)\n\n(* number of times v occurs in all of the sequence *)\nGLOBALCOUNT(v)
+  == Sum(indexes, i => seq[i] = v)\n\n(* main correctness property: cand can be the
+  only value that has a...'
+state: OK
+trace_id: tr-2319307ddaa9df809eec70143d67db7e
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

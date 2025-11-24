@@ -1,0 +1,2 @@
+atest/generated/EWD687a_anim.tla
+Lexical error at line 5, column 41.  Encountered: ";" (59), after : ""

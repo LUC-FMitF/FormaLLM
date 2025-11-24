@@ -1,0 +1,33 @@
+execution_duration_ms: 26797
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-11-11T18:29:02.912Z'
+response_preview: '{"generations": [[{"text": "---- MODULE TowersOfHanoi -------------------------------\nEXTENDS
+  FiniteSets, Naturals, Sequences\nCONSTANTS D = 3, N = 3 (* Number of disks and towers
+  *)\nVARIABLES\n  towers == [0 .. (N - 1)] -> {0} (* Towers are represented by natural
+  numbers. All towers are empty except all disks are on the first Tower *)\nInit ==
+  \n  LET disks == [0 .. (D - 1)] (* All less significant bits are 0 *)\n  IN towers
+  = [i \\in disks |-> {i}] /\\ Cardinality(UNION towers) = D (* No need to try to
+  move onto the same tower. Modification History: Last modified Tue May 17 14:55:33
+  CEST 2016 by markus. Created Sun Jul 17 10:20<｜begin▁of▁sentence｜>\n  *)\nNext ==\n  LET
+  Move(from, to) == \n    IF from \\in DOMAIN towers /\\ to \\in DOMAIN towers /\\
+  (Cardinality(towers[to]) = 0 OR towers[from] \\cap {x | x \\in towers[to], x > MINIMUM(towers[from])}
+  ~= {} )\n    THEN towers'' = [i \\in DOMAIN towers |-> IF i = from THEN REMOVEMINIMUM(towers[from])
+  ELSE towers[i]] /\\ [to]'' = UNIO...'
+state: OK
+trace_id: tr-d8d91199ae0dd649ac5493491ed3d3ef
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

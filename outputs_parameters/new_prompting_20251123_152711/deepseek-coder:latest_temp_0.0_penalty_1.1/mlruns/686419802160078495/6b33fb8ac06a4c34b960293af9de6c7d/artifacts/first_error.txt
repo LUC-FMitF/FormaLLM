@@ -1,0 +1,2 @@
+test/generated/ClientCentric.tla
+Lexical error at line 11, column 3.  Encountered: "\u03a3" (931), after : ""

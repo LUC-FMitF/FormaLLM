@@ -1,0 +1,16 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 21 and seed -1683110007737913004 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 3555917] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/SimpleRegular.tla
+Parsing file /tmp/FiniteSets.tla
+Parsing file /tmp/Naturals.tla
+Parsing file /tmp/Sequences.tla
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module SimpleRegular
+Starting... (2025-11-19 05:09:58)
+Error: The invariant PCorrect specified in the configuration file
+is not defined in the specification.
+Finished in 00s at (2025-11-19 05:09:58)
+
+=== STDERR ===

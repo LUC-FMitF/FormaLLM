@@ -1,0 +1,19 @@
+execution_duration_ms: 207
+request_preview: '{"model_name": "MultiPaxos_MC", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/MultiPaxos_MC.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-24T18:00:11.717Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/MultiPaxos_MC.tla\n***Parse
+  Error***\nEncountered \"ASSUME CONSTANTS\" at line 10, column 1 and token \"ConstMaxBallot\"
+  \n\nResidual stack trace follows:\nModule body starting at line 8, column 1.\nModule
+  definition starting at line 1, column 1.\n\n\nFatal errors while parsing TLA+ spec
+  in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/MultiPaxos_MC.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module MultiPaxos_MC\n\nCould not parse module MultiPaxos_MC
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/MultiPaxos_MC.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-5b692b60207f0126f53f56124bd19606
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

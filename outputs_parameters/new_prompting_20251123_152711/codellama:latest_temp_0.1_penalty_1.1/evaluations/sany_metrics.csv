@@ -1,0 +1,52 @@
+model_name,parse_status,first_error_line,first_error_type,error_location_category,error_types_found,first_error_message
+MCDieHarder,FAILED,7,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""="" at line 7, column 5 and token ""Goal"""
+ClientCentric,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"==== or more Module body""
+Encountered ""CLIENT"" at line 2, column 32 and token ""------------------------------"""
+HDiskSynod,FAILED,9,Lexical Error: Semicolon,early,Lexical Error: Semicolon,":latest/generated/HDiskSynod.tla
+Lexical error at line 9, column 25.  Encountered: "";"" (59), after : """""
+Alternate,FAILED,6,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""*"" at line 6, column 1 and token ""----"""
+Hanoi,FAILED,8,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"==== or more Module body""
+Encountered ""number"" at line 8, column 33 and token ""smallTower"""
+Relation,FAILED,7,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""("" at line 7, column 1 and token ""----"""
+MCEWD687a,FAILED,16,Lexical Error: Semicolon,mid,Lexical Error: Semicolon,"a:latest/generated/MCEWD687a.tla
+Lexical error at line 16, column 34.  Encountered: "";"" (59), after : """""
+EWD998ChanID_export,FAILED,13,Parse Error: Bad Module Body,mid,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""="" at line 13, column 16 and token ""Node"""
+EWD687a_anim,FAILED,5,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"g ""==== or more Module body""
+Encountered ""the"" at line 5, column 1 and token ""----"""
+TwoPhase,FAILED,9,Lexical Error: Backtick Character,early,Lexical Error: Backtick Character,"ma:latest/generated/TwoPhase.tla
+Lexical error at line 9, column 1.  Encountered: ""`"" (96), after : """""
+MCConsensus,FAILED,5,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"== or more Module body""
+Encountered ""Checking"" at line 5, column 1 and token ""----"""
+Majority,FAILED,5,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""*"" at line 5, column 1 and token ""----"""
+VoucherTransfer,FAILED,7,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"""==== or more Module body""
+Encountered ""msgs"" at line 7, column 1 and token ""}"""
+EnvironmentController,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""T"" at line 2, column 13 and token ""N"""
+MultiPaxos_MC,FAILED,5,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""*"" at line 5, column 1 and token ""----"""
+VoucherCancel,FAILED,8,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""="" at line 8, column 13 and token ""V"""
+Consensus,FAILED,19,Parse Error: Other,mid,Parse Error: Other,"arse Error***
+Encountered ""LOCAL ZSeqOfLength"" at line 19, column 1 and token ""s"""
+MultiPaxos,FAILED,21,Lexical Error: Semicolon,mid,Lexical Error: Semicolon,":latest/generated/MultiPaxos.tla
+Lexical error at line 21, column 33.  Encountered: "";"" (59), after : """""
+BinarySearch,FAILED,11,Lexical Error: Backtick Character,mid,Lexical Error: Backtick Character,"atest/generated/BinarySearch.tla
+Lexical error at line 11, column 1.  Encountered: ""`"" (96), after : """""
+SimpleRegular,FAILED,2,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"""==== or more Module body""
+Encountered ""MODEL"" at line 2, column 33 and token ""-------------------------------"""
+BufferedRandomAccessFile,FAILED,7,Lexical Error: Semicolon,early,Lexical Error: Semicolon,"ted/BufferedRandomAccessFile.tla
+Lexical error at line 7, column 98.  Encountered: "";"" (59), after : """""
+KVsnap,FAILED,11,Parse Error: Bad Module Body,mid,Parse Error: Bad Module Body,"""==== or more Module body""
+Encountered ""TxId"" at line 11, column 1 and token ""Val"""
+MajorityProof,FAILED,7,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ng ""==== or more Module body""
+Encountered ""**"" at line 7, column 1 and token ""----"""
+YoYoNoPruning,FAILED,14,Parse Error: Bad Module Body,mid,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""="" at line 14, column 22 and token ""DownMailBox"""
+nbacc_ray97,FAILED,8,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""="" at line 8, column 12 and token ""N"""
+TLAPS,PASSED,0,NoError,none,,

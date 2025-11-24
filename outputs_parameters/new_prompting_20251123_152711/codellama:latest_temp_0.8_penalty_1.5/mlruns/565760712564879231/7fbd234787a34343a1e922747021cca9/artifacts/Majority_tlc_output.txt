@@ -1,0 +1,10 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 102 and seed -7381365879250777747 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 3267089] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Majority.tla
+Error: This was a Java StackOverflowError. It was probably the result
+of an incorrect recursive function definition that caused TLC to enter
+an infinite loop when trying to compute the function or its application
+to an element in its putative domain.
+Finished in 00s at (2025-11-19 01:47:57)
+
+=== STDERR ===

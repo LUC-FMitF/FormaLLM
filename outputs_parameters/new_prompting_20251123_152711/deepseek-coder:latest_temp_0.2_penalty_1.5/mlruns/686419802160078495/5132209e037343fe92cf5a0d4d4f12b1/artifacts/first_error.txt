@@ -1,0 +1,2 @@
+test/generated/YoYoNoPruning.tla
+Lexical error at line 5, column 25.  Encountered: "\u221e" (8734), after : ""

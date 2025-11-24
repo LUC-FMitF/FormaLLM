@@ -1,0 +1,26 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 91 and seed -7069905883628781451 with 112 workers on 112 cores with 30688MB heap and 64MB offheap memory [pid: 2159601] (Linux 6.8.0-86-generic amd64, Ubuntu 25 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/bortiz4/FormaLLM/outputs/ollama_codellama:latest/generated/Consensus.tla
+***Parse Error***
+Was expecting "==== or more Module body"
+Encountered "=" at line 3, column 17 and token "Value" 
+
+Residual stack trace follows:
+Module definition starting at line 1, column 1.
+
+
+Fatal errors while parsing TLA+ spec in file Consensus
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module Consensus
+
+Could not parse module Consensus from file Consensus.tla
+
+
+Starting... (2025-11-03 09:19:51)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-03 09:19:51)
+
+=== STDERR ===

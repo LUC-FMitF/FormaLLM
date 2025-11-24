@@ -1,0 +1,2 @@
+test/generated/ClientCentric.tla
+Lexical error at line 3, column 55.  Encountered: ";" (59), after : ""

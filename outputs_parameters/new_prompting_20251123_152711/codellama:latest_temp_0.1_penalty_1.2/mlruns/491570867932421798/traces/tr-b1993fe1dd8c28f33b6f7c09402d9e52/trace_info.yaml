@@ -1,0 +1,33 @@
+execution_duration_ms: 6196
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-19T10:05:23.287Z'
+response_preview: '{"generations": [[{"text": "This is valid TLA+ code that defines
+  several backend pragmas and theorem names related to the use of temporal logic in
+  TLAPS. The `Backend pragma` section contains definitions for various SMT solvers,
+  while the `Theorem Name` section includes some useful theorems for reasoning about
+  sets.\n\nHere are a few things to note:\n\n* In TLA+, theorem names can be used
+  as if they were variables in proofs. This is why we use the notation `{ by (prover:\"isabelle\";
+  tactic:\"auto\") }` instead of just writing `by (prover:\"isabelle\")` when defining
+  a backend pragma that uses Isabelle''s automatic search (\"auto\") tactic.\n* The
+  `Theorem Name` section includes some useful theorems for reasoning about sets, such
+  as `NotInSetS == CHOOSE v : v \\notin SetS`. These theorems can be used in proofs
+  to help deduce certain properties of sets.\n* TLAPS supports temporal logic and
+  provides a number of proof rules that are useful when handling temporal formulas.
+  However, not a...'
+state: OK
+trace_id: tr-b1993fe1dd8c28f33b6f7c09402d9e52
+trace_location:
+  mlflow_experiment:
+    experiment_id: '491570867932421798'
+  type: MLFLOW_EXPERIMENT

@@ -1,0 +1,2 @@
+ted/BufferedRandomAccessFile.tla
+Lexical error at line 17, column 19.  Encountered: ";" (59), after : ""

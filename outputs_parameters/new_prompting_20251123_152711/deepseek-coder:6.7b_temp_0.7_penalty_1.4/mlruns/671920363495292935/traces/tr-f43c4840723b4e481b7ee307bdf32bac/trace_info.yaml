@@ -1,0 +1,20 @@
+execution_duration_ms: 206
+request_preview: '{"model_name": "ClientCentric", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/ClientCentric.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-10-31T17:29:42.407Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/ClientCentric.tla\n***Parse
+  Error***\nEncountered \":\" at line 11, column 22 and token \"Key\" \n\nResidual
+  stack trace follows:\nOptional Arguments starting at line 11, column 18.\nPrimitive
+  expression starting at line 11, column 14.\nExtendableExpr starting at line 11,
+  column 14.\nExpression starting at line 11, column 14.\nDefinition starting at line
+  11, column 1.\n\n\nFatal errors while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/ClientCentric.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module ClientCentric\n\nCould not parse module ClientCentric
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/ClientCentric.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-f43c4840723b4e481b7ee307bdf32bac
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

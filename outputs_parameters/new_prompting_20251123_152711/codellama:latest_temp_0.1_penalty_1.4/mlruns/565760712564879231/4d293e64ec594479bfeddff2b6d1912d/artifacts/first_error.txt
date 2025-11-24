@@ -1,0 +1,2 @@
+test/generated/VoucherCancel.tla
+Lexical error at line 97, column 30.  Encountered: ";" (59), after : ""

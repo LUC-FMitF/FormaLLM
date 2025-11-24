@@ -1,0 +1,20 @@
+execution_duration_ms: 250
+request_preview: '{"model_name": "VoucherTransfer", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/VoucherTransfer.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-20T12:52:50.197Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/VoucherTransfer.tla\n***Parse
+  Error***\n\n  Precedence conflict between ops \\leq in block line 73, col 5 to line
+  73, col 6 of module VoucherTransfer and =.\n\nResidual stack trace follows:\nExtendableExpr
+  starting at line 73, column 20.\nExtendableExpr starting at line 73, column 8.\nExtendableExpr
+  starting at line 73, column 3.\nExpression starting at line 73, column 3.\nExtendableExpr
+  starting at line 71, column 12.\n\n\nFatal errors while parsing TLA+ spec in file
+  /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/VoucherTransfer.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module VoucherTransfer\n\nCould not parse module VoucherTransfer
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/V...'
+state: OK
+trace_id: tr-ea7558d91a3249a2587ed77e3ab6db92
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

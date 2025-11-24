@@ -1,0 +1,2 @@
+der:6.7b/generated/Alternate.tla
+Lexical error at line 5, column 30.  Encountered: "\uff5c" (65372), after : ""

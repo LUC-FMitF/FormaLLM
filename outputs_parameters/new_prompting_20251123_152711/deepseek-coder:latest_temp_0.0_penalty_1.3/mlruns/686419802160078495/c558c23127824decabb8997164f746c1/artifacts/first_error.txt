@@ -1,0 +1,2 @@
+er:latest/generated/Relation.tla
+Lexical error at line 12, column 17.  Encountered: "\u2192" (8594), after : ""

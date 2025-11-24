@@ -1,0 +1,33 @@
+execution_duration_ms: 7166
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-11-11T18:13:07.559Z'
+response_preview: '{"generations": [[{"text": "The `TLAPS_TEMPORAL` rule is used to
+  invoke a decision procedure for propositional temporal logic. It takes two arguments:
+  the first argument is a formula that is assumed to be a propositionally valid temporal
+  logic formula, and the second argument is a formula that is assumed to be a propositionally
+  valid temporal logic formula. The resulting formula is a conjunction of all possible
+  temporal reachability paths from the first formula to the second formula.\n\nHere''s
+  an example of how you might use this rule:\n```tlaplus\n(* This is a simple example
+  of using TLAPS_TEMPORAL *)\n\n(* We define two state variables, x and y *)\nVARIABLES
+  x, y\n\n(* We define two action operators, P and Q *)\nP == TRUE\nQ == FALSE\n\n(*
+  We assume that the temporal logic formula F(x,y) is true *)\nF == (P(x) && G(y))
+  || E[G(y)](P(x))\n\n(* We assume that the temporal logic formula G(y) is true *)\nG
+  == TRUE\n\n(* Now we can use TLAPS_TEMPORAL to prove that F(x,y) implies G(y) *)...'
+state: OK
+trace_id: tr-8fbf803638ef8283ef31181ac610a94c
+trace_location:
+  mlflow_experiment:
+    experiment_id: '491570867932421798'
+  type: MLFLOW_EXPERIMENT

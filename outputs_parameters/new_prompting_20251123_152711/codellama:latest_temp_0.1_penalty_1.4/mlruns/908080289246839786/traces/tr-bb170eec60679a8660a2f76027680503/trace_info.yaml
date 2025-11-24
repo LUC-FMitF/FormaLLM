@@ -1,0 +1,18 @@
+execution_duration_ms: 274
+request_preview: '{"model_name": "Majority", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Majority.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-19T07:47:48.448Z'
+response_preview: '{"returncode": 1, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Majority.tla\n",
+  "stderr": "Exception in thread \"main\" java.lang.StackOverflowError\n\tat util.InternTable.put(InternTable.java:131)\n\tat
+  util.UniqueString.uniqueStringOf(UniqueString.java:261)\n\tat tla2sany.parser.Operators.getMixfix(Operators.java:54)\n\tat
+  tla2sany.parser.OperatorStack.reduceStack(OperatorStack.java:364)\n\tat tla2sany.parser.TLAplusParser.ExtendableExpr(TLAplusParser.java:6953)\n\tat
+  tla2sany.parser.TLAplusParser.ExtendableExpr(TLAplusParser.java:7100)\n\tat tla2sany.parser.TLAplusParser.ExtendableExpr(TLAplusParser.java:7100)\n\tat
+  tla2sany.parser.TLAplusParser.ExtendableExpr(TLAplusParser.java:7100)\n\tat tla2sany.parser.TLAplusParser.ExtendableExpr(TLAplusParser.java:7100)\n\tat
+  tla2sany.parser.TLAplusParser.ExtendableExpr(TLAplusParser.java:7100)\n\tat tla2sany.parser.TLAp...'
+state: OK
+trace_id: tr-bb170eec60679a8660a2f76027680503
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

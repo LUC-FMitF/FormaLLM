@@ -1,0 +1,2 @@
+"==== or more Module body"
+Encountered "XAct" at line 11, column 13 and token "XInit"

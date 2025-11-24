@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/mlruns/686419802160078495/16104540a8c54da98a185d451cc921f0/artifacts
+end_time: 1763507551079
+entry_point_name: ''
+experiment_id: '686419802160078495'
+lifecycle_stage: active
+run_id: 16104540a8c54da98a185d451cc921f0
+run_name: MCEWD687a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763507551049
+status: 3
+tags: []
+user_id: arslanbisharat

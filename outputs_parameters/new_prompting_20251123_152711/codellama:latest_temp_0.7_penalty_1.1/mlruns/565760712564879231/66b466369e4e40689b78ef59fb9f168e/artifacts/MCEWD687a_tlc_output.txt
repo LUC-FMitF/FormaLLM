@@ -1,0 +1,26 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 127 and seed 8547971574876132618 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 611515] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MCEWD687a.tla
+***Parse Error***
+Was expecting "==== or more Module body"
+Encountered "Edges" at line 9, column 1 and token "Procs" 
+
+Residual stack trace follows:
+Module definition starting at line 1, column 1.
+
+
+Fatal errors while parsing TLA+ spec in file MCEWD687a
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module MCEWD687a
+
+Could not parse module MCEWD687a from file MCEWD687a.tla
+
+
+Starting... (2025-11-20 08:23:37)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-20 08:23:37)
+
+=== STDERR ===

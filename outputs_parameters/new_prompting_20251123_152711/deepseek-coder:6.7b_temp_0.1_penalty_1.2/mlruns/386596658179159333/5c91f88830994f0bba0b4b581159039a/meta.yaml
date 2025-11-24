@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/mlruns/386596658179159333/5c91f88830994f0bba0b4b581159039a/artifacts
+end_time: 1761931794088
+entry_point_name: ''
+experiment_id: '386596658179159333'
+lifecycle_stage: active
+run_id: 5c91f88830994f0bba0b4b581159039a
+run_name: EnvironmentController
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761931794063
+status: 3
+tags: []
+user_id: arslanbisharat

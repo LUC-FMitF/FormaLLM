@@ -1,0 +1,3 @@
+---- MODULE MultiPaxos ----
+It seems like you're trying to write a distributed system specification in the form of an algorithm, but it's not clear what exactly you need help with. Could you please provide more details or clarify your question? Are you looking for assistance in writing this algorithm, understanding its functionality, or have some specific issues related to it that you are facing?
+====

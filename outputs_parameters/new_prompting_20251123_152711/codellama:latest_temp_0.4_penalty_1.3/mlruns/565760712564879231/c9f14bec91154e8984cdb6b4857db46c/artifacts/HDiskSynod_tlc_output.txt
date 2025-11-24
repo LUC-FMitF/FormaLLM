@@ -1,0 +1,70 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 4 and seed 8073917325895854601 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 3266719] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla
+Semantic processing of module HDiskSynod
+Semantic errors:
+
+*** Errors: 11
+
+line 28, col 9 to line 28, col 11 of module HDiskSynod
+
+Multiply-defined symbol 'inp': this definition or declaration conflicts 
+with the one at line 18, col 3 to line 18, col 5 of module HDiskSynod.
+
+
+line 32, col 16 to line 32, col 22 of module HDiskSynod
+
+Unknown operator: `Deposit'.
+
+
+line 33, col 16 to line 33, col 16 of module HDiskSynod
+
+Could not find declaration or definition of symbol '+'.
+
+
+line 33, col 12 to line 33, col 19 of module HDiskSynod
+
+Couldn't resolve infix operator symbol `+'.
+
+
+line 34, col 21 to line 34, col 28 of module HDiskSynod
+
+Unknown operator: `Withdraw'.
+
+
+line 35, col 16 to line 35, col 16 of module HDiskSynod
+
+Could not find declaration or definition of symbol '-'.
+
+
+line 35, col 12 to line 35, col 19 of module HDiskSynod
+
+Couldn't resolve infix operator symbol `-'.
+
+
+line 38, col 16 to line 38, col 22 of module HDiskSynod
+
+Unknown operator: `Deposit'.
+
+
+line 39, col 12 to line 39, col 18 of module HDiskSynod
+
+Unknown operator: `Deposit'.
+
+
+line 40, col 21 to line 40, col 28 of module HDiskSynod
+
+Unknown operator: `Withdraw'.
+
+
+line 41, col 12 to line 41, col 19 of module HDiskSynod
+
+Unknown operator: `Withdraw'.
+
+
+
+Starting... (2025-11-19 01:47:53)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-19 01:47:53)
+
+=== STDERR ===

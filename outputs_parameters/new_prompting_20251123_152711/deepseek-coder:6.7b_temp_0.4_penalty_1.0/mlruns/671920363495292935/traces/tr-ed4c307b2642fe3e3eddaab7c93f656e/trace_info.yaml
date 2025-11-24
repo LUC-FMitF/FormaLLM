@@ -1,0 +1,19 @@
+execution_duration_ms: 229
+request_preview: '{"model_name": "VoucherCancel", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/VoucherCancel.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T22:08:00.742Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/VoucherCancel.tla\n***Parse
+  Error***\nWas expecting \"==== or more Module body\"\nEncountered \"H\" at line
+  5, column 3 and token \"V\" \n\nResidual stack trace follows:\nModule definition
+  starting at line 1, column 1.\n\n\nFatal errors while parsing TLA+ spec in file
+  /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/VoucherCancel.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module VoucherCancel\n\nCould not parse module VoucherCancel
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/VoucherCancel.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-ed4c307b2642fe3e3eddaab7c93f656e
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

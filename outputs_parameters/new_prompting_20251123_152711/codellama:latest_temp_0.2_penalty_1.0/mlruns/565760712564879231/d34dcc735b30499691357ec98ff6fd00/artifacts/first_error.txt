@@ -1,0 +1,2 @@
+ma:latest/generated/TwoPhase.tla
+Lexical error at line 30, column 41.  Encountered: ";" (59), after : ""

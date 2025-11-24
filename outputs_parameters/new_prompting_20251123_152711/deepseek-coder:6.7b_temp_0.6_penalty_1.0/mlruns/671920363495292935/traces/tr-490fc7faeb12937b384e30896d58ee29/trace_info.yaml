@@ -1,0 +1,20 @@
+execution_duration_ms: 202
+request_preview: '{"model_name": "VoucherTransfer", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/VoucherTransfer.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-24T16:06:20.935Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/VoucherTransfer.tla\n***Parse
+  Error***\nEncountered \"Beginning of definition\" at line 17, column 1 and token
+  \"x\" \n\nResidual stack trace follows:\nQuantified form starting at line 14, column
+  14.\nExpression starting at line 14, column 14.\nDefinition starting at line 14,
+  column 1.\nModule body starting at line 5, column 1.\nModule definition starting
+  at line 1, column 1.\n\n\nFatal errors while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/VoucherTransfer.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module VoucherTransfer\n\nCould not parse module VoucherTransfer
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/VoucherTransfer.tla\n\n\n",
+  "stderr"...'
+state: OK
+trace_id: tr-490fc7faeb12937b384e30896d58ee29
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

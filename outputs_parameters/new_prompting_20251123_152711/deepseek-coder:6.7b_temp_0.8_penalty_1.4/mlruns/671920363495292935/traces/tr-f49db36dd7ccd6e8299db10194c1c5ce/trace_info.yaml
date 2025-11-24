@@ -1,0 +1,20 @@
+execution_duration_ms: 216
+request_preview: '{"model_name": "Relation", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Relation.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T21:23:16.597Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Relation.tla\n***Parse
+  Error***\nEncountered \",\" at line 29, column 27 and token \"x\" \n\nResidual stack
+  trace follows:\nExtendableExpr starting at line 29, column 25.\nExtendableExpr starting
+  at line 29, column 16.\nExpression starting at line 29, column 16.\nSome { } form
+  starting at line 29, column 14.\nExtendableExpr starting at line 29, column 14.\n\n\nFatal
+  errors while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Relation.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module Relation\n\nCould not parse module Relation from
+  file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Relation.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-f49db36dd7ccd6e8299db10194c1c5ce
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

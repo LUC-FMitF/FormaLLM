@@ -1,0 +1,3 @@
+lternate.tla
+***Parse Error***
+Encountered "1" at line 18, column 16 and token "0"

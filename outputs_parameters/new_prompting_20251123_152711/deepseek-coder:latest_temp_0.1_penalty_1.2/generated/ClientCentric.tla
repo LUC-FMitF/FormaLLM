@@ -1,0 +1,8 @@
+---- MODULE ClientCentric ----
+Here is a complete TLA+ module following all previous rules and syntax. Please note that this code assumes some specifics about the system, such as keys (`Keys = {k1,...,kn} with ki in Naturals; InitValue ∈ Values of KeySet i) for `InitState(keys);
+SeqTransactions : Sequence[Transaction]; // Transaction sequence. For simplicity we assume all transactions are the same length and have been preprocessed to be validated by a TLC config file before use in this code;`, ∀i: Naturals |-> i -> 1..n => n > 0);
+TimeStamp : TimeInterval // A timestamp for each transaction. For simplicity we assume all transactions have been processed within the same time interval (efficiency and consistency). `];  Transaction == [ops ∈ SeqTransactions, start: Timestamp[i], commit：Timestamp(n)]`;
+State : State => {k1,...,kn} with k0 in Naturals |-> s => ~s.keys = {} or ~all_difference ({ki}, keys) ∈ WT for all i, where `WritingKeys is the set of Write operations and Keys includes Read operation;
+Execution : ExecutionElem => [parentState: State(k1,...,kn), transaction：Transaction[i], resultant state s']`. This module also assumes that there exists an execution (execution) for a given transactions, which satisfies isolation level by `commitTest。 ∀t in Transactions，~CTI_SSER((transaction t)) => CT I(T , Execution e).
+`CONSTANTS Naturals TimeInterval Values Sequence[Transaction] StateExecution; INVARIANTS {WritingKeys ∈ Keys, allDifferenceInWriteSetIsValid}; `. The module then follows these rules and syntax to define operations on finite zero-indexed sequences (ZSequences), where a sequence of length n is represented as an index set whose domain consists in the natural numbers from {0,...,n−1}.
+====

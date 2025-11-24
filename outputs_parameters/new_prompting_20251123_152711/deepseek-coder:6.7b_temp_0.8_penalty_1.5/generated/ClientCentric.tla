@@ -1,0 +1,4 @@
+---- MODULE ClientCentric ----...(ModuleDescription) ...LOCAL INSTANCE Instances .... ENDMODULE  and continue with specification definitions, constants etc., following standard TLA+ syntax rules that are documented in https://lamport.azurewebsites.net/tla/tutorial.pdf
+ 
+If you provide the missing information or clarify your requirements further we could certainly help generate a more specific module for it if not already provided to us separately by someone else who has extensive knowledge of TLA+ and client-centric isolation specifications in databases, state machines etc., specifically regarding transactions operations as described.  Transaction ~~ [ops: Seq(Operation), start : TimeStamp , commit :TimeStap ]
+====

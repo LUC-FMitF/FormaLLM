@@ -1,0 +1,7 @@
+---- MODULE YoYoNoPruning ----
+------------------------- MODULE YOYO --------------- ***** 1.0 ** *** )
+(*** The nodes and edges of the graph are represented by their integer identities, *) (THEORY Nat)                             (*   where each node is identified with a unique number between 2**    |------------------------- MODULE YoYO --------------- *****      1.0 ** *** )
+(*** The phase that an individual node executes during the algorithm will be recorded as *) (THEORY FiniteSets)                        (*   state machine, where each value is a set of values representing different states for  |------------------------- MODULE YoYO --------------- *****     1.0 ** *** )
+(*** The mailboxes that are used to exchange messages between the nodes will be modeled as *) (THEORY Sequences)                            (*   sequences of values, where each sequence represents a single round during execution    |------------------------- MODULE YoYO --------------- *****     1.0 ** *** )
+(************************* DEDICATED TLC CONFIGURATION BELOW THIS LINE (for automatic checking) *)                         (*   of the algorithm, and each value in a mailbox is assigned to one round during execution |------------------------- MODULE YoYO --------------- *****     1.0 ** *** )
+====

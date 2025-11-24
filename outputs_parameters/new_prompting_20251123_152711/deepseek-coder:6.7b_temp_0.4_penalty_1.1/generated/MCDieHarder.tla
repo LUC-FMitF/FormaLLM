@@ -1,0 +1,36 @@
+---- MODULE MCDieHarder ----
+
+(***************************************************************************)
+(* The following definitions duplicate the original Die Hard problem.         *)
+(* To have TLC find a solution, we must tell it what values to use for the   *)
+(* constant parameters Jug, Capacity, and Goal.  However, TLC does not      *)
+(* allow one to write function-valued expressions in a configuration        *)
+(* file.  So, we use this module, which extends module DieHarder, to        *)
+(* define a function MCCapacity and have the configuration file TLC to      *)
+(* substitute MCCapacity for Capacity.  Since we need to know the value of  *)
+(* Jug to define Capacity (which is a function having Jug as its domain),   *)
+(* we also define MCJug and tell TLC to substitute it for Jug.              *)
+(***************************************************************************)
+
+EXTENDS DieHarder
+
+CONSTANTS Goal  \* The set of all goals.
+            Jug  \* The set of all jugs.
+            
+\* Assume that we have a function to calculate the capacity based on the jug.
+LOCAL MCCapacity(j) == IF j = EmptySet THEN {} ELSE {[x \in Goal : x <= Cardinality(j)]}
+
+\* Assume that we have a function to get the jug for a given capacity.
+LOCAL MCJug(c) == IF c = EmptySet THEN {} ELSE {[x \in Jug : Cardinality(x) >= c]}
+
+=============================================================================
+====
+
+(* TLC Configuration *)
+CONSTANTS Goal     = 4
+          Jug      <- MCJug
+          Capacity <- MCCapacity 
+
+SPECIFICATION Spec
+INVARIANTS TypeOK NotSolved
+====

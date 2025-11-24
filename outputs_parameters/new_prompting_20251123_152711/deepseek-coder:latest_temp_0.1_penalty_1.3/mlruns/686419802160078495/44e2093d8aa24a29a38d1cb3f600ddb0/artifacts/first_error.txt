@@ -1,0 +1,2 @@
+==== or more Module body"
+Encountered "Reduce" at line 5, column 1 and token "----"

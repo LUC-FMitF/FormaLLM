@@ -1,0 +1,19 @@
+execution_duration_ms: 206
+request_preview: '{"model_name": "MCEWD687a", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/MCEWD687a.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-18T22:17:48.457Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/MCEWD687a.tla\n***Parse
+  Error***\nWas expecting \"==== or more Module body\"\nEncountered \"=\" at line
+  6, column 7 and token \"L\" \n\nResidual stack trace follows:\nModule definition
+  starting at line 1, column 1.\n\n\nFatal errors while parsing TLA+ spec in file
+  /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/MCEWD687a.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module MCEWD687a\n\nCould not parse module MCEWD687a from
+  file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/MCEWD687a.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-539099f1a9b8565fd034c66522c13bda
+trace_location:
+  mlflow_experiment:
+    experiment_id: '945940535758439216'
+  type: MLFLOW_EXPERIMENT

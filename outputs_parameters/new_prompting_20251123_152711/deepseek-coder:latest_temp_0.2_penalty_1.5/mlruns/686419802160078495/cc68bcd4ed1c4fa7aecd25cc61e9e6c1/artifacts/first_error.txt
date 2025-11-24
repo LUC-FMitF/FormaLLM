@@ -1,0 +1,2 @@
+coder:latest/generated/TLAPS.tla
+Lexical error at line 3, column 228.  Encountered: "\u2019" (8217), after : ""

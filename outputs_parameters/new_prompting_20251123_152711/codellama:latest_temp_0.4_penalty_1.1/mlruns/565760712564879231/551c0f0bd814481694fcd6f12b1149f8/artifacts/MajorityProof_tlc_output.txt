@@ -1,0 +1,44 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 36 and seed -1301033988436617835 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 1791708] (Linux 6.8.0-86-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MajorityProof.tla
+Semantic processing of module MajorityProof
+Semantic errors:
+
+*** Errors: 6
+
+line 18, col 15 to line 18, col 15 of module MajorityProof
+
+Could not find declaration or definition of symbol '+'.
+
+
+line 18, col 13 to line 18, col 17 of module MajorityProof
+
+Couldn't resolve infix operator symbol `+'.
+
+
+line 19, col 11 to line 19, col 11 of module MajorityProof
+
+Could not find declaration or definition of symbol '<'.
+
+
+line 19, col 8 to line 19, col 20 of module MajorityProof
+
+Couldn't resolve infix operator symbol `<'.
+
+
+line 24, col 20 to line 24, col 22 of module MajorityProof
+
+Unknown operator: `Len'.
+
+
+line 24, col 31 to line 24, col 33 of module MajorityProof
+
+Unknown operator: `Len'.
+
+
+
+Starting... (2025-11-11 11:52:54)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-11 11:52:54)
+
+=== STDERR ===

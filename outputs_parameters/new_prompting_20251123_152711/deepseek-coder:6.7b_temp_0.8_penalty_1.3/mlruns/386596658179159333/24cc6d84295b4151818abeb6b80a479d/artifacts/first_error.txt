@@ -1,0 +1,2 @@
+6.7b/generated/VoucherCancel.tla
+Lexical error at line 2, column 352.  Encountered: " " (32), after : "?"

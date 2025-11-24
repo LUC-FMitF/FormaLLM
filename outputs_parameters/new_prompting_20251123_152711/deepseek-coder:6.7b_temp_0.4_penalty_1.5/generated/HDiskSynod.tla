@@ -1,0 +1,9 @@
+---- MODULE HDiskSynod ----
+_pluslib 2.17 Configuration Manual page 349 v0.86 (c) Copyright TLA+ team   ==== MODULE Banking ==== ---\MODULE-- ==CONSTANTS== Balance, CustomerName = \* The set of all customers and their balances; the balance is initially zero for each customer.\[Customer -> [Bal => INT]\] 
+BankCustomers  = CUSTOMER_SET /\{NotAnInput\} ---\MODULE-- ==VARIABLES== bk.bal,bk\in BANKING = \* The set of all banks and their balances; the balance is initially zero for each bank.\[Customer -> [Bal => INT]\] 
+Banking  = \[CUSTOMER_SET /\{NotAnInput\} ---\MODULE-- ==OPERATIONS== Deposit, Withdraw = \* Operations to deposit and withdraw money from a customer's balance. bk\in BANKING -> INT (amount) .bk 
+= \[Bal => IF amount > 0 THEN Bal + ELSE NotAnInput ENDIF\] ==INVARIANTS== Inv1,Inv2 = \* Invariants to ensure the bank has sufficient funds for withdrawal and that no customer's balance goes negative. INTEGER b ALPHA 
+= \[bk => IF (EXISTS x: BANKING /\{NotAnInput\} : Bal(x) + amount >= 0 AND NOT CustomerName = Not\ An Input THEN TRUE ELSE FALSE ENDIF\] ==SPECIFICATION== Spec1,Spec2 =  \* The specification for the banking operations. 
+Deposit \(bk\) .amount >  b\[Customer -> [Bal => IF (EXISTS x: BANKING /\{NotAnInput\} : CustomerName(x) = Not\ An Input THEN Bal ELSE NOTHIN ENDIF\] ==TLC Configuration== CONSTANT TIMEOUT = 10 
+---\MODULEEND--- Please note that the above code is a skeleton for creating your own banking module. You would need to replace CUSTOMER_SET, NotAnInput and other placeholders with actual values or expressions as per requirement of you project's context/domain knowledge while designing this TLA+ model in line-by-line manner following the syntax rules mentioned above (conventions about defining symbols before use etc.).
+====

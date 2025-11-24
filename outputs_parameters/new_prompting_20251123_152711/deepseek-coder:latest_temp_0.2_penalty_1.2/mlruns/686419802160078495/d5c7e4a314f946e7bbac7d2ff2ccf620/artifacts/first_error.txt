@@ -1,0 +1,2 @@
+er:latest/generated/Majority.tla
+Lexical error at line 2, column 215.  Encountered: "\u2019" (8217), after : ""

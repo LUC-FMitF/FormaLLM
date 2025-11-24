@@ -1,0 +1,3 @@
+Relation.tla
+***Parse Error***
+Encountered "x" at line 33, column 12 and token "X"

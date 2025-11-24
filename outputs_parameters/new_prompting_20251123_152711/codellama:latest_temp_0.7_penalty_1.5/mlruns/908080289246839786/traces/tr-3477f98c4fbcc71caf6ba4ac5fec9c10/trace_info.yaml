@@ -1,0 +1,20 @@
+execution_duration_ms: 204
+request_preview: '{"model_name": "BufferedRandomAccessFile", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/BufferedRandomAccessFile.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-20T12:52:52.273Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/BufferedRandomAccessFile.tla\n***Parse
+  Error***\nWas expecting \"Identifier, _ or prefix op\"\nEncountered \"Beginning
+  of definition\" at line 10, column 1 and token \"CONSTANTS\" \n\nResidual stack
+  trace follows:\nConstant declaration items starting at line 10, column 1.\nParameter
+  declaration starting at line 9, column 1.\nModule body starting at line 9, column
+  1.\nModule definition starting at line 1, column 1.\n\n\nFatal errors while parsing
+  TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/BufferedRandomAccessFile.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module BufferedRandomAccessFile\n\nCould not parse module
+  BufferedRandomAccessFile from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codell...'
+state: OK
+trace_id: tr-3477f98c4fbcc71caf6ba4ac5fec9c10
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

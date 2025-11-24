@@ -1,0 +1,20 @@
+execution_duration_ms: 207
+request_preview: '{"model_name": "Alternate", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Alternate.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T19:06:30.035Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Alternate.tla\n***Parse
+  Error***\nEncountered \"''\" at line 19, column 7 and token \"v\" \n\nResidual stack
+  trace follows:\nQuant Bound starting at line 19, column 6.\nDefinition starting
+  at line 19, column 1.\nModule body starting at line 13, column 1.\nModule definition
+  starting at line 1, column 1.\n\n\nFatal errors while parsing TLA+ spec in file
+  /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Alternate.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module Alternate\n\nCould not parse module Alternate from
+  file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Alternate.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-e4c6db1fcd5b53630a50bb49dacd1fd3
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

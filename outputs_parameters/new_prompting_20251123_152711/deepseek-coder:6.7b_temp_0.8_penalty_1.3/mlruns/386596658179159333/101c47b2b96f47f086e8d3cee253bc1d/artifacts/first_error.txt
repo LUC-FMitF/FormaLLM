@@ -1,0 +1,2 @@
+*Parse Error***
+Encountered "ASSUME CONSTANTS" at line 10, column 1 and token "ConstMaxBallot"

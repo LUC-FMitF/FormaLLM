@@ -1,0 +1,20 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 27 and seed -1002266636637490865 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 1782903] (Linux 6.8.0-86-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/EnvironmentController.tla
+Lexical error at line 2, column 110.  Encountered: "`" (96), after : ""
+
+Fatal errors while parsing TLA+ spec in file EnvironmentController
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module EnvironmentController
+
+Could not parse module EnvironmentController from file EnvironmentController.tla
+
+
+Starting... (2025-10-31 13:00:51)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-10-31 13:00:51)
+
+=== STDERR ===

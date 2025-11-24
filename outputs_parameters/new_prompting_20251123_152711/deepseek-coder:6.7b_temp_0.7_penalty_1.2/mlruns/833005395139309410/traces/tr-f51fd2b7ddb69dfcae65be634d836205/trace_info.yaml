@@ -1,0 +1,31 @@
+execution_duration_ms: 26610
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-24T13:32:02.098Z'
+response_preview: '{"generations": [[{"text": "---- MODULE BinarySearch ----\n-------------------------------
+  MODULE BinarySearch ------------------------------\n(********************************************************************************\n(*
+  A binary search algorithm for finding an item in a sorted sequence, and       *)\n(*
+  contains a TLAPS-checked proof of its safety property. We assume a            *)\n(*
+  sorted sequence seq with elements in some set Values, it sets the value         *)\n(*
+  `result'' to either a number i with seq[i] = val, or to 0 if there is no        *)\n(*
+  such i.                                                                       *)\n(*********************************************************************************)\nBEGIN
+  TRANSLATION\nEND TRANSLATION\n/\\ Len(seq) \\in Nat\n, <8>5\nModification History\nLast
+  modified Fri Feb 17 16:12:03 CET 2023 by merz\nLast modified Tue Aug 27 12:59:52
+  PDT 2019 by loki\nLast modified Fri May 03 16:28:58 PDT 2019 by lamport\nCreated
+  We...'
+state: OK
+trace_id: tr-f51fd2b7ddb69dfcae65be634d836205
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

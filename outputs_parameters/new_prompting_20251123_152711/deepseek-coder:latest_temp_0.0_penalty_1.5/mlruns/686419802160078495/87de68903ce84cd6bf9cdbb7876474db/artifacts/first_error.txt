@@ -1,0 +1,2 @@
+coder:latest/generated/Hanoi.tla
+Lexical error at line 9, column 10.  Encountered: "\u2190" (8592), after : ""

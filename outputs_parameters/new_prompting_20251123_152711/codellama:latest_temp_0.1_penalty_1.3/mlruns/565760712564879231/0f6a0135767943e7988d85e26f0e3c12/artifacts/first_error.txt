@@ -1,0 +1,2 @@
+g "==== or more Module body"
+Encountered "DHs" at line 6, column 11 and token "|"

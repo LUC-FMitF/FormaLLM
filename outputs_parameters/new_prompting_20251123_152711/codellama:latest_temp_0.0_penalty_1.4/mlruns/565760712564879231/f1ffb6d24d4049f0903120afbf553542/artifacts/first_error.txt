@@ -1,0 +1,2 @@
+ng "==== or more Module body"
+Encountered "->" at line 27, column 22 and token "]"

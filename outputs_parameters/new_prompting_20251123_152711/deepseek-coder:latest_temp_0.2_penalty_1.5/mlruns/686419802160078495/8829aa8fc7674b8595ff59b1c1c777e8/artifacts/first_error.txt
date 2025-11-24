@@ -1,0 +1,2 @@
+er:latest/generated/Majority.tla
+Lexical error at line 2, column 166.  Encountered: "\u221e" (8734), after : ""

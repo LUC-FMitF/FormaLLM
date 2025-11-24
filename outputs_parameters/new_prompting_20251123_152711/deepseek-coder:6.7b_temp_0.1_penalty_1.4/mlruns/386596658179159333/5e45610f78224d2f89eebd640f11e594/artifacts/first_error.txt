@@ -1,0 +1,2 @@
+oder:6.7b/generated/Majority.tla
+Lexical error at line 2, column 4.  Encountered: "\u8f93" (36755), after : ""

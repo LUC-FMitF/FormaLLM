@@ -1,0 +1,2 @@
+ng "==== or more Module body"
+Encountered "--" at line 2, column 37 and token "ModuleNameForExtendedModule"

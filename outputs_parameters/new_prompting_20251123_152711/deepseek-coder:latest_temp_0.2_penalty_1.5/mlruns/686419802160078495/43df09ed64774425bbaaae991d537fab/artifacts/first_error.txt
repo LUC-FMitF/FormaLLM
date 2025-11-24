@@ -1,0 +1,2 @@
+oder:latest/generated/KVsnap.tla
+Lexical error at line 17, column 14.  Encountered: "\u2208" (8712), after : ""

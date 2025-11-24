@@ -1,0 +1,2 @@
+test/generated/YoYoNoPruning.tla
+Lexical error at line 17, column 432.  Encountered: "\n" (10), after : "\"* dow* messag* es from neighbors **that he node considers as incoming*, and also to preserve

@@ -1,0 +1,87 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 61 and seed -3172306402246817736 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 51467] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/Alternate.tla
+Semantic processing of module Alternate
+Semantic errors:
+
+*** Errors: 14
+
+line 15, col 15 to line 15, col 16 of module Alternate
+
+Could not find declaration or definition of symbol '..'.
+
+
+line 15, col 14 to line 15, col 17 of module Alternate
+
+Couldn't resolve infix operator symbol `..'.
+
+
+line 19, col 16 to line 19, col 24 of module Alternate
+
+The operator XAct requires 0 arguments.
+
+
+line 23, col 16 to line 23, col 24 of module Alternate
+
+The operator XAct requires 0 arguments.
+
+
+line 27, col 11 to line 27, col 14 of module Alternate
+
+Unknown operator: `Next'.
+
+
+line 30, col 18 to line 30, col 19 of module Alternate
+
+Could not find declaration or definition of symbol '..'.
+
+
+line 30, col 17 to line 30, col 20 of module Alternate
+
+Couldn't resolve infix operator symbol `..'.
+
+
+line 30, col 11 to line 30, col 11 of module Alternate
+
+Multiply-defined symbol 'i': this definition or declaration conflicts 
+with the one at line 11, col 13 to line 11, col 13 of module Alternate.
+
+
+line 31, col 18 to line 31, col 19 of module Alternate
+
+Could not find declaration or definition of symbol '..'.
+
+
+line 31, col 17 to line 31, col 20 of module Alternate
+
+Couldn't resolve infix operator symbol `..'.
+
+
+line 31, col 11 to line 31, col 11 of module Alternate
+
+Multiply-defined symbol 'i': this definition or declaration conflicts 
+with the one at line 11, col 13 to line 11, col 13 of module Alternate.
+
+
+line 32, col 18 to line 32, col 19 of module Alternate
+
+Could not find declaration or definition of symbol '..'.
+
+
+line 32, col 17 to line 32, col 20 of module Alternate
+
+Couldn't resolve infix operator symbol `..'.
+
+
+line 32, col 11 to line 32, col 11 of module Alternate
+
+Multiply-defined symbol 'i': this definition or declaration conflicts 
+with the one at line 11, col 13 to line 11, col 13 of module Alternate.
+
+
+
+Starting... (2025-11-19 12:50:53)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-19 12:50:53)
+
+=== STDERR ===

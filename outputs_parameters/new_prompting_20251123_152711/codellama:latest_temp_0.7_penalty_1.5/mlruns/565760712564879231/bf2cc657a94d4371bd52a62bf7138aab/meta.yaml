@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/565760712564879231/bf2cc657a94d4371bd52a62bf7138aab/artifacts
+end_time: 1762879388835
+entry_point_name: ''
+experiment_id: '565760712564879231'
+lifecycle_stage: active
+run_id: bf2cc657a94d4371bd52a62bf7138aab
+run_name: EnvironmentController
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762879388806
+status: 3
+tags: []
+user_id: arslanbisharat

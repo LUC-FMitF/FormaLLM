@@ -126,71 +126,62 @@ def prompt_llm() -> dict:
         response_text = '\n'.join(cleaned_lines)
         return response_text.strip()
             
-    def build_few_shot_messages(examples: list[dict]) -> list:
+    def build_few_shot_messages(examples: list[dict], instruction_messages: list) -> list:
         messages = []
-        for ex in examples:
+        for idx, ex in enumerate(examples):
             comments = load_text(ex, "comments_clean")
             full_tla = load_text(ex, "tla_original")
             cfg = load_text(ex, "cfg")
             module_name = get_module_base_name(ex)
             if not comments or not full_tla:
                 continue
-            # Compose the user message (comments + optional cfg)
+            if idx < len(instruction_messages):
+                messages.append(instruction_messages[idx])
             user_msg = f"# Comments:\n{comments}"
             if cfg:
                 user_msg += f"\n\n# TLC Configuration:\n{cfg}"
-            # Compose the assistant message (TLA+ spec)
             ai_msg = f"---- MODULE {module_name} ----\n{full_tla}\n===="
             messages.append(HumanMessage(content=user_msg))
             messages.append(AIMessage(content=ai_msg))
         return messages
 
     system_message = SystemMessage(
-        content="""You are a TLA+ code generator.
+        content="You are a TLA+ code generator. Output ONLY valid TLA+ code. NO markdown fences, explanations, reasoning, or placeholders."
+    )
 
-You must output ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.
-You must NEVER include markdown fences (```) or explanations.
-You must NEVER include reasoning text, English descriptions, or comments.
-You must NEVER output placeholders like <ModuleName> or <constant> literally.
+    instruction_1 = HumanMessage(
+        content="""Basic structure:
+- Start: ---- MODULE ModuleName ----
+- End: ====
+- Required: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec"""
+    )
 
-Strict formatting rules:
-1. Output ONLY the complete TLA+ module.
-2. The module must start with exactly this line:
-   ---- MODULE ModuleName ----
-3. The module must end with exactly this line:
-   ====
-4. Include only valid TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.
-5. Always define every symbol before using it.
-6. After the module, include a TLC configuration section in the exact format shown below.
-7. No blank sections, no undefined names, no ellipses, no placeholders.
+    instruction_2 = HumanMessage(
+        content="""Syntax reminders:
+- [A]_v is temporal formula: A \/ v'=v
+- Inequality: use # or /=
+- Init: initial state predicate
+- Next: next-state relation
+- Spec: Init /\ [][Next]_<<vars>>"""
+    )
 
-## TLA+ Syntax Hints
-- A formula [A]_v is called a temporal formula, and is shorthand for the formula A \/ v' = v.  In other words, the formula is true if A is true or if the value of v remains unchanged.  Usually, v is a tuple of the spec's variables.
-- The symbol \`#\` is alternative syntax used for inequality in TLA+; the other symbol is \`/=\".
-
-## TLA+ Convention Hints
-- The type correctness invariant is typically called TypeOK.
-- Users can employ TLA labels as a means to conceptually associate a comment with a sub-formula like a specific disjunct or conjunct of a TLA formula. Even though these labels have no other function, they facilitate referencing particular parts of the formula from a comment.
-
-Required structure (copy exactly; replace bracketed parts with concrete TLA+ code):
-
----- MODULE ModuleName ----
-EXTENDS <standard modules>
-CONSTANTS <constants>
-VARIABLES <variables>
-
-Init == <initial state predicate>
-Next == <next-state relation>
-Spec == Init /\ [][Next]_<<variables>>
-
-====
+    instruction_3 = HumanMessage(
+        content="""Conventions:
+- TypeOK for type invariants
+- Define all symbols before use
+- Include TLC config after ====
+Format:
 # TLC Configuration:
-CONSTANTS
-  <constant> = <value>
+CONSTANTS <constant> = <value>
 SPECIFICATION Spec
-INVARIANTS <invariant names>
-"""
-)
+INVARIANTS <names>"""
+    )
+
+    instruction_final = HumanMessage(
+        content="""Generate complete TLA+ module with TLC config. Follow all previous rules and syntax."""
+    )
+
+    instruction_messages = [instruction_1, instruction_2, instruction_3]
 
     # Get LLM backend configuration from environment variables
     backend = os.getenv("LLM_BACKEND", "ollama")
@@ -228,12 +219,16 @@ INVARIANTS <invariant names>
             
         elif backend == "ollama":
             base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+            temperature = float(os.getenv("OLLAMA_TEMPERATURE", "0"))
+            repeat_penalty = float(os.getenv("OLLAMA_REPEAT_PENALTY", "1.0"))
             llm = ChatOllama(
-                temperature=0, 
+                temperature=temperature,
+                repeat_penalty=repeat_penalty,
                 model=model,
                 base_url=base_url
             )
             print(f"Ollama endpoint: {base_url}")
+            print(f"Ollama temperature: {temperature}, repeat_penalty: {repeat_penalty}")
             
         else:
             raise ValueError(f"Unsupported LLM backend: {backend}. Supported backends: openai, anthropic, ollama")
@@ -252,7 +247,7 @@ INVARIANTS <invariant names>
     for i, target_model in enumerate(val_data):
         module_name = get_module_base_name(target_model)
         few_shot_examples = train_data[:NUM_FEW_SHOTS]
-        few_shot_msgs = build_few_shot_messages(few_shot_examples)
+        few_shot_msgs = build_few_shot_messages(few_shot_examples, instruction_messages)
         target_comments = load_text(target_model, "comments_clean")
         target_cfg = load_text(target_model, "cfg")
         if not target_comments:
@@ -262,8 +257,7 @@ INVARIANTS <invariant names>
         user_msg = f"# Comments:\n{target_comments}"
         if target_cfg:
             user_msg += f"\n\n# TLC Configuration:\n{target_cfg}"
-        # Build the full prompt as a list of messages
-        all_messages = [system_message] + few_shot_msgs + [HumanMessage(content=user_msg)]
+        all_messages = [system_message] + few_shot_msgs + [instruction_final, HumanMessage(content=user_msg)]
         print(f"\n--- Generating spec for module: {module_name} ---")
         response = llm.invoke(all_messages)
 

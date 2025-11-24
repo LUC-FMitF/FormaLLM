@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/908080289246839786/69ad6311ec684126ac17e2d86b3fdff7/artifacts
+end_time: 1762884796484
+entry_point_name: ''
+experiment_id: '908080289246839786'
+lifecycle_stage: active
+run_id: 69ad6311ec684126ac17e2d86b3fdff7
+run_name: sany_Hanoi
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762884796253
+status: 3
+tags: []
+user_id: arslanbisharat

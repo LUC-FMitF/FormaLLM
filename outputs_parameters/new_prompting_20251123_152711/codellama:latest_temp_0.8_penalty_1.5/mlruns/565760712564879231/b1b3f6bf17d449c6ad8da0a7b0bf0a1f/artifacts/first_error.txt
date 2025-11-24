@@ -1,0 +1,2 @@
+***Parse Error***
+Encountered "LOCAL Instance" at line 9, column 1 and token "FiniteSets"

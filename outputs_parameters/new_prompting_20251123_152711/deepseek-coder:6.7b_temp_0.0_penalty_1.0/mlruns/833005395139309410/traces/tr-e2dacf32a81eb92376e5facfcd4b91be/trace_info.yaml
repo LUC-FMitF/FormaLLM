@@ -1,0 +1,33 @@
+execution_duration_ms: 9184
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-11-11T19:27:35.849Z'
+response_preview: '{"generations": [[{"text": "---- MODULE VoucherTransfer \nEXTENDS
+  FiniteSets, Naturals, Sequences\nCONSTANTS \n  V = {v1, v2, v3}\n  SH = {src1, src2,
+  src3}\n  DH = {dst1, dst2, dst3}\nVARIABLES \n  msgs, vState[V], vlcState[V], shState[SH],
+  dhState[DH]\nInit ==\n  msgs = {}\n  vState[v] = Initial forall v in V\n  vlcState[v]
+  = Initial forall v in V\n  shState[sh] = Initial forall sh in SH\n  dhState[dh]
+  = Initial forall dh in DH\nNext ==\n  IF EXISTS {msg |-> msg.type = Prepared, msg.vsh
+  in SH, msg.vdh in DH} IN msgs\n  THEN vlcState[msg.v] = Transferred else vlcState[v]
+  = Initial\n  IF EXISTS {msg |-> msg.type = Abort, (msg.vsh in SH or msg.vdh in DH)}
+  IN msgs\n  THEN shState[msg.vsh], dhState[msg.vdh] = Aborted else shState[sh], dhState[dh]
+  = Initial\nSpec ==\n  VTPTypeOK /\\ VTPConsistent\nInvVTPTypeOK(v) == \n  (vState[v]
+  = Initial AND vlcState[v] = Initial) OR \n  EXISTS {msg |-> msg.type = Transfer,
+  msg.v = v} IN msgs\nInvVTPConsistent(sh, dh) ==\n  shState[sh] = Initial AND ...'
+state: OK
+trace_id: tr-e2dacf32a81eb92376e5facfcd4b91be
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

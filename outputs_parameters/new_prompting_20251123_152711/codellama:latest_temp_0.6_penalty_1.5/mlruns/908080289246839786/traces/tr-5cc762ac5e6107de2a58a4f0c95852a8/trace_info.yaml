@@ -1,0 +1,22 @@
+execution_duration_ms: 219
+request_preview: '{"model_name": "HDiskSynod", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-19T07:47:46.246Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla\nSemantic
+  processing of module HDiskSynod\nSemantic errors:\n\n*** Errors: 11\n\nline 28,
+  col 9 to line 28, col 11 of module HDiskSynod\n\nMultiply-defined symbol ''inp'':
+  this definition or declaration conflicts \nwith the one at line 18, col 3 to line
+  18, col 5 of module HDiskSynod.\n\n\nline 32, col 16 to line 32, col 22 of module
+  HDiskSynod\n\nUnknown operator: `Deposit''.\n\n\nline 33, col 16 to line 33, col
+  16 of module HDiskSynod\n\nCould not find declaration or definition of symbol ''+''.\n\n\nline
+  33, col 12 to line 33, col 19 of module HDiskSynod\n\nCouldn''t resolve infix operator
+  symbol `+''.\n\n\nline 34, col 21 to line 34, col 28 of module HDiskSynod\n\nUnknown
+  operator: `Withdraw''.\n\n\nline 35, col 16 to line 35, col 16 of module HDiskSynod\n\nCould
+  not find declaration or defi...'
+state: OK
+trace_id: tr-5cc762ac5e6107de2a58a4f0c95852a8
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

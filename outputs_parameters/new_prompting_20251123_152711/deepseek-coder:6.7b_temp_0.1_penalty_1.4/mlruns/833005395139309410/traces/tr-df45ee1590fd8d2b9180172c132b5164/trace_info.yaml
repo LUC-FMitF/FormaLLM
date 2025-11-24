@@ -1,0 +1,33 @@
+execution_duration_ms: 20365
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-11-11T22:49:03.140Z'
+response_preview: '{"generations": [[{"text": "```tla\n---- MODULE VoucherCancel  ----\nEXTENDS
+  FiniteSets, Naturals, Sequences, VoucherLifeCycle\nCONSTANTS V, H, I\nVARIABLES
+  msgs, vState[V], hState[H], iState[I]\n\n(* The set of Vouchers *)\nVouchers ==
+  {v |-> (vState[v] \\in {PreparedByHolder, PreparedByIssuer})}\n\n(* The set of Voucher
+  Holders *)\nVoucherHolders == DOMAIN hState\n\n(* The set of Voucher Issuers *)\nVoucherIssuers
+  == DOMAIN iState\n\n(* vlcState[v] is the state of the voucher life cycle machine.
+  *)\nvlcState[v] == IFEXISTS x \\in Vouchers : vState[x] = PreparedByHolder THEN
+  hState[x] ELSE iState[x]\n\n(* The set of Hs and Is from which the VTP has received
+  \"Prepared for Voucher Cancel\" messages. *)\nVTPReceived == UNION {h :-> vlcState[v]
+  = PreparedByHolder FORALL v \\in V} UNION {i :-> vlcState[v] = PreparedByIssuer
+  FORALL v \\in V}\n\n(* The state of the voucher transaction provider. *)\nVTPState
+  == IFEXISTS x \\in (DOMAIN hState) /\\ EXISTS y \\in (DOMAIN iState) : x = y THEN...'
+state: OK
+trace_id: tr-df45ee1590fd8d2b9180172c132b5164
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

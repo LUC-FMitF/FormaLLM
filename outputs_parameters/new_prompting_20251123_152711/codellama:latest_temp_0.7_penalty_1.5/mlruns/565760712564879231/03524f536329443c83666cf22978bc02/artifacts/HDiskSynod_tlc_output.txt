@@ -1,0 +1,19 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 10 and seed -5278255176473856192 with 112 workers on 112 cores with 30688MB heap and 64MB offheap memory [pid: 2158968] (Linux 6.8.0-86-generic amd64, Ubuntu 25 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/bortiz4/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla
+Semantic processing of module HDiskSynod
+Semantic errors:
+
+*** Errors: 1
+
+line 19, col 43 to line 19, col 46 of module HDiskSynod
+
+The operator Input requires 0 arguments.
+
+
+
+Starting... (2025-11-03 09:19:46)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-03 09:19:46)
+
+=== STDERR ===

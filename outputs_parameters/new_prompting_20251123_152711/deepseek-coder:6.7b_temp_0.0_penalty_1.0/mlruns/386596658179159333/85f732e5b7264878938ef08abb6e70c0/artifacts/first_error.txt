@@ -1,0 +1,2 @@
+er:6.7b/generated/MultiPaxos.tla
+Lexical error at line 2, column 285.  Encountered: "\n" (10), after : "?"

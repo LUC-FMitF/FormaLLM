@@ -1,0 +1,2 @@
+ng "==== or more Module body"
+Encountered "PC" at line 13, column 3 and token "Proc"

@@ -1,0 +1,2 @@
+g "==== or more Module body"
+Encountered "END" at line 4, column 1 and token "----"

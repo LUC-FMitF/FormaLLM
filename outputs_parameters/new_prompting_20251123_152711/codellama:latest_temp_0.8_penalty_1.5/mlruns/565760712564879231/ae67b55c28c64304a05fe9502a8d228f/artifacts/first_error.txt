@@ -1,0 +1,2 @@
+ng "==== or more Module body"
+Encountered "<<" at line 1, column 30 and token "----"

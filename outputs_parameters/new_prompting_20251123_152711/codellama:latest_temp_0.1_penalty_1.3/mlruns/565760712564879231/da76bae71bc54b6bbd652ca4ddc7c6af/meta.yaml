@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/565760712564879231/da76bae71bc54b6bbd652ca4ddc7c6af/artifacts
+end_time: 1762885668422
+entry_point_name: ''
+experiment_id: '565760712564879231'
+lifecycle_stage: active
+run_id: da76bae71bc54b6bbd652ca4ddc7c6af
+run_name: EWD687a_anim
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762885668384
+status: 3
+tags: []
+user_id: arslanbisharat

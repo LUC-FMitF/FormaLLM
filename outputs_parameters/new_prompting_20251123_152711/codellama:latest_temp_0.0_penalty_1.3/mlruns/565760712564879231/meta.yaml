@@ -1,0 +1,6 @@
+artifact_location: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/565760712564879231
+creation_time: 1761933645787
+experiment_id: '565760712564879231'
+last_update_time: 1761933645787
+lifecycle_stage: active
+name: tla_eval_ollama_codellama:latest

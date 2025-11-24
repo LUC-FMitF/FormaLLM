@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/mlruns/945940535758439216/a2549799925d424e964fa851ec02ab1e/artifacts
+end_time: 1763498151185
+entry_point_name: ''
+experiment_id: '945940535758439216'
+lifecycle_stage: active
+run_id: a2549799925d424e964fa851ec02ab1e
+run_name: sany_TwoPhase
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763498150961
+status: 3
+tags: []
+user_id: arslanbisharat

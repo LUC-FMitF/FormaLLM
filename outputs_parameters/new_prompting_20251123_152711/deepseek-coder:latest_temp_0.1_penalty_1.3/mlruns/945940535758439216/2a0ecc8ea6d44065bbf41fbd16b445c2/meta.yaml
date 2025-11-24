@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/mlruns/945940535758439216/2a0ecc8ea6d44065bbf41fbd16b445c2/artifacts
+end_time: 1763512356111
+entry_point_name: ''
+experiment_id: '945940535758439216'
+lifecycle_stage: active
+run_id: 2a0ecc8ea6d44065bbf41fbd16b445c2
+run_name: sany_VoucherTransfer
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763512355876
+status: 3
+tags: []
+user_id: arslanbisharat

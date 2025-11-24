@@ -1,0 +1,2 @@
+k-coder:6.7b/generated/Hanoi.tla
+Lexical error at line 57, column 15.  Encountered: ";" (59), after : ""

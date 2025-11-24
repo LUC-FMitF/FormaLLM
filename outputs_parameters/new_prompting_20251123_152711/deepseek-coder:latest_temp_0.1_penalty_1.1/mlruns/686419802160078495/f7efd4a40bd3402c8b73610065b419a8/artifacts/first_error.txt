@@ -1,0 +1,2 @@
+atest/generated/EWD687a_anim.tla
+Lexical error at line 9, column 3.  Encountered: "\u2208" (8712), after : ""

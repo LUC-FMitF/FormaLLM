@@ -1,0 +1,2 @@
+coder:latest/generated/Hanoi.tla
+Lexical error at line 24, column 16.  Encountered: ";" (59), after : ""

@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/mlruns/945940535758439216/578af53d86e145e690720a469fbf0f07/artifacts
+end_time: 1763509530258
+entry_point_name: ''
+experiment_id: '945940535758439216'
+lifecycle_stage: active
+run_id: 578af53d86e145e690720a469fbf0f07
+run_name: sany_MajorityProof
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763509530015
+status: 3
+tags: []
+user_id: arslanbisharat

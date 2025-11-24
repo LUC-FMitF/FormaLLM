@@ -1,0 +1,2 @@
+Parse Error***
+Encountered "LOCAL INSTANTIATE" at line 11, column 1 and token "Candidate"

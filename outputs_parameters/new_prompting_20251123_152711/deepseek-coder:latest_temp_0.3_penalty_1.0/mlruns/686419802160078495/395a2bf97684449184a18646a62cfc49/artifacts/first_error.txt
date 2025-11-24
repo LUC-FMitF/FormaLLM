@@ -1,0 +1,2 @@
+expecting "----"
+Encountered "-------- MODULE" at line 1, column 26 and token "BinarySearch"

@@ -1,0 +1,3 @@
+export.tla
+***Parse Error***
+Encountered "|->" at line 14, column 13 and token "n2"

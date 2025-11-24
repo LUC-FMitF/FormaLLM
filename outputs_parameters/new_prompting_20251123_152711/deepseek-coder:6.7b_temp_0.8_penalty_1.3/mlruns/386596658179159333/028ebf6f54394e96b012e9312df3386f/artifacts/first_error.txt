@@ -1,0 +1,2 @@
+= or more Module body"
+Encountered "VTPTypeOK" at line 40, column 1 and token "}"

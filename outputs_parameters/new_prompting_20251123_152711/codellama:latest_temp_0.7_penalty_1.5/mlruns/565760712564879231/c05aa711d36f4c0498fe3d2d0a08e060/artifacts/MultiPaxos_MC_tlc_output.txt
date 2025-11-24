@@ -1,0 +1,26 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 1 and seed 9047411064827317220 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 2614205] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MultiPaxos_MC.tla
+***Parse Error***
+Was expecting "==== or more Module body"
+Encountered "Init" at line 43, column 5 and token ")" 
+
+Residual stack trace follows:
+Module definition starting at line 1, column 1.
+
+
+Fatal errors while parsing TLA+ spec in file MultiPaxos_MC
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module MultiPaxos_MC
+
+Could not parse module MultiPaxos_MC from file MultiPaxos_MC.tla
+
+
+Starting... (2025-11-18 17:29:44)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-18 17:29:44)
+
+=== STDERR ===

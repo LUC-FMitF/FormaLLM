@@ -1,0 +1,16 @@
+execution_duration_ms: 266
+request_preview: '{"model_name": "MajorityProof", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MajorityProof.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T17:59:22.426Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MajorityProof.tla\nParsing
+  file /tmp/FiniteSets.tla\nParsing file /tmp/Naturals.tla\nParsing file /tmp/Sequences.tla\nSemantic
+  processing of module Naturals\nSemantic processing of module Sequences\nSemantic
+  processing of module FiniteSets\nSemantic processing of module MajorityProof\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-3d8f916ec59d0cd8f91b0c71889452e0
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

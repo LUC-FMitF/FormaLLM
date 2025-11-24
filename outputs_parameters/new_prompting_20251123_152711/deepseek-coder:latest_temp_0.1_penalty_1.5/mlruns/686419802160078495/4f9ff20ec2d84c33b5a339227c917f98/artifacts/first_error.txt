@@ -1,0 +1,2 @@
+atest/generated/BinarySearch.tla
+Lexical error at line 29, column 22.  Encountered: "\u2264" (8804), after : ""

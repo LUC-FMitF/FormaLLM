@@ -1,0 +1,17 @@
+execution_duration_ms: 204
+request_preview: '{"model_name": "EnvironmentController", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/EnvironmentController.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-18T22:42:13.256Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/EnvironmentController.tla\nLexical
+  error at line 2, column 196.  Encountered: \" \" (32), after : \"?\"\n\nFatal errors
+  while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/EnvironmentController.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module EnvironmentController\n\nCould not parse module EnvironmentController
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/EnvironmentController.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-ccb94cfbd1194b23aa71e007887e00c7
+trace_location:
+  mlflow_experiment:
+    experiment_id: '945940535758439216'
+  type: MLFLOW_EXPERIMENT

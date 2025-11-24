@@ -1,0 +1,2 @@
+atest/generated/BinarySearch.tla
+Lexical error at line 19, column 1.  Encountered: "`" (96), after : ""

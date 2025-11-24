@@ -1,0 +1,3 @@
+---- MODULE ClientCentric ----
+Based on your instructions and requirements here is the complete TLA+ module with its corresponding configuration for a database system that supports operations like reads, writes. This covers state representation as well transaction ordering among others defined in Client Centric Isolation Specification by Crooks et al (https://dl.acm.org/doi/10<｜begin▁of▁sentence｜>3485697
+====

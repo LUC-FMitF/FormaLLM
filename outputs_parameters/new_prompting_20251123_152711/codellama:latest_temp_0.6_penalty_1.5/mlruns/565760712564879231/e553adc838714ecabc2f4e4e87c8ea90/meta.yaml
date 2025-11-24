@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/565760712564879231/e553adc838714ecabc2f4e4e87c8ea90/artifacts
+end_time: 1762876535185
+entry_point_name: ''
+experiment_id: '565760712564879231'
+lifecycle_stage: active
+run_id: e553adc838714ecabc2f4e4e87c8ea90
+run_name: YoYoNoPruning
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762876535153
+status: 3
+tags: []
+user_id: arslanbisharat

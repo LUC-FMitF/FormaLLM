@@ -1,0 +1,13 @@
+---- MODULE ClientCentric -----
+EXTENDS FiniteLinearContext, IntegersModNatArithmetic16384 // For the use case we'll consider 0 <= x < 1<<16 (mod 2^n) here. You can change it as per your requirements.
+CONSTANTS InitValue = <<>>;
+SPECIFICATION Spec == [=][x: Sequences |-> ReadState(Init, State)] /\ IsolationLevelsCheck[transactions] // Main specification for TLA+ model checking to ensure isolation level properties are maintained. 
+INVARIANTS NaturalsUpto16384 = {0 .. (2^NatWidth - 1)}; // Set of all natural numbers upto a limit as per the context defined above, you can change it according your requirements or constraints in FiniteLinearContext definition/extension.
+INVARIANTS Positives = ~(InitValue \in InitState) /\ (ZLen((SeqFromOneIndexedSequence)(Read[keys](<<>>))) > 0); // Defining positive values, you can change it according your requirements or constraints in FiniteLinearContext definition/extension.
+INVARIANTS ReadStates = [x: Sequences |-> {<k1 ,v > : State /\ k \in keys}];  %% defining read state as per the input sequence and key provided, you can change it according your requirements or constraints in FiniteLinearContext definition/extension.
+INVARIANTS WriteStates = [x: Sequences |-> {<k1 ,v > : State /\ k \in keys}];  %% defining write state as per the input sequence and key provided, you can change it according your requirements or constraints in FiniteLinearContext definition/extension.
+INVARIANTS IsolationLevelsCheck[transactions] = [=][x: Sequences |-> ReadState(InitValue,(SeqFromOneIndexedSequence)(WriteStates)) /\ WriteSet((ZLen[(keys)] > 0), keys)]; // Checking isolation levels, you can change it according your requirements or constraints in FiniteLinearContext definition/extension.
+ 
+This is a skeleton for the TLA+ specification covering some core aspects of Client Centric Isolation Specification by Crooks et al., and should be extended as per specific needs considering all possible states, operations etc under consideration defined above (like transaction sequences). This model might not cover your exact requirements but it provides an idea on how to start with TLA+ for such specifications. 
+Please ensure that you modify this according the actual context of use case where FiniteLinearContext is extended or modified as per specific constraints/requirements in isolation properties check and system operations (reads, writes etc.). The above given spec can be used only after defining all helpers like ReadStates for reads to write states.
+====

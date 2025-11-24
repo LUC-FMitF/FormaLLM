@@ -1,0 +1,32 @@
+execution_duration_ms: 12718
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-24T16:58:38.353Z'
+response_preview: '{"generations": [[{"text": "## TLA+ Code\n\n```tlaplus\n(*\n *
+  Backend pragmas. \n *)\nMODULE BackendPragmas\n    VARIABLES\n        -- Backend
+  prover names\n        cvc3, smt3, yices3, verit, z33, zenon, isabelle :: STRING\n    CONSTANTS\n        --
+  Backend prover names\n        cvc33, spass :: STRING\n    -- Default values\n    cvc3   /:=
+  cvc33\n    smt3   /:= spass\n    yices3 /:= \"yices3\"\n    verit  /:= \"verit\"\n    z33    /:=
+  \"z33\"\n    zenon  /:= \"zenon\"\n    isabelle /:= \"isabelle\"\nEND BackendPragmas\n\n(*\n
+  * Backend pragma: SMT solver\n *)\nMODULE SMTSolver\n    VARIABLES\n        -- Default
+  timeout for SMT solver\n        defaultTimeout :: NATURAL\n    CONSTANTS\n        --
+  SMT solver names\n        smt3, cvc33, yices3, verit, z33 :: STRING\n    -- Default
+  values\n    defaultTimeout /:= 120 -- seconds\nEND SMTSolver\n\n(*\n * Backend pragma:
+  Zenon\n *)\nMODULE Zenon\n    VARIABLES\n        -- Default timeout for Zenon\n        defaultTimeout
+  :: NATURAL\n    CON...'
+state: OK
+trace_id: tr-f82cde2de47053f5efccf3ae74695f3d
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

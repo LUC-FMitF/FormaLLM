@@ -1,0 +1,163 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 52 and seed -5005640198020164654 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 520963] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MultiPaxos_MC.tla
+Semantic processing of module MultiPaxos_MC
+Semantic errors:
+
+*** Errors: 29
+
+line 22, col 26 to line 22, col 26 of module MultiPaxos_MC
+
+Unknown operator: `w'.
+
+
+line 25, col 24 to line 25, col 24 of module MultiPaxos_MC
+
+Unknown operator: `v'.
+
+
+line 25, col 30 to line 25, col 32 of module MultiPaxos_MC
+
+Unknown operator: `Val'.
+
+
+line 28, col 23 to line 28, col 23 of module MultiPaxos_MC
+
+Unknown operator: `v'.
+
+
+line 28, col 29 to line 28, col 31 of module MultiPaxos_MC
+
+Unknown operator: `Val'.
+
+
+line 31, col 12 to line 31, col 16 of module MultiPaxos_MC
+
+Unknown operator: `State'.
+
+
+line 31, col 23 to line 31, col 23 of module MultiPaxos_MC
+
+Unknown operator: `w'.
+
+
+line 31, col 43 to line 31, col 47 of module MultiPaxos_MC
+
+Unknown operator: `State'.
+
+
+line 34, col 14 to line 34, col 16 of module MultiPaxos_MC
+
+Unknown operator: `Log'.
+
+
+line 34, col 6 to line 34, col 8 of module MultiPaxos_MC
+
+Multiply-defined symbol 'log': this definition or declaration conflicts 
+with the one at line 14, col 13 to line 14, col 15 of module MultiPaxos_MC.
+
+
+line 34, col 23 to line 34, col 23 of module MultiPaxos_MC
+
+Unknown operator: `w'.
+
+
+line 34, col 45 to line 34, col 47 of module MultiPaxos_MC
+
+Unknown operator: `Log'.
+
+
+line 37, col 22 to line 37, col 32 of module MultiPaxos_MC
+
+Unknown operator: `CommitIndex'.
+
+
+line 37, col 6 to line 37, col 16 of module MultiPaxos_MC
+
+Multiply-defined symbol 'commitIndex': this definition or declaration conflicts 
+with the one at line 15, col 13 to line 15, col 23 of module MultiPaxos_MC.
+
+
+line 37, col 38 to line 37, col 40 of module MultiPaxos_MC
+
+Unknown operator: `INT'.
+
+
+line 40, col 22 to line 40, col 32 of module MultiPaxos_MC
+
+Unknown operator: `LastApplied'.
+
+
+line 40, col 6 to line 40, col 16 of module MultiPaxos_MC
+
+Multiply-defined symbol 'lastApplied': this definition or declaration conflicts 
+with the one at line 16, col 13 to line 16, col 23 of module MultiPaxos_MC.
+
+
+line 40, col 38 to line 40, col 40 of module MultiPaxos_MC
+
+Unknown operator: `INT'.
+
+
+line 50, col 10 to line 50, col 10 of module MultiPaxos_MC
+
+Multiply-defined symbol 'r': this definition or declaration conflicts 
+with the one at line 49, col 11 to line 49, col 11 of module MultiPaxos_MC.
+
+
+line 50, col 30 to line 50, col 30 of module MultiPaxos_MC
+
+Unknown operator: `b'.
+
+
+line 50, col 36 to line 50, col 41 of module MultiPaxos_MC
+
+Unknown operator: `Ballot'.
+
+
+line 54, col 17 to line 54, col 17 of module MultiPaxos_MC
+
+Could not find declaration or definition of symbol '|'.
+
+
+line 54, col 15 to line 54, col 19 of module MultiPaxos_MC
+
+Couldn't resolve infix operator symbol `|'.
+
+
+line 54, col 37 to line 54, col 37 of module MultiPaxos_MC
+
+Could not find declaration or definition of symbol '<'.
+
+
+line 54, col 35 to line 54, col 49 of module MultiPaxos_MC
+
+Couldn't resolve infix operator symbol `<'.
+
+
+line 55, col 22 to line 55, col 24 of module MultiPaxos_MC
+
+Unknown operator: `INT'.
+
+
+line 56, col 22 to line 56, col 24 of module MultiPaxos_MC
+
+Unknown operator: `INT'.
+
+
+line 59, col 5 to line 59, col 8 of module MultiPaxos_MC
+
+Unknown operator: `Init'.
+
+
+line 59, col 16 to line 59, col 19 of module MultiPaxos_MC
+
+Unknown operator: `Next'.
+
+
+
+Starting... (2025-11-20 05:08:46)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-20 05:08:46)
+
+=== STDERR ===

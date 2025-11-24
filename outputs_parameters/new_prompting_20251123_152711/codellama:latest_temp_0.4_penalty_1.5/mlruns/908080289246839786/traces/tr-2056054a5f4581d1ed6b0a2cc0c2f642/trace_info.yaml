@@ -1,0 +1,22 @@
+execution_duration_ms: 1032
+request_preview: '{"model_name": "MultiPaxos_MC", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MultiPaxos_MC.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-19T01:05:48.143Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MultiPaxos_MC.tla\nSemantic
+  processing of module MultiPaxos_MC\nSemantic errors:\n\n*** Warnings: 1590\n\nline
+  16, col 13 to line 16, col 20 of module MultiPaxos_MC\n\nMultiple declarations or
+  definitions for symbol Replicas.  \nThis duplicates the one at line 6, col 13 to
+  line 6, col 20 of module MultiPaxos_MC.\n\n\nline 17, col 13 to line 17, col 18
+  of module MultiPaxos_MC\n\nMultiple declarations or definitions for symbol Writes.  \nThis
+  duplicates the one at line 7, col 13 to line 7, col 18 of module MultiPaxos_MC.\n\n\nline
+  18, col 13 to line 18, col 17 of module MultiPaxos_MC\n\nMultiple declarations or
+  definitions for symbol Reads.  \nThis duplicates the one at line 8, col 13 to line
+  8, col 17 of module MultiPaxos_MC.\n\n\nline 19, col 13 to line 19, col 21 of module
+  MultiPaxos_MC\n\nMultiple d...'
+state: OK
+trace_id: tr-2056054a5f4581d1ed6b0a2cc0c2f642
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

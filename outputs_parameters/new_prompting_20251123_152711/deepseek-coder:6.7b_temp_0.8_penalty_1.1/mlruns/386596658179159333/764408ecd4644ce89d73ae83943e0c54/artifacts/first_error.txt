@@ -1,0 +1,3 @@
+87a_anim.tla
+***Parse Error***
+Encountered ":" at line 16, column 54 and token "NodesOfNetwork"

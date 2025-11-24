@@ -1,0 +1,2 @@
+der:6.7b/generated/MCEWD687a.tla
+Lexical error at line 21, column 21.  Encountered: "\uff5c" (65372), after : ""

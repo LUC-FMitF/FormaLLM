@@ -1,0 +1,3 @@
+/KVsnap.tla
+***Parse Error***
+Encountered "IN" at line 21, column 23 and token "k"

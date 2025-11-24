@@ -1,0 +1,6 @@
+artifact_location: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/908080289246839786
+creation_time: 1761933638357
+experiment_id: '908080289246839786'
+last_update_time: 1761933638357
+lifecycle_stage: active
+name: tla_sanity_check_ollama_codellama:latest

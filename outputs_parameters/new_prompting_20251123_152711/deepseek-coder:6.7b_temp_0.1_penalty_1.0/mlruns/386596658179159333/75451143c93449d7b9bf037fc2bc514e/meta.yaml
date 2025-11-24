@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/mlruns/386596658179159333/75451143c93449d7b9bf037fc2bc514e/artifacts
+end_time: 1763983325073
+entry_point_name: ''
+experiment_id: '386596658179159333'
+lifecycle_stage: active
+run_id: 75451143c93449d7b9bf037fc2bc514e
+run_name: VoucherCancel
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763983325037
+status: 3
+tags: []
+user_id: arslanbisharat

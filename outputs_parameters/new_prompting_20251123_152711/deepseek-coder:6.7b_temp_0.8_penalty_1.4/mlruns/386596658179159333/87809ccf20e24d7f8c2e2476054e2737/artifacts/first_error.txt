@@ -1,0 +1,2 @@
+ted/BufferedRandomAccessFile.tla
+Lexical error at line 12, column 28.  Encountered: "`" (96), after : ""

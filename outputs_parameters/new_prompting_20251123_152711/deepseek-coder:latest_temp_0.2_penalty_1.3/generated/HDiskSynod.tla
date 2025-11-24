@@ -1,0 +1,4 @@
+---- MODULE HDiskSynod ----
+plus-plus/src_files tla2tlr501947.cpp --config="bk = { bal : ∞ , inp: NotAnInput } ; bs = `bs' " `; cnf=  (a,c) => a<(cnflen fst ((snd o snd )((t lcf nth [0])[1]))))
+      The above code is an example of how to generate TLA+ module with given configuration. Please replace the comments and syntax rules according your requirements for generating complete modules in tla2tlr504798 language (TLC).  Also, make sure you have all necessary dependencies installed on machine where this program will be runned such as `tlaplus-plus` compiler which is used to compile TLA+ code.
+====

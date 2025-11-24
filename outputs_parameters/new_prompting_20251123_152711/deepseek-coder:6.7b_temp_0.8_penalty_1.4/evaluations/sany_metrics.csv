@@ -1,0 +1,55 @@
+model_name,parse_status,first_error_line,first_error_type,error_location_category,error_types_found,first_error_message
+MCDieHarder,FAILED,11,Parse Error: Bad Module Body,mid,Parse Error: Bad Module Body,"ng ""==== or more Module body""
+Encountered ""IN"" at line 11, column 16 and token ""Current"""
+ClientCentric,FAILED,5,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"""==== or more Module body""
+Encountered ""TYPE"" at line 5, column 1 and token ""Sequences"""
+HDiskSynod,FAILED,13,Parse Error: Bad Module Body,mid,Parse Error: Bad Module Body,"g ""==== or more Module body""
+Encountered ""bal"" at line 13, column 13 and token ""bk"""
+Alternate,FAILED,12,Parse Error: Bad Module Body,mid,Parse Error: Bad Module Body,"ng ""==== or more Module body""
+Encountered ""**"" at line 12, column 1 and token ""----"""
+Hanoi,FAILED,7,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ng ""==== or more Module body""
+Encountered ""--"" at line 7, column 35 and token ""Sequences"""
+Relation,FAILED,21,Parse Error: Bad Module Body,mid,Parse Error: Bad Module Body,"g ""==== or more Module body""
+Encountered ""AND"" at line 21, column 53 and token ""FALSE"""
+MCEWD687a,FAILED,33,Parse Error: Other,mid,Parse Error: Other,"CEWD687a.tla
+***Parse Error***
+Encountered "","" at line 33, column 31 and token "")"""
+EWD998ChanID_export,FAILED,7,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""="" at line 7, column 18 and token ""Node"""
+EWD687a_anim,FAILED,16,Parse Error: Other,mid,Parse Error: Other,"87a_anim.tla
+***Parse Error***
+Encountered "":"" at line 16, column 54 and token ""NodesOfNetwork"""
+TwoPhase,FAILED,9,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""p"" at line 9, column 24 and token ""------------"""
+MCConsensus,FAILED,9,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""="" at line 9, column 17 and token ""Value"""
+Majority,FAILED,15,Parse Error: Unexpected Token,mid,Parse Error: Unexpected Token,"efix op""
+Encountered ""Beginning of definition"" at line 15, column 3 and token ""CONSTANTS"""
+VoucherTransfer,FAILED,18,Parse Error: Bad Module Body,mid,Parse Error: Bad Module Body,"==== or more Module body""
+Encountered ""TYPEOK"" at line 18, column 1 and token ""}"""
+EnvironmentController,FAILED,6,Lexical Error: Backtick Character,early,Lexical Error: Backtick Character,"erated/EnvironmentController.tla
+Lexical error at line 6, column 38.  Encountered: ""`"" (96), after : """""
+MultiPaxos_MC,FAILED,10,Parse Error: Other,mid,Parse Error: Other,"*Parse Error***
+Encountered ""ASSUME CONSTANTS"" at line 10, column 1 and token ""ConstMaxBallot"""
+VoucherCancel,FAILED,2,Lexical Error: Space After Question,early,Lexical Error: Space After Question,"6.7b/generated/VoucherCancel.tla
+Lexical error at line 2, column 352.  Encountered: "" "" (32), after : ""?"""
+Consensus,FAILED,45,Lexical Error: Semicolon,mid,Lexical Error: Semicolon,"der:6.7b/generated/Consensus.tla
+Lexical error at line 45, column 21.  Encountered: "";"" (59), after : """""
+MultiPaxos,FAILED,4,Lexical Error: Space After Question,early,Lexical Error: Space After Question,"er:6.7b/generated/MultiPaxos.tla
+Lexical error at line 4, column 110.  Encountered: "" "" (32), after : ""?"""
+BinarySearch,FAILED,2,Lexical Error: Other,early,Lexical Error: Other,":6.7b/generated/BinarySearch.tla
+Lexical error at line 2, column 201.  Encountered: ""\n"" (10), after : ""?"""
+SimpleRegular,FAILED,14,Lexical Error: Semicolon,mid,Lexical Error: Semicolon,"6.7b/generated/SimpleRegular.tla
+Lexical error at line 14, column 70.  Encountered: "";"" (59), after : """""
+BufferedRandomAccessFile,FAILED,9,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""="" at line 9, column 11 and token ""Symbols"""
+KVsnap,FAILED,4,Parse Error: Unexpected Token,early,Parse Error: Unexpected Token,"efix op""
+Encountered ""Beginning of definition"" at line 4, column 10 and token ""CONSTANT"""
+MajorityProof,FAILED,9,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""="" at line 9, column 21 and token ""EmptyZSeq"""
+YoYoNoPruning,FAILED,5,Parse Error: Bad Module Body,early,Parse Error: Bad Module Body,"ing ""==== or more Module body""
+Encountered ""="" at line 5, column 15 and token ""Node"""
+nbacc_ray97,FAILED,14,Parse Error: Unexpected Token,mid,Parse Error: Unexpected Token,"efix op""
+Encountered ""Beginning of definition"" at line 14, column 5 and token ""CONSTANTS"""
+TLAPS,FAILED,8,Lexical Error: Semicolon,early,Lexical Error: Semicolon,"k-coder:6.7b/generated/TLAPS.tla
+Lexical error at line 8, column 13.  Encountered: "";"" (59), after : """""

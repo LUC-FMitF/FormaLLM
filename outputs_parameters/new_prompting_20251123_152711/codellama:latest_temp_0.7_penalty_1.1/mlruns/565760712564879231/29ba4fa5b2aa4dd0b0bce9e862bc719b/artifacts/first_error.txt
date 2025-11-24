@@ -1,0 +1,2 @@
+test/generated/MultiPaxos_MC.tla
+Lexical error at line 337, column 8.  Encountered: "\n" (10), after : "\""

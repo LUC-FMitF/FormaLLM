@@ -1,0 +1,33 @@
+execution_duration_ms: 13212
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-11-11T21:02:38.008Z'
+response_preview: '{"generations": [[{"text": "---- MODULE VoucherTransfer --------\nEXTENDS
+  TLC.TLC, Naturals, FiniteSets, ZSequences\nCONSTANTS Vouchers, SourceHolders, DestinationHolders\nVARIABLES
+  msgs, vState[Vouchers], vlcState[Vouchers], shState[SourceHolders], dhState[DestinationHolders]\n\nInit
+  == ⟨∅, ∅, ∅, ∅, ∅⟩\nNext == {\n    (vState[v], vlcState[v]) := (shState[s], dhState[d])
+  : s ∈ SourceHolders /\\ d ∈ DestinationHolders /\\ v = vState[v] /\\ v = vlcState[v],\n    msgs''
+  = IF msg.type = \"Prepared\" THEN msgs \\ {msg} ELSE msgs,\n    shState[s]'' = IF
+  s ∈ SourceHolders AND (shState[s] = \"Preparing\" OR shState[s] = \"Aborting\")
+  THEN \"Preparing\" ELSE shState[s],\n    dhState[d]'' = IF d ∈ DestinationHolders
+  AND (dhState[d] = \"Preparing\" OR dhState[d] = \"Aborting\") THEN \"Preparing\"
+  ELSE dhState[d],\n}\nSpec == [](msgs.type = \"Prepared\" /\\ vState[v] ∈ SourceHolders
+  /\\ vlcState[v] ∈ DestinationHolders) -> (vState'' = vlcState'', shState'' = dhState'')
+  : v ∈ Vouchers\n       AND msgs....'
+state: OK
+trace_id: tr-c5858a84580165814563fb84deb33d80
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

@@ -1,0 +1,32 @@
+execution_duration_ms: 24323
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-11-11T22:38:40.552Z'
+response_preview: '{"generations": [[{"text": "---- MODULE MajorityVote ------------------------\nCONSTANTS  EmptySet,
+  ValueType, MaxSequenceSize\nVARIABLES seq[0..MaxSequenceSize], cand, j, lb\n\nInit
+  == \\* Initialize the sequence and candidate.\n    /\\ seq = [i \\in 0 .. (j-1)
+  |-> EmptySet]\n    /\\ cand = EmptySet\n    /\\ j = 0\n    /\\ lb = 0\n\nNext ==
+  \\* The next state relation.\n   /\\ IF j < MaxSequenceSize THEN \n        /\\ seq''[j]
+  = seq[j] U {seq[j+1]}\n        /\\ cand'' = IF (Cardinality(seq''[j]) - lb > Cardinality(cand))
+  THEN seq''[j] ELSE cand\n        /\\ j'' = j + 1\n        /\\ lb'' = IF (seq''[j]
+  = cand) THEN lb + Count(seq, cand) ELSE lb\n      ELSE \n        /\\ seq'' = seq\n        /\\
+  cand'' = cand\n        /\\ j'' = j\n        /\\ lb'' = lb\n\nSpec == \\* Initialize
+  state with Init and transition with Next.\n    Init /\\ [][Next]_<<seq, cand, j,
+  lb>>\n\nTHEOREM Spec => cand is the only value that has a majority in seq\n================================================================...'
+state: OK
+trace_id: tr-0a7a89289a3e3b43d5f932d68cecd980
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

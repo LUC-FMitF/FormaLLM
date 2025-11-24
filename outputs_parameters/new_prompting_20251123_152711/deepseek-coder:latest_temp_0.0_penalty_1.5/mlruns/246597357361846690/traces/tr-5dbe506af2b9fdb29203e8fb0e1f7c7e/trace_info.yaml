@@ -1,0 +1,33 @@
+execution_duration_ms: 186783
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-18T20:29:24.558Z'
+response_preview: '{"generations": [[{"text": "Here is the complete TLA+ module with
+  TLC config:\n\n```tla\nMODULE KVsnap\n\n-- TLC Configuration:\nCONSTANTS\n  Key
+  = {k ∈ Nat | k ≠ 0},\n  NoVal = {},\n  TxId = {t ∈ Nat | t ≠ 0},\n  Snapshot = {s
+  ∈ {0, 1} | s ≠ 0},\n  Chksum = \"1adfcb46\",\n  TlaChksum = \"5b28617f\",\n  INF
+  = {n ∈ Nat | n ≠ 0},\n  SUBSET = {s ∈ {0, 1} | s ≠ 0},\n  SETTOSEQ = {s ∈ {0, 1}
+  | s ≠ 0},\n  READOP = {s ∈ {0, 1} | s ≠ 0},\n  WRITEOP = {s ∈ {0, 1} | s ≠ 0}.\n\n--
+  Invariants:\nINVARIANTS\n  SnapshotIsolationInvariant =\n    FORALL (s ∈ {0, 1}
+  {k ∈ Key | k ≠ 0}, rk ∈ SUBSET Key {k ∈ s}, wk ∈ SUBSET Key {k ∈ s})\n    (IF (s
+  = {0, 1}) THEN\n      (∀ (t ∈ TxId {t ∈ s}),\n      ∃ (snapshotStore ∈ {0, 1} {k
+  ∈ Key | k ≠ 0},\n         ∃ (read_keys ∈ {0, 1} {k ∈ Key | k ∈ rk}),\n         ∃
+  (write_keys ∈ {0, 1} {k ∈ Key | k ∈ wk}),\n         ∃ (ops ∈ SETTOSEQ {s ∈ {0, 1}
+  {k ∈ Key | k ∈ s}},\n         ∃ (missed ∈ {0, 1} {t ∈ TxId {t ∈ s}}),\n         ∃
+  (store ∈ {0, 1} {k ∈ Key | k ∈ s}),...'
+state: OK
+trace_id: tr-5dbe506af2b9fdb29203e8fb0e1f7c7e
+trace_location:
+  mlflow_experiment:
+    experiment_id: '246597357361846690'
+  type: MLFLOW_EXPERIMENT

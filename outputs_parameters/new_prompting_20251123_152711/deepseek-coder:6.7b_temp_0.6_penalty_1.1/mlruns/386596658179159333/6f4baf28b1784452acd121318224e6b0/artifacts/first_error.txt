@@ -1,0 +1,2 @@
+:6.7b/generated/BinarySearch.tla
+Lexical error at line 2, column 295.  Encountered: "\n" (10), after : "?"

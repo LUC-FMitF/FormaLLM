@@ -1,0 +1,2 @@
+test/generated/YoYoNoPruning.tla
+Lexical error at line 2, column 213.  Encountered: "`" (96), after : ""

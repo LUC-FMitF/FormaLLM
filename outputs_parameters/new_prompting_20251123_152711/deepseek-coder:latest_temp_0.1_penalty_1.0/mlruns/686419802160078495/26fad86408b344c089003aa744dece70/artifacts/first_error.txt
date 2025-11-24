@@ -1,0 +1,2 @@
+test/generated/VoucherCancel.tla
+Lexical error at line 4, column 3.  Encountered: "`" (96), after : ""

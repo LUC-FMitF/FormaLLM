@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/mlruns/686419802160078495/dd4d298ebdb84188a6f72f1177298787/artifacts
+end_time: 1763496571209
+entry_point_name: ''
+experiment_id: '686419802160078495'
+lifecycle_stage: active
+run_id: dd4d298ebdb84188a6f72f1177298787
+run_name: ClientCentric
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763496571183
+status: 3
+tags: []
+user_id: arslanbisharat

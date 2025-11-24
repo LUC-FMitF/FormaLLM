@@ -1,0 +1,30 @@
+execution_duration_ms: 6496
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-24T16:53:59.747Z'
+response_preview: '{"generations": [[{"text": "---- MODULE DieHarderExtended ----\n--------------------------------
+  MODULE DieHarderExtended --------------------------------\n(**************************************************************************)\n(*
+  The following definitions duplicate the original Die Hard problem.             *)\n(**************************************************************************)\n\n(*
+  Extending DieHarder module to allow TLC to find solution for Capacity *)\nCONSTANTS
+  \n    MCCapacity(Jug) == IF Jug = 0 THEN 0 ELSE 1\n    MCJug == ------------ CHOOSE
+  i \\in 0..100 : i\n\n(* Using the extended DieHarder module *)\nEXTENDS DieHarder\n\n(*
+  The specification to be proved *)\nSPECIFICATION Spec\n\n(* The invariant to be
+  maintained *)\nINVARIANTS TypeOK NotSolved\n\n=============================================================================\n====\n\nThe
+  configuration file for TLC would look something like this:\n\n---- MODULE config
+  ----\n------------------------ MODULE co...'
+state: OK
+trace_id: tr-5177f8302eda9ad536dac9c5e58234ba
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

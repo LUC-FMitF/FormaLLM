@@ -1,0 +1,29 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 81 and seed -6080437137271135365 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 3393455] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MultiPaxos_MC.tla
+***Parse Error***
+Encountered "p1" at line 25, column 55 and token "INV" 
+
+Residual stack trace follows:
+ExtendableExpr starting at line 25, column 50.
+ExtendableExpr starting at line 25, column 36.
+ExtendableExpr starting at line 25, column 19.
+Expression starting at line 25, column 19.
+Quantified form starting at line 25, column 8.
+
+
+Fatal errors while parsing TLA+ spec in file MultiPaxos_MC
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module MultiPaxos_MC
+
+Could not parse module MultiPaxos_MC from file MultiPaxos_MC.tla
+
+
+Starting... (2025-11-19 03:18:12)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-19 03:18:12)
+
+=== STDERR ===

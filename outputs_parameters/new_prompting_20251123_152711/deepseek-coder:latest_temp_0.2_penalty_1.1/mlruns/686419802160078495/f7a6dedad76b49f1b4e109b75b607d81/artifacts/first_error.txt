@@ -1,0 +1,2 @@
+erated/EnvironmentController.tla
+Lexical error at line 4, column 167.  Encountered: " " (32), after : "?"

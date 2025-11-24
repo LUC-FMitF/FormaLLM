@@ -1,0 +1,17 @@
+execution_duration_ms: 235
+request_preview: '{"model_name": "VoucherTransfer", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/VoucherTransfer.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-20T06:52:59.939Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/VoucherTransfer.tla\nLexical
+  {error: EOF reached, possibly open comment starting around line 2187\n\nFatal errors
+  while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/VoucherTransfer.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module VoucherTransfer\n\nCould not parse module VoucherTransfer
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/VoucherTransfer.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-6aa5aa7efa8db4e0c713edacb5a0bf70
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

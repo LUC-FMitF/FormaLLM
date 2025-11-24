@@ -1,0 +1,2 @@
+6.7b/generated/SimpleRegular.tla
+Lexical error at line 14, column 79.  Encountered: "\uff5c" (65372), after : ""

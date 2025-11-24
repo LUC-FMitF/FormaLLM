@@ -1,0 +1,2 @@
+k-coder:6.7b/generated/TLAPS.tla
+Lexical error at line 8, column 24.  Encountered: ";" (59), after : ""

@@ -1,0 +1,2 @@
+test/generated/ClientCentric.tla
+Lexical error at line 7, column 12.  Encountered: "`" (96), after : ""

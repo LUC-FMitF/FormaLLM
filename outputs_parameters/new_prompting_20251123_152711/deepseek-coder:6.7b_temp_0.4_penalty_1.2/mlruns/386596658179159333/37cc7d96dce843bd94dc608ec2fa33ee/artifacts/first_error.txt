@@ -1,0 +1,2 @@
+der:6.7b/generated/Consensus.tla
+Lexical error at line 10, column 17.  Encountered: "\u2208" (8712), after : ""

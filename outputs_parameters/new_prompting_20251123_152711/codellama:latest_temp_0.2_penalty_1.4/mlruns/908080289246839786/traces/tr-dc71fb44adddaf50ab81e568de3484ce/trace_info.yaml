@@ -1,0 +1,20 @@
+execution_duration_ms: 226
+request_preview: '{"model_name": "EWD998ChanID_export", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/EWD998ChanID_export.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-19T09:18:01.270Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/EWD998ChanID_export.tla\n***Parse
+  Error***\nEncountered \"]\" at line 29, column 30 and token \"[]\" \n\nResidual
+  stack trace follows:\nExtendableExpr starting at line 29, column 30.\nExpression
+  starting at line 29, column 28.\nSome [] Form starting at line 29, column 12.\nExtendableExpr
+  starting at line 29, column 12.\nExtendableExpr starting at line 29, column 8.\n\n\nFatal
+  errors while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/EWD998ChanID_export.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module EWD998ChanID_export\n\nCould not parse module EWD998ChanID_export
+  from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/EWD998ChanID_export.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-dc71fb44adddaf50ab81e568de3484ce
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

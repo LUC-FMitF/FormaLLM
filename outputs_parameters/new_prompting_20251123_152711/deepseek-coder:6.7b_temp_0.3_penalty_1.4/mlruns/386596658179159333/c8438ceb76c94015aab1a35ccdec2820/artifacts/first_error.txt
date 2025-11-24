@@ -1,0 +1,2 @@
+:6.7b/generated/BinarySearch.tla
+Lexical error at line 22, column 40.  Encountered: ";" (59), after : ""

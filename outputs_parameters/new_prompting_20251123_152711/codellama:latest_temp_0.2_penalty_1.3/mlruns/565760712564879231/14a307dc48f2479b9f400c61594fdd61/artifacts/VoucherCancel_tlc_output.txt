@@ -1,0 +1,29 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 39 and seed -3950540945300062190 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 1819082] (Linux 6.8.0-86-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/VoucherCancel.tla
+***Parse Error***
+Encountered "s1len" at line 52, column 5 and token "LET" 
+
+Residual stack trace follows:
+Let Definitions starting at line 52, column 5.
+Case Other Arm starting at line 51, column 3.
+Expression starting at line 51, column 3.
+Definition starting at line 50, column 1.
+Module body starting at line 9, column 1.
+
+
+Fatal errors while parsing TLA+ spec in file VoucherCancel
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module VoucherCancel
+
+Could not parse module VoucherCancel from file VoucherCancel.tla
+
+
+Starting... (2025-11-11 12:13:28)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-11 12:13:28)
+
+=== STDERR ===

@@ -1,0 +1,18 @@
+execution_duration_ms: 203
+request_preview: '{"model_name": "Hanoi", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Hanoi.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-24T13:27:42.785Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Hanoi.tla\n***Parse
+  Error***\nWas expecting \"==== or more Module body\"\nEncountered \"i\" at line
+  15, column 16 and token \"FORALL\" \n\nResidual stack trace follows:\nModule definition
+  starting at line 1, column 1.\n\n\nFatal errors while parsing TLA+ spec in file
+  /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Hanoi.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module Hanoi\n\nCould not parse module Hanoi from file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/Hanoi.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-74e51ed9e5140af0d9a3ab6f11ab7765
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

@@ -1,0 +1,7 @@
+---- MODULE ClientCentric ----
+Here is a TLA+ module for the requirements you described. This code includes comments to explain each part of it, as well as some helper functions and definitions that may not be immediately obvious from reading through them without contextual understanding (like `CT_SER`). 
+The key parts are marked with TODOs: they should contain implementations according your needs or explanations on why certain things were left out. This includes the definition of transaction sequences, state transitions etc., as well some helper functions for checking if a given execution satisfies serializability requirements (for example), which might be quite complex depending upon how you define "serializable".
+The module is named `IsolationLevels` and it uses modules like FiniteSets Naturals Sequences.  The TLC configuration has been left out as per your instructions, but the basic structure for a complete specification with all necessary import statements should be present in this code snippet:  
+2tex
+\documentclass{article} % Uncomment if using pdflatex or xelatex to compile TLA+ specifications.  See README file of tlaplus on GitHub for more information about compiling your specification with these engines and other details (http://github.<｜begin▁of▁sentence｜>taplan
+====

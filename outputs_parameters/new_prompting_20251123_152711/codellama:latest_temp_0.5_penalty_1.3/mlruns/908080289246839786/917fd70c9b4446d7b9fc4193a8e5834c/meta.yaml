@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/908080289246839786/917fd70c9b4446d7b9fc4193a8e5834c/artifacts
+end_time: 1763588752378
+entry_point_name: ''
+experiment_id: '908080289246839786'
+lifecycle_stage: active
+run_id: 917fd70c9b4446d7b9fc4193a8e5834c
+run_name: sany_Majority
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763588752140
+status: 3
+tags: []
+user_id: arslanbisharat

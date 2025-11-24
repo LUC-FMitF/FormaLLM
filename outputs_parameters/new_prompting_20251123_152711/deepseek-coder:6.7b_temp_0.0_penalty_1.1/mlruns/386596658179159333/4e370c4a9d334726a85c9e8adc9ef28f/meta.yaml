@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/mlruns/386596658179159333/4e370c4a9d334726a85c9e8adc9ef28f/artifacts
+end_time: 1762898887922
+entry_point_name: ''
+experiment_id: '386596658179159333'
+lifecycle_stage: active
+run_id: 4e370c4a9d334726a85c9e8adc9ef28f
+run_name: MCConsensus
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762898887884
+status: 3
+tags: []
+user_id: arslanbisharat

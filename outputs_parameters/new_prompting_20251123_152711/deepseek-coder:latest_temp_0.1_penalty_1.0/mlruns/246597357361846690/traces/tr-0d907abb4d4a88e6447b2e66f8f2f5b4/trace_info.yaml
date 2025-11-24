@@ -1,0 +1,30 @@
+execution_duration_ms: 3758
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-18T23:52:54.470Z'
+response_preview: '{"generations": [[{"text": "---- MODULE BoyerMooreMajorityVote
+  ----\n------------------------------- MODULE BoyerMooreMajorityVote ----------------------------\n(***************************************************************************)\n(*
+  Boyer, J.S. Moore: MJRTY – A Fast Majority Vote Algorithm.               *)\n(***************************************************************************)\n\nCONSTANTS  InputSequence,  \\*
+  Input sequence of values, never changes.\n            NextPosition,  \\* Next position
+  of sequence to be checked.\n            Candidate,     \\* Current candidate for
+  having a majority.\n            MajorityCount, \\* Lower bound for the number of
+  occurrences of the candidate so far.\n            Prefix,        \\* Set of indexes
+  in the prefix of the sequence strictly before j holding v.\n            Occurrences,  \\*
+  Number of times v occurs in that prefix.\n            AllOccurrences, \\* Number
+  of times v occurs in all of the sequence.\n\n\\* Main correct...'
+state: OK
+trace_id: tr-0d907abb4d4a88e6447b2e66f8f2f5b4
+trace_location:
+  mlflow_experiment:
+    experiment_id: '246597357361846690'
+  type: MLFLOW_EXPERIMENT

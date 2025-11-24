@@ -1,0 +1,2 @@
+r:6.7b/generated/nbacc_ray97.tla
+Lexical error at line 26, column 11.  Encountered: "\uff5c" (65372), after : ""

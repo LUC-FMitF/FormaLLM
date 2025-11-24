@@ -1,0 +1,2 @@
+"==== or more Module body"
+Encountered "BEGIN" at line 2, column 1 and token "----"

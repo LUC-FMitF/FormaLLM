@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/565760712564879231/77b8b515137b40ea94c20a490c9e253e/artifacts
+end_time: 1762885675887
+entry_point_name: ''
+experiment_id: '565760712564879231'
+lifecycle_stage: active
+run_id: 77b8b515137b40ea94c20a490c9e253e
+run_name: TLAPS
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762885675848
+status: 3
+tags: []
+user_id: arslanbisharat

@@ -1,0 +1,2 @@
+---- MODULE Alternate -----(MODULES A_0 AND XInit and 1 )------------------   (A Philosophical Correct Specification of the System with TLC Config.)    -- END OF COMMENTS ---     ****      **       ***        */**/ /*/*
+====

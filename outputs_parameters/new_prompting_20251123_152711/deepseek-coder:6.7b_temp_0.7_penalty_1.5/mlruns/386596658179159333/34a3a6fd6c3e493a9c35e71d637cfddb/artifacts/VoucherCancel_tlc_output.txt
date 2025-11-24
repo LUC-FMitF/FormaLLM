@@ -1,0 +1,20 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 75 and seed -1760228064747826964 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 1885663] (Linux 6.8.0-86-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/VoucherCancel.tla
+Lexical error at line 2, column 43.  Encountered: "`" (96), after : ""
+
+Fatal errors while parsing TLA+ spec in file VoucherCancel
+
+tla2sany.semantic.AbortException
+*** Abort messages: 1
+
+In module VoucherCancel
+
+Could not parse module VoucherCancel from file VoucherCancel.tla
+
+
+Starting... (2025-11-11 13:06:41)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-11 13:06:41)
+
+=== STDERR ===

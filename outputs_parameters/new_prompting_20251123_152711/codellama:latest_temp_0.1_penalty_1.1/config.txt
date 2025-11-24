@@ -1,0 +1,5 @@
+Model: codellama:latest
+Temperature: 0.1
+Repeat Penalty: 1.1
+Timestamp: Sun Nov 23 04:37:42 PM CST 2025
+Prompting: Progressive instructions (new)

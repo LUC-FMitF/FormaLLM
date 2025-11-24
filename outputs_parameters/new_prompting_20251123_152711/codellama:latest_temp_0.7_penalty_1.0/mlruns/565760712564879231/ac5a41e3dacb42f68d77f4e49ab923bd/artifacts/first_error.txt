@@ -1,0 +1,3 @@
+lternate.tla
+***Parse Error***
+Encountered ")" at line 24, column 73 and token "*"

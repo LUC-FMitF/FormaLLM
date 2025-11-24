@@ -1,0 +1,2 @@
+lama:latest/generated/KVsnap.tla
+Lexical error at line 27, column 14.  Encountered: ";" (59), after : ""

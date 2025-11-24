@@ -1,0 +1,2 @@
+coder:latest/generated/Hanoi.tla
+Lexical error at line 11, column 16.  Encountered: "\u2200" (8704), after : ""

@@ -1,0 +1,2 @@
+test/generated/YoYoNoPruning.tla
+Lexical error at line 5, column 24.  Encountered: "\u00d7" (215), after : ""

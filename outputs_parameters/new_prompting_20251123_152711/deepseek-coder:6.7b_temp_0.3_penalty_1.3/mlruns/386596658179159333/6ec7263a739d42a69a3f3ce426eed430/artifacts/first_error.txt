@@ -1,0 +1,2 @@
+der:6.7b/generated/MCEWD687a.tla
+Lexical error at line 9, column 36.  Encountered: ";" (59), after : ""

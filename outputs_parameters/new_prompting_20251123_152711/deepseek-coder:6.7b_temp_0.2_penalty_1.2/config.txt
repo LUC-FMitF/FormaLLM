@@ -1,0 +1,5 @@
+Model: deepseek-coder:6.7b
+Temperature: 0.2
+Repeat Penalty: 1.2
+Timestamp: Mon Nov 24 06:32:26 AM CST 2025
+Prompting: Progressive instructions (new)

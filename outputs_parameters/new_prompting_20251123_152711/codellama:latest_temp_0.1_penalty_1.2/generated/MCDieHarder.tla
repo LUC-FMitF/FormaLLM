@@ -1,0 +1,40 @@
+---- MODULE MCDieHarder ----
+
+(**************************************************************************)
+(* The following definitions duplicate the original Die Hard problem.     *)
+(**************************************************************************)
+
+CONSTANTS Goal = 4   \* The goal of the game is to get all four eggs in    *)
+                      \* one basket before your opponent does.             *)
+          Jug = MCJug \* The jug has a capacity of at least 3, and can     *)
+                      \* hold any number of eggs.                         *)
+          Capacity <- MCCapacity   \* A function that takes the value of    *)
+                        \* Jug as its argument and returns its capacity.  *)
+
+VARIABLES x1, x2, x3, x4 : {0, 1}     \* The four eggs are either in or out*)
+              y1, y2, y3, y4 : {0, 1}   \* The four baskets are either full or empty. *)
+              
+Init ==                                \* Initial predicate: all eggs and    *)
+      x1 = x2 = x3 = x4 = 0             \* baskets start out empty.         *)
+     /\ y1 = y2 = y3 = y4 = 0            \* The game starts with no moves made. *)
+                                        \* Note that the initial state is   *)
+                                        \* not a valid solution, since we    *)
+                                        \* have not yet moved any eggs or   *)
+                                        \* baskets.                         *)
+Next ==                                 \* Next-state relation: for each     *)
+      [](x1 = x2 /\ y1 = 0)             \* move, we either put an egg in a    *)
+       \/ (x1 = 0 /\ y1 = 1)            \* full basket or take an egg out of*)
+        \/ (y1 = 0 /\ y3 = 1)           \* a full basket.                   *)
+      [](x2 = x3 /\ y2 = 0)             \* We can only move one egg at a time,*)
+       \/ (x2 = 0 /\ y2 = 1)          \* so we must alternate between*)
+        \/ (y2 = 0 /\ y4 = 1)       \* putting and taking eggs.    *)
+      [](x3 = x4 /\ y3 = 0)         \* We can only move one egg at a time,*)
+       \/ (x3 = 0 /\ y3 = 1)        \* so we must alternate between*)
+        \/ (y3 = 0 /\ y2 = 1)       \* putting and taking eggs.    *)
+      [](x4 = x1 /\ y4 = 0)         \* We can only move one egg at a time,*)
+       \/ (x4 = 0 /\ y4 = 1)        \* so we must alternate between*)
+        \/ (y4 = 0 /\ y3 = 1)       \* putting and taking eggs.    *)
+      [](Capacity(Jug - x1 - x2 - x3 - x4 + y1 + y2 + y3 + y4) >= Goal)   \* The capacity of the jug must be greater than or equal to the goal,*)
+       \/ (x1 = 0 /\ x2 = 0 /\ x3 = 0 /\ x4 = 0)                    \* and we cannot have all eggs in one basket. *)
+=============================================================================
+====

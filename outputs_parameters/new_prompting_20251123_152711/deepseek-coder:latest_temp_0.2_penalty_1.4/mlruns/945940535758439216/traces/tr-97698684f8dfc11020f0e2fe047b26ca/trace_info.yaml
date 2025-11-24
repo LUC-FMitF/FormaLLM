@@ -1,0 +1,19 @@
+execution_duration_ms: 216
+request_preview: '{"model_name": "HDiskSynod", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/HDiskSynod.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-18T20:09:24.087Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/HDiskSynod.tla\n***Parse
+  Error***\nWas expecting \"Identifier\"\nEncountered \"<\" at line 3, column 9 and
+  token \"EXTENDS\" \n\nResidual stack trace follows:\nExtends starting at line 3,
+  column 1.\nModule definition starting at line 1, column 1.\n\n\nFatal errors while
+  parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/HDiskSynod.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module HDiskSynod\n\nCould not parse module HDiskSynod from
+  file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:latest/generated/HDiskSynod.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-97698684f8dfc11020f0e2fe047b26ca
+trace_location:
+  mlflow_experiment:
+    experiment_id: '945940535758439216'
+  type: MLFLOW_EXPERIMENT

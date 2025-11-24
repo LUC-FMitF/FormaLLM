@@ -1,0 +1,21 @@
+execution_duration_ms: 509
+request_preview: '{"model_name": "nbacc_ray97", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/nbacc_ray97.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-19T18:50:51.164Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/nbacc_ray97.tla\nSemantic
+  processing of module nbacc_ray97\nSemantic errors:\n\n*** Warnings: 737\n\nline
+  165, col 3 to line 165, col 102 of module nbacc_ray97\n\nMultiple declarations or
+  definitions for symbol ProcStateTransErrTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeProcVal.  \nThis
+  duplicates the one at line 157, col 3 to line 157, col 102 of module nbacc_ray97.\n\n\nline
+  171, col 3 to line 171, col 101 of module nbacc_ray97\n\nMultiple declarations or
+  definitions for symbol ProcStateTransErrTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeTimeMsgVal.  \nThis
+  duplicates the one at line 163, col 3 to line 163, col 101 of module nbacc_ray97.\n\n\nline
+  172, col 3 to line 172, col 103 of module nbacc_ray97\n\nMultiple declarations or
+  definitions...'
+state: OK
+trace_id: tr-72955a73e18c11a9e30d8f8609f1f8fb
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

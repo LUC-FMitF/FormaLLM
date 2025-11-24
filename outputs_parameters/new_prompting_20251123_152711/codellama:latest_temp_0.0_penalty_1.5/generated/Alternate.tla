@@ -1,0 +1,26 @@
+---- MODULE Alternate ----
+
+(*************************************************************************)
+(* Generated at Sat Oct 31 02:58:46 PDT 2009                             *)
+(*************************************************************************)
+CONSTANTS   v,            \* The variable representing the part of        *)
+              x,            \* the state that is changed by the A_0 and    *)
+              XInit,         \* A_1 actions.  We introduce two constant     *)
+              XAct           \* operators where XInit(x) is assumed to      *)
+                             \* assert that x has a correct initial value   *)
+                             \* and XAct(i, xInit, xNext) is assumed to    *)
+                             \* assert that changing the value of          *)
+                             \* x from xInit to xNext represents an        *)
+                             \* A_i action, for i=0, 1.                   *)
+VARIABLES   v == {0, 1},    \* The set of values that can be assigned     *)
+            x == <<>>,       \* to the variable representing the part      *)
+                             \* of the state changed by A_0 and A_1.      *)
+INITIALIZE   v = {0}        \* Initialize the value of v with 0           *)
+INVARIANT    XInit(x)       \* Assert that x has a correct initial value *)
+                             \* for both actions.                         *)
+TRANSITION   (v' == IF v = 1 THEN {0} ELSE {1}) /\     (* A_i action      *)
+              (IF v = 1 THEN XAct(0, <<>>, x)        * changes the value of*)
+               ELSIF v = 0 THEN XAct(1, x, <<>>))   \* x from its    *)
+                             \* initial to a new state.         *)
+=============================================================================
+====

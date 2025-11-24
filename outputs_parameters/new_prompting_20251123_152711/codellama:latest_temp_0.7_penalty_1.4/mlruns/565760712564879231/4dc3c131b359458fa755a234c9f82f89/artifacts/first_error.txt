@@ -1,0 +1,3 @@
+rnate.tla
+***Parse Error***
+Encountered "THEN" at line 16, column 65 and token "v"

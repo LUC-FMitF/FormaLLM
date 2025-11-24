@@ -1,0 +1,2 @@
+der:6.7b/generated/MCEWD687a.tla
+Lexical error at line 2, column 262.  Encountered: " " (32), after : "?"

@@ -1,0 +1,2 @@
+erated/EnvironmentController.tla
+Lexical error at line 19, column 1958.  Encountered: "\u2019" (8217), after : ""

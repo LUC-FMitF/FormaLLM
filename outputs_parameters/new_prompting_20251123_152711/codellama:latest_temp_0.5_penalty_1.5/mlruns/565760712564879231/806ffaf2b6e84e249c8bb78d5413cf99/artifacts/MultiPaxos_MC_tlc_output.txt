@@ -1,0 +1,34 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 102 and seed 3006300844803875637 with 1 worker on 112 cores with 30208MB heap and 64MB offheap memory [pid: 123650] (Linux 6.8.0-87-generic amd64, Eclipse Adoptium 21.0.8 x86_64, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MultiPaxos_MC.tla
+Semantic processing of module MultiPaxos_MC
+Semantic errors:
+
+*** Errors: 4
+
+line 16, col 22 to line 16, col 29 of module MultiPaxos_MC
+
+Unknown operator: `NoLeader'.
+
+
+line 17, col 34 to line 17, col 34 of module MultiPaxos_MC
+
+Could not find declaration or definition of symbol '-'.
+
+
+line 17, col 25 to line 17, col 43 of module MultiPaxos_MC
+
+Couldn't resolve infix operator symbol `-'.
+
+
+line 18, col 24 to line 18, col 34 of module MultiPaxos_MC
+
+Unknown operator: `NoCandidate'.
+
+
+
+Starting... (2025-11-19 14:54:20)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2025-11-19 14:54:20)
+
+=== STDERR ===

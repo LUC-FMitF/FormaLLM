@@ -1,0 +1,2 @@
+"==== or more Module body"
+Encountered "STATE" at line 18, column 1 and token "Sequences"

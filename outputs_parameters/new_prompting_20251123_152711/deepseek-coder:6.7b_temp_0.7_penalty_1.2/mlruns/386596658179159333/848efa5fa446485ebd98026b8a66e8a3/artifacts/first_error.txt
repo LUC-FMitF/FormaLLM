@@ -1,0 +1,2 @@
+er:6.7b/generated/HDiskSynod.tla
+Lexical error at line 2, column 165.  Encountered: "\n" (10), after : "?"

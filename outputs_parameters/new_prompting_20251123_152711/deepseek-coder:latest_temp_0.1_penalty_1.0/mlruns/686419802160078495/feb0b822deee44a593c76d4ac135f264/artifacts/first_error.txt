@@ -1,0 +1,2 @@
+latest/generated/nbacc_ray97.tla
+Lexical error at line 13, column 6.  Encountered: "\u2192" (8594), after : ""

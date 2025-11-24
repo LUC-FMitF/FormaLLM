@@ -1,0 +1,33 @@
+execution_duration_ms: 10230
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-11-11T19:07:00.570Z'
+response_preview: '{"generations": [[{"text": "Here is the TLA+ code for your requirements.
+  This includes definitions of operations, transactions, and execution sequences.
+  It also includes helper functions to check if a transaction satisfies a given isolation
+  level. The code assumes that there are keys and values in the system state (`State`),
+  and it checks if a read operation can be performed from a certain state.\n\n```tla\n----
+  MODULE ClientCentricIsolation  ----\nEXTENDS FiniteSets, Naturals, Sequences\nCONSTANTS
+  InitValue \\in Values\nVARIABLES Keys, Values, TimeStamp, Transactions, Executions\n\nTypeOK
+  == \\A t \\in Transactions : IsWellFormedTransaction(t)\nIsWellFormedTransaction(t)
+  == EXISTS [ops: Seq(Operation), start: TimeStamp, commit: TimeStamp] & t = [ops:
+  ops, start: start, commit: commit] /\\ Cardinality(ops) > 0 /\\ \\A op \\in ops
+  : IsWellFormedOperation(op)\nIsWellFormedOperation(op) == EXISTS [key: Key, value:
+  Value] & op = [key: key, value: value] /\\ key \\in Keys /\\ value \\in ...'
+state: OK
+trace_id: tr-c72a451bb6ea2939a4dca011da7e6ff0
+trace_location:
+  mlflow_experiment:
+    experiment_id: '833005395139309410'
+  type: MLFLOW_EXPERIMENT

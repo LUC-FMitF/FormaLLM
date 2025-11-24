@@ -1,0 +1,2 @@
+test/generated/SimpleRegular.tla
+Lexical error at line 5, column 18.  Encountered: "\u2208" (8712), after : ""

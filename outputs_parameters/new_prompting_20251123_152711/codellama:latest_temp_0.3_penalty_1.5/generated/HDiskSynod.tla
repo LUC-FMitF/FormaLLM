@@ -1,0 +1,9 @@
+---- MODULE HDiskSynod ----
+
+(***************************************************************************)
+(* Modification History                                                     *)
+(***************************************************************************)
+Last modified Sat Jan 26 15:52:41 CET 2019 by tthai
+Created Sat Jan 26 15:23:57 CET 2019 by tthai
+/\ (bk.bal = 0) ≡ (bk.inp = NotAnInput)*)
+====

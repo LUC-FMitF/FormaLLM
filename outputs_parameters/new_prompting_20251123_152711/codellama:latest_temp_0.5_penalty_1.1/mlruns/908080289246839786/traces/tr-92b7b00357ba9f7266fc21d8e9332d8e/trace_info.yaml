@@ -1,0 +1,15 @@
+execution_duration_ms: 217
+request_preview: '{"model_name": "HDiskSynod", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T15:42:26.596Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/HDiskSynod.tla\nSemantic
+  processing of module HDiskSynod\nSemantic errors:\n\n*** Errors: 1\n\nline 19, col
+  43 to line 19, col 46 of module HDiskSynod\n\nThe operator Input requires 0 arguments.\n\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-92b7b00357ba9f7266fc21d8e9332d8e
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

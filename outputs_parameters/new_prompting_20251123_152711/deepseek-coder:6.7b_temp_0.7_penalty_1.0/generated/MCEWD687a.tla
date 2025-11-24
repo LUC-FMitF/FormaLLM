@@ -1,0 +1,51 @@
+---- MODULE Lamport 
+
+---- MODULE Lamport 
+
+(* MV CONSTANT declarations *)
+CONSTANTS
+    L,
+    P1,
+    P2,
+    P3
+    
+(* MV CONSTANT definitions *)
+CONSTANT
+    Procs <- const_1633116534008310000
+    
+(* CONSTANT definitions *)
+CONSTANT
+    Edges <- const_1633116534008311000
+    
+CONSTANT
+    Leader <- const<｜begin▁of▁sentence｜>312000
+    
+(* CONSTRAINT definition *)
+CONSTRAINT
+    constr_1633116534008313000
+    
+(* SPECIFICATION definition *)
+SPECIFICATION
+    Spec
+    
+(* CHECK_DEADLOCK *)
+CHECK_DEADLOCK
+    FALSE
+    
+(* INVARIANT definition *)
+INVARIANT
+    TypeOK
+    DT1Inv
+    
+(* PROPERTY definition *)
+PROPERTY
+    DT2
+    
+(* PROPERTIES  definition *)
+PROPERTIES  
+    CountersConsistent
+    TreeWithRoot
+    (* StableUpEdge *)
+
+(* Generated on Fri Oct 01 12:28:54 PDT 2021 *)
+====

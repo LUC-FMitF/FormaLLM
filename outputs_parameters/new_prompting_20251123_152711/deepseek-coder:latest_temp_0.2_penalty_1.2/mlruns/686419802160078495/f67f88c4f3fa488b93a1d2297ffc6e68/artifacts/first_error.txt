@@ -1,0 +1,2 @@
+==== or more Module body"
+Encountered "Module" at line 2, column 6 and token "----"

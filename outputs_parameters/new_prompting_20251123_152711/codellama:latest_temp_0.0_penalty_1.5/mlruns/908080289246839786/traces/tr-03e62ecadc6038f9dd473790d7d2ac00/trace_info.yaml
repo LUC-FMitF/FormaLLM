@@ -1,0 +1,21 @@
+execution_duration_ms: 225
+request_preview: '{"model_name": "MajorityProof", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MajorityProof.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-11T17:52:44.034Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/MajorityProof.tla\nSemantic
+  processing of module MajorityProof\nSemantic errors:\n\n*** Errors: 6\n\nline 18,
+  col 15 to line 18, col 15 of module MajorityProof\n\nCould not find declaration
+  or definition of symbol ''+''.\n\n\nline 18, col 13 to line 18, col 17 of module
+  MajorityProof\n\nCouldn''t resolve infix operator symbol `+''.\n\n\nline 19, col
+  11 to line 19, col 11 of module MajorityProof\n\nCould not find declaration or definition
+  of symbol ''<''.\n\n\nline 19, col 8 to line 19, col 20 of module MajorityProof\n\nCouldn''t
+  resolve infix operator symbol `<''.\n\n\nline 24, col 20 to line 24, col 22 of module
+  MajorityProof\n\nUnknown operator: `Len''.\n\n\nline 24, col 31 to line 24, col
+  33 of module MajorityProof\n\nUnknown operator: `Len''.\n\n\n\n", "stderr": ""}'
+state: OK
+trace_id: tr-03e62ecadc6038f9dd473790d7d2ac00
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

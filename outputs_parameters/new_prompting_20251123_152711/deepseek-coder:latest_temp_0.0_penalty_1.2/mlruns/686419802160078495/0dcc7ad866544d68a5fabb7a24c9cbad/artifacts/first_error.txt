@@ -1,0 +1,2 @@
+test/generated/ClientCentric.tla
+Lexical error at line 8, column 25.  Encountered: "\u2208" (8712), after : ""

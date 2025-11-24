@@ -1,0 +1,2 @@
+==== or more Module body"
+Encountered "EWD840" at line 12, column 1 and token "----"

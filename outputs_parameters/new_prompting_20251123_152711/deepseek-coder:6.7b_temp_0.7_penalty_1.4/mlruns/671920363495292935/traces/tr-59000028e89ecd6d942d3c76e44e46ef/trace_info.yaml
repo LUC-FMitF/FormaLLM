@@ -1,0 +1,17 @@
+execution_duration_ms: 225
+request_preview: '{"model_name": "MultiPaxos", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/MultiPaxos.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-24T16:13:24.946Z'
+response_preview: '{"returncode": 255, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/MultiPaxos.tla\nLexical
+  error at line 6, column 197.  Encountered: \"`\" (96), after : \"\"\n\nFatal errors
+  while parsing TLA+ spec in file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/MultiPaxos.tla\n\ntla2sany.semantic.AbortException\n***
+  Abort messages: 1\n\nIn module MultiPaxos\n\nCould not parse module MultiPaxos from
+  file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_deepseek-coder:6.7b/generated/MultiPaxos.tla\n\n\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-59000028e89ecd6d942d3c76e44e46ef
+trace_location:
+  mlflow_experiment:
+    experiment_id: '671920363495292935'
+  type: MLFLOW_EXPERIMENT

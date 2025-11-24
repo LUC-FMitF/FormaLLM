@@ -1,0 +1,2 @@
+-coder:6.7b/generated/KVsnap.tla
+Lexical error at line 48, column 29.  Encountered: ";" (59), after : ""

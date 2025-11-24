@@ -1,0 +1,32 @@
+execution_duration_ms: 3623
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-11-18T19:23:50.016Z'
+response_preview: '{"generations": [[{"text": "---- MODULE KVsnap -----\n------------------------------
+  MODEL KeyValueStoreSnapshotIsolationModel-----\n(**************************************************************************)\n(*
+  The set of all keys *)\nKeys == <<Set>>   (* NoVal, which all keys are initialized
+  with */ )\n\n\\*The set of transaction IDs.*/  TransactionId   == Set{<<Tid1>>>
+  , ...}     /* Instantiating ClientCentric enables us to check transaction isolation
+  guarantees this model satisfies *)\n(**************************************************************************)\n(*
+  NoVal, which all keys are initialized with */ )   (* A data store mapping keys to
+  values*)\nStore == [k ∈ Keys |-> <<NoValue>>]    /* The set of open snapshot transactions*/     (TransactionId
+  ->  {})      // Empty Transaction IDs initially. This is a placeholder for actual
+  transaction id''s *)   (*The set of writes invisible to each transaction*)\nMissed
+  == [t ∈ Transactions |-> {} ]    /* See end of file for invari...'
+state: OK
+trace_id: tr-cf5a6d90dce75c233a51ca57b2cf90c6
+trace_location:
+  mlflow_experiment:
+    experiment_id: '246597357361846690'
+  type: MLFLOW_EXPERIMENT

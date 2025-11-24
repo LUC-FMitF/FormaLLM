@@ -1,0 +1,32 @@
+execution_duration_ms: 3586
+request_preview: '[[{"content": "You are a TLA+ code generator. Output ONLY valid
+  TLA+ code. NO markdown fences, explanations, reasoning, or placeholders.", "additional_kwargs":
+  {}, "response_metadata": {}, "type": "system", "name": null, "id": null}, {"content":
+  "Basic structure:\n- Start: ---- MODULE ModuleName ----\n- End: ====\n- Required:
+  EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec", "additional_kwargs": {}, "response_metadata":
+  {}, "type": "human", "name": null, "id": null}, {"content": "# Comments:\nModification
+  History\nLast modified Wed Feb 04 16:44:37 PST 2015 by lamport\nCreated Wed Feb
+  04 13:33:09 PST 2015 by lamport\n**************************************************************************)\nThe
+  following problem was posed on an American radio program called Car *)\nTalk.  Given
+  a stone that weighs 40 pound and a balance scale, cut the  *)\nstone into 4 pieces
+  so that one can weigh any stone with an integral    *)\nweight between 1 and 40
+  pounds.                                     ...'
+request_time: '2025-11-18T20:22:41.226Z'
+response_preview: '{"generations": [[{"text": "Here is the complete TLA+ module with
+  TLC config:\n\n```tla\nMODULE BoyerMooreMajorityVote\n\nCONSTANTS Sequence, Index,
+  Value, Candidate, Majority, Count, Prefix, All\n\nVARIABLES seq : Sequence\n\nINITIAL
+  \n  seq = <input sequence of values>\n\nFUNCTIONS BoyerMooreMajorityVote(seq, j,
+  cand, lb)\n\nLOCAL INSTANCE BoyerMooreMajorityVote_1\n\nBEGIN\n\n  BoyerMooreMajorityVote_1
+  \n    := \\seq, j, cand, lb ->\n      IF j = LENGTH(seq)\n      THEN cand\n      ELSE\n        let\n          (v,
+  cnt, all_cnt) = BoyerMooreMajorityVote_1(seq, j + 1, cand, lb)\n        in\n          IF
+  cnt >= lb AND cnt > all_cnt\n          THEN cand\n          ELSE v\n        end\nEND
+  BoyerMooreMajorityVote\n\nFUNCTION BoyerMooreMajorityVote_1(seq, j, cand, lb)\n  IF
+  j = LENGTH(seq)\n  THEN (cand, 0, 0)\n  ELSE\n    let\n      (v, cnt, all_cnt) =
+  BoyerMooreMajorityVote_1(seq, j + 1, cand, lb)\n    in\n      IF seq[j] = v\n      THEN
+  (v, cnt + 1, all_cnt + 1)\n      ELSE (v, cnt, a...'
+state: OK
+trace_id: tr-7ae35e29611aed7f1c76f1836b5191ce
+trace_location:
+  mlflow_experiment:
+    experiment_id: '246597357361846690'
+  type: MLFLOW_EXPERIMENT

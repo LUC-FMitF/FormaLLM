@@ -1,0 +1,14 @@
+artifact_uri: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/mlruns/565760712564879231/f09e1a4f58d3423c95a8f028ab6e6b4b/artifacts
+end_time: 1762883974929
+entry_point_name: ''
+experiment_id: '565760712564879231'
+lifecycle_stage: active
+run_id: f09e1a4f58d3423c95a8f028ab6e6b4b
+run_name: MajorityProof
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762883974896
+status: 3
+tags: []
+user_id: arslanbisharat

@@ -1,0 +1,2 @@
+"==== or more Module body"
+Encountered "XInit" at line 19, column 3 and token ")"

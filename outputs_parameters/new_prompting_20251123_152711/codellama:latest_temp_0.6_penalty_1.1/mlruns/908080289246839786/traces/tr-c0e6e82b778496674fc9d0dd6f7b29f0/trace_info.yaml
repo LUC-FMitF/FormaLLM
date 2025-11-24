@@ -1,0 +1,16 @@
+execution_duration_ms: 254
+request_preview: '{"model_name": "VoucherCancel", "tla_path": "/home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/VoucherCancel.tla",
+  "tools_jar_path": "/opt/tla/tla2tools.jar"}'
+request_time: '2025-11-18T23:29:35.850Z'
+response_preview: '{"returncode": 0, "stdout": "\n****** SANY2 Version 2.1 created
+  24 February 2014\n\nParsing file /home/arslanbisharat/Documents/AI4SE/FormaLLM/outputs/ollama_codellama:latest/generated/VoucherCancel.tla\nParsing
+  file /tmp/FiniteSets.tla\nParsing file /tmp/Naturals.tla\nParsing file /tmp/Sequences.tla\nSemantic
+  processing of module Naturals\nSemantic processing of module Sequences\nSemantic
+  processing of module FiniteSets\nSemantic processing of module VoucherCancel\n",
+  "stderr": ""}'
+state: OK
+trace_id: tr-c0e6e82b778496674fc9d0dd6f7b29f0
+trace_location:
+  mlflow_experiment:
+    experiment_id: '908080289246839786'
+  type: MLFLOW_EXPERIMENT

@@ -1,0 +1,2 @@
+more Module body"
+Encountered "SPECIFICATION" at line 9, column 32 and token "------------------------------"
