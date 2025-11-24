@@ -1,12 +1,28 @@
 #!/usr/bin/env python3
 """
-Evaluate Generated TLA+ Specs with TLC and SANY Metrics
--------------------------------------------------------
-Evaluates each .tla spec using TLC and extracts SANY parsing metrics.
+Evaluate Generated TLA+ Specs with Comprehensive TLC and SANY Metrics
+---------------------------------------------------------------------
+Evaluates each .tla spec using TLC model checker and extracts comprehensive metrics:
 
-Logs TLC results + SANY syntax parsing metrics to MLflow and CSV.
+SANY Metrics (Syntax Analysis):
+  - Parse success/failure status
+  - Error categorization and location analysis  
+  - First error type and message extraction
 
-Author: Brian Ortiz
+TLC Metrics (Model Checking Analysis):
+  - Execution status (PASS/FAIL/ERROR/SEMANTIC_ERROR/TIMEOUT)
+  - Semantic error analysis and categorization
+  - State space exploration metrics (states, depth, outdegree)
+  - Performance metrics (execution time, memory usage)
+  - Temporal properties detection
+  - TLC configuration analysis
+
+Outputs:
+  - MLflow logging with comprehensive metrics
+  - CSV exports: sany_metrics.csv, tlc_metrics.csv, evaluation_results.csv
+  - Individual TLC log files for each model
+
+Author: Brian Ortiz  
 License: MIT
 """
 
@@ -20,6 +36,7 @@ import csv
 import mlflow
 import os
 from steps.sany_metrics import SANYMetricsCollector
+from steps.tlc_metrics import TLCMetricsCollector
 
 @step(enable_cache=False)
 def evaluate_tla(parsed: dict) -> dict:
@@ -51,6 +68,7 @@ def evaluate_tla(parsed: dict) -> dict:
 
     results = {}
     sany_metrics_list = []
+    tlc_metrics_list = []
     tlc_results_list = []
     
     # Setup model-specific MLflow tracking
@@ -92,15 +110,17 @@ def evaluate_tla(parsed: dict) -> dict:
         sany_log_path = sany_logs_dir / f"{model_name}.sany.log"
         sany_metrics = SANYMetricsCollector.extract_metrics(model_name, sany_log_path)
 
-        # Print some of the TLC output in ZenML logs
+        # Extract comprehensive TLC metrics
+        tlc_metrics = TLCMetricsCollector.extract_metrics(model_name, log_path, result.returncode)
+
+        # Print comprehensive metrics in ZenML logs
         print(result.stdout[:500])
         print(f"[SANY] Parse status: {sany_metrics.parse_status}, First error line: {sany_metrics.first_error_line}")
+        print(f"[TLC] Status: {tlc_metrics.execution_status}, Semantic errors: {tlc_metrics.semantic_error_count}, States: {tlc_metrics.distinct_states}")
 
         with mlflow.start_run(run_name=model_name, nested=True):
             mlflow.log_param("model_name", model_name)
-            mlflow.log_param("return_code", result.returncode)
             mlflow.log_artifact(str(log_path))
-
             mlflow.log_text(log_text, f"{model_name}_tlc_output.txt")
 
             # Log SANY metrics (factual data)
@@ -108,21 +128,27 @@ def evaluate_tla(parsed: dict) -> dict:
             if sany_log_path.exists():
                 mlflow.log_artifact(str(sany_log_path))
 
-            if "The specification is correct" in result.stdout:
-                result_status = "PASS"
+            # Log comprehensive TLC metrics
+            TLCMetricsCollector.log_to_mlflow(tlc_metrics)
+
+            # Use TLC metrics execution status for result
+            result_status = tlc_metrics.execution_status
+            results[model_name] = result_status
+
+            # Legacy MLflow metrics for compatibility
+            if result_status == "PASS":
                 mlflow.log_metric("tlc_result", 1)
-            elif "TLC threw an error" in result.stdout or "TLC encountered an unexpected exception" in result.stdout:
-                result_status = "ERROR"
+            elif result_status in ["ERROR", "TIMEOUT"]:
                 mlflow.log_metric("tlc_result", -1)
             else:
-                result_status = "FAIL"
                 mlflow.log_metric("tlc_result", 0)
-
+            
             mlflow.log_param("result_status", result_status)
-            results[model_name] = result_status
+            mlflow.log_param("return_code", result.returncode)
 
             # Collect for CSV export
             sany_metrics_list.append(SANYMetricsCollector.to_csv_row(sany_metrics))
+            tlc_metrics_list.append(TLCMetricsCollector.to_csv_row(tlc_metrics))
             tlc_results_list.append({"Model": model_name, "Result": result_status})
 
     
@@ -134,7 +160,15 @@ def evaluate_tla(parsed: dict) -> dict:
             writer.writeheader()
             writer.writerows(sany_metrics_list)
 
-    # Export TLC results to CSV (legacy format)
+    # Export comprehensive TLC metrics to CSV
+    if tlc_metrics_list:
+        tlc_metrics_path = eval_output_dir / "tlc_metrics.csv"
+        with tlc_metrics_path.open("w", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=TLCMetricsCollector.export_csv_header())
+            writer.writeheader()
+            writer.writerows(tlc_metrics_list)
+
+    # Export TLC results to CSV (legacy format for compatibility)
     if tlc_results_list:
         results_path = eval_output_dir / "evaluation_results.csv"
         with results_path.open("w", newline="") as f:
