@@ -1,0 +1,32 @@
+execution_duration_ms: 19535
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-12-06T18:17:05.849Z'
+response_preview: '{"generations": [[{"text": "\n---- MODULE DieHarder ----\n-----------------------------
+  MODULE DieHarder ----------------------------\n(**************************************************************************)\n(*
+  The following definitions duplicate the original Die Hard problem.     *)\n(**************************************************************************)\n\nCONSTANTS
+  Goal     =  4\n          Jug      <- 3\n          Capacity <- 5\n\nSPECIFICATION
+  Spec\nINVARIANTS TypeOK NotSolved\n\nSpec ==\n  Init /\\ [][Next]_<<Goal, Jug, Capacity>>\n\nTypeOK
+  ==\n  /\\ Goal \\in 0..4\n  /\\ Jug \\in 0..4\n  /\\ Capacity \\in 0..4\n\nNotSolved
+  ==\n  /\\ Goal > 0\n  /\\ Jug > 0\n  /\\ Capacity > 0\n  /\\ Goal > Jug\n  /\\ Goal
+  > Capacity\n\nNext ==\n  \\/ \\E Goal'' \\in 0..4 : Goal'' = Goal - 1\n  \\/ \\E
+  Jug'' \\in 0..4 : Jug'' = Jug - 1\n  \\/ \\E Capacity'' \\in 0..4 : Capacity'' =
+  Capacity - 1\n  \\/ \\E Goal'' \\in 0..4 : Goal'' = Goal - 1 /\\ Jug'' = Jug - 1\n  \\/
+  \\E Goal'' \\in 0..4 : Goa...'
+state: OK
+trace_id: tr-514be198d13620f65befaecc5f9a9d65
+trace_location:
+  mlflow_experiment:
+    experiment_id: '685151368233102682'
+  type: MLFLOW_EXPERIMENT

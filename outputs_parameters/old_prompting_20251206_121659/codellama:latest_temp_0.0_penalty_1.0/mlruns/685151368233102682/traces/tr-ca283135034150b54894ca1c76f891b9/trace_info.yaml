@@ -1,0 +1,32 @@
+execution_duration_ms: 7691
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-12-06T18:31:53.625Z'
+response_preview: '{"generations": [[{"text": "---- MODULE KVsnap ----\n------------------------------
+  MODULE KVsnap ----------------------------\n(***************************************************************************)\n(*
+  Pluscal algorithm for a simple key-value store with snapshot isolation  *)\n(* This
+  version has atomic updates of store and missed sets of txns       *)\n(***************************************************************************)\n\nVARIABLES\n  A
+  data store mapping keys to values\n  store = [k \\in Key |-> NoVal],\n  The set
+  of open snapshot transactions\n  tx = {},\n  The set of writes invisible to each
+  transaction\n  missed = [t \\in TxId |-> {}];\n\nTRANSLATION\n  BEGIN\n    START:
+  \\* Start the transaction\n    tx := tx \\union {self};\n    snapshotStore := store;
+  \\* take my snapshot of store\n    with (rk \\in SUBSET Key \\ { {} }; wk \\in SUBSET
+  Key \\ { {} }) {\n      read_keys := rk;     \\* select a random read-key-set  from
+  possible read-keys\n      write_keys :=...'
+state: OK
+trace_id: tr-ca283135034150b54894ca1c76f891b9
+trace_location:
+  mlflow_experiment:
+    experiment_id: '685151368233102682'
+  type: MLFLOW_EXPERIMENT

@@ -40,7 +40,7 @@ if env_path.exists():
 def prompt_llm() -> dict:
     project_root = Path(__file__).resolve().parent.parent
     data_dir = project_root / "data"
-    split_dir = project_root / "outputs"
+    split_dir = project_root / "Input"
 
     train_path = split_dir / "train.json"
     val_path = split_dir / "val.json"
@@ -195,16 +195,23 @@ INVARIANTS <invariant names>
     # Get LLM backend configuration from environment variables
     backend = os.getenv("LLM_BACKEND", "ollama")
     model = os.getenv("LLM_MODEL", "llama3.1")
-    
+
     # Create model-specific output directory
-    model_output_dir = project_root / "outputs" / f"{backend}_{model}"
+    # Use custom output dir if provided, otherwise use default outputs/
+    custom_output_dir = os.getenv("CUSTOM_OUTPUT_DIR")
+    if custom_output_dir:
+        model_output_dir = Path(custom_output_dir)
+    else:
+        model_output_dir = project_root / "outputs" / f"{backend}_{model}"
+
     generated_dir = model_output_dir / "generated"
     generated_dir.mkdir(parents=True, exist_ok=True)
-    
+
     # Setup model-specific MLflow tracking
     mlflow_dir = model_output_dir / "mlruns"
     mlflow_dir.mkdir(parents=True, exist_ok=True)
-    mlflow.set_tracking_uri(f"file://{mlflow_dir}")
+    # Use absolute path for MLflow URI
+    mlflow.set_tracking_uri(f"file://{mlflow_dir.resolve()}")
     mlflow.set_experiment(f"tla_prompt_{backend}_{model}")
     mlflow.langchain.autolog()
     
@@ -228,12 +235,19 @@ INVARIANTS <invariant names>
             
         elif backend == "ollama":
             base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+            temperature = float(os.getenv("OLLAMA_TEMPERATURE", "0.0"))
+            repeat_penalty = float(os.getenv("OLLAMA_REPEAT_PENALTY", "1.0"))
+            num_predict = int(os.getenv("OLLAMA_NUM_PREDICT", "4096"))
             llm = ChatOllama(
-                temperature=0, 
+                temperature=temperature,
+                repeat_penalty=repeat_penalty,
                 model=model,
-                base_url=base_url
+                base_url=base_url,
+                num_predict=num_predict
             )
+
             print(f"Ollama endpoint: {base_url}")
+            print(f"Max output tokens: {num_predict}")
             
         else:
             raise ValueError(f"Unsupported LLM backend: {backend}. Supported backends: openai, anthropic, ollama")
@@ -244,10 +258,11 @@ INVARIANTS <invariant names>
         raise
 
     print(f"Successfully initialized {backend} LLM with model {model}")
-    prompt = None  # will be built per target
+    prompt = None
     train_data = load_json_data(train_path)
     val_data = load_json_data(val_path)
     results = {}
+    module_timings = []
 
     for i, target_model in enumerate(val_data):
         module_name = get_module_base_name(target_model)
@@ -258,14 +273,17 @@ INVARIANTS <invariant names>
         if not target_comments:
             warnings.warn(f"Skipping model {target_model.get('model', 'UNKNOWN')} due to missing comments.")
             continue
-        # Compose the user message for the target
         user_msg = f"# Comments:\n{target_comments}"
         if target_cfg:
             user_msg += f"\n\n# TLC Configuration:\n{target_cfg}"
-        # Build the full prompt as a list of messages
         all_messages = [system_message] + few_shot_msgs + [HumanMessage(content=user_msg)]
         print(f"\n--- Generating spec for module: {module_name} ---")
+        module_start_time = time.time()
         response = llm.invoke(all_messages)
+        module_end_time = time.time()
+        module_duration = module_end_time - module_start_time
+        module_timings.append((module_name, module_duration))
+        print(f"Module {module_name} completed in {module_duration:.2f} seconds")
 
         # Handle response (string or Message)
         if hasattr(response, "content"):
@@ -295,6 +313,17 @@ INVARIANTS <invariant names>
         output_cfg_path.write_text(cfg_part)
 
         results[module_name] = tla_body
-        #time.sleep(10)
+
+    timing_csv_path = model_output_dir / "module_timings.csv"
+    with open(timing_csv_path, 'w') as f:
+        f.write("Module,Duration_Seconds,Duration_Minutes\n")
+        for module, duration in sorted(module_timings, key=lambda x: x[1], reverse=True):
+            f.write(f"{module},{duration:.2f},{duration/60:.2f}\n")
+
+    print(f"\n=== Module Timing Summary ===")
+    print(f"Saved detailed timings to: {timing_csv_path}")
+    print("\nTop 5 slowest modules:")
+    for module, duration in sorted(module_timings, key=lambda x: x[1], reverse=True)[:5]:
+        print(f"  {module}: {duration:.2f}s ({duration/60:.2f} min)")
 
     return results

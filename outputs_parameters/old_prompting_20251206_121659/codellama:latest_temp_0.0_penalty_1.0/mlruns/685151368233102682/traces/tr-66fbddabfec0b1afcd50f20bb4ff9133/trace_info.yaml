@@ -1,0 +1,31 @@
+execution_duration_ms: 105201
+request_preview: '[[{"content": "You are a TLA+ code generator.\n\nYou must output
+  ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.\nYou must NEVER include
+  markdown fences (```) or explanations.\nYou must NEVER include reasoning text, English
+  descriptions, or comments.\nYou must NEVER output placeholders like <ModuleName>
+  or <constant> literally.\n\nStrict formatting rules:\n1. Output ONLY the complete
+  TLA+ module.\n2. The module must start with exactly this line:\n   ---- MODULE ModuleName
+  ----\n3. The module must end with exactly this line:\n   ====\n4. Include only valid
+  TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.\n5. Always define
+  every symbol before using it.\n6. After the module, include a TLC configuration
+  section in the exact format shown below.\n7. No blank sections, no undefined names,
+  no ellipses, no placeholders.\n\n## TLA+ Syntax Hints\n- A formula [A]_v is called
+  a temporal formula, and is shorthand for the formula A \\/ v'' = v.  In other words,
+  the for...'
+request_time: '2025-12-06T18:29:43.877Z'
+response_preview: '{"generations": [[{"text": "---- MODULE BinarySearch ----\n---------------------------------
+  MODULE BinarySearch -------------------------------\n(**************************************************************************)\n(*
+  This module defines a binary search algorithm for finding an item in a *)\n(* sorted
+  sequence, and contains a TLAPS-checked proof of its safety       *)\n(* property.  We
+  assume a sorted sequence seq with elements in some set    *)\n(* Values of integers
+  and a number val in Values, it sets the value        *)\n(* `result'' to either
+  a number i with seq[i] = val, or to 0 if there is no *)\n(* such i.                                                                 *)\n**************************************************************************)\n--fair
+  algorithm BinarySearch {\nvariables seq \\in SortedSeqs, val \\in Values,\nlow =
+  1, high = Len(seq), result = 0 ;\n{ a: while (low =< high /\\ result = 0) {\nwith
+  (mid = (low + high) \\div 2, mval = seq[mid]) {\nif (...'
+state: OK
+trace_id: tr-66fbddabfec0b1afcd50f20bb4ff9133
+trace_location:
+  mlflow_experiment:
+    experiment_id: '685151368233102682'
+  type: MLFLOW_EXPERIMENT
