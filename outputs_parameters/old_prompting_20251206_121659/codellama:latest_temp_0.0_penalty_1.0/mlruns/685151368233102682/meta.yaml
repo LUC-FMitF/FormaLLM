@@ -1,6 +1,0 @@
-artifact_location: file:///home/arslanbisharat/Documents/AI4SE/FormaLLM - Single Prompt/outputs_parameters/old_prompting_20251206_121659/codellama:latest_temp_0.0_penalty_1.0/mlruns/685151368233102682
-creation_time: 1765045025642
-experiment_id: '685151368233102682'
-last_update_time: 1765045025642
-lifecycle_stage: active
-name: tla_prompt_ollama_codellama:latest

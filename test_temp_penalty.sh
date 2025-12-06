@@ -56,6 +56,14 @@ SMALL_MODEL_TIMEOUT=600
 MEDIUM_MODEL_TIMEOUT=1200
 LARGE_MODEL_TIMEOUT=1800
 
+# Multi-GPU Configuration
+# Set to empty string to use all available GPUs for maximum performance
+export CUDA_VISIBLE_DEVICES=""
+# Alternative: Use specific GPUs (e.g., "0,1" for both GPUs)
+# export CUDA_VISIBLE_DEVICES="0,1"
+
+
+
 SUMMARY_FILE="prompting_summary.csv"
 echo "Model,Temperature,Repeat_Penalty,PASS,FAIL,ERROR,Total,Success_Rate(%),Exit_Status,Duration_Minutes" > "$SUMMARY_FILE"
 
@@ -171,7 +179,7 @@ run_test() {
     local timeout_seconds=$(get_timeout_for_model "$model")
     local start_time=$(date +%s)
 
-    export CUDA_VISIBLE_DEVICES=0
+    # CUDA_VISIBLE_DEVICES is set globally to allow use of all GPUs
     export LLM_BACKEND="ollama"
     export LLM_MODEL="$model"
     export OLLAMA_TEMPERATURE="$temperature"
@@ -243,6 +251,7 @@ skipped_count=0
 
 echo "Configuration:"
 echo "  Skip successful: $SKIP_SUCCESSFUL"
+echo "  GPU Usage: All available GPUs (CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES)"
 if [ -n "$PREVIOUS_RUN" ] && [ "$SKIP_SUCCESSFUL" = true ]; then
     echo "  Previous run: $PREVIOUS_RUN"
 fi
