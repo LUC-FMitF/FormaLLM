@@ -1,18 +1,3 @@
-"""
-===============================================================================
-TLA+ Model Synthesis from Comments via Few-Shot Prompting
-===============================================================================
-This script sets up a pipeline for training and evaluating an LLM (via LangChain)
-to generate TLA+ specifications from structured comments using few-shot learning.
-
-It loads training examples from train.json and performs inference on one or more
-models from val.json. The test set is not used in this script and should be
-reserved for final evaluation.
-
-Author: Brian Ortiz
-License: MIT
-===============================================================================
-"""
 
 import json
 import os
@@ -23,13 +8,12 @@ from pathlib import Path
 from dotenv import load_dotenv
 import mlflow
 from langchain_core.prompts import PromptTemplate
-from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 from langchain_ollama import ChatOllama
 from zenml import step
 
-# Load environment variables from .env file (critical for ZenML step execution)
 project_root_mlflow = Path(__file__).resolve().parent.parent
 env_path = project_root_mlflow / ".env"
 if env_path.exists():
@@ -42,9 +26,7 @@ def prompt_llm() -> dict:
     data_dir = project_root / "data"
     split_dir = project_root / "Input"
 
-    train_path = split_dir / "train.json"
     val_path = split_dir / "val.json"
-    NUM_FEW_SHOTS = int(os.getenv("NUM_FEW_SHOTS", "3"))
 
     def load_json_data(path):
         with open(path) as f:
@@ -79,13 +61,64 @@ def prompt_llm() -> dict:
         warnings.warn(f"[{model_name}] File '{filename}' not found.")
         return ""
 
-    def clean_llm_response(response_text: str, module_name: str) -> str:
+    def load_partial_code(model_meta: dict) -> dict:
+        """
+        Load prefix and suffix for fill-in-the-middle prompting.
+        Returns a dict with:
+        - 'prefix': first 30% of code
+        - 'suffix': last 30% of code
+        - 'middle_ground_truth': actual middle 40% (for evaluation)
+        - 'full_code': complete code (for reference)
+        """
+        model_name = model_meta.get("model", "UNKNOWN")
+
+        # Load the full clean TLA+ file
+        full_tla = load_text(model_meta, "tla_clean")
+        if not full_tla:
+            return {"prefix": "", "suffix": "", "middle_ground_truth": "", "full_code": ""}
+
+        lines = full_tla.split('\n')
+        total_lines = len(lines)
+
+        # Calculate split points for 30%-40%-30% split
+        # Ensure at least 3 lines in each section
+        prefix_lines = max(3, int(total_lines * 0.3))
+        suffix_lines = max(3, int(total_lines * 0.3))
+
+        # Adjust if splits would overlap (for very small files)
+        if prefix_lines + suffix_lines >= total_lines:
+            # For small files, split evenly
+            prefix_lines = total_lines // 3
+            suffix_lines = total_lines // 3
+
+        middle_start = prefix_lines
+        middle_end = total_lines - suffix_lines
+
+        # Extract sections
+        prefix = '\n'.join(lines[:prefix_lines])
+        middle = '\n'.join(lines[middle_start:middle_end]) if middle_end > middle_start else ""
+        suffix = '\n'.join(lines[middle_end:])
+
+        return {
+            "prefix": prefix,
+            "suffix": suffix,
+            "middle_ground_truth": middle,
+            "full_code": full_tla,
+            "prefix_lines": prefix_lines,
+            "middle_lines": middle_end - middle_start,
+            "suffix_lines": suffix_lines,
+            "total_lines": total_lines
+        }
+
+    def clean_llm_response(response_text: str) -> str:
+        """Clean the LLM response by removing markdown fences and explanatory text."""
         if "```" in response_text:
             code_blocks = re.findall(r'```(?:tla|tlaplus)?\n(.*?)\n```', response_text, re.DOTALL)
             if code_blocks:
                 response_text = code_blocks[0]
             else:
                 response_text = response_text.replace("```tla", "").replace("```", "")
+
         explanatory_phrases = [
             r'^Here is .*?:[\s\n]*',
             r'^Here\'s .*?:[\s\n]*',
@@ -96,101 +129,39 @@ def prompt_llm() -> dict:
         ]
         for phrase in explanatory_phrases:
             response_text = re.sub(phrase, '', response_text, flags=re.IGNORECASE | re.MULTILINE)
-        if "---- MODULE" in response_text:
-            module_start = response_text.find("---- MODULE")
-            response_text = response_text[module_start:]
-        module_match = re.search(r'---- MODULE (\w+) ----', response_text)
-        if module_match:
-            llm_module_name = module_match.group(1)
-            if llm_module_name != module_name:
-                response_text = response_text.replace(
-                    f"---- MODULE {llm_module_name} ----",
-                    f"---- MODULE {module_name} ----",
-                    1
-                )
-                response_text = re.sub(
-                    r'-+ MODULE ' + re.escape(llm_module_name) + r' -+',
-                    '',
-                    response_text
-                )
-        lines = response_text.split('\n')
-        cleaned_lines = []
-        seen_module_header = False
-        for line in lines:
-            if re.match(r'^-+\s*MODULE\s+\w+\s+-+$', line):
-                if not seen_module_header:
-                    cleaned_lines.append(line)
-                    seen_module_header = True
-            else:
-                cleaned_lines.append(line)
-        response_text = '\n'.join(cleaned_lines)
+
         return response_text.strip()
-            
-    def build_few_shot_messages(examples: list[dict]) -> list:
-        messages = []
-        for ex in examples:
-            comments = load_text(ex, "comments_clean")
-            full_tla = load_text(ex, "tla_original")
-            cfg = load_text(ex, "cfg")
-            module_name = get_module_base_name(ex)
-            if not comments or not full_tla:
-                continue
-            # Compose the user message (comments + optional cfg)
-            user_msg = f"# Comments:\n{comments}"
-            if cfg:
-                user_msg += f"\n\n# TLC Configuration:\n{cfg}"
-            # Compose the assistant message (TLA+ spec)
-            ai_msg = f"---- MODULE {module_name} ----\n{full_tla}\n===="
-            messages.append(HumanMessage(content=user_msg))
-            messages.append(AIMessage(content=ai_msg))
-        return messages
 
+    # System message for fill-in-the-middle approach
     system_message = SystemMessage(
-        content="""You are a TLA+ code generator.
+        content="""You are a TLA+ code completion assistant using fill-in-the-middle approach.
 
-You must output ONLY valid TLA+ code that can be parsed by the TLA+ Toolbox.
-You must NEVER include markdown fences (```) or explanations.
-You must NEVER include reasoning text, English descriptions, or comments.
-You must NEVER output placeholders like <ModuleName> or <constant> literally.
+                    You will be given:
+                    1. Comments describing the TLA+ specification
+                    2. Optional TLC configuration
+                    3. PREFIX: The beginning portion of the TLA+ code
+                    4. SUFFIX: The ending portion of the TLA+ code
 
-Strict formatting rules:
-1. Output ONLY the complete TLA+ module.
-2. The module must start with exactly this line:
-   ---- MODULE ModuleName ----
-3. The module must end with exactly this line:
-   ====
-4. Include only valid TLA+ constructs: EXTENDS, CONSTANTS, VARIABLES, Init, Next, Spec.
-5. Always define every symbol before using it.
-6. After the module, include a TLC configuration section in the exact format shown below.
-7. No blank sections, no undefined names, no ellipses, no placeholders.
+                    Your task is to generate ONLY the MIDDLE section that connects the PREFIX and SUFFIX.
 
-## TLA+ Syntax Hints
-- A formula [A]_v is called a temporal formula, and is shorthand for the formula A \/ v' = v.  In other words, the formula is true if A is true or if the value of v remains unchanged.  Usually, v is a tuple of the spec's variables.
-- The symbol \`#\` is alternative syntax used for inequality in TLA+; the other symbol is \`/=\".
+                    CRITICAL INSTRUCTIONS:
+                    1. Output ONLY the middle section code that fills the gap between PREFIX and SUFFIX
+                    2. DO NOT repeat the PREFIX code in your output
+                    3. DO NOT repeat the SUFFIX code in your output
+                    4. Your output should start immediately after where PREFIX ends
+                    5. Your output should end immediately before where SUFFIX begins
+                    6. The code must be valid TLA+ that properly connects PREFIX to SUFFIX
+                    7. Ensure proper indentation matching the PREFIX/SUFFIX style
+                    8. NEVER include markdown fences (```) or explanations
+                    9. NEVER include reasoning text or comments
+                    10. No placeholders, no ellipses, only valid TLA+ code
 
-## TLA+ Convention Hints
-- The type correctness invariant is typically called TypeOK.
-- Users can employ TLA labels as a means to conceptually associate a comment with a sub-formula like a specific disjunct or conjunct of a TLA formula. Even though these labels have no other function, they facilitate referencing particular parts of the formula from a comment.
-
-Required structure (copy exactly; replace bracketed parts with concrete TLA+ code):
-
----- MODULE ModuleName ----
-EXTENDS <standard modules>
-CONSTANTS <constants>
-VARIABLES <variables>
-
-Init == <initial state predicate>
-Next == <next-state relation>
-Spec == Init /\ [][Next]_<<variables>>
-
-====
-# TLC Configuration:
-CONSTANTS
-  <constant> = <value>
-SPECIFICATION Spec
-INVARIANTS <invariant names>
-"""
-)
+                    Example:
+                    If PREFIX ends with: VARIABLES x, y
+                    And SUFFIX starts with: Next == ...
+                    Then output the middle parts like: TypeOK == ..., Init == ..., etc.
+                """
+    )
 
     # Get LLM backend configuration from environment variables
     backend = os.getenv("LLM_BACKEND", "ollama")
@@ -258,25 +229,37 @@ INVARIANTS <invariant names>
         raise
 
     print(f"Successfully initialized {backend} LLM with model {model}")
-    prompt = None
-    train_data = load_json_data(train_path)
     val_data = load_json_data(val_path)
     results = {}
     module_timings = []
 
-    for i, target_model in enumerate(val_data):
+    for target_model in val_data:
         module_name = get_module_base_name(target_model)
-        few_shot_examples = train_data[:NUM_FEW_SHOTS]
-        few_shot_msgs = build_few_shot_messages(few_shot_examples)
         target_comments = load_text(target_model, "comments_clean")
         target_cfg = load_text(target_model, "cfg")
         if not target_comments:
             warnings.warn(f"Skipping model {target_model.get('model', 'UNKNOWN')} due to missing comments.")
             continue
+
+        # Load prefix/suffix for fill-in-the-middle
+        partial_data = load_partial_code(target_model)
+
+        if not partial_data or not partial_data["prefix"] or not partial_data["suffix"]:
+            warnings.warn(f"Skipping model {target_model.get('model', 'UNKNOWN')} - unable to create PREFIX/SUFFIX split.")
+            continue
+
+        # Build the FIM prompt
         user_msg = f"# Comments:\n{target_comments}"
         if target_cfg:
             user_msg += f"\n\n# TLC Configuration:\n{target_cfg}"
-        all_messages = [system_message] + few_shot_msgs + [HumanMessage(content=user_msg)]
+
+        user_msg += f"\n\n# PREFIX (first 30% of code):\n{partial_data['prefix']}"
+        user_msg += f"\n\n# SUFFIX (last 30% of code):\n{partial_data['suffix']}"
+        user_msg += f"\n\n# YOUR TASK: Generate ONLY the MIDDLE section that connects PREFIX and SUFFIX."
+        user_msg += f"\n# DO NOT include PREFIX or SUFFIX in your output!"
+
+        # No few-shot examples for FIM - the PREFIX/SUFFIX provide the context
+        all_messages = [system_message, HumanMessage(content=user_msg)]
         print(f"\n--- Generating spec for module: {module_name} ---")
         module_start_time = time.time()
         response = llm.invoke(all_messages)
@@ -292,25 +275,51 @@ INVARIANTS <invariant names>
             response_text = str(response).strip()
 
         # Clean the LLM response
-        response_text = clean_llm_response(response_text, module_name)
+        response_text = clean_llm_response(response_text)
 
-        if "# TLC Configuration:" in response_text:
-            tla_part, cfg_part = response_text.split("# TLC Configuration:", 1)
-            cfg_part = cfg_part.replace("-----END CFG-----", "").strip()
-        else:
-            tla_part = response_text
-            cfg_part = ""
+        # The response is just the middle section
+        # We need to reconstruct the full file: PREFIX + MIDDLE + SUFFIX
+        generated_middle = response_text.strip()
 
-        tla_body = tla_part.strip()
+        # Reconstruct the complete TLA+ file
+        tla_body = partial_data["prefix"] + "\n" + generated_middle + "\n" + partial_data["suffix"]
+
+        # Save the generated middle section separately for evaluation
+        middle_output_path = generated_dir / f"{module_name}_middle_generated.txt"
+        middle_output_path.write_text(generated_middle)
+
+        # Save the ground truth middle section for comparison
+        ground_truth_middle_path = generated_dir / f"{module_name}_middle_ground_truth.txt"
+        ground_truth_middle_path.write_text(partial_data["middle_ground_truth"])
+
+        # Save metadata
+        metadata_path = generated_dir / f"{module_name}.metadata.txt"
+        metadata_content = f"""Generation Method: Fill-in-the-Middle (Prefix-Suffix)
+Prefix Lines: {partial_data['prefix_lines']}
+Middle Lines (Ground Truth): {partial_data['middle_lines']}
+Suffix Lines: {partial_data['suffix_lines']}
+Total Lines: {partial_data['total_lines']}
+Generated Middle Lines: {len(generated_middle.split(chr(10)))}
+
+Split Ratio: 30% prefix - 40% middle - 30% suffix
+Evaluation: Only the generated middle section is compared against ground truth middle.
+"""
+        metadata_path.write_text(metadata_content)
+
+        # Ensure proper module format
         if not tla_body.startswith(f"---- MODULE"):
             tla_body = f"---- MODULE {module_name} ----\n" + tla_body
         if not tla_body.rstrip().endswith("===="):
             tla_body = tla_body.rstrip() + "\n===="
 
+        # Write output files
         output_tla_path = generated_dir / f"{module_name}.tla"
         output_cfg_path = generated_dir / f"{module_name}.cfg"
         output_tla_path.write_text(tla_body)
-        output_cfg_path.write_text(cfg_part)
+
+        # Copy the original cfg file
+        if target_cfg:
+            output_cfg_path.write_text(target_cfg)
 
         results[module_name] = tla_body
 

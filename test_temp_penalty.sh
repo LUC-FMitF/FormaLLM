@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VENV_PATH="/home/arslanbisharat/Documents/AI4SE/FormaLLM - Single Prompt/venv"
+VENV_PATH="/home/arslanbisharat/Documents/AI4SE/FormaLLM - Fill in Middle/venv"
 if [ -d "$VENV_PATH" ]; then
     source "$VENV_PATH/bin/activate"
 else
@@ -9,8 +9,8 @@ else
     exit 1
 fi
 
-TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-OUTPUT_BASE="outputs_parameters/old_prompting_${TIMESTAMP}"
+# Use specific output directory
+OUTPUT_BASE="outputs_parameters/old_prompting_20251206_152912"
 
 mkdir -p "$OUTPUT_BASE"
 
@@ -56,15 +56,39 @@ SMALL_MODEL_TIMEOUT=600
 MEDIUM_MODEL_TIMEOUT=1200
 LARGE_MODEL_TIMEOUT=1800
 
+<<<<<<< Updated upstream
 SUMMARY_FILE="prompting_summary.csv"
 echo "Model,Temperature,Repeat_Penalty,PASS,FAIL,ERROR,Total,Success_Rate(%),Exit_Status,Duration_Minutes" > "$SUMMARY_FILE"
 
 ERROR_LOG="error_summary.log"
 echo "Experiment Error Log - $(date)" > "$ERROR_LOG"
 echo "======================================" >> "$ERROR_LOG"
+=======
+# Multi-GPU Configuration
+# Set to empty string to use all available GPUs for maximum performance
+export CUDA_VISIBLE_DEVICES=""
+# Alternative: Use specific GPUs (e.g., "0,1" for both GPUs)
+# export CUDA_VISIBLE_DEVICES="0,1"
 
-SUMMARY_FILE_BACKUP="$OUTPUT_BASE/prompting_summary.csv"
-ERROR_LOG_BACKUP="$OUTPUT_BASE/error_summary.log"
+
+
+SUMMARY_FILE="$OUTPUT_BASE/prompting_summary.csv"
+# Only write header if file doesn't exist (for resuming runs)
+if [ ! -f "$SUMMARY_FILE" ]; then
+    echo "Model,Temperature,Repeat_Penalty,PASS,FAIL,ERROR,Total,Success_Rate(%),Exit_Status,Duration_Minutes" > "$SUMMARY_FILE"
+fi
+>>>>>>> Stashed changes
+
+ERROR_LOG="$OUTPUT_BASE/error_summary.log"
+# Only write header if file doesn't exist (for resuming runs)
+if [ ! -f "$ERROR_LOG" ]; then
+    echo "Experiment Error Log - $(date)" > "$ERROR_LOG"
+    echo "======================================" >> "$ERROR_LOG"
+else
+    echo "" >> "$ERROR_LOG"
+    echo "Resumed at $(date)" >> "$ERROR_LOG"
+    echo "======================================" >> "$ERROR_LOG"
+fi
 
 check_disk_space() {
     local available_gb=$(df -BG . | tail -1 | awk '{print $4}' | sed 's/G//')
@@ -116,26 +140,17 @@ already_succeeded() {
     local temperature=$2
     local penalty=$3
 
-    if [ "$SKIP_SUCCESSFUL" = false ] || [ -z "$PREVIOUS_RUN" ]; then
+    if [ "$SKIP_SUCCESSFUL" = false ]; then
         return 1
     fi
 
-    if [ ! -d "$PREVIOUS_RUN" ]; then
-        return 1
-    fi
+    # Check if this experiment already exists in current OUTPUT_BASE
+    local current_dir="$OUTPUT_BASE/${model}_temp_${temperature}_penalty_${penalty}"
 
-    local prev_dir="$PREVIOUS_RUN/${model}_temp_${temperature}_penalty_${penalty}"
-
-    if [ -f "$prev_dir/evaluations/evaluation_results.csv" ]; then
-        local total=$(tail -n +2 "$prev_dir/evaluations/evaluation_results.csv" 2>/dev/null | wc -l)
+    if [ -f "$current_dir/evaluations/evaluation_results.csv" ]; then
+        local total=$(tail -n +2 "$current_dir/evaluations/evaluation_results.csv" 2>/dev/null | wc -l)
         if [ "$total" -gt 0 ]; then
-            local status=$(categorize_error "$prev_dir/run.log" 2>/dev/null)
-            if [ "$status" = "SUCCESS" ] || [ "$status" = "PIPELINE_FAILED" ]; then
-                local new_dir="$OUTPUT_BASE/${model}_temp_${temperature}_penalty_${penalty}"
-                mkdir -p "$new_dir"
-                cp -r "$prev_dir"/* "$new_dir/" 2>/dev/null || true
-                return 0
-            fi
+            return 0  # Already completed, skip it
         fi
     fi
 
@@ -149,15 +164,7 @@ run_test() {
     local output_dir="$OUTPUT_BASE/${model}_temp_${temperature}_penalty_${penalty}"
 
     if already_succeeded "$model" "$temperature" "$penalty"; then
-        local error_status=$(categorize_error "$output_dir/run.log")
-        if [ -f "$output_dir/evaluations/evaluation_results.csv" ]; then
-            total=$(tail -n +2 "$output_dir/evaluations/evaluation_results.csv" | wc -l)
-            pass=$(tail -n +2 "$output_dir/evaluations/evaluation_results.csv" | grep -c "^[^,]*,PASS" || true)
-            fail=$(tail -n +2 "$output_dir/evaluations/evaluation_results.csv" | grep -c "^[^,]*,FAIL" || true)
-            error=$(tail -n +2 "$output_dir/evaluations/evaluation_results.csv" | grep -c "^[^,]*,ERROR" || true)
-            rate=$(awk "BEGIN {printf \"%.2f\", ($pass/$total)*100}")
-            echo "$model,$temperature,$penalty,$pass,$fail,$error,$total,$rate,SKIPPED_${error_status},0.00" >> "$SUMMARY_FILE"
-        fi
+        # Already completed, skip without adding to summary again
         return 0
     fi
 
@@ -275,8 +282,7 @@ for model in "${MODELS[@]}"; do
 done
 echo ""
 
-cp "$SUMMARY_FILE" "$SUMMARY_FILE_BACKUP"
-cp "$ERROR_LOG" "$ERROR_LOG_BACKUP"
+# Summary files are already in $OUTPUT_BASE
 
 # Generate combined module timings report
 COMBINED_TIMINGS="$OUTPUT_BASE/combined_module_timings.csv"
@@ -340,3 +346,25 @@ fi
 
 echo ""
 echo "Detailed error log: $ERROR_LOG"
+
+# Also copy summary to root directory for easy access (append if it exists)
+if [ -f ./prompting_summary.csv ]; then
+    # File exists, append new data (skip header)
+    tail -n +2 "$SUMMARY_FILE" >> ./prompting_summary.csv
+else
+    # File doesn't exist, copy entire file
+    cp "$SUMMARY_FILE" ./prompting_summary.csv
+fi
+
+if [ -f ./error_summary.log ]; then
+    # File exists, append new data
+    tail -n +1 "$ERROR_LOG" >> ./error_summary.log
+else
+    # File doesn't exist, copy entire file
+    cp "$ERROR_LOG" ./error_summary.log
+fi
+
+echo ""
+echo "Root directory updates:"
+echo "  - ./prompting_summary.csv (appended)"
+echo "  - ./error_summary.log (appended)"
