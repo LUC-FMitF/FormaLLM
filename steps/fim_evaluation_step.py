@@ -1,14 +1,14 @@
 
 import os
 import csv
-import math
-from collections import Counter
 from pathlib import Path
 from typing import Dict, List
 from zenml import step
 import mlflow
 import difflib
 from dataclasses import dataclass
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
+from rouge_score import rouge_scorer
 
 
 @dataclass
@@ -22,6 +22,8 @@ class FIMMetrics:
     matching_lines: int
     edit_distance: int
     bleu_score: float
+    rouge_1_f1: float
+    rouge_2_f1: float
     rouge_l_f1: float
 
     def to_dict(self) -> Dict:
@@ -31,6 +33,8 @@ class FIMMetrics:
             "Line_Accuracy": f"{self.line_accuracy:.2%}",
             "Similarity_Ratio": f"{self.similarity_ratio:.4f}",
             "BLEU": f"{self.bleu_score:.4f}",
+            "ROUGE_1_F1": f"{self.rouge_1_f1:.4f}",
+            "ROUGE_2_F1": f"{self.rouge_2_f1:.4f}",
             "ROUGE_L_F1": f"{self.rouge_l_f1:.4f}",
             "GT_Lines": self.total_lines_gt,
             "Generated_Lines": self.total_lines_generated,
@@ -57,60 +61,33 @@ def calculate_edit_distance(s1: str, s2: str) -> int:
     return previous_row[-1]
 
 
-def calculate_bleu(reference: str, candidate: str, max_n: int = 4) -> float:
-    ref_tokens = reference.split()
+def calculate_bleu(reference: str, candidate: str) -> float:
+    ref_tokens = [reference.split()]
     cand_tokens = candidate.split()
 
     if len(cand_tokens) == 0:
         return 0.0
 
-    precisions = []
-    for n in range(1, max_n + 1):
-        ref_ngrams = Counter([tuple(ref_tokens[i:i+n]) for i in range(len(ref_tokens)-n+1)])
-        cand_ngrams = Counter([tuple(cand_tokens[i:i+n]) for i in range(len(cand_tokens)-n+1)])
-
-        overlap = sum((ref_ngrams & cand_ngrams).values())
-        total = sum(cand_ngrams.values())
-
-        if total == 0:
-            precisions.append(0)
-        else:
-            precisions.append(overlap / total)
-
-    if min(precisions) == 0:
-        return 0.0
-
-    brevity_penalty = min(1.0, math.exp(1 - len(ref_tokens) / len(cand_tokens))) if len(ref_tokens) > 0 else 0
-    geometric_mean = math.exp(sum(math.log(p) if p > 0 else float('-inf') for p in precisions) / len(precisions))
-
-    return brevity_penalty * geometric_mean
+    smoothing = SmoothingFunction().method1
+    return sentence_bleu(ref_tokens, cand_tokens, smoothing_function=smoothing)
 
 
-def calculate_rouge_l(reference: str, candidate: str) -> dict:
-    ref_tokens = reference.split()
-    cand_tokens = candidate.split()
+def calculate_rouge_scores(reference: str, candidate: str) -> dict:
+    if not reference or not candidate:
+        return {
+            "rouge1_f1": 0.0,
+            "rouge2_f1": 0.0,
+            "rougeL_f1": 0.0
+        }
 
-    if len(ref_tokens) == 0 or len(cand_tokens) == 0:
-        return {"precision": 0.0, "recall": 0.0, "f1": 0.0}
+    scorer = rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=False)
+    scores = scorer.score(reference, candidate)
 
-    lcs_length = 0
-    lengths = [[0] * (len(cand_tokens) + 1) for _ in range(len(ref_tokens) + 1)]
-
-    for i in range(1, len(ref_tokens) + 1):
-        for j in range(1, len(cand_tokens) + 1):
-            if ref_tokens[i-1] == cand_tokens[j-1]:
-                lengths[i][j] = lengths[i-1][j-1] + 1
-                lcs_length = max(lcs_length, lengths[i][j])
-            else:
-                lengths[i][j] = max(lengths[i-1][j], lengths[i][j-1])
-
-    lcs_length = lengths[len(ref_tokens)][len(cand_tokens)]
-
-    precision = lcs_length / len(cand_tokens) if len(cand_tokens) > 0 else 0
-    recall = lcs_length / len(ref_tokens) if len(ref_tokens) > 0 else 0
-    f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0
-
-    return {"precision": precision, "recall": recall, "f1": f1}
+    return {
+        "rouge1_f1": scores['rouge1'].fmeasure,
+        "rouge2_f1": scores['rouge2'].fmeasure,
+        "rougeL_f1": scores['rougeL'].fmeasure
+    }
 
 
 def evaluate_middle_section(generated_path: Path, ground_truth_path: Path, model_name: str) -> FIMMetrics:
@@ -125,6 +102,8 @@ def evaluate_middle_section(generated_path: Path, ground_truth_path: Path, model
             matching_lines=0,
             edit_distance=0,
             bleu_score=0.0,
+            rouge_1_f1=0.0,
+            rouge_2_f1=0.0,
             rouge_l_f1=0.0
         )
 
@@ -139,6 +118,8 @@ def evaluate_middle_section(generated_path: Path, ground_truth_path: Path, model
             matching_lines=0,
             edit_distance=0,
             bleu_score=0.0,
+            rouge_1_f1=0.0,
+            rouge_2_f1=0.0,
             rouge_l_f1=0.0
         )
 
@@ -151,11 +132,11 @@ def evaluate_middle_section(generated_path: Path, ground_truth_path: Path, model
     matcher = difflib.SequenceMatcher(None, ground_truth_lines, generated_lines)
     matching_blocks = matcher.get_matching_blocks()
     matching_lines = sum(block.size for block in matching_blocks if block.size > 0)
-    line_accuracy = matching_lines / max(len(ground_truth_lines), 1)
+    line_accuracy = matching_lines / len(ground_truth_lines) if len(ground_truth_lines) > 0 else 0.0
     similarity_ratio = difflib.SequenceMatcher(None, ground_truth_text, generated_text).ratio()
     edit_distance = calculate_edit_distance(ground_truth_text, generated_text)
     bleu_score = calculate_bleu(ground_truth_text, generated_text)
-    rouge_scores = calculate_rouge_l(ground_truth_text, generated_text)
+    rouge_scores = calculate_rouge_scores(ground_truth_text, generated_text)
 
     return FIMMetrics(
         model_name=model_name,
@@ -167,7 +148,9 @@ def evaluate_middle_section(generated_path: Path, ground_truth_path: Path, model
         matching_lines=matching_lines,
         edit_distance=edit_distance,
         bleu_score=bleu_score,
-        rouge_l_f1=rouge_scores["f1"]
+        rouge_1_f1=rouge_scores["rouge1_f1"],
+        rouge_2_f1=rouge_scores["rouge2_f1"],
+        rouge_l_f1=rouge_scores["rougeL_f1"]
     )
 
 
@@ -207,6 +190,8 @@ def evaluate_fim_generation(parsed: dict) -> dict:
             mlflow.log_metric("line_accuracy", metrics.line_accuracy)
             mlflow.log_metric("similarity_ratio", metrics.similarity_ratio)
             mlflow.log_metric("bleu_score", metrics.bleu_score)
+            mlflow.log_metric("rouge_1_f1", metrics.rouge_1_f1)
+            mlflow.log_metric("rouge_2_f1", metrics.rouge_2_f1)
             mlflow.log_metric("rouge_l_f1", metrics.rouge_l_f1)
             mlflow.log_metric("gt_lines", metrics.total_lines_gt)
             mlflow.log_metric("generated_lines", metrics.total_lines_generated)
@@ -222,8 +207,8 @@ def evaluate_fim_generation(parsed: dict) -> dict:
         fim_metrics_path = eval_output_dir / "fim_metrics.csv"
         with fim_metrics_path.open("w", newline="") as f:
             fieldnames = ["Model", "Exact_Match", "Line_Accuracy", "Similarity_Ratio",
-                         "BLEU", "ROUGE_L_F1", "GT_Lines", "Generated_Lines",
-                         "Matching_Lines", "Edit_Distance"]
+                         "BLEU", "ROUGE_1_F1", "ROUGE_2_F1", "ROUGE_L_F1",
+                         "GT_Lines", "Generated_Lines", "Matching_Lines", "Edit_Distance"]
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(metrics_list)
