@@ -7,12 +7,18 @@ from zenml import step
 def graph_results() -> None:
     import os
     project_root = Path(__file__).resolve().parent.parent
-    
+
     # Get model info from environment
     backend = os.getenv("LLM_BACKEND", "ollama")
     model = os.getenv("LLM_MODEL", "llama3.1")
-    model_output_dir = project_root / "outputs" / f"{backend}_{model}"
-    
+
+    # Use custom output dir if provided, otherwise use default outputs/
+    custom_output_dir = os.getenv("CUSTOM_OUTPUT_DIR")
+    if custom_output_dir:
+        model_output_dir = Path(custom_output_dir)
+    else:
+        model_output_dir = project_root / "outputs" / f"{backend}_{model}"
+
     results_path = model_output_dir / "evaluations" / "evaluation_results.csv"
     if not results_path.exists():
         print(f"Evaluation results file not found at: {results_path}")
