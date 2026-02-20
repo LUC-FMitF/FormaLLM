@@ -1,6 +1,0 @@
-Model: codellama:latest
-Temperature: 0.0
-Repeat Penalty: 1.0
-Timeout: 600s
-Timestamp: Sat Dec  6 01:52:24 PM CST 2025
-Prompting: Single prompting

@@ -46,14 +46,8 @@ def evaluate_tla(parsed: dict) -> dict:
     # Get model info from environment
     backend = os.getenv("LLM_BACKEND", "ollama")
     model = os.getenv("LLM_MODEL", "llama3.1")
-
-    # Use custom output dir if provided, otherwise use default outputs/
-    custom_output_dir = os.getenv("CUSTOM_OUTPUT_DIR")
-    if custom_output_dir:
-        model_output_dir = Path(custom_output_dir)
-    else:
-        model_output_dir = project_root / "outputs" / f"{backend}_{model}"
-
+    model_output_dir = project_root / "outputs" / f"{backend}_{model}"
+    
     generated_dir = model_output_dir / "generated"
     eval_output_dir = model_output_dir / "evaluations"
     sany_logs_dir = model_output_dir / "sany_logs"
@@ -79,7 +73,7 @@ def evaluate_tla(parsed: dict) -> dict:
     
     # Setup model-specific MLflow tracking
     mlflow_dir = model_output_dir / "mlruns"
-    mlflow.set_tracking_uri(f"file://{mlflow_dir.resolve()}")
+    mlflow.set_tracking_uri(f"file://{mlflow_dir}")
     mlflow.set_experiment(f"tla_eval_{backend}_{model}")
 
     for model_name, parse_status in parsed.items():
