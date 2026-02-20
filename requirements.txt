@@ -24,5 +24,4 @@ zenml[server]
 # DVC with Google Drive support
 dvc[gdrive]
 
-rouge-score
-nltk
+
